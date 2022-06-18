@@ -57,6 +57,16 @@
     font-size: 100%;
 }
 
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
 
 /* PAGE CONTAINERS */
 
@@ -229,6 +239,9 @@ html {
     /* Set the direction to be row */
     flex-direction: column;
     /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+
+
     
 }
 
