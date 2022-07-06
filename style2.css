@@ -39,7 +39,7 @@
   {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 10px;
-      font-size: 1.1vw;
+      font-size: 1vw;
       
   }
 
@@ -656,13 +656,13 @@ html {
 
  @keyframes floating {
     0% { transform: translate(0,  0px); }
-    50%  { transform: translate(0, 5%); }
+    50%  { transform: translate(0, 4%); }
     100%   { transform: translate(0, -0px); }   
 }
 
 @keyframes rfloating {
     0% { transform: translate(0,  -0px); }
-    50%  { transform: translate(0, -5%); }
+    50%  { transform: translate(0, -4%); }
     100%   { transform: translate(0, 0px); }   
 }
 
@@ -701,3 +701,15 @@ html {
     color: rgb(255, 255, 255); */
     animation: effect 0.4s infinite;
   }
+
+
+
+  @media only screen and (max-device-width: 1024px)
+  { 
+    .container_top
+    {
+        background-color: aqua;
+    }
+
+  }
+    

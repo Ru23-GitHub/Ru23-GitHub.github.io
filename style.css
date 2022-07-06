@@ -39,7 +39,7 @@
   {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 10px;
-      font-size: 1.1vw;
+      font-size: 1vw;
       
   }
 
@@ -73,6 +73,10 @@ a:hover { text-decoration: none; }
 a:active { text-decoration: none; }
 
 /* PAGE CONTAINERS */
+
+body{
+    min-width:1000px;
+}
 
 html {
     scroll-behavior: smooth;
@@ -138,7 +142,7 @@ html {
     display: block;
     position: relative;
     overflow: hidden;
-    background-color: white;
+    background-color: transparent;
 
 
     /* Give the container a display of flex */
@@ -233,6 +237,29 @@ html {
     align-items: center;        /* vertically centered */ 
 }
 
+.about_left_bottom2
+        {
+            display: block;
+            max-width: 50vw;
+            max-height: 50vh;
+            width: auto;
+            height: 20vh;
+            z-index: 1;
+            position: relative;
+            animation: floating 3s infinite;
+
+            border-radius: 25px;
+
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: row;
+
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */ 
+        }
+
 .about_right
 {
    
@@ -319,6 +346,11 @@ html {
     /* Center the content in the middle */
     justify-content: center;    /* horizontally centered */
     align-items: center;        /* vertically centered */
+}
+
+.container_experience_mobile
+{
+    display: none;
 }
 
 .experience_header
@@ -462,12 +494,14 @@ html {
   }
   
   .flip-card-front {
-    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    background-color: aqua;
     color: black;
   }
   
   .flip-card-back {
-    background-color: transparent;
+    background-color: aquamarine;
     color: black;
     transform: rotateY(180deg);
     display: flex;
@@ -702,14 +736,260 @@ html {
     animation: effect 0.4s infinite;
   }
 
+ 
 
 
-  @media only screen and (max-device-width: 1024px)
-  { 
-    .container_top
+
+  @media only screen and (max-width: 800px) {
+    p
     {
-        background-color: aqua;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 10px;
+        font-size: 2vw;
+        
+    }
+    body {
+      background-color: lightblue;
+      min-width:100%;
     }
 
-  }
+    .topnav {
+        background-color: rgb(255, 255, 255);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5vh;
+      }
+
+      .container_about
+      {
+          width: 100%;
+          height: 150vh;
+          display: block;
+          position: relative;
+          overflow: hidden;
+          background-color: white;
+      
+      
+          /* Give the container a display of flex */
+          display: flex;
+      
+          /* Set the direction to be row */
+          flex-direction: column;
+      
+          /* Center the content in the middle */
+          justify-content: center;    /* horizontally centered */
+          align-items: center;        /* vertically centered */ 
+      
+      }
+
+      .about_header
+        {
+            width: 100%;
+            height: 13.3%;
+            background-color: rgb(22, 121, 75);
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: row;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .about_bottom
+        {
+            width: 100%;
+            height: 80%;
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .about_left
+        {
+        
+            width: 100%;
+            height: 35%;
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */ 
+        }
+
+        .about_right
+        {
+        
+            width: 70%;
+            height: 50%;
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+
+        }
+
+        .container_experience
+        {
+          display: none
+        }
+
+        .container_experience_mobile
+        {
+            width: 100%;
+            height: 500vh;
+            display: block;
+            position: relative;
+            overflow: hidden;
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .experience_header
+        {
+            width: 100%;
+            height: 4%;
+            /* Give the container a display of flex */
+            display: flex;
+
+            background-color: blueviolet;
+
+            /* Set the direction to be row */
+            flex-direction: row;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+
+        .experience_bottom
+        {
+            width: 100%;
+            height: 80%;
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .experience_bottom_mobile
+        {
+            width: 100%;
+            height: 20%;
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .flip-card-1 {
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+          }
+
+        .contact_header
+        {
+            width: 100%;
+            height: 20%;
+            background-color: rgb(23, 94, 180);
+        
+            /* Give the container a display of flex */
+            display: flex;
+        
+            /* Set the direction to be row */
+            flex-direction: row;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .about_image
+        {
+            display: block;
+            max-width: 50vw;
+            max-height: 50vh;
+            width: auto;
+            height: 30vh;
+            z-index: 1;
+            position: relative;
+            animation: floating 3s infinite;
+
+            border-radius: 25px;
+        }
+
+        .about_left_bottom
+        {
+            display: none;
+        }
+
+        .about_left_bottom2
+        {
+            display: block;
+        
+            width: 100%;
+            height: 20%;
+            z-index: 1;
+            position: relative;
+
+            /* Give the container a display of flex */
+            display: flex;
+        
+            /* Set the direction to be row */
+            flex-direction: row;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .thats_me
+        {
+            width: auto;
+            height: 12vh;
+            animation: floating 3s infinite;
+        }
+
+        .shape_image
+        {
+            display: none;
+        }
+
+    }
+  
     
