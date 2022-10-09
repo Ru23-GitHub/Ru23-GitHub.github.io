@@ -1,374 +1,217 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <!--- The `head` is for meta data, and importing styles/scripts --->
-    <title>Ruslan Manoharan</title>
-    <link rel="icon" type="image/png" href="images/logo-removebg-preview.png">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+<!doctype html>
+<html lang="en">
+
+<!--
+WRITTEN BY: Ruslan Manoharan
+EMAIL: rmanohar@uci.edu
+-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Ruslan Manoharan">
+  <meta name="description" content="description of your page">
+   <!-- you would link to an external stylesheet here! -->
+   <link rel="stylesheet" href="style.css">
+   <!-- you would also link to Bootstrap here! -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <title>Ruslan Manoharan Portfolio</title>
+  <link rel="icon" type="image/png" href="images/logo-removebg-preview.png">
+</head>
+
+<body>
+
+  <div class="container-fluid d-flex align-items-center justify-content-center text-center" style="min-height: 100vh"> <!-- This is FIrst Page-->
+    <div class="container-fluid text-center d-flex flex-row flex-wrap align-items-center justify-content-center px-2">
+      <svg style=" max-width: 50vh; width: 50vh; height: auto;  min-height: 400px;" viewBox="0 0 300.000000 269.000000" preserveAspectRatio="xMidYMid meet">
+        <g transform="translate(0.000000,269.000000) scale(0.100000,-0.100000)" fill="non e" stroke="#000000" stroke-width="20">
+            <path class="drawing" d="M584 2309 c7 -26 41 -252 50 -334 l5 -50 -50 -33 c-27 -17 -49 -31 -49 -30 0 2 -11 56 -24 120 -29 136 -63 255 -76 263 -16 10 -22 -15 -11 -48 27 -80 78 -356 68 -366 -6 -6 -4 -15 7 -26 9 -9 16 -27 16 -39 0 -33 20 -86 32 -86 7 0 9 25 5 75 l-7 75 40 26 c22 15 40 31 40 35 0 5 5 9 10 9 6 0 10 -15 10 -32 1 -38 23 -149 34 -166 8 -13 36 -16 36 -4 0 4 -7 39 -15 77 -8 39 -28 167 -45 285 -31 215 -43 260 -69 268 -11 4 -12 -1 -7 -19z"/>
+            <path class="drawing" d="M2164 2058 c3 -13 26 -115 51 -228 105 -470 179 -710 220 -710 16 0 20 20 7 35 -23 26 -87 247 -182 627 -38 154 -72 284 -75 289 -12 18 -27 9 -21 -13z"/>
+            <path class="drawing" d="M760 1907 c0 -55 20 -180 31 -192 6 -5 13 -5 20 2 14 14 -17 192 -37 213 -12 12 -14 9 -14 -23z"/>
+            <path class="drawing" d="M1637 1933 c-2 -5 -2 -36 1 -70 3 -45 8 -63 18 -63 15 0 17 23 8 94 -6 42 -17 57 -27 39z"/>
+            <path class="drawing" d="M1278 1893 c-71 -3 -98 -7 -98 -17 0 -9 20 -11 86 -8 l86 5 -5 -29 c-3 -16 -20 -100 -38 -186 l-32 -157 -61 -3 c-45 -2 -61 -7 -61 -17 0 -12 13 -14 56 -12 46 2 58 -1 63 -15 5 -13 9 -15 18 -6 7 7 36 12 66 12 44 0 53 3 50 16 -2 11 -17 18 -47 20 -25 3 -45 5 -46 7 -1 1 14 84 34 184 l36 183 65 0 c42 0 61 3 54 10 -13 13 -103 18 -226 13z"/>
+            <path class="drawing" d="M926 1870 c-12 -30 -35 -182 -29 -196 15 -39 35 8 47 112 7 53 -6 113 -18 84z"/>
+            <path class="drawing" d="M1706 1673 c-14 -66 -36 -245 -31 -254 13 -20 23 -6 38 54 20 81 43 137 56 137 6 0 11 -11 11 -24 0 -13 7 -29 15 -36 14 -11 23 -6 63 33 26 26 53 47 59 47 6 0 14 -26 17 -57 10 -79 15 -93 33 -93 13 0 15 9 9 61 -13 125 -50 149 -122 78 l-44 -43 -6 33 c-9 45 -32 51 -62 15 l-25 -29 7 53 c7 54 -8 75 -18 25z"/>
+            <path class="drawing" d="M620 1490 c-14 -4 -35 -5 -47 -3 -16 4 -23 0 -23 -9 0 -8 -16 -22 -36 -31 -47 -23 -129 -101 -144 -137 -10 -24 -10 -33 0 -45 16 -20 64 -19 81 1 12 14 9 16 -21 12 -44 -4 -47 9 -9 55 32 39 117 103 125 94 3 -3 16 -90 29 -193 13 -104 27 -210 31 -235 6 -46 6 -47 -19 -42 -26 5 -46 -12 -30 -28 4 -4 18 -10 30 -12 13 -2 25 -5 27 -8 7 -6 44 -302 52 -411 7 -83 14 -102 30 -77 14 23 -9 299 -36 422 -5 23 -4 37 2 37 6 0 65 -57 131 -127 248 -261 392 -393 425 -393 28 0 8 30 -50 77 -35 28 -147 137 -249 241 -103 105 -205 204 -228 220 -40 29 -41 30 -16 36 74 19 135 120 161 268 28 161 9 265 -52 288 -29 12 -128 11 -164 0z m161 -39 c19 -15 24 -30 27 -87 5 -91 -20 -232 -53 -300 -18 -36 -40 -64 -66 -81 -22 -14 -41 -24 -42 -22 -2 2 -16 101 -31 219 -15 118 -29 227 -32 242 -5 24 -2 27 38 36 73 17 133 14 159 -7z"/>
+            <path class="drawing" d="M2092 1188 c3 -51 19 -133 41 -213 47 -169 47 -171 22 -167 -29 5 -64 41 -182 185 -57 70 -111 127 -119 127 -34 0 -1 -226 44 -304 17 -30 62 -49 62 -27 0 6 -7 11 -15 11 -8 0 -21 13 -29 29 -16 30 -59 227 -54 243 2 5 42 -39 90 -99 118 -149 169 -195 211 -191 29 3 32 6 35 40 2 20 -13 96 -32 170 -19 73 -40 166 -47 206 -17 99 -33 93 -27 -10z"/>
+            <path class="drawing" d="M1367 1174 c-3 -4 -2 -15 4 -26 13 -23 35 -197 44 -343 9 -136 15 -155 53 -155 32 0 134 50 140 69 6 17 -15 13 -80 -16 -43 -19 -62 -23 -67 -15 -4 7 -15 96 -24 200 -22 237 -40 315 -70 286z"/>
+            <path class="drawing" d="M1670 1158 c0 -43 -41 -208 -52 -208 -5 0 -7 -8 -4 -18 4 -10 0 -37 -8 -60 -12 -34 -13 -42 -2 -42 12 0 23 19 40 73 3 11 16 17 33 17 15 0 37 3 48 6 17 4 26 -10 68 -109 59 -139 85 -183 98 -170 7 7 3 26 -14 59 -14 27 -61 141 -106 254 -85 212 -101 243 -101 198z m65 -190 c6 -16 1 -18 -37 -18 l-44 0 15 75 15 74 22 -57 c12 -31 25 -65 29 -74z"/>
+            <path class="drawing" d="M1217 1050 c-51 -40 -42 -94 32 -193 24 -31 41 -65 41 -80 0 -25 -23 -57 -41 -57 -5 0 -9 -7 -9 -15 0 -26 47 -18 70 13 31 39 22 89 -28 155 -72 95 -78 124 -32 158 29 22 31 39 6 39 -7 0 -25 -9 -39 -20z"/>
+            <path class="drawing" d="M1100 907 c0 -13 9 -57 19 -98 27 -102 34 -161 21 -179 -17 -23 -60 34 -116 156 -47 99 -64 123 -64 88 0 -25 83 -193 119 -241 51 -71 94 -52 94 41 0 52 -24 173 -45 229 -13 33 -28 35 -28 4z"/>
+            <path class="drawing" d="M2489 913 c-8 -2 -25 -24 -38 -49 -45 -93 -37 -180 20 -229 37 -31 47 -31 90 -2 79 53 106 177 52 237 -27 29 -89 50 -124 43z m102 -59 c14 -13 19 -30 19 -68 0 -57 -23 -105 -65 -132 -23 -15 -27 -15 -49 -1 -48 32 -57 127 -20 199 14 28 19 30 56 25 22 -3 48 -13 59 -23z"/>
+        </g>
+      </svg>
+      <div class="navbar-nav d-flex flex-row px-2">
+        <a class="nav-link handwritten pulsing spacing px-3" href="#about"><p class="h2 hgreen">About</p></a>
+        <a class="nav-link handwritten pulsing spacing px-3" href="#experience"><p class="h2 hred">Experience</p></a>
+        <a class="nav-link handwritten pulsing spacing px-3" href="#contact"><p class="h2 hblue">Contact</p></a>
+      </div>
+    </div>
+  </div>
+
+  <div id = "about" class="container-fluid d-flex flex-column " style="min-height: 100vh"> <!-- This is ABout Page-->
+    <div class = "container-fluid d-flex flex-column text-center"> <!-- Title -->
+      <p class="handwritten display-1 green">About Me</p>
+    </div>
+
+    <div class="d-flex flex-wrap flex-row align-items-center justify-content-center ">
+
+      <div class="d-flex flex-column align-items-center justify-content-center half ">
+        <img src = "images/thats_me_drawing-removebg-preview.png" alt="handwritten test that says That's Me" class = "float thats-me">
+        <img src = "images/ru.jpg" class = "about-image float" alt="Ruslan Manoharan standing next to a wall, with his arms crossed">
+        <div class="d-flex flex-row align-items-center float" style="padding-top: 3vh; padding-bottom: 3vh">
+          <img src = "images/resume_drawing-removebg-preview.png" alt="drawing of a sheet of paper with text" style = "height: 5vh; width: auto;">
+          <h4 class="handwritten"><a href="Fall_2022_Ruslan_Manoharan_Resume.pdf">My Resume!</a></h4>
+        </div>
+      </div>
+
+      <div class="half" style="padding-top: 3vh; padding-bottom: 3vh">
+        <p class="h3 handwritten"> Who are you? 🤔 </p>
+        <ul>
+          <li><p class="h6">My name is <strong>Ruslan Manoharan</strong></p></li>
+          <li><p class="h6">My pronouns are <strong>he/him/his</strong></p></li>
+          <li><p class="h6">I'm a <strong>Junior Computer Science student</strong> at the University of California, Irvine! (Zot Zot Zot!)</p></li>
+          <li><p class="h6">Originally I'm from the great city of <strong>Portland, OR!</strong></p></li>
+        </ul>
+        <br>
+        <p class="h3 handwritten"> What can you do? 💻 </p>
+          <ul>
+            <li><p class="h6">Python</p></li>
+            <li><p class="h6">C++</p></li>
+            <li><p class="h6">Version Control</p></li>
+            <li><p class="h6">HTML</p></li>
+            <li><p class="h6">CSS</p></li>
+          </ul>
+        <br>
+        <p class="h3 handwritten"> What else do you do? 🥋 </p>
+          <ul>
+            <li><p class="h6">Travelling the world</p></li>
+            <li><p class="h6">Taking photos and videos</p></li>
+            <li><p class="h6">Trying to cook/eating lots of food</p></li>
+            <li><p class="h6">Practicing taekwondo and working out</p></li>
+            <li><p class="h6">Playing Nintendo games, watching MCU, pretending I can sing</p></li>
+          </ul>    
+      </div>
+      
+    </div>
     
-  </head>
+  </div>
 
-  <body>
-    <div style="margin: auto;">
-    <!--- The `body` is where the content of your website goes --->
-    <div class = "container_top">
-      <h1 class = "handwritten" style = "animation: pulse 3s infinite;">Hi, I'm Ruslan!</h1>
-      <div class="topnav">
-        <a href="#about">About</a>
-        <a href="#experience">Experience/Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="topnav_mobile">
-        <a href="#about">About</a>
-        <a href="#experience2">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </div>
+  <div id = "experience" class="container-fluid d-flex flex-column text-center" style="min-height: 100vh"> <!-- This is EXperience/skills Page-->
+    <div class = "container-fluid d-flex flex-column"> <!-- Title -->
+      <p class="handwritten display-1 red">My Experience</p>
     </div>
 
-   
+    <div class="d-flex flex-wrap flex-row align-items-center justify-content-center">
 
-    <div class = "container_about" id = "about">
-      
-
-      <div class = "about_header">
-        <h1 class = "handwritten">About</h1>
-      </div>
-      <div class = "about_bottom">
-        <div class = "about_left">
-          <img src = "images/ru.jpg" class = "about_image" alt="Ruslan Manoharan standing next to a wall, with his arms crossed"></img>
-          <div class = "about_left_bottom">
-            <img src = "images/thats_me_drawing-removebg-preview.png" class = "thats_me"></img>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/anteater_drawing-removebg-preview.png" alt="UCI anteater logo" style="width:auto;height:100%;">
           </div>
-          <div class = "about_left_bottom" style = " justify-content: flex-start;">
-            <img src = "images/square-removebg-preview.png" class = "shape_image"></img>
-          </div>
-          <div class = "about_left_bottom" style = "justify-content: flex-end;">
-          </div>
-          <div class = "about_left_bottom" style = "justify-content: flex-end;">
-            <img src = "images/circle-removebg-preview.png" class = "shape_image"></img>
-          </div>
-          <div class = "about_left_bottom" style = "height: 5%;">
-          </div>
-          <div class = "about_left_bottom2" style = "height: 15%;">
-            <img src = "images/resume_drawing-removebg-preview.png" style = "height: 70%; width: auto;"></img>
-            <h4 class="handwritten"><a href="Summer_2022_Ruslan_Manoharan_Resume.pdf">My Resume!</a></h4>
+          <div class="flip-card-back">
+            <p class="h3 handwritten"> UC Irvine B.S. Computer Science </p>
+            <p class="h6">September 2020 - June 2024</p>
+            <p class="h6">Specializing in Intelligent Systems</p>
           </div>
         </div>
-        <div class = "about_right">
-          <h4 class = "handwritten" style = "padding-top: 10px;"> Who are you? 🤔 </h4>
-          <p>Uh I literally just said "Hi, I'm Ruslan" up above. Well...I guess I could get more specific. My name is <b>Ruslan Manoharan</b>, my pronouns are <b>he/him/his</b>, and I'm a <b>Junior Computer Science student</b> at the University of California, Irvine! (Zot Zot Zot!) Right now I reside in <b>Irvine, CA</b> for school, but originally I'm from the great city of <b>Portland, OR!</b></p>
-          <h4 class = "handwritten"> What do you do? 💻 </h4>
-          <p >Well, as a CompSci student, I do CompSci stuff! Specifically, I'm learning to be and working as a fullstack developer, and currently I'm diving deeper into the fields of machine learning, data mining, and artificial intelligence. I'm also exploring information retrieval topics and frontend design topics.</p>
-          <h4 class = "handwritten"> What else do you do? 🥋 </h4>
-          <p >Yep, I do do things other than CompSci! In my free time I enjoy travelling the world, taking photos and making fun little videos, flying my drone, trying to cook, eating lots and lots of food, running, practicing taekwondo, pretending I can sing, watching MCU movies, playing Nintendo games, and just making people laugh XD.</p>
-          <h4 class = "handwritten"> What are you looking for? 👀 </h4>
-          <p >I enjoy Computer Science because I believe it gives me the capability to reach and assist others at a scale that other occupations couldn't reach. With that said, I'm looking for backend or frontend work experiences to help broaden my understanding of industry operations and further hone my skills, as well as allow myself to assist teams with my skillset to develop quality products for clientele!</p>
+      </div>
 
-          
-          
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/oosa_drawing-removebg-preview.png" alt="OOSA logo" style="width:auto;height:100%;">
+          </div>
+          <div class="flip-card-back">
+            <p class="h3 handwritten"> Out-of-State Anteaters Club (OOSA) President </p>
+            <p class="h6">September 2020 - April 2021</p>
+          </div>
         </div>
       </div>
       
-    </div>
-
-    <div class = "container_experience" id = "experience">
-      <div class = "experience_header">
-        <div class = "experience_header_one">
-          <h1 class = "handwritten">Experience</h1>
-        </div>
-        <div class = "experience_header_two">
-          <h1 class = "handwritten">Skills</h1>
-        </div>
-        
-      </div>
-      <div class = "experience_bottom">
-        <div class = "timeline_container">
-          <div class = "timeline_top">
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/anteater_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:100%;">
-                </div>
-                <div class="flip-card-back">
-                  <h3 class = "handwritten"><a href = "https://www.cs.uci.edu/">UC Irvine B.S. Computer Science</a></h2> 
-                  <p>September 2020 - June 2024</p> 
-                  <p>We love that guy</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/oosa_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:100%;">
-                </div>
-                <div class="flip-card-back">
-                  <h3 class = "handwritten"><a href = "https://www.instagram.com/outofstateanteaters/">Out-of-State Anteaters Club (OOSA)</a> President</h3> 
-                  <p>September 2020 - April 2021</p> 
-                  <p>Proposed and founded a student organization for out-of-state students in a remote learning format.
-                    Represented the club in interactions with the University, advisors, and affiliated organizations.
-                    Led a team of highly qualified student club officers to develop and execute a year-long program.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/uci_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:100%;">
-                </div>
-                <div class="flip-card-back">
-                  <h4 class = "handwritten" style = "padding:10px"><a href = "https://www.admissions.uci.edu/">UCI Office of Undergraduate Admissions</a> Non-resident Student Ambassador</h4> 
-                  <p>February 2021 - May 2021</p> 
-                  <p>Led university efforts to adapt prospective student outreach into a remote format.
-                    Produced blog submissions and produced captivating video blog content.                         
-                    Conducted daily phone calls and conducted live chats to admitted international and domestic out-of-state freshman and transfer students to share UCI experience and answer campus-related questions.
-                    </p>
-                </div>
-              </div>
-            </div>
-
-
-
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/uci_drawing-removebg-preview.png" alt="UCI logo" style="width:auto;height:100%;">
           </div>
-          <div class = "timeline_bottom">
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/ctc_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:100%;">
-                </div>
-                <div class="flip-card-back">
-                  <h3 class = "handwritten"><a href = "https://ctc-uci.com/">Commit The Change</a> Developer</h2> 
-                  <p>October 2021 - April 2022</p> 
-                  <p>Worked to develop high-quality, sustainable, long-term software for The Literacy Project, a non-profit organization in Southern CA.
-                    Collaborated on a project to digitize the literacy assessment scorecards, online submission, curation, reports, and trend metrics.
-                    Worked in an agile git-flow development cycle using various technologies, such as React, Bootstrap, and NodeJS.                    
-                    </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/hack_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:100%;">
-                </div>
-                <div class="flip-card-back">
-                  <h3 class = "handwritten"><a href = "https://hack.ics.uci.edu/">Hack at UCI</a> Logistics Organizer</h3> 
-                  <p>April 2022 - Present</p> 
-                  <p>Worked in the organization to plan out and execute hackathons throughout the academic year, most notably being Hack UCI, Orange County’s largest collegiate hackathon.
-                    Led various committees of team members on assigned tasks such as managing organization communications, hosting workshops, etc.                                        
-                    </p>
-                </div>
-              </div>
-            </div>
-            
+          <div class="flip-card-back">
+            <p class="h4 handwritten"> UCI Office of Undergraduate Admissions Non-resident Student Ambassador </p>
+            <p class="h6">February 2021 - May 2021</p>
           </div>
-          
-
-        </div>
-        <div class = "skill_container">
-          <div class = "skill_item">
-            <img src = "images/python_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">Python</h1> 
-          </div>
-          <div class = "skill_item">
-            <img src = "images/cpp_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">C++</h1> 
-          </div>
-          <div class = "skill_item">
-            <img src = "images/git_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">Version Control</h2> 
-          </div>
-          <div class = "skill_item">
-            <img src = "images/html_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">HTML</h1> 
-          </div>
-          <div class = "skill_item">
-            <img src = "images/css_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">CSS</h1> 
-          </div>
-
         </div>
       </div>
 
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/ctc_drawing-removebg-preview.png" alt="CTC logo" style="width:auto;height:100%;">
+          </div>
+          <div class="flip-card-back">
+            <p class="h3 handwritten"> Commit the Change Developer </p>
+            <p class="h6">October 2021 - April 2022</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="images/hack_drawing-removebg-preview.png" alt="Hack logo" style="width:auto;height:100%;">
+          </div>
+          <div class="flip-card-back">
+            <p class="h3 handwritten"> Hack at UCI Logistics Organizer </p>
+            <p class="h6">April 2022 - Present</p>
+          </div>
+        </div>
+      </div>
+
+      
 
     </div>
+  </div>
 
-    <div class = "container_experience_mobile" id = "experience2">
-      <div style="background-color: rgb(180, 36, 23);"class = "experience_header">
-          <h1 class = "handwritten">Experience</h1>
-      </div>
-      <div class = "experience_bottom">
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/anteater_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:80%;">
-                </div>
-                <div class="flip-card-back">
-                  <h3 class = "handwritten"><a href = "https://www.cs.uci.edu/">UC Irvine B.S. Computer Science</a></h2> 
-                  <p>September 2020 - June 2024</p> 
-                  <p>We love that guy</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/oosa_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:80%;">
-                </div>
-                <div class="flip-card-back">
-                  <h3 class = "handwritten"><a href = "https://www.instagram.com/outofstateanteaters/">Out-of-State Anteaters Club (OOSA)</a> President</h3> 
-                  <p>September 2020 - April 2021</p> 
-                  <p>Proposed and founded a student organization for out-of-state students in a remote learning format.
-                    Represented the club in interactions with the University, advisors, and affiliated organizations.
-                    Led a team of highly qualified student club officers to develop and execute a year-long program.</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/uci_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:80%;">
-                </div>
-                <div class="flip-card-back">
-                  <h4 class = "handwritten" style = "padding:10px"><a href = "https://www.admissions.uci.edu/">UCI Office of Undergraduate Admissions</a> Non-resident Student Ambassador</h4> 
-                  <p>February 2021 - May 2021</p> 
-                  <p>Led university efforts to adapt prospective student outreach into a remote format.
-                    Produced blog submissions and produced captivating video blog content.                         
-                    Conducted daily phone calls and conducted live chats to admitted international and domestic out-of-state freshman and transfer students to share UCI experience and answer campus-related questions.
-                    </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/ctc_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:80%;">
-                </div>
-                <div class="flip-card-back">
-                  <h3 class = "handwritten"><a href = "https://ctc-uci.com/">Commit The Change</a> Developer</h2> 
-                  <p>October 2021 - April 2022</p> 
-                  <p>Worked to develop high-quality, sustainable, long-term software for The Literacy Project, a non-profit organization in Southern CA.
-                    Collaborated on a project to digitize the literacy assessment scorecards, online submission, curation, reports, and trend metrics.
-                    Worked in an agile git-flow development cycle using various technologies, such as React, Bootstrap, and NodeJS.                    
-                    </p>
-                </div>
-              </div>
-            </div>
-
-            <div class="flip-card-1">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <img src="images/hack_drawing-removebg-preview.png" alt="Avatar" style="width:auto;height:80%;">
-                </div>
-                <div class="flip-card-back">
-                  <h3 class = "handwritten"><a href = "https://hack.ics.uci.edu/">Hack at UCI</a> Logistics Organizer</h2> 
-                  <p>April 2022 - Present</p> 
-                  <p>Worked in the organization to plan out and execute hackathons throughout the academic year, most notably being Hack UCI, Orange County’s largest collegiate hackathon.
-                    Led various committees of team members on assigned tasks such as managing organization communications, hosting workshops, etc.                                        
-                    </p>
-                </div>
-              </div>
-            </div>
-      </div>
-      <div style="background-color: rgb(255, 179, 23);"class = "experience_header">
-        <h1 class = "handwritten" id = "skills">Skills</h1>
+  <div id = "contact" class="container-fluid d-flex flex-column text-center" style="min-height: 100vh"> <!-- This is COntact Page-->
+    <div class = "container-fluid d-flex flex-column"> <!-- Title -->
+      <p class="handwritten display-1 blue">Contact Me/Other Links</p>
     </div>
-    <div class = "experience_bottom_mobile">
-        
-          <div class = "skill_item">
-            <img src = "images/python_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">Python</h1> 
-          </div>
-          <div class = "skill_item">
-            <img src = "images/cpp_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">C++</h1> 
-          </div>
-          <div class = "skill_item">
-            <img src = "images/git_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">Version Control</h2> 
-          </div>
-          <div class = "skill_item">
-            <img src = "images/html_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">HTML</h1> 
-          </div>
-          <div class = "skill_item">
-            <img src = "images/css_drawing-removebg-preview.png" class = "skill_image"></img>
-            <h2 class = "handwritten">CSS</h1> 
-          </div>
-
-        
+    <br>
+    <div class="d-flex flex-wrap flex-row align-items-center justify-content-center">
+      <div class="d-flex flex-column align-items-center justify-content-center" style="min-width: 30vw">
+        <a href = "mailto:rmanohar@uci.edu"><img src="images/email_drawing-removebg-preview.png" alt="Drawing of an email icon" class = "contact-image"></a>
+        <a href = "mailto:rmanohar@uci.edu"><p class="h4 handwritten">Email</p></a>
       </div>
-
-
+      <div class="d-flex flex-column align-items-center justify-content-center" style="min-width: 30vw">
+        <a href = "https://www.linkedin.com/in/ruslanmanoharan/"><img src="images/linkedin_drawing-removebg-preview.png" alt="Drawing of the LinkedIn logo" class = "contact-image"></a>
+        <a href = "https://www.linkedin.com/in/ruslanmanoharan/"><p class="h4 handwritten">LinkedIn</p></a>
+      </div>
+      <div class="d-flex flex-column align-items-center justify-content-center" style="min-width: 30vw">
+        <a href = "https://calendly.com/rmanohar/30min"><img src="images/ru_drawing-removebg-preview.png" alt="Drawing of Ruslan Manoharan" class = "contact-image"></a>
+        <a href = "https://calendly.com/rmanohar/30min"><p class="h4 handwritten">Schedule a Meeting with Me</p></a>
+      </div>
+      <div class="d-flex flex-column align-items-center justify-content-center" style="min-width: 30vw">
+        <a href = "https://github.com/Ru23-GitHub"><img src="images/github_drawing-removebg-preview.png" alt="Drawing of the GitHub logo" class = "contact-image"></a>
+        <a href = "https://github.com/Ru23-GitHub"><p class="h4 handwritten">GitHub</p></a>
+      </div>
+      <div class="d-flex flex-column align-items-center justify-content-center" style="min-width: 30vw">
+        <a href = "https://www.instagram.com/rumanoharan/"><img src="images/instagram_drawing-removebg-preview.png" alt="Drawing of the Instagram logo" class = "contact-image"></a>
+        <a href = "https://www.instagram.com/rumanoharan/"><p class="h4 handwritten">Instagram</p></a>
+      </div>
+      <div class="d-flex flex-column align-items-center justify-content-center" style="min-width: 30vw">
+        <a href = "https://open.spotify.com/user/ndrn34?si=11a7a43029ba465e"><img src="images/spotify_drawing-removebg-preview.png" alt="Drawing of the Spotify logo" class = "contact-image"></a>
+        <a href = "https://open.spotify.com/user/ndrn34?si=11a7a43029ba465e"><p class="h4 handwritten">Spotify</p></a>
+      </div>
 
     </div>
+  </div>
 
-    <div class = "container_contact" id = "contact">
-      <div class = "contact_header">
-        <h1 class = "handwritten">Contact and Other Links</h1>
-      </div>
-      <div class = "contact_bottom">
-
-        <div class = "contact_item">
-          <a href = "mailto:rmanohar@uci.edu"><div class = "contact_image_holder" style = "animation: floating 3s infinite;">
-            <img src="images/email_drawing-removebg-preview.png" class = "contact_image"></img>
-            <h3 class = "handwritten">Email</h1>
-          </div></a>
-        </div>
-
-        <div class = "contact_item">
-          <a href = "https://www.linkedin.com/in/ruslanmanoharan/"><div class = "contact_image_holder"style = "animation: rfloating 3s infinite;">
-            <img src="images/linkedin_drawing-removebg-preview.png" class = "contact_image"></img>
-            <h3 class = "handwritten">LinkedIn</h1>
-          </div></a>
-        </div>
-
-        <div class = "contact_item">
-          <a href = "https://calendly.com/rmanohar/30min"><div class = "contact_image_holder"style = "animation: floating 3s infinite;">
-            <img src="images/ru_drawing-removebg-preview.png" class = "contact_image"></img>
-            <h3 class = "handwritten">Schedule a Meeting With Me</h2>
-          </div></a>
-        </div>
-
-        <div class = "contact_item">
-          <a href = "https://github.com/Ru23-GitHub"><div class = "contact_image_holder"style = "animation: rfloating 3s infinite;">
-            <img src="images/github_drawing-removebg-preview.png" class = "contact_image"></img>
-            <h3 class = "handwritten">GitHub</h1>
-          </div></a>
-        </div>
-
-        <div class = "contact_item">
-          <a href = "https://www.instagram.com/rumanoharan/"><div class = "contact_image_holder"style = "animation: floating 3s infinite;">
-            <img src="images/instagram_drawing-removebg-preview.png" class = "contact_image"></img>
-            <h3 class = "handwritten">Instagram</h1>
-          </div></a>
-        </div>
-
-        <div class = "contact_item">
-          <a href = "https://open.spotify.com/user/ndrn34?si=11a7a43029ba465e"><div class = "contact_image_holder"style = "animation: rfloating 3s infinite;">
-            <img src="images/spotify_drawing-removebg-preview.png" class = "contact_image"></img>
-            <h3 class = "handwritten">Spotify</h1>
-          </div></a>
-        </div>
-        
-      </div>
-
-
-
+  <nav class="navbar navbar-dark bg-dark ">
+    <div class="container-fluid">
+      <a class="navbar-brand handwritten" href="#">Ruslan Manoharan</a>
     </div>
+  </nav>
+  
+      
 
 
-    </div>
-  </body>
+</body>
 </html>

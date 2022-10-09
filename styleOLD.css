@@ -1,0 +1,1022 @@
+ 
+
+* {
+    margin: 0;
+  }
+
+/* FONT STUFF */
+
+  @font-face { font-family: Delicious; src: url('Rufont3-Regular.ttf'); }
+  h1 
+  {
+    font-size: 5.9vw;
+  }
+
+ 
+  
+  h2
+  {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 10px;
+      font-size: 3.9vw;
+  }
+
+  h3
+  {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 10px;
+  }
+
+  h4
+  {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding-left: 10px;
+      padding-right: 10px;
+      
+  }
+  
+  p
+  {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 10px;
+      font-size: 1vw;
+      
+  }
+
+  #header
+{
+    /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+    font-family: Delicious, sans-serif;
+    font-size: 300%;
+}
+
+.handwritten
+{
+    font-family: Delicious, sans-serif;
+}
+
+.handwritten h2
+{
+    font-size: 100%;
+}
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
+
+/* PAGE CONTAINERS */
+
+body{
+    min-width:1000px;
+}
+
+html {
+    scroll-behavior: smooth;
+  }
+
+.container_top
+{
+    width: 100%;
+    height: 100vh;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */  
+}
+
+.about_image
+{
+    display: block;
+    max-width: 50vw;
+    max-height: 50vh;
+    width: auto;
+    height: auto;
+    z-index: 1;
+    position: absolute;
+    animation: floating 3s infinite;
+
+    border-radius: 25px;
+}
+
+.thats_me
+{
+    width: auto;
+    height: 12vh;
+    animation: floating 3s infinite;
+}
+
+.shape_image
+{
+    max-width: 20vw;
+    max-height: 40vh;
+    width: auto;
+    height: auto;
+    animation: rfloating 3s infinite;
+}
+
+
+
+
+.container_about
+{
+    width: 100%;
+    height: 100vh;
+    display: block;
+    position: relative;
+    overflow: hidden;
+    background-color: transparent;
+
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */ 
+
+}
+
+
+.about_header
+{
+    width: 100%;
+    height: 20%;
+    background-color: rgb(22, 121, 75);
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.about_top
+{
+    width: 100%;
+    height: 40%;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+
+.about_bottom
+{
+    width: 100%;
+    height: 80%;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.about_left
+{
+   
+    width: 50%;
+    height: 100%;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */ 
+}
+
+.about_left_bottom
+{
+    width:100%;
+    height: 20%;
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */ 
+}
+
+.about_left_bottom2
+        {
+            display: block;
+            max-width: 50vw;
+            max-height: 50vh;
+            width: auto;
+            height: 20vh;
+            z-index: 1;
+            position: relative;
+            animation: floating 3s infinite;
+
+            border-radius: 25px;
+
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: row;
+
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */ 
+        }
+
+.about_right
+{
+   
+    width: 50%;
+    height: 100%;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+
+
+    
+}
+
+
+.about_title
+{
+    width: 100%;
+    height: 35%;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */ 
+
+    text-align: center;
+}
+
+.about_info
+{
+    width: 100%;
+    height: 80%;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+    /* Center the content in the middle */
+    text-align: center;
+    
+}
+
+.about_1
+{
+    width: 50%;
+    height: 100%;
+}
+
+.about_b
+{
+    width: 15%;
+    height: 100%;
+
+}
+
+.about_2
+{
+    width: 34%;
+    height: 100%;
+}
+
+.container_experience
+{
+    width: 100%;
+    height: 100vh;
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.container_experience_mobile
+{
+    display: none;
+}
+
+.experience_header
+{
+    width: 100%;
+    height: 20%;
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.experience_header_one
+{
+    width: 70%;
+    height: 100%;
+    background-color: rgb(180, 36, 23);
+    border-right: 1px solid;
+    border-right-color: #000000;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.experience_header_two
+{
+    width: 30%;
+    height: 100%;
+    background-color: rgb(255, 179, 0);
+    border-left: 1px solid;
+    border-left-color: #000000;
+
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+
+
+.experience_bottom
+{
+    width: 100%;
+    height: 80%;
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.timeline_container
+{
+    width: 70%;
+    height: 100%;
+    border-right: 1px solid;
+    border-right-color: #000000;
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.timeline_top
+{
+    width: 100%;
+    height: 50%;
+     /* Give the container a display of flex */
+     display: flex;
+
+     /* Set the direction to be row */
+     flex-direction: row;
+     /* Center the content in the middle */
+     justify-content: center;    /* horizontally centered */
+     align-items: center;        /* vertically centered */
+}
+
+.timeline_bottom
+{
+    width: 100%;
+    height: 50%;
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.flip-card-1 {
+    background-color: transparent;
+    width: 33%;
+    height: 100%;
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+   /* box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);*/
+  }
+  
+  .flip-card-1:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-front {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    color: black;
+  }
+  
+  .flip-card-back {
+    background-color: white;
+    color: black;
+    transform: rotateY(180deg);
+    display: flex;
+    /* Set the direction to be row */
+    flex-direction: column;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;
+  }
+
+
+.skill_container
+{
+    width: 30%;
+    height: 100%;
+    border-left: 1px solid;
+    border-left-color: #000000;
+}
+
+.skill_item
+{
+    width: 100%;
+    height: 20%;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: flex-start;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.skill_image
+{
+    max-width: 16vw;
+    max-height: 16vh;
+    width: auto;
+    height: auto;
+    padding: 10px;
+}
+
+
+.container_contact
+{
+    width: 100%;
+    height: 100vh;
+    display: block;
+    position: relative;
+    overflow: hidden;
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: column;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.contact_header
+{
+    width: 100%;
+    height: 20%;
+    background-color: rgb(23, 94, 180);
+
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.contact_bottom
+{
+    width: 100%;
+    height: 80%;
+    /* Give the container a display of flex */
+    display: flex;
+
+    /* Set the direction to be row */
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.contact_item
+{
+    width: 33%;
+    height: 50%;
+    /* Give the container a display of flex */
+    display: flex;
+    /* Set the direction to be row */
+    flex-direction: row;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+}
+
+.contact_image_holder
+{
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    /* Set the direction to be row */
+    flex-direction: column;
+    /* Center the content in the middle */
+    justify-content: center;    /* horizontally centered */
+    align-items: center;        /* vertically centered */
+    
+}
+
+.contact_image
+{
+    max-width: 30vw;
+    max-height: 30vh;  
+    width: auto;
+    height: auto;  
+}
+
+
+
+
+
+#Ruslan_Profile_Pic 
+{
+    width: 16.5%;
+    padding: 20px;
+
+    animation: pulse 3s infinite;
+
+    border-radius: 25px;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+  }
+
+.topnav_mobile
+{
+    display: none;
+}
+
+
+  @keyframes effect 
+  {
+    0% {
+        transform: translateX(0px) rotate(0deg);
+    }
+
+    20% {
+        transform: translateX(-4px) rotate(-4deg);
+    }
+
+    40% {
+        transform: translateX(-2px) rotate(-2deg);
+    }
+
+    60% {
+        transform: translateX(4px) rotate(4deg);
+    }
+
+    80% {
+        transform: translateX(2px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateX(0px) rotate(0deg);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); } 
+ } 
+
+ @keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 4%); }
+    100%   { transform: translate(0, -0px); }   
+}
+
+@keyframes rfloating {
+    0% { transform: translate(0,  -0px); }
+    50%  { transform: translate(0, -4%); }
+    100%   { transform: translate(0, 0px); }   
+}
+
+
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: Delicious, sans-serif;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    /* background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255); */
+    animation: effect 0.4s infinite;
+  }
+
+  /* Style the links inside the navigation bar */
+  .topnav_mobile a {
+    float: left;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: Delicious, sans-serif;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav_mobile a:hover {
+    /* background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255); */
+    animation: effect 0.4s infinite;
+  }
+
+  .about_left_bottom a {
+    float: left;
+    color: #000000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: Delicious, sans-serif;
+  }
+
+  .about_left_bottom a:hover {
+    /* background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255); */
+    animation: effect 0.4s infinite;
+  }
+
+ 
+
+
+
+  @media only screen and (max-width: 800px) {
+    p
+    {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 10px;
+        font-size: 2vw;
+        
+    }
+    body {
+      background-color: white;
+      min-width:100%;
+    }
+
+    .topnav_mobile {
+        background-color: rgb(255, 255, 255);
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 5vh;
+      }
+
+      .topnav
+      {
+        display: none;
+      }
+
+      .container_about
+      {
+          width: 100%;
+          height: 150vh;
+          display: block;
+          position: relative;
+          overflow: hidden;
+          background-color: white;
+      
+      
+          /* Give the container a display of flex */
+          display: flex;
+      
+          /* Set the direction to be row */
+          flex-direction: column;
+      
+          /* Center the content in the middle */
+          justify-content: center;    /* horizontally centered */
+          align-items: center;        /* vertically centered */ 
+      
+      }
+
+      .about_header
+        {
+            width: 100%;
+            height: 13.3%;
+            background-color: rgb(22, 121, 75);
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: row;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .about_bottom
+        {
+            width: 100%;
+            height: 80%;
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .about_left
+        {
+        
+            width: 100%;
+            height: 35%;
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */ 
+        }
+
+        .about_right
+        {
+        
+            width: 70%;
+            height: 50%;
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+
+        }
+
+        .container_experience
+        {
+          display: none
+        }
+
+        .container_experience_mobile
+        {
+            width: 100%;
+            height: 500vh;
+            display: block;
+            position: relative;
+            overflow: hidden;
+
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .experience_header
+        {
+            width: 100%;
+            height: 4%;
+            /* Give the container a display of flex */
+            display: flex;
+
+            background-color: blueviolet;
+
+            /* Set the direction to be row */
+            flex-direction: row;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+
+        .experience_bottom
+        {
+            width: 100%;
+            height: 80%;
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .experience_bottom_mobile
+        {
+            width: 100%;
+            height: 20%;
+            /* Give the container a display of flex */
+            display: flex;
+
+            /* Set the direction to be row */
+            flex-direction: column;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .flip-card-1 {
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+            perspective: 1000px;
+          }
+
+        .contact_header
+        {
+            width: 100%;
+            height: 20%;
+            background-color: rgb(23, 94, 180);
+        
+            /* Give the container a display of flex */
+            display: flex;
+        
+            /* Set the direction to be row */
+            flex-direction: row;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .about_image
+        {
+            display: block;
+            max-width: 50vw;
+            max-height: 50vh;
+            width: auto;
+            height: 30vh;
+            z-index: 1;
+            position: relative;
+            animation: floating 3s infinite;
+
+            border-radius: 25px;
+        }
+
+        .about_left_bottom
+        {
+            display: none;
+        }
+
+        .about_left_bottom2
+        {
+            display: block;
+        
+            width: 100%;
+            height: 20%;
+            z-index: 1;
+            position: relative;
+
+            /* Give the container a display of flex */
+            display: flex;
+        
+            /* Set the direction to be row */
+            flex-direction: row;
+            /* Center the content in the middle */
+            justify-content: center;    /* horizontally centered */
+            align-items: center;        /* vertically centered */
+        }
+
+        .thats_me
+        {
+            width: auto;
+            height: 12vh;
+            animation: floating 3s infinite;
+        }
+
+        .shape_image
+        {
+            display: none;
+        }
+
+    }
+  
+    
