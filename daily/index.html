@@ -3,77 +3,143 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Ruslan Manoharan — Daily Build</title>
+<title>The Butterfly Effect — Daily Build</title>
+<meta name="description" content="An interactive look at sensitive dependence on initial conditions: the Lorenz attractor, a divergence lab, and the logistic map. A daily auto-generated experiment." />
 <meta name="robots" content="noindex" />
-<link rel="stylesheet" href="css/intro.css" />
-<link rel="stylesheet" href="css/style.css" />
-<link rel="stylesheet" href="css/reveal.css" />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#07080c" />
+<link rel="stylesheet" href="css/daily.css" />
 </head>
 <body>
 
-  <p class="daily-banner">🧪 Experimental build, regenerated daily by an AI agent exploring new design ideas. <a href="/">View the real site</a> &middot; <a href="/change-log/">Change log</a></p>
+<a class="skip" href="#main">Skip to content</a>
 
-  <section id="hero" class="play" aria-label="Intro animation: Ruslan Manoharan">
-    <h1 class="sr-only">Ruslan Manoharan</h1>
-    <div class="fitbox" id="fitbox">
-      <a class="logo-link" href="https://www.youtube.com/watch?v=6_ZD3FxMcvQ" target="_blank" rel="noopener" aria-label="RUSLAN MANOHARAN — watch the video">
-        <div class="logo" aria-hidden="true">
-          <div id="gb" class="word gb" data-text="RUSLAN MANOHARAN"></div>
-        </div>
-      </a>
-    </div>
-    <a class="scroll-cue" href="#about" aria-label="Scroll down">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <polyline points="6 9 12 15 18 9"></polyline>
-      </svg>
-    </a>
+<p class="daily-banner">
+  <span class="flask" aria-hidden="true">🧪</span>
+  <strong>Experimental build.</strong> Rebuilt from scratch daily by an AI agent with free rein &mdash; nobody reviews it first.
+  <a href="/">Ruslan&rsquo;s real site</a> <span aria-hidden="true">&middot;</span> <a href="/change-log/">Change log</a>
+</p>
+
+<header class="hero">
+  <canvas id="lorenz" tabindex="0" role="img"
+    aria-label="A rotating three-dimensional plot of the Lorenz attractor, tracing two lobes shaped like butterfly wings. Drag, or use the arrow keys while focused, to turn it."></canvas>
+  <div class="hero-copy">
+    <p class="eyebrow">Daily build <span aria-hidden="true">&middot;</span> 5 October 2026</p>
+    <h1>The Butterfly<br />Effect</h1>
+    <p class="dek">In the winter of 1961 a rounding error of one part in a thousand wrecked a weather forecast, and chaos theory fell out of the wreckage. Here is an attractor you can turn, and two machines for feeling why.</p>
+    <p class="hint"><span aria-hidden="true">↻</span> Drag the shape to turn it</p>
+  </div>
+  <a class="scroll-cue" href="#story" aria-label="Skip to the story">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+  </a>
+</header>
+
+<main id="main">
+
+  <section id="story" class="prose">
+    <p class="kicker">0 — the rounding error</p>
+    <h2>Lorenz types four digits instead of seven</h2>
+    <p>Edward Lorenz was a meteorologist at MIT with a <span class="nw">Royal McBee LGP-30</span> — a desk-sized vacuum-tube computer that chewed through a toy twelve-variable weather model at roughly one simulated day per minute. One winter morning in 1961 he wanted a longer look at a run he&rsquo;d already done, so rather than start over he restarted it from the middle, typing the numbers back in off the printout.</p>
+    <p>The printout had been rounded to three decimal places. The machine had been holding six. Where Lorenz typed <code>0.506</code>, the computer had been carrying <code>0.506127</code> — a discrepancy of about one part in five thousand, far smaller than any instrument could ever measure the real atmosphere to.</p>
+    <p>He went for coffee. When he came back the new run had, within a couple of simulated months, nothing whatsoever to do with the old one. Not drifted. <em>Unrecognisable.</em> His first assumption was a blown vacuum tube.</p>
+    <figure class="pullquote">
+      <blockquote><p>One meteorologist remarked that if the theory were correct, one flap of a sea gull&rsquo;s wings would be enough to alter the course of the weather forever.</p></blockquote>
+      <figcaption>Edward N. Lorenz, <cite>Deterministic Nonperiodic Flow</cite>, <span class="nw">J. Atmos. Sci.</span>, 1963</figcaption>
+    </figure>
+    <p>The seagull later became a butterfly, and not by Lorenz&rsquo;s hand: when he gave a talk to the AAAS in 1972 he hadn&rsquo;t supplied a title, so the session convener Philip Merilees invented one for him — <em>&ldquo;Predictability: Does the Flap of a Butterfly&rsquo;s Wings in Brazil Set Off a Tornado in Texas?&rdquo;</em> The name stuck to the whole field.</p>
+    <p>The shape turning at the top of this page is the three-equation sketch Lorenz boiled his model down to in 1963. It isn&rsquo;t weather; it&rsquo;s a cartoon of hot fluid rolling over in a pan. But it does the one thing weather does that broke his forecast, and it does it where you can watch.</p>
   </section>
 
-  <section id="about">
-    <div class="container">
-      <h2 class="reveal">About Me</h2>
-      <div class="about-grid">
-        <div class="about-photo reveal">
-          <img src="../images/profile.jpg" alt="Photo of Ruslan Manoharan" width="900" height="900" />
-        </div>
-        <div class="about-bio reveal">
-          <p>Hi I'm Ruslan! 👋 I'm from Portland OR but now live in Seattle WA 🌲🌧️ (the PNW has my heart 💚💙). I'm interested in exploring the societal impacts of AI tools, for better or worse 🤖🤔 In my free time I enjoy traveling ✈️ learning to cook without blowing up the kitchen 🔥 bad karaoke 🎤 and collecting retro tech 💾</p>
-          <a class="btn" href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">View Resume</a>
-        </div>
-        <div class="about-skills">
-          <span class="section-kicker reveal">Skills</span>
-          <ul class="skills-list reveal-stagger">
-            <li>Full-stack development</li>
-            <li>Cloud deployment</li>
-            <li>Machine learning</li>
-            <li>AI/LLM engineering</li>
-            <li>Predictive analytics</li>
-            <li>Fair &amp; ethical ML/AI research</li>
-          </ul>
-        </div>
+  <section id="lab-diverge" class="lab">
+    <div class="lab-head">
+      <p class="kicker">1 — the divergence lab</p>
+      <h2>Two identical worlds, one rounding error apart</h2>
+      <p class="lede">Both dots obey exactly the same three equations, with no noise and no randomness anywhere. The only difference between them is that one starts a hair to the left. Pick how big a hair, and let go.</p>
+    </div>
+
+    <div class="controls">
+      <div class="ctl">
+        <label for="epsInput">Starting difference</label>
+        <input id="epsInput" type="range" min="-10" max="-2" step="1" value="-6" />
+        <output id="epsOut" for="epsInput">1e−6</output>
+      </div>
+      <button id="divRun" class="btn" type="button">Release them</button>
+    </div>
+
+    <div class="lab-grid">
+      <figure class="panel">
+        <canvas id="divPhase" role="img" aria-label="Phase plot: two trajectories moving over the butterfly-shaped Lorenz attractor, one cyan and one pink."></canvas>
+        <figcaption><span class="cap">Where they are</span> <span class="legend"><i class="sw-a"></i>world A <i class="sw-b"></i>world B</span></figcaption>
+      </figure>
+      <figure class="panel">
+        <canvas id="divStrip" role="img" aria-label="Chart: the distance between the two worlds on a logarithmic scale against time. It rises as a straight line before flattening off."></canvas>
+        <figcaption><span class="cap">How far apart they are</span> <span class="legend">log scale <span aria-hidden="true">&middot;</span> dashed = exp(0.906&thinsp;t)</span></figcaption>
+      </figure>
+    </div>
+
+    <dl class="readout" aria-live="polite">
+      <div><dt>elapsed</dt><dd id="roT">t = 0.00</dd></div>
+      <div><dt>separation</dt><dd id="roD">1.0e−6</dd></div>
+      <div><dt>error grew by</dt><dd id="roG">&times;1</dd></div>
+      <div><dt>forecast lost at</dt><dd id="roH">&mdash;</dd></div>
+    </dl>
+
+    <p class="note">The straight stretch is the whole story: the gap doesn&rsquo;t creep, it <strong>multiplies</strong>, roughly doubling every 0.76 time units no matter how small you start it. Then it flattens — not because the worlds re-converge, but because they&rsquo;re both stuck on the same finite shape and you simply cannot be more than one attractor apart. Every extra decimal place you measure the atmosphere to buys you the same small, fixed amount of extra warning. That is the ceiling, and it is why there is no ten-week forecast.</p>
+  </section>
+
+  <section id="lab-logistic" class="lab">
+    <div class="lab-head">
+      <p class="kicker">2 — the smallest chaotic thing</p>
+      <h2>One line of arithmetic, run forever</h2>
+      <p class="lede">You don&rsquo;t need three coupled differential equations. Take a number between 0 and 1, and repeat <code class="eq">x &larr; r&thinsp;x&thinsp;(1&thinsp;&minus;&thinsp;x)</code> — a population that grows in proportion to how many there are and how much room is left. Then nudge <var>r</var> upward and watch the thing lose its mind.</p>
+    </div>
+
+    <figure class="panel panel-wide">
+      <canvas id="bifCanvas" role="img" aria-label="Bifurcation diagram of the logistic map: a single curve that splits in two, then four, then eight, dissolving into a dense chaotic band streaked with clear windows."></canvas>
+      <figcaption><span class="cap">Every value the population settles into, for each <var>r</var> from 2.4 to 4</span></figcaption>
+    </figure>
+
+    <div class="controls">
+      <div class="ctl ctl-wide">
+        <label for="rInput">growth rate <var>r</var></label>
+        <input id="rInput" type="range" min="2.4" max="4" step="0.001" value="3.2" />
+        <output id="rOut" for="rInput">3.200</output>
       </div>
     </div>
-  </section>
 
-  <section id="contact">
-    <div class="container">
-      <h2 class="reveal">Contact Me</h2>
-      <p class="reveal">Feel free to <s>slide in my dms</s> reach out!</p>
-      <ul class="contact-links reveal-tail">
-        <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
-        <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
-      </ul>
+    <div class="presets" role="group" aria-label="Interesting values of r">
+      <button type="button" class="chip" data-r="2.800">2.8 — settles</button>
+      <button type="button" class="chip" data-r="3.200">3.2 — oscillates</button>
+      <button type="button" class="chip" data-r="3.500">3.5 — four-year cycle</button>
+      <button type="button" class="chip" data-r="3.5699">3.5699 — the edge</button>
+      <button type="button" class="chip" data-r="3.8300">3.83 — order inside chaos</button>
+      <button type="button" class="chip" data-r="4.000">4.0 — total chaos</button>
     </div>
+
+    <figure class="panel">
+      <canvas id="orbCanvas" role="img" aria-label="Time series of successive population values for the chosen growth rate."></canvas>
+      <figcaption><span class="cap">The next 90 generations</span> <span class="legend" id="pOut" aria-live="polite">period 2</span></figcaption>
+    </figure>
+
+    <p class="note">The splits come faster and faster — <var>r</var> &asymp; 3, then 3.449, then 3.544 — piling up at <strong>3.56995</strong>, past which the orbit never repeats at all. The ratio of those gaps converges on 4.6692…, Feigenbaum&rsquo;s constant, and it is <em>the same number</em> for a huge family of unrelated equations: dripping taps, buckling beams, oscillating circuits. Slide out to 3.83 and chaos abruptly gives way to a clean three-cycle, then shatters again. Robert May put this in <cite>Nature</cite> in 1976 partly as a plea to teach it in schools, on the grounds that an intuition built on tidy equations is an actively misleading one.</p>
   </section>
 
-  <footer>
-    &copy; <span id="year"></span> Ruslan Manoharan
-    <span class="footer-sep" aria-hidden="true">&middot;</span>
-    <a href="/change-log/">Change log</a>
-  </footer>
+  <section class="prose closing">
+    <p class="kicker">3 — so</p>
+    <h2>Determinism was never the same thing as predictability</h2>
+    <p>Nothing on this page is random. Every pixel came from arithmetic a pocket calculator could do, started from numbers I chose, and would come out identical if you ran it again. And still: knowing the rules exactly, and the starting state <em>almost</em> exactly, buys you an horizon measured in days rather than forever.</p>
+    <p>Lorenz&rsquo;s paper sat mostly unread in a meteorology journal for roughly a decade before the rest of science noticed it. Which is its own kind of sensitive dependence.</p>
+    <p class="sources">Further down the hole: <a href="https://journals.ametsoc.org/view/journals/atsc/20/2/1520-0469_1963_020_0130_dnf_2_0_co_2.xml" target="_blank" rel="noopener">Lorenz 1963, &ldquo;Deterministic Nonperiodic Flow&rdquo;</a> <span aria-hidden="true">&middot;</span> <a href="https://www.nature.com/articles/261459a0" target="_blank" rel="noopener">May 1976, &ldquo;Simple mathematical models with very complicated dynamics&rdquo;</a> <span aria-hidden="true">&middot;</span> James Gleick, <cite>Chaos: Making a New Science</cite> (1987).</p>
+  </section>
 
-<script src="js/intro.js"></script>
+</main>
+
+<footer>
+  <p class="foot-disclose">🧪 You are on <strong>/daily</strong> — an unreviewed, automatically regenerated experiment. It will be something else tomorrow.</p>
+  <p>&copy; <span id="year"></span> Ruslan Manoharan <span class="footer-sep" aria-hidden="true">&middot;</span> <a href="/">Real site</a> <span class="footer-sep" aria-hidden="true">&middot;</span> <a href="/change-log/">Change log</a></p>
+</footer>
+
+<script src="js/chaos.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

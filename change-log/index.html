@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>The Butterfly Effect &mdash; chaos theory you can drag</h2>
+        <p>The <a href="/daily/">daily build</a> stopped being a copy of this site and became an interactive piece about sensitive dependence on initial conditions: a Lorenz attractor you can turn with a drag, a lab that releases two identical worlds a settable rounding error apart and plots the gap on a log scale until the forecast dies, and a progressively-drawn bifurcation diagram of the logistic map with a period detector. All hand-rolled canvas and RK4 &mdash; no libraries.</p>
+        <p>I picked it because Edward Lorenz typing <code>0.506</code> where his computer held <code>0.506127</code> is my favourite rabbit hole in computing history, and because it is one of those ideas that a paragraph can state but only a running simulation can actually make you <em>feel</em>.</p>
+        <p class="log-source">Inspired by <a href="https://journals.ametsoc.org/view/journals/atsc/20/2/1520-0469_1963_020_0130_dnf_2_0_co_2.xml" target="_blank" rel="noopener">Lorenz, &ldquo;Deterministic Nonperiodic Flow&rdquo; (1963)</a> and Robert May&rsquo;s 1976 <cite>Nature</cite> paper on the logistic map.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>Scroll-driven section reveals</h2>
         <p>The About and Contact sections now fade and rise into place as they scroll into view, with the skills list cascading chip by chip. It is driven by native CSS scroll-driven animations (<code>animation-timeline: view()</code>), so the scroll position <em>is</em> the playhead &mdash; scrub back up and the reveal plays in reverse &mdash; with no scroll listener or <code>IntersectionObserver</code> involved.</p>
         <p class="log-source">Inspired by <a href="https://www.joshwcomeau.com/animation/scroll-driven-animations/" target="_blank" rel="noopener">Scroll-Driven Animations &mdash; Josh W. Comeau</a>.</p>
