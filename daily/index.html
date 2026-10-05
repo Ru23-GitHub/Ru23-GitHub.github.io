@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/reveal.css" />
 <link rel="stylesheet" href="css/shelf.css" />
 <link rel="stylesheet" href="css/euclid.css" />
+<link rel="stylesheet" href="css/slime.css" />
 </head>
 <body>
 
@@ -385,6 +386,68 @@
     </div>
   </section>
 
+  <section id="slime">
+    <div class="container">
+      <span class="section-kicker reveal">Physarum</span>
+      <h2 class="reveal">The Thing That Planned The Tokyo Rail Network</h2>
+      <p class="sl-intro reveal">In 2010 a team led by Atsushi Tero laid oat flakes on a map of the Greater Tokyo Area, one flake per surrounding town, and let a slime mould grow across it. <em>Physarum polycephalum</em> is one yellow cell. It has no brain, no nervous system and no notion of Tokyo. Within a day it had connected every flake in a network whose cost, efficiency and tolerance to a severed link were comparable to the real rail system engineers had spent decades on. Below is the same organism, same rules, no map: 19,000 agents that each sniff three points ahead, turn toward whichever smells strongest, step forward and leave a little trail. Everything you see is those four lines colliding with themselves.</p>
+
+      <div class="sl-console">
+
+        <div class="sl-transport">
+          <button class="sl-play" type="button" data-sl="play" aria-pressed="false">
+            <span class="sl-dot" aria-hidden="true"></span>
+            <span data-sl="play-label">Grow</span>
+          </button>
+
+          <span class="sl-field">
+            <label for="sl-preset"><span>Behaviour</span></label>
+            <select class="sl-select" id="sl-preset" data-sl="preset">
+              <option value="network" selected>Network &mdash; the Tokyo one</option>
+              <option value="veins">Veins &mdash; thick and slow</option>
+              <option value="ripples">Ripples &mdash; near-parallel drift</option>
+              <option value="lattice">Lattice &mdash; sharp turns, tight mesh</option>
+              <option value="custom">Custom</option>
+            </select>
+          </span>
+
+          <button class="sl-ghost" type="button" data-sl="feed">Drop food</button>
+          <button class="sl-ghost" type="button" data-sl="reseed">Reseed</button>
+        </div>
+
+        <div class="sl-stage">
+          <canvas data-sl="canvas" width="480" height="320" role="img"
+                  aria-label="A simulated slime mould: 19,000 agents laying down and following amber trails, forming a branching network on a black field."></canvas>
+        </div>
+        <p class="sl-status" data-sl="status" role="status"></p>
+
+        <div class="sl-knobs">
+          <label for="sl-sensor-angle">Sensor angle
+            <input id="sl-sensor-angle" data-ctl="sensor-angle" type="range" min="5" max="75" step="1" value="22" />
+            <span class="sl-num" data-out="sensor-angle">22&deg;</span>
+          </label>
+          <label for="sl-turn-angle">Turn angle
+            <input id="sl-turn-angle" data-ctl="turn-angle" type="range" min="5" max="75" step="1" value="45" />
+            <span class="sl-num" data-out="turn-angle">45&deg;</span>
+          </label>
+          <label for="sl-sensor-dist">Sensor reach
+            <input id="sl-sensor-dist" data-ctl="sensor-dist" type="range" min="2" max="24" step="1" value="9" />
+            <span class="sl-num" data-out="sensor-dist">9 px</span>
+          </label>
+          <label for="sl-decay">Trail decay
+            <input id="sl-decay" data-ctl="decay" type="range" min="0.80" max="0.995" step="0.005" value="0.94" />
+            <span class="sl-num" data-out="decay">0.94</span>
+          </label>
+        </div>
+
+        <p class="sl-note">Click or drag on the field to drop attractant and watch the network re-route to reach it &mdash; the agents have no food-seeking behaviour at all, that is just a lot of trail in one place. Nudging the sensor and turn angles a few degrees reorganises the whole structure, which is the actual finding: the global pattern is not stored anywhere, it is a standing wave in the local rules. Model from Jeff Jones, <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener">&ldquo;Characteristics of pattern formation and evolution in approximations of Physarum transport networks&rdquo;</a> (2010); the Tokyo experiment is Tero et al., <a href="https://www.science.org/doi/10.1126/science.1177894" target="_blank" rel="noopener">&ldquo;Rules for Biologically Inspired Adaptive Network Design&rdquo;</a>, <em>Science</em> 327 (2010).</p>
+      </div>
+
+      <p class="sl-nojs">This one needs JavaScript and a canvas &mdash; without them there is nothing to grow.</p>
+      <p class="sl-foot reveal-tail">Set the sensor angle to 60&deg; and the reach to 3 and it stops being a network and starts being a textile.</p>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <h2 class="reveal">Contact Me</h2>
@@ -406,6 +469,7 @@
 <script src="js/intro.js"></script>
 <script src="js/shelf.js"></script>
 <script src="js/euclid.js"></script>
+<script src="js/slime.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
