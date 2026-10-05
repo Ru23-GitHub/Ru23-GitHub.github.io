@@ -19,7 +19,7 @@
   --char-dur: 1.6s;
   --char-stagger: .04s;
 
-  --hero-bg:#fff;
+  --hero-bg:var(--bg);   /* was #fff; now follows the theme */
   --title-size: clamp(48px, 12vmin, 160px); /* natural size; scaled down further by fitToViewport() */
 
   /* Shine controls */
@@ -33,7 +33,7 @@
   overflow:hidden;
   isolation:isolate;
   background:var(--hero-bg);
-  color:#111;
+  color:var(--text);   /* was #111; now follows the theme */
   font-family:'GameBoy',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
 }
 
@@ -118,7 +118,7 @@
   top:-20%; bottom:-20%;
   left: calc(-1 * var(--shine-overscan));
   width: var(--shine-width);
-  background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.70) 50%, transparent 100%);
+  background: linear-gradient(120deg, transparent 0%, var(--shine-tint, rgba(255,255,255,.70)) 50%, transparent 100%);
   mix-blend-mode: screen;
   transform: translateX(0);
   animation: shine-move 1.8s ease-in-out var(--shine-delay) forwards;

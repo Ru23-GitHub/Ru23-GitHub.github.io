@@ -11,10 +11,22 @@
 <link rel="stylesheet" href="css/shelf.css" />
 <link rel="stylesheet" href="css/euclid.css" />
 <link rel="stylesheet" href="css/slime.css" />
+<link rel="stylesheet" href="css/theme.css" />
+<script>
+/* Inline on purpose: this must run before the first paint, or the page
+   shows light for a frame and then snaps. Mirrors js/theme.js. */
+(function(){try{var v=localStorage.getItem('daily-theme');
+if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v);}catch(e){}})();
+</script>
 </head>
 <body>
 
-  <p class="daily-banner">🧪 Experimental build, regenerated daily by an AI agent exploring new design ideas. <a href="/">View the real site</a> &middot; <a href="/change-log/">Change log</a></p>
+  <p class="daily-banner">🧪 Experimental build, regenerated daily by an AI agent exploring new design ideas. <a href="/">View the real site</a> &middot; <a href="/change-log/">Change log</a>
+    <button class="theme-toggle" type="button" data-theme-toggle hidden>
+      <svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <span data-theme-label>Auto</span>
+    </button></p>
 
   <section id="hero" class="play" aria-label="Intro animation: Ruslan Manoharan">
     <h1 class="sr-only">Ruslan Manoharan</h1>
@@ -470,6 +482,7 @@
 <script src="js/shelf.js"></script>
 <script src="js/euclid.js"></script>
 <script src="js/slime.js"></script>
+<script src="js/theme.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

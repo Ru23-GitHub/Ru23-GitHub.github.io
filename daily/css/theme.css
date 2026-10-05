@@ -1,0 +1,115 @@
+/* Theme — a dark mode for the whole page
+   ----------------------------------------------------------------------
+   Added 2026-10-05, the first change made after the additive-only rule was
+   lifted. This one deliberately reaches across the entire page, which is
+   exactly what the old rule forbade.
+
+   Almost all of it is a redefinition of the custom properties style.css
+   already declares on :root, so every section that was written against
+   those variables — About, Contact, the footer, the banner — turns over
+   for free. The dark consoles (#shelf, #euclid, #slime) were already dark
+   and are left alone; what changes for them is the page around them.
+
+   Theme resolution order:
+     1. an explicit choice stored by the toggle  -> [data-theme]
+     2. otherwise the OS preference              -> prefers-color-scheme
+     3. otherwise light                          -> the :root defaults */
+
+:root{
+  --shine-tint: rgba(255,255,255,.70);
+  --theme-swap: 240ms;
+}
+
+/* The shared dark palette, applied by either route. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1115;
+    --bg-alt:#15181f;
+    --text:#e9ecf2;
+    --muted:#9aa3b4;
+    --border:#272c37;
+    --accent:#6e8cff;
+    --accent-2:#ff6ef0;
+    --shine-tint: rgba(180,205,255,.30);
+  }
+}
+
+:root[data-theme="dark"]{
+  --bg:#0f1115;
+  --bg-alt:#15181f;
+  --text:#e9ecf2;
+  --muted:#9aa3b4;
+  --border:#272c37;
+  --accent:#6e8cff;
+  --accent-2:#ff6ef0;
+  --shine-tint: rgba(180,205,255,.30);
+}
+
+body{
+  transition: background-color var(--theme-swap) ease, color var(--theme-swap) ease;
+}
+
+/* The hero's letter animation ends on the accent blue, which is too dark to
+   read against a near-black hero; land it on the lighter accent instead. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) #hero .gb .char{ color:#6e8cff; }
+}
+:root[data-theme="dark"] #hero .gb .char{ color:#6e8cff; }
+
+/* The resume button's hover darkened toward navy, which disappears on a dark
+   page; lighten it instead. */
+:root[data-theme="dark"] .btn:hover,
+:root[data-theme="dark"] .btn:focus-visible{ background:#9db3ff; color:#0f1115; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .btn:hover,
+  :root:not([data-theme="light"]) .btn:focus-visible{ background:#9db3ff; color:#0f1115; }
+}
+
+:root[data-theme="dark"] .btn{ color:#0f1115; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .btn{ color:#0f1115; }
+}
+
+/* The profile photo's drop shadow is invisible on dark; give it a rim. */
+:root[data-theme="dark"] .about-photo img{ box-shadow:0 8px 24px rgba(0,0,0,.5); }
+
+/* ---------- the toggle, which lives in the banner ---------- */
+
+.theme-toggle{
+  font:inherit;
+  font-size:12px;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:4px 11px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--muted);
+  cursor:pointer;
+  line-height:1.4;
+}
+
+.theme-toggle:hover{ color:var(--text); border-color:var(--muted); }
+
+.theme-toggle svg{
+  width:13px; height:13px;
+  flex:none;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+/* Only one of the two glyphs shows: the one for the mode you'd switch TO. */
+.theme-toggle .ico-moon{ display:none; }
+.theme-toggle[data-resolved="dark"] .ico-moon{ display:block; }
+.theme-toggle[data-resolved="dark"] .ico-sun{ display:none; }
+
+/* Without the script the toggle can do nothing, so it isn't shown. */
+.theme-toggle[hidden]{ display:none; }
+
+@media (prefers-reduced-motion: reduce){
+  body{ transition:none; }
+}

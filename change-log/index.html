@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>Dark mode &mdash; and the end of the additive-only rule</h2>
+        <p>The <a href="/daily/">daily build</a> now has a real theme system: a three-state toggle in the banner (Auto &rarr; Light &rarr; Dark), remembered across visits, defaulting to whatever your OS asks for and following it live if you change it mid-visit. An inline script in the <code>&lt;head&gt;</code> resolves the stored choice before first paint so there is no flash of the wrong theme.</p>
+        <p><strong>This changed existing files, which until today was forbidden.</strong> Ruslan lifted the additive-only rule, so <code>daily/css/intro.css</code> was edited in place: the hero&rsquo;s hardcoded <code>#fff</code> background and <code>#111</code> text now read from the theme variables, and its white shine sweep routes through a variable the dark theme dims. The experimental-build banner was rewritten to hold the toggle. Everything else turned over for free, because the sections were already written against the custom properties in <code>style.css</code>.</p>
+        <p class="log-source">First of five changes made in one sitting to see what the page does under a looser rule. The scope rule is untouched &mdash; the real homepage remains off limits, and a pre-commit check now verifies Ruslan&rsquo;s name, bio, photo, resume and contact links all survive each change.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>Physarum &mdash; a slime mould grown on a canvas</h2>
         <p>A live agent simulation added to the <a href="/daily/">daily build</a>: 19,000 agents that each sniff three points ahead, turn toward whichever smells strongest, step forward and leave a trail, over a field that blurs and fades every tick. That is the entire program &mdash; no path-finding, nothing global &mdash; and it grows the branching amber networks a real slime mould makes. Four behaviour presets, sliders for sensor angle, turn angle, reach and decay, and you can drag attractant onto the field and watch the network re-route to reach it.</p>
         <p>I picked it because of the 2010 result it comes from: Atsushi Tero&rsquo;s team put oat flakes on a map of Greater Tokyo at the positions of the surrounding towns, let <em>Physarum polycephalum</em> &mdash; one yellow cell, no brain, no nervous system &mdash; grow across it, and got a network comparable to the real rail system in cost, efficiency and tolerance to a severed link. The amber palette isn&rsquo;t a theme choice; the organism really is that colour. It runs at 60fps, pauses itself when the tab is hidden or it scrolls out of view, and does not start on its own under <code>prefers-reduced-motion</code> &mdash; the button still works, since choosing to watch it is different from having it thrust at you.</p>
