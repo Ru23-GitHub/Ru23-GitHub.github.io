@@ -1,0 +1,248 @@
+/* The Shelf — an interactive case of retro hardware.
+   ----------------------------------------------------------------------
+   Added 2026-10-05. Self-contained: this file styles only #shelf and is
+   additive to the existing page — it overrides nothing in style.css.
+
+   Each device is a <button> so power state is keyboard-operable and
+   announced via aria-pressed. The "on" visuals hang off
+   [aria-pressed="true"], so with JS unavailable every device simply
+   stays in its powered-off state and still reads as an illustration. */
+
+#shelf{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+
+.shelf-intro{
+  max-width:60ch;
+  color:var(--muted);
+}
+
+/* ---------- the case ---------- */
+
+.shelf-case{
+  list-style:none;
+  margin:var(--space-m) 0 0;
+  padding:clamp(18px, 3.5vw, 34px);
+  display:grid;
+  gap:clamp(18px, 3vw, 30px);
+  grid-template-columns:repeat(2, 1fr);
+  background:linear-gradient(#1c1f27, #13151b);
+  border-radius:18px;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.07),
+    0 18px 40px rgba(0,0,0,.18);
+}
+
+.shelf-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+}
+
+/* ---------- the device button ---------- */
+
+.device{
+  position:relative;
+  /* Devices are bottom-aligned inside a fixed-height box so that six very
+     different silhouettes stand on one shelf line instead of floating at
+     six different heights. */
+  display:flex;
+  align-items:flex-end;
+  justify-content:center;
+  width:100%;
+  height:clamp(118px, 19vw, 170px);
+  padding:8px 6px 12px;
+  margin:0;
+  background:none;
+  border:0;
+  border-bottom:1px solid rgba(255,255,255,.09);
+  border-radius:12px 12px 0 0;
+  cursor:pointer;
+  color:inherit;
+  font:inherit;
+}
+.device:focus-visible{
+  outline:2px solid var(--accent-2);
+  outline-offset:3px;
+}
+
+.dev{
+  width:auto;
+  max-width:min(100%, 116px);
+  max-height:100%;
+  height:auto;
+  filter:drop-shadow(0 6px 9px rgba(0,0,0,.5));
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .device .dev{ transition:transform .25s ease; }
+  .device:hover .dev,
+  .device:focus-visible .dev{ transform:translateY(-4px); }
+}
+
+/* power LED, top-right of each slot */
+.device-led{
+  position:absolute;
+  right:9px; bottom:9px;
+  width:7px; height:7px;
+  border-radius:50%;
+  background:#3a3f49;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.4);
+}
+.device[aria-pressed="true"] .device-led{
+  background:#54e08a;
+  box-shadow:0 0 8px rgba(84,224,138,.85);
+}
+
+/* ---------- captions ---------- */
+
+.device-cap{
+  margin:10px 0 0;
+  color:#aeb6c4;
+  font-size:13px;
+  line-height:1.5;
+}
+.device-cap strong{
+  display:block;
+  color:#fff;
+  font-family:'GameBoy', system-ui, sans-serif;
+  font-weight:400;
+  font-size:12px;
+  letter-spacing:.03em;
+}
+.device-year{
+  display:block;
+  margin:2px 0 6px;
+  font-size:11px;
+  letter-spacing:.14em;
+  color:#6f7786;
+}
+.device-note{ display:block; }
+
+.shelf-foot{
+  margin:var(--space-s) 0 0;
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ======================================================================
+   Powered-on behaviour, per device.
+
+   Every animation below is wrapped in prefers-reduced-motion:
+   no-preference. The reduce branch at the bottom of each block applies
+   the *finished* state instantly instead, so switching a device on is
+   still meaningful — it just doesn't move.
+   ====================================================================== */
+
+/* --- Game Boy: screen lights, emblem drops into place --- */
+
+.gb-screen{ transition:fill .25s ease; }
+.device[aria-pressed="true"] .gb-screen{ fill:#9bbc0f; }
+
+.gb-logo{ opacity:0; }
+.device[aria-pressed="true"] .gb-logo{ opacity:1; }
+
+@media (prefers-reduced-motion: no-preference){
+  .device[aria-pressed="true"] .gb-logo{
+    animation:gb-drop .85s cubic-bezier(.22,.9,.3,1) both;
+  }
+}
+@keyframes gb-drop{
+  0%   { opacity:0; transform:translateY(-22px) }
+  35%  { opacity:1 }
+  100% { opacity:1; transform:none }
+}
+
+/* --- Walkman: both reels turn --- */
+
+.wm-reel{ transform-box:fill-box; transform-origin:50% 50%; }
+@media (prefers-reduced-motion: no-preference){
+  .device[aria-pressed="true"] .wm-reel{
+    animation:wm-spin 2.6s linear infinite;
+  }
+}
+@keyframes wm-spin{ to{ transform:rotate(360deg) } }
+
+.wm-window{ transition:fill .25s ease; }
+.device[aria-pressed="true"] .wm-window{ fill:#241f18; }
+
+/* --- Macintosh: screen warms up, the smiling machine appears --- */
+
+.mac-screen{ transition:fill .3s ease; }
+.device[aria-pressed="true"] .mac-screen{ fill:#2f3b2c; }
+
+.mac-face{ opacity:0; }
+.device[aria-pressed="true"] .mac-face{ opacity:1; }
+
+@media (prefers-reduced-motion: no-preference){
+  .mac-face{ transform-box:fill-box; transform-origin:50% 50%; }
+  .device[aria-pressed="true"] .mac-face{
+    animation:mac-pop .5s ease .15s both;
+  }
+}
+@keyframes mac-pop{
+  from{ opacity:0; transform:scale(.72) }
+  to  { opacity:1; transform:none }
+}
+
+/* --- Nokia: LCD lights; the snake itself is moved by shelf.js --- */
+
+.nk-screen{ transition:fill .25s ease; }
+.device[aria-pressed="true"] .nk-screen{ fill:#9ecb3b; }
+
+.nk-snake, .nk-food{ opacity:0; transition:opacity .2s ease; }
+.device[aria-pressed="true"] .nk-snake,
+.device[aria-pressed="true"] .nk-food{ opacity:1; }
+
+@media (prefers-reduced-motion: no-preference){
+  .device[aria-pressed="true"] .nk-food{ animation:nk-blink 1s steps(1) infinite; }
+}
+@keyframes nk-blink{ 0%,60%{ opacity:1 } 61%,100%{ opacity:.25 } }
+
+/* --- Floppy: the shutter slides open over the disk --- */
+
+.fd-shutter{ transition:transform .45s cubic-bezier(.3,.8,.3,1); }
+.device[aria-pressed="true"] .fd-shutter{ transform:translateX(-24px); }
+
+@media (prefers-reduced-motion: reduce){
+  .fd-shutter{ transition:none; }
+}
+
+/* --- iPod: backlight on, menu rows highlight in turn --- */
+
+.ipod-screen{ transition:fill .25s ease; }
+.device[aria-pressed="true"] .ipod-screen{ fill:#cfe6f5; }
+
+.ipod-rows rect{ transition:fill .25s ease; }
+.device[aria-pressed="true"] .ipod-rows rect{ fill:#7f8ea0; }
+.device[aria-pressed="true"] .ipod-rows rect:first-child{ fill:#1733ff; }
+
+@media (prefers-reduced-motion: no-preference){
+  .device[aria-pressed="true"] .ipod-rows rect{
+    animation:ipod-scan 2.4s steps(1) infinite;
+  }
+  .device[aria-pressed="true"] .ipod-rows rect:nth-child(2){ animation-delay:.8s }
+  .device[aria-pressed="true"] .ipod-rows rect:nth-child(3){ animation-delay:1.6s }
+}
+@keyframes ipod-scan{
+  0%,33%  { fill:#1733ff }
+  34%,100%{ fill:#7f8ea0 }
+}
+
+.ipod-wheel{ transition:filter .25s ease; }
+.device[aria-pressed="true"] .ipod-wheel{
+  filter:drop-shadow(0 0 6px rgba(23,51,255,.45));
+}
+
+/* ---------- narrow screens ---------- */
+
+@media (min-width:600px){
+  .shelf-case{ grid-template-columns:repeat(3, 1fr); }
+}
+
+@media (max-width:420px){
+  .shelf-case{ gap:20px 14px; }
+  .device-note{ font-size:12px; }
+}

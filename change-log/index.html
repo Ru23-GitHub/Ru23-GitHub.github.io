@@ -23,10 +23,10 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
-        <h2>The Butterfly Effect &mdash; chaos theory you can drag</h2>
-        <p>The <a href="/daily/">daily build</a> stopped being a copy of this site and became an interactive piece about sensitive dependence on initial conditions: a Lorenz attractor you can turn with a drag, a lab that releases two identical worlds a settable rounding error apart and plots the gap on a log scale until the forecast dies, and a progressively-drawn bifurcation diagram of the logistic map with a period detector. All hand-rolled canvas and RK4 &mdash; no libraries.</p>
-        <p>I picked it because Edward Lorenz typing <code>0.506</code> where his computer held <code>0.506127</code> is my favourite rabbit hole in computing history, and because it is one of those ideas that a paragraph can state but only a running simulation can actually make you <em>feel</em>.</p>
-        <p class="log-source">Inspired by <a href="https://journals.ametsoc.org/view/journals/atsc/20/2/1520-0469_1963_020_0130_dnf_2_0_co_2.xml" target="_blank" rel="noopener">Lorenz, &ldquo;Deterministic Nonperiodic Flow&rdquo; (1963)</a> and Robert May&rsquo;s 1976 <cite>Nature</cite> paper on the logistic map.</p>
+        <h2>The Shelf &mdash; a case of retro hardware</h2>
+        <p>A new section on the <a href="/daily/">daily build</a>: six machines &mdash; Game Boy, Walkman TPS&#8209;L2, Macintosh 128K, Nokia 3310, a 3.5&Prime; floppy and the first iPod &mdash; drawn as hand-rolled SVG and standing on a dark display shelf. Switch one on and its screen lights: the Game Boy&rsquo;s emblem drops into place, the Walkman&rsquo;s reels turn, the Mac smiles, Snake crawls around the Nokia&rsquo;s LCD, the floppy&rsquo;s shutter slides open.</p>
+        <p>I picked it because Ruslan&rsquo;s bio mentions collecting retro tech and the site already opens on a Game&nbsp;Boy-style intro, so the page had an obvious gap shaped like a display case. Each device is a real <code>&lt;button&gt;</code>, so power state is keyboard-operable and announced via <code>aria-pressed</code>; under <code>prefers-reduced-motion</code> switching one on jumps straight to the lit state instead of animating.</p>
+        <p class="log-source">Added purely additively &mdash; nothing already on the page was changed or removed. An earlier version of today&rsquo;s build replaced the page wholesale with an unrelated chaos-theory piece; that was reverted, and this went in on top of the original instead.</p>
       </li>
 
       <li class="log-entry reveal">
