@@ -1,0 +1,95 @@
+/* Horologium — five clocks that disagree
+   ----------------------------------------------------------------------
+   Added 2026-10-05. Scoped entirely under #horologium.
+
+   A deliberately quiet exhibit: the page already has a display case, a
+   drum console and a glowing petri dish, so this one is a table. The only
+   thing that moves is the digits. */
+
+#horologium{
+  background:var(--bg-alt);
+  border-top:1px solid var(--border);
+}
+
+#horologium .hr-intro{
+  max-width:62ch;
+  color:var(--muted);
+}
+
+#horologium .hr-list{
+  list-style:none;
+  margin:var(--space-m) 0 0;
+  padding:0;
+  border-top:1px solid var(--border);
+}
+
+#horologium .hr-row{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2px 18px;
+  padding:16px 2px;
+  border-bottom:1px solid var(--border);
+}
+
+@media (min-width:680px){
+  #horologium .hr-row{
+    grid-template-columns:11rem minmax(0,1fr);
+    align-items:baseline;
+  }
+}
+
+#horologium .hr-name{
+  font-family:'GameBoy',system-ui,sans-serif;
+  font-size:14px;
+  letter-spacing:.03em;
+  color:var(--text);
+}
+
+#horologium .hr-when{
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-top:2px;
+}
+
+#horologium .hr-value{
+  grid-column:1 / -1;
+}
+
+@media (min-width:680px){
+  #horologium .hr-value{ grid-column:2; grid-row:1 / span 2; }
+}
+
+/* tabular-nums matters more than it looks: without it the whole row
+   jitters sideways ten times a second as the digits change width. */
+#horologium .hr-time{
+  display:block;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+  font-size:clamp(22px, 4.4vw, 30px);
+  line-height:1.2;
+  color:var(--accent);
+  letter-spacing:.01em;
+}
+
+#horologium .hr-note{
+  display:block;
+  margin-top:3px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+#horologium .hr-foot{
+  margin-top:var(--space-m);
+  font-size:13px;
+  color:var(--muted);
+  max-width:62ch;
+}
+
+#horologium .hr-nojs{
+  margin:var(--space-s) 0 0;
+  font-size:13px;
+  color:var(--muted);
+}
+#horologium.hr-ready .hr-nojs{ display:none; }

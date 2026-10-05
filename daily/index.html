@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="css/theme.css" />
 <link rel="stylesheet" href="css/rail.css" />
 <link rel="stylesheet" href="css/exhibit.css" />
+<link rel="stylesheet" href="css/horologium.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
    shows light for a frame and then snaps. Mirrors js/theme.js. */
@@ -35,6 +36,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <li><a href="#shelf"><span class="rail-label">Shelf</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#euclid"><span class="rail-label">Euclid</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#slime"><span class="rail-label">Physarum</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#horologium"><span class="rail-label">Clocks</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#contact"><span class="rail-label">Contact</span><span class="rail-dot" aria-hidden="true"></span></a></li>
     </ol>
   </nav>
@@ -497,6 +499,67 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="horologium">
+    <div class="container">
+      <header class="exhibit-head reveal">
+        <p class="exhibit-meta">
+          <span class="exhibit-no">04</span>
+          <span class="exhibit-kicker">Horologium</span>
+          <time datetime="2026-10-05">5 Oct 2026</time>
+          <a class="exhibit-log" href="/change-log/">log &rarr;</a>
+        </p>
+        <h2>Five Clocks That Disagree</h2>
+      </header>
+      <p class="hr-intro reveal">Every one of these is running right now, from your own computer&rsquo;s clock. None of them is wrong. &ldquo;What time is it&rdquo; has had a lot of defensible answers, and the one you use won because of trains and telegraphs rather than because it is true.</p>
+
+      <ol class="hr-list reveal-stagger">
+        <li class="hr-row" data-clock="roman">
+          <span class="hr-name">Roman hours</span>
+          <span class="hr-when">753 BC – 1400s AD</span>
+          <span class="hr-value">
+            <span class="hr-time" data-time>&mdash;</span>
+            <span class="hr-note" data-note>Twelve hours from sunrise to sunset, twelve more until sunrise. The hour was a fraction of daylight, so it stretched in summer and shrank in winter — an evenly ticking clock would have been the broken one. Calculated for Seattle, where Ruslan lives.</span>
+          </span>
+        </li>
+        <li class="hr-row" data-clock="decimal">
+          <span class="hr-name">Decimal time</span>
+          <span class="hr-when">France, 1794–1795</span>
+          <span class="hr-value">
+            <span class="hr-time" data-time>&mdash;</span>
+            <span class="hr-note" data-note>Ten hours in a day, a hundred minutes in an hour, a hundred seconds in a minute. Legally mandated by the Revolution alongside the metre and the kilogram. Those two stuck; this lasted seventeen months.</span>
+          </span>
+        </li>
+        <li class="hr-row" data-clock="beats">
+          <span class="hr-name">Swatch .beats</span>
+          <span class="hr-when">Biel, 1998–</span>
+          <span class="hr-value">
+            <span class="hr-time" data-time>&mdash;</span>
+            <span class="hr-note" data-note>A thousand beats a day, counted from Biel Mean Time, identical everywhere on Earth. Sold as the clock for the internet, which had just made timezones annoying. Still quietly running.</span>
+          </span>
+        </li>
+        <li class="hr-row" data-clock="mars">
+          <span class="hr-name">Mars, Jezero</span>
+          <span class="hr-when">Sol 1, 1976–</span>
+          <span class="hr-value">
+            <span class="hr-time" data-time>&mdash;</span>
+            <span class="hr-note" data-note>A sol is 24h 39m 35s. Teams working a rover live on Mars time and drift forty minutes later every day, through their own nights and back again, until the mission lets them stop.</span>
+          </span>
+        </li>
+        <li class="hr-row" data-clock="unix">
+          <span class="hr-name">Unix epoch</span>
+          <span class="hr-when">1 January 1970–</span>
+          <span class="hr-value">
+            <span class="hr-time" data-time>&mdash;</span>
+            <span class="hr-note" data-note>One number, counting seconds, no units above itself. Most of the software you used today is ultimately agreeing about this integer.</span>
+          </span>
+        </li>
+      </ol>
+
+      <p class="hr-nojs">These need JavaScript &mdash; without it the times above stay blank.</p>
+      <p class="hr-foot reveal-tail">Sun times use the NOAA solar position algorithm, accurate to about a minute; Mars follows Allison &amp; McEwen (2000), the same formulation JPL uses to put rover teams on Mars time. Nothing is fetched &mdash; it is all arithmetic on <code>Date.now()</code>.</p>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <h2 class="reveal">Contact Me</h2>
@@ -526,6 +589,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/slime.js"></script>
 <script src="js/theme.js"></script>
 <script src="js/rail.js"></script>
+<script src="js/horologium.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
