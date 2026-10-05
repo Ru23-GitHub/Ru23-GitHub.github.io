@@ -1,0 +1,128 @@
+/* Rail — section navigation and scroll progress
+   ----------------------------------------------------------------------
+   Added 2026-10-05. The page crossed six sections and had no way to move
+   around it other than scrolling from the top, so this is structure
+   rather than decoration.
+
+   Two pieces:
+
+   1. A progress bar across the very top. Pure CSS — animation-timeline:
+      scroll() makes the scroll position the playhead, so there is no
+      scroll listener anywhere. Degrades to an invisible nothing in
+      browsers without scroll timelines.
+
+   2. A dot rail down the right edge, one dot per section, labelled on
+      hover and focus. JS marks the current one. Hidden on narrow
+      screens, where it would sit on top of the content. */
+
+/* ---------- progress ---------- */
+
+.rail-progress{
+  position:fixed;
+  inset:0 0 auto 0;
+  height:2px;
+  z-index:60;
+  background:var(--accent);
+  transform-origin:0 50%;
+  transform:scaleX(0);
+  pointer-events:none;
+}
+
+@supports (animation-timeline: scroll()){
+  .rail-progress{
+    animation:rail-fill linear both;
+    animation-timeline:scroll(root block);
+  }
+}
+
+@keyframes rail-fill{
+  from{ transform:scaleX(0) }
+  to  { transform:scaleX(1) }
+}
+
+/* ---------- dot rail ---------- */
+
+.rail{
+  position:fixed;
+  right:clamp(10px, 1.6vw, 22px);
+  top:50%;
+  transform:translateY(-50%);
+  z-index:55;
+  display:none;              /* shown at >=1040px, below */
+}
+
+.rail ol{
+  list-style:none;
+  margin:0; padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.rail a{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:9px;
+  padding:5px 2px;
+  text-decoration:none;
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+.rail a:hover{ text-decoration:none; color:var(--text); }
+
+/* The label is folded away until the dot is hovered or focused, so the
+   rail reads as six dots and opens only on demand. */
+.rail .rail-label{
+  max-width:0;
+  overflow:hidden;
+  white-space:nowrap;
+  opacity:0;
+  transition:max-width .22s ease, opacity .22s ease;
+}
+
+.rail a:hover .rail-label,
+.rail a:focus-visible .rail-label,
+.rail a[aria-current="true"] .rail-label{
+  max-width:9em;
+  opacity:1;
+}
+
+.rail .rail-dot{
+  width:7px; height:7px;
+  flex:none;
+  border-radius:50%;
+  border:1px solid var(--muted);
+  background:transparent;
+  transition:background-color .22s ease, border-color .22s ease, transform .22s ease;
+}
+
+.rail a:hover .rail-dot{ border-color:var(--text); }
+
+.rail a[aria-current="true"]{ color:var(--accent); }
+.rail a[aria-current="true"] .rail-dot{
+  background:var(--accent);
+  border-color:var(--accent);
+  transform:scale(1.25);
+}
+
+.rail a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+}
+
+@media (min-width:1040px){
+  .rail{ display:block; }
+}
+
+/* Without the script nothing marks the current section, but the links
+   still work as links, so the rail stays. */
+
+@media (prefers-reduced-motion: reduce){
+  .rail .rail-label,
+  .rail .rail-dot{ transition:none; }
+}

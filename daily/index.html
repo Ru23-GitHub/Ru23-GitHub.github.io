@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/euclid.css" />
 <link rel="stylesheet" href="css/slime.css" />
 <link rel="stylesheet" href="css/theme.css" />
+<link rel="stylesheet" href="css/rail.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
    shows light for a frame and then snaps. Mirrors js/theme.js. */
@@ -28,6 +29,19 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       <span data-theme-label>Auto</span>
     </button></p>
+
+  <div class="rail-progress" aria-hidden="true"></div>
+
+  <nav class="rail" aria-label="Sections" data-rail>
+    <ol>
+        <li><a href="#hero"><span class="rail-label">Intro</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#about"><span class="rail-label">About</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#shelf"><span class="rail-label">Shelf</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#euclid"><span class="rail-label">Euclid</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#slime"><span class="rail-label">Physarum</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#contact"><span class="rail-label">Contact</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+    </ol>
+  </nav>
 
   <section id="hero" class="play" aria-label="Intro animation: Ruslan Manoharan">
     <h1 class="sr-only">Ruslan Manoharan</h1>
@@ -484,6 +498,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/euclid.js"></script>
 <script src="js/slime.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/rail.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>A section rail and a scroll-progress bar</h2>
+        <p>The <a href="/daily/">daily build</a> is six sections and several thousand pixels deep, with no way to get around it but scrolling from the top. There is now a dot rail down the right edge &mdash; one dot per section, label unfolding on hover or focus, current section marked &mdash; and a two-pixel progress bar across the very top.</p>
+        <p>The progress bar is pure CSS: <code>animation-timeline: scroll()</code> makes the scroll position the playhead, so there is no scroll listener on the page at all. The rail uses an IntersectionObserver that tracks the <em>largest visible</em> section rather than the first to cross a line &mdash; with a 100svh hero, a short About and some very tall consoles, &ldquo;first to cross&rdquo; flickers between neighbours at every boundary. The rail hides below 1040px, where it would sit on top of the content.</p>
+        <p class="log-source">Third of five changes made in one sitting. Structural rather than decorative &mdash; the page had outgrown having no navigation.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>One panel system instead of three</h2>
         <p>The Shelf&rsquo;s display case, Euclid&rsquo;s drum console and Physarum&rsquo;s field had each grown their own copy of the same dark panel &mdash; same gradient, same inset rim along the top edge, same drop shadow, same pill button with a glowing status dot, same ghost button, same select, same focus ring &mdash; written out three times under three different prefixes. That is now one file, <code>css/panel.css</code>, and each section keeps its identity by setting four custom properties and nothing else.</p>
         <p><strong>182 lines were deleted</strong> from <code>euclid.css</code>, <code>slime.css</code> and <code>shelf.css</code>, and the markup was rewired to the shared <code>.panel-*</code> classes. This is precisely the &ldquo;clean up or consolidate earlier days&rsquo; work&rdquo; the old rule forbade by name; with the rule lifted it was the most obviously overdue thing on the page. Nothing looks different &mdash; each panel resolves to the exact gradient and accent it had before, which is the point of a refactor.</p>
