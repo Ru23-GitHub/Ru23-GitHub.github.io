@@ -1,21 +1,10 @@
-/* The Shelf — power toggles, and a Snake that is actually Snake
-   ======================================================================
-   Rewritten 2026-10-05. The previous version is worth describing because
-   this one exists to fix it: the Nokia's "Snake" was four rectangles
-   walking a hard-coded loop around the screen's perimeter, forever. It
-   could not be steered, could not grow, could not die, and the pellet was
-   placed at a fixed index on the same loop. It looked like Snake from
-   across the room and was a prop.
-
-   This is a real game on the 3310's actual 15x10 playfield: a direction
-   queue, growth on eating, wall and self collision, a score, and food
-   placed only on cells the snake is not occupying.
-
-   Steering is arrow keys or WASD while the handset has focus, or a swipe
-   on a touchscreen. The device is still a <button>, so it still toggles
-   with Enter, and arrow keys are only swallowed while it is switched on —
-   the page stays scrollable otherwise.
-*/
+/* The Shelf — power toggles + the Nokia's Snake.
+   ----------------------------------------------------------------------
+   Added 2026-10-05. Scoped entirely to #shelf; touches nothing else on
+   the page. The devices are real <button>s, so click, Enter and Space
+   all work for free — this file only maintains aria-pressed, keeps the
+   screen-reader label in sync, and drives the one animation that can't
+   be expressed in CSS. */
 (function () {
   'use strict';
 
@@ -24,133 +13,57 @@
 
   var mql = window.matchMedia('(prefers-reduced-motion: reduce)');
   var reduce = mql.matches;
-  var SVG_NS = 'http://www.w3.org/2000/svg';
 
-  /* ---------- the 3310's playfield ----------
-     The screen rect is x19 y21, 32x22 units. Inset by one and divide by
-     two: fifteen columns, ten rows, which is close to the real handset's
-     proportions. */
+  /* ---------- Snake, on the Nokia's 32x22 LCD ----------
+     A 7x4 cell grid walked around its own perimeter: enough to read as
+     Snake at 30 pixels wide without pretending to be a real game. */
 
-  var CELL = 2, X0 = 20.5, Y0 = 22, COLS = 15, ROWS = 10;
-  var SPEED = 190;   /* ms per step */
+  var CELL = 4, OX = 21, OY = 24;
+  var LOOP = [];
+  (function buildLoop() {
+    var c, r;
+    for (c = 0; c < 7; c++) LOOP.push([c, 0]);       // top, left to right
+    for (r = 1; r < 4; r++) LOOP.push([6, r]);       // right edge, down
+    for (c = 5; c >= 0; c--) LOOP.push([c, 3]);      // bottom, right to left
+    for (r = 2; r >= 1; r--) LOOP.push([0, r]);      // left edge, up
+  })();
 
-  function Snake(btn) {
-    this.btn = btn;
-    this.group = btn.querySelector('.nk-snake');
-    this.food = btn.querySelector('.nk-food');
-    this.scoreEl = shelf.querySelector('[data-snake-score]');
+  function Snake(svg) {
+    this.segs = svg.querySelectorAll('.nk-snake rect');
+    this.food = svg.querySelector('.nk-food');
+    this.head = 0;
+    this.foodAt = 9;
     this.timer = null;
-    this.rects = [];
-    this.reset();
   }
 
-  Snake.prototype.reset = function () {
-    this.body = [[7, 5], [6, 5], [5, 5]];   /* head first */
-    this.dir = [1, 0];
-    this.queue = [];
-    this.score = 0;
-    this.dead = false;
-    this.placeFood();
-    this.render();
-    this.paintScore();
-  };
-
-  Snake.prototype.paintScore = function () {
-    if (!this.scoreEl) return;
-    this.scoreEl.textContent = this.dead
-      ? 'game over · ' + this.score
-      : String(this.score);
-  };
-
-  Snake.prototype.occupied = function (c, r) {
-    for (var i = 0; i < this.body.length; i++) {
-      if (this.body[i][0] === c && this.body[i][1] === r) return true;
-    }
-    return false;
-  };
-
-  /* Rejection-sample a free cell. The playfield is 150 cells and the
-     snake would have to fill almost all of it before this got slow, and
-     at that point you have won. */
-  Snake.prototype.placeFood = function () {
-    var c, r, guard = 0;
-    do {
-      c = Math.floor(Math.random() * COLS);
-      r = Math.floor(Math.random() * ROWS);
-    } while (this.occupied(c, r) && ++guard < 400);
-    this.foodAt = [c, r];
+  Snake.prototype.place = function (el, cell) {
+    el.setAttribute('x', OX + cell[0] * CELL);
+    el.setAttribute('y', OY + cell[1] * CELL);
   };
 
   Snake.prototype.render = function () {
-    /* Grow the pool of <rect>s to match the body, reusing what's there. */
-    while (this.rects.length < this.body.length) {
-      var el = document.createElementNS(SVG_NS, 'rect');
-      el.setAttribute('width', CELL - 0.4);
-      el.setAttribute('height', CELL - 0.4);
-      this.group.appendChild(el);
-      this.rects.push(el);
+    for (var i = 0; i < this.segs.length; i++) {
+      // segment 0 is the head; the rest trail behind it around the loop
+      var idx = (this.head - i + LOOP.length * 2) % LOOP.length;
+      this.place(this.segs[i], LOOP[idx]);
     }
-    while (this.rects.length > this.body.length) {
-      this.group.removeChild(this.rects.pop());
-    }
-    for (var i = 0; i < this.body.length; i++) {
-      this.rects[i].setAttribute('x', X0 + this.body[i][0] * CELL);
-      this.rects[i].setAttribute('y', Y0 + this.body[i][1] * CELL);
-    }
-    if (this.food) {
-      this.food.setAttribute('x', X0 + this.foodAt[0] * CELL);
-      this.food.setAttribute('y', Y0 + this.foodAt[1] * CELL);
-      this.food.setAttribute('width', CELL - 0.4);
-      this.food.setAttribute('height', CELL - 0.4);
-    }
-  };
-
-  /* Queued rather than applied immediately: pressing up-then-left faster
-     than one step would otherwise lose the first press. */
-  Snake.prototype.steer = function (dx, dy) {
-    var last = this.queue.length ? this.queue[this.queue.length - 1] : this.dir;
-    if (last[0] === -dx && last[1] === -dy) return;   /* no reversing onto yourself */
-    if (last[0] === dx && last[1] === dy) return;
-    if (this.queue.length < 2) this.queue.push([dx, dy]);
+    if (this.food) this.place(this.food, LOOP[this.foodAt]);
   };
 
   Snake.prototype.tick = function () {
-    if (this.dead) return;
-    if (this.queue.length) this.dir = this.queue.shift();
-
-    var head = [this.body[0][0] + this.dir[0], this.body[0][1] + this.dir[1]];
-
-    if (head[0] < 0 || head[0] >= COLS || head[1] < 0 || head[1] >= ROWS) return this.die();
-    /* The tail cell is about to be vacated, so moving into it is legal. */
-    for (var i = 0; i < this.body.length - 1; i++) {
-      if (this.body[i][0] === head[0] && this.body[i][1] === head[1]) return this.die();
-    }
-
-    this.body.unshift(head);
-    if (head[0] === this.foodAt[0] && head[1] === this.foodAt[1]) {
-      this.score++;
-      this.paintScore();
-      this.placeFood();
-    } else {
-      this.body.pop();
+    this.head = (this.head + 1) % LOOP.length;
+    if (this.head === this.foodAt) {
+      // drop the next pellet somewhere clear of the snake's body
+      this.foodAt = (this.foodAt + 6 + Math.floor(Math.random() * 6)) % LOOP.length;
     }
     this.render();
-  };
-
-  Snake.prototype.die = function () {
-    this.dead = true;
-    this.stop();
-    this.paintScore();
-    this.btn.classList.add('is-dead');
   };
 
   Snake.prototype.start = function () {
-    this.btn.classList.remove('is-dead');
-    if (this.dead) this.reset();
     this.render();
     if (reduce || this.timer !== null) return;
     var self = this;
-    this.timer = setInterval(function () { self.tick(); }, SPEED);
+    this.timer = setInterval(function () { self.tick(); }, 210);
   };
 
   Snake.prototype.stop = function () {
@@ -160,10 +73,7 @@
   /* ---------- power toggles ---------- */
 
   var buttons = shelf.querySelectorAll('.device');
-  var snake = null;
-  var nokiaBtn = shelf.querySelector('.device[data-device="nokia"]');
-  /* Set by a swipe, consumed by the click it generates. */
-  var suppressClick = false;
+  var snakes = {};
 
   function setLabel(btn, on) {
     var label = btn.querySelector('.device-label');
@@ -175,112 +85,43 @@
     label.textContent = verb + ' the ' + name;
   }
 
-  Array.prototype.forEach.call(buttons, function (btn) {
-    btn.addEventListener('click', function () {
-      if (btn === nokiaBtn && suppressClick) { suppressClick = false; return; }
-      var on = btn.getAttribute('aria-pressed') !== 'true';
-      btn.setAttribute('aria-pressed', on ? 'true' : 'false');
-      setLabel(btn, on);
-      if (btn === nokiaBtn && snake) {
-        if (on) snake.start(); else snake.stop();
+  for (var i = 0; i < buttons.length; i++) {
+    (function (btn) {
+      if (btn.dataset.device === 'nokia') {
+        snakes.nokia = new Snake(btn);
+        snakes.nokia.render();
       }
-    });
-  });
-
-  if (nokiaBtn) {
-    snake = new Snake(nokiaBtn);
-
-    var KEYS = {
-      ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0],
-      w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0],
-      W: [0, -1], S: [0, 1], A: [-1, 0], D: [1, 0]
-    };
-
-    nokiaBtn.addEventListener('keydown', function (e) {
-      var v = KEYS[e.key];
-      if (!v) return;
-      /* Only while it is switched on, so arrow keys keep scrolling the
-         page when the handset is just sitting there. */
-      if (nokiaBtn.getAttribute('aria-pressed') !== 'true') return;
-      e.preventDefault();
-      snake.steer(v[0], v[1]);
-      if (snake.dead) snake.start();
-    });
-
-    /* Swipe, for the shelf on a phone.
-
-       The first version of this registered touchstart/touchend as
-       { passive: true }, which is a promise to the browser that it may
-       scroll without waiting — preventDefault() inside a passive listener
-       does nothing. So every attempt to steer scrolled the page instead,
-       and the game was unplayable by touch.
-
-       Two things fix it, and both are needed:
-
-         - touch-action on the handset, applied by CSS only while it is
-           switched on, so the browser never starts a single-finger pan
-           there in the first place. (Pinch-zoom is deliberately still
-           allowed; taking that away from a whole region is rude.)
-         - a non-passive touchmove that calls preventDefault, for browsers
-           that have already begun the gesture before touch-action lands.
-
-       A swipe also produces a synthetic click, which on a <button> whose
-       job is power would switch the handset off mid-game, so a gesture
-       that moved far enough swallows the click that follows it. */
-    var sx = 0, sy = 0, swiping = false, moved = false;
-    var THRESHOLD = 16;
-
-    function playing() { return nokiaBtn.getAttribute('aria-pressed') === 'true'; }
-
-    nokiaBtn.addEventListener('touchstart', function (e) {
-      if (!e.touches.length) return;
-      sx = e.touches[0].clientX; sy = e.touches[0].clientY;
-      swiping = true; moved = false;
-      /* Disarm here rather than trusting the click to arrive. A swipe does
-         not always produce one, and a flag left armed would swallow the
-         next deliberate tap — which on this button is how you switch the
-         handset off. Clicks fire before the next touchstart, so a real
-         suppression still lands. */
-      suppressClick = false;
-    }, { passive: true });
-
-    nokiaBtn.addEventListener('touchmove', function (e) {
-      if (!swiping || !playing() || !e.touches.length) return;
-      var dx = e.touches[0].clientX - sx;
-      var dy = e.touches[0].clientY - sy;
-      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
-      e.preventDefault();          /* only reachable because this is not passive */
-    }, { passive: false });
-
-    nokiaBtn.addEventListener('touchend', function (e) {
-      if (!swiping || !e.changedTouches.length) return;
-      swiping = false;
-      if (!playing()) return;
-      var dx = e.changedTouches[0].clientX - sx;
-      var dy = e.changedTouches[0].clientY - sy;
-      if (Math.abs(dx) < THRESHOLD && Math.abs(dy) < THRESHOLD) return;
-      suppressClick = true;        /* don't let the steer also toggle power */
-      if (Math.abs(dx) > Math.abs(dy)) snake.steer(dx > 0 ? 1 : -1, 0);
-      else snake.steer(0, dy > 0 ? 1 : -1);
-      if (snake.dead) snake.start();
-    }, { passive: true });
+      btn.addEventListener('click', function () {
+        var on = btn.getAttribute('aria-pressed') !== 'true';
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+        setLabel(btn, on);
+        if (btn.dataset.device === 'nokia' && snakes.nokia) {
+          if (on) snakes.nokia.start(); else snakes.nokia.stop();
+        }
+      });
+    })(buttons[i]);
   }
 
-  /* Lifecycle is Daily.whenVisible's job now (js/lifecycle.js); this file
-     used to carry its own observer. */
-  if (window.Daily && window.Daily.whenVisible) {
-    window.Daily.whenVisible(shelf, {
-      start: function () {
-        if (snake && nokiaBtn && nokiaBtn.getAttribute('aria-pressed') === 'true') snake.start();
-      },
-      stop: function () { if (snake) snake.stop(); }
-    });
+  /* Stop the one repeating timer when the section scrolls out of sight,
+     and when someone switches reduced motion on mid-visit. */
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (!snakes.nokia) return;
+      var btn = shelf.querySelector('.device[data-device="nokia"]');
+      if (entries[0].isIntersecting) {
+        if (btn && btn.getAttribute('aria-pressed') === 'true') snakes.nokia.start();
+      } else {
+        snakes.nokia.stop();
+      }
+    }, { threshold: 0 }).observe(shelf);
   }
 
   if (mql.addEventListener) {
     mql.addEventListener('change', function (e) {
       reduce = e.matches;
-      if (reduce && snake) snake.stop();
+      if (!snakes.nokia) return;
+      if (reduce) snakes.nokia.stop();
     });
   }
 })();

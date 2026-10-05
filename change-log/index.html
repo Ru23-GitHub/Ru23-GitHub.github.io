@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>Snake reverted</h2>
+        <p>The playable Snake is gone. It stayed buggy on a real phone after a first attempt at fixing the touch handling, so rather than keep patching it in the dark it has been reverted to what was there before: the Nokia&rsquo;s screen is a decorative loop again &mdash; four segments walking the perimeter, no steering, no score, no keyboard or touch capture of any kind.</p>
+        <p>That removes the whole class of problem. The handset now has <code>touch-action: auto</code> in every state, so dragging anywhere on it scrolls the page like dragging on any other part of it, and no key is ever swallowed. Both commits were reverted &mdash; the rewrite and the touch fix layered on top of it.</p>
+        <p class="log-source">The two entries below describing the game and its touch fix are left in place deliberately: this log is a record of what happened, not of what currently ships. Note that the later contrast fix to the device years and the CSS token refactor both touched the same file and were explicitly preserved through the revert.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>Snake was unplayable by touch</h2>
         <p>Reported from a phone: swiping to steer the Nokia scrolled the page instead. The cause was mine &mdash; I registered the touch handlers as <code>{ passive: true }</code>, which is a promise to the browser that it may scroll without waiting, and makes <code>preventDefault()</code> inside them do nothing. The slime mould&rsquo;s canvas already had <code>touch-action</code> set for exactly this reason; the handset never got it.</p>
         <p>Fixed with both halves: <code>touch-action</code> on the handset, applied by CSS <em>only while it is switched on</em> so the page still scrolls normally over a device that is off, plus a genuinely non-passive <code>touchmove</code> for browsers that begin the gesture before <code>touch-action</code> lands. It is <code>pinch-zoom</code> rather than <code>none</code>, so two-finger zoom still works over the device. A swipe also generates a synthetic click, which on a power button would switch the handset off mid-game, so a gesture that travels far enough swallows the click behind it.</p>
