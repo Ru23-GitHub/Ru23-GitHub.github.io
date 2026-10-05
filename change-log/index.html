@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Change log — Ruslan Manoharan</title>
+<meta name="description" content="A running list of components and micro-interactions added to Ruslan Manoharan's portfolio site, newest first." />
+<link rel="stylesheet" href="../css/intro.css" />
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/reveal.css" />
+<link rel="stylesheet" href="../css/change-log.css" />
+</head>
+<body>
+
+  <main class="container log-head">
+    <a class="log-back" href="/">&larr; Back home</a>
+    <h1>Change log</h1>
+    <p class="log-intro">One small component or micro-interaction gets added to this site each day. Newest first.</p>
+  </main>
+
+  <div class="container log-body">
+    <ol class="log-list">
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
+        <h2>Scroll-driven section reveals</h2>
+        <p>The About and Contact sections now fade and rise into place as they scroll into view, with the skills list cascading chip by chip. It is driven by native CSS scroll-driven animations (<code>animation-timeline: view()</code>), so the scroll position <em>is</em> the playhead &mdash; scrub back up and the reveal plays in reverse &mdash; with no scroll listener or <code>IntersectionObserver</code> involved.</p>
+        <p class="log-source">Inspired by <a href="https://www.joshwcomeau.com/animation/scroll-driven-animations/" target="_blank" rel="noopener">Scroll-Driven Animations &mdash; Josh W. Comeau</a>.</p>
+      </li>
+
+    </ol>
+  </div>
+
+  <footer>
+    &copy; <span id="year"></span> Ruslan Manoharan
+    <span class="footer-sep" aria-hidden="true">&middot;</span>
+    <a href="/">Home</a>
+  </footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
