@@ -360,6 +360,52 @@
   canvas.addEventListener('pointerup', function () { painting = false; });
   canvas.addEventListener('pointercancel', function () { painting = false; });
 
+  /* ---- permalink ---------------------------------------------------
+     ?p=sensorAngle-turnAngle-sensorDist-decay, clamped on the way in. */
+
+  var PARAMS = window.Daily && window.Daily.params;
+  var clampN = (window.Daily && window.Daily.clamp) || function (v, lo, hi, f) {
+    v = parseFloat(v); return isFinite(v) ? Math.min(hi, Math.max(lo, v)) : f;
+  };
+  var FIELDS = [
+    ['sensor-angle', 'sensorAngle', 5, 75, deg],
+    ['turn-angle', 'turnAngle', 5, 75, deg],
+    ['sensor-dist', 'sensorDist', 2, 24, px],
+    ['decay', 'decay', 0.80, 0.995, dec]
+  ];
+
+  function persist() {
+    if (!PARAMS) return;
+    PARAMS.set('p', FIELDS.map(function (f) { return P[f[1]]; }).join('-'));
+  }
+
+  (function restore() {
+    if (!PARAMS) return;
+    var raw = PARAMS.get('p');
+    if (!raw) return;
+    var parts = String(raw).split('-');
+    if (parts.length !== FIELDS.length) return;
+    FIELDS.forEach(function (f, i) {
+      var v = clampN(parts[i], f[2], f[3], P[f[1]]);
+      P[f[1]] = v;
+      var input = root.querySelector('[data-ctl="' + f[0] + '"]');
+      var out = root.querySelector('[data-out="' + f[0] + '"]');
+      if (input) input.value = String(v);
+      if (out) out.textContent = f[4](v);
+    });
+    if (presetSel) presetSel.value = 'custom';
+  })();
+
+  FIELDS.forEach(function (f) {
+    var input = root.querySelector('[data-ctl="' + f[0] + '"]');
+    if (input) input.addEventListener('input', persist);
+  });
+  presetSel.addEventListener('change', persist);
+
+  if (window.Daily && window.Daily.wireCopy) {
+    window.Daily.wireCopy(root.querySelector('[data-sl="copy"]'), null);
+  }
+
   /* ------------------------------------------------------------------
      Listening to the drum machine
 

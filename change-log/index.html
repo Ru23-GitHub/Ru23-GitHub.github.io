@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>The consoles are shareable now</h2>
+        <p>Dial in a rhythm on the drum machine or a configuration on the slime mould and the URL updates to match; there is a <em>Copy link</em> button on both. Reload or send it to someone and the settings come back exactly &mdash; a 141&nbsp;bpm <code>E(4,11)</code> kick is now a thing you can hand to a person rather than describe. Until today, reloading threw all of it away.</p>
+        <p>State lives in the <strong>query string, deliberately not the hash</strong>: the section rail already owns the hash for its anchors, and clicking a rail link would have wiped any parameters stored there. Writes go through <code>history.replaceState</code>, throttled, so dragging a slider doesn&rsquo;t push a hundred entries onto the back button. Everything read back out of a URL is treated as hostile &mdash; it is whatever somebody pasted &mdash; so each exhibit clamps its own values and falls back to defaults on anything malformed.</p>
+        <p class="log-source">A modification run rather than a new exhibit: it touched both <code>euclid.js</code> and <code>slime.js</code> plus a new shared helper. Tested against deliberately broken URLs (<code>?r=garbage</code>, out-of-range numbers, wrong field counts) &mdash; all clamp or fall back with nothing thrown.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>Spacewar! (1962), playable</h2>
         <p>A working Spacewar! on the <a href="/daily/">daily build</a> &mdash; the first video game that spread. Steve Russell wrote it at MIT in 1962 for a PDP&#8209;1 with nine kilobytes of core and a round point-plotting CRT. Nobody sold it; people copied it onto paper tape by hand and carried it to the next PDP&#8209;1 until DEC gave up and shipped it as the machine&rsquo;s power-on diagnostic. First to seven, against an opponent that will dodge the star to save itself before it takes a shot at you.</p>
         <p>The star has real inverse-square gravity and it is the whole game: both ships open in a true circular orbit (<code>v = &radic;(GM/r)</code>, verified holding a 180px radius), and flying straight at someone loses to flying an arc. Two details are faithful rather than fixed: hyperspace gets you out of anything with about a one-in-six chance of not arriving, and torpedoes ignore the star&rsquo;s gravity &mdash; true of Russell&rsquo;s version, never corrected, because it played better.</p>

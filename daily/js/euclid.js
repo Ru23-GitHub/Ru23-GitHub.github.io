@@ -484,6 +484,7 @@
         recompute(track, false);
         updateCycle();
         if (presetIn.value !== 'custom') presetIn.value = 'custom';
+        persist();
       });
     });
     track.muteIn.addEventListener('change', function () {
@@ -493,6 +494,7 @@
 
   tempoIn.addEventListener('input', function () {
     tempoOut.textContent = tempo() + ' bpm';
+    persist();
   });
 
   volIn.addEventListener('input', function () {
@@ -514,6 +516,7 @@
   presetIn.addEventListener('change', function () {
     if (presetIn.value === 'custom') return;
     applyPreset(presetIn.value);
+    persist();
   });
 
   randomBtn.addEventListener('click', function () {
@@ -527,6 +530,7 @@
     });
     presetIn.value = 'custom';
     recomputeAll(true);
+    persist();
   });
 
   /* A hidden tab drumming away forever is rude; pause and leave the
@@ -537,6 +541,53 @@
 
   /* ------------------------------------------------------------------ */
 
+  /* ---- permalink ---------------------------------------------------
+     Serialised as tempo_steps-pulses-rotate per track, e.g.
+       ?r=98_8-3-0_8-2-2_8-5-0_8-3-1
+     Everything is clamped on the way in; a malformed string just leaves
+     the HTML defaults alone. */
+
+  var P = window.Daily && window.Daily.params;
+  var clamp = (window.Daily && window.Daily.clamp) || function (v, lo, hi, f) {
+    v = parseFloat(v); return isFinite(v) ? Math.min(hi, Math.max(lo, v)) : f;
+  };
+
+  function serialise() {
+    return [tempo()].concat(state.map(function (t) {
+      return [t.stepsIn.value, t.pulsesIn.value, t.rotateIn.value].join('-');
+    })).join('_');
+  }
+
+  function persist() {
+    if (P) P.set('r', serialise());
+  }
+
+  function restore() {
+    if (!P) return false;
+    var raw = P.get('r');
+    if (!raw) return false;
+    var parts = String(raw).split('_');
+    if (parts.length !== state.length + 1) return false;
+
+    tempoIn.value = String(clamp(parts[0], 50, 180, 98));
+    state.forEach(function (track, i) {
+      var f = parts[i + 1].split('-');
+      if (f.length !== 3) return;
+      var steps = clamp(f[0], 2, MAX_STEPS, 8);
+      track.stepsIn.value = String(steps);
+      track.pulsesIn.value = String(clamp(f[1], 0, steps, 0));
+      track.rotateIn.value = String(clamp(f[2], 0, Math.max(steps - 1, 0), 0));
+    });
+    presetIn.value = 'custom';
+    return true;
+  }
+
+  var restored = restore();
+
+  if (window.Daily && window.Daily.wireCopy) {
+    window.Daily.wireCopy(root.querySelector('[data-eu="copy"]'), null);
+  }
+
   tempoOut.textContent = tempo() + ' bpm';
   volOut.textContent = volIn.value + '%';
   state.forEach(function (track) {
@@ -544,5 +595,6 @@
     track.row.classList.toggle('is-muted', track.muteIn.checked);
   });
   recomputeAll(true);
+  if (restored) presetIn.value = 'custom';
   root.classList.add('eu-ready');
 })();
