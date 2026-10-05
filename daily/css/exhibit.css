@@ -1,0 +1,79 @@
+/* Exhibit — a consistent header for the accumulating experiments
+   ----------------------------------------------------------------------
+   Added 2026-10-05. The page had grown three experiment sections, each
+   introducing itself differently, with nothing telling a visitor they are
+   a dated and growing collection rather than three unrelated features of
+   a portfolio.
+
+   This replaces the loose kicker + heading in #shelf, #euclid and #slime
+   with one dated header, and puts a short lead-in above the first of them.
+   Structure, not decoration: it is what makes the pile legible as a pile. */
+
+.exhibit-lead{
+  border-top:1px solid var(--border);
+  background:var(--bg-alt);
+}
+
+.exhibit-lead .container{
+  padding-block:var(--space-m);
+}
+
+.exhibit-lead h2{
+  font-size:clamp(18px, 2.6vw, 24px);
+  color:var(--text);
+}
+
+.exhibit-lead p{
+  max-width:60ch;
+  color:var(--muted);
+  margin:0;
+}
+
+/* ---------- the per-exhibit header ---------- */
+
+.exhibit-head{
+  margin-bottom:var(--space-s);
+}
+
+.exhibit-meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:6px 12px;
+  margin:0 0 6px;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.exhibit-no{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:11px;
+  letter-spacing:.04em;
+  padding:2px 7px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  color:var(--accent);
+}
+
+.exhibit-kicker{ color:var(--muted); }
+
+.exhibit-meta time{
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.06em;
+}
+
+/* Pushed to the end of the row so the three fixed bits stay left-aligned
+   across all three exhibits regardless of kicker length. */
+.exhibit-log{
+  margin-inline-start:auto;
+  font-size:11px;
+  letter-spacing:.1em;
+}
+
+.exhibit-head h2{ margin:0; }
+
+@media (max-width:560px){
+  .exhibit-log{ margin-inline-start:0; }
+}

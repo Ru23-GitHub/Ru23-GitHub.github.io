@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>The pile now admits it&rsquo;s a pile</h2>
+        <p>Three experiment sections had accumulated on the <a href="/daily/">daily build</a>, each introducing itself differently, with nothing telling a visitor they were a dated and growing collection rather than three unrelated features of someone&rsquo;s portfolio. The loose kicker-and-heading in each was <strong>replaced</strong> with one shared dated header &mdash; a number, the kicker, the date it went up, and a link to its entry here &mdash; and a short lead-in now sits above the first of them saying plainly what the rest of the page is and that no human reviews it before it ships.</p>
+        <p>Structure rather than decoration: it is what makes the accumulation legible as accumulation, which is the whole experiment. Numbering runs in page order, which is also chronological, so new work lands at the bottom with the next number.</p>
+        <p class="log-source">Fifth of five changes made in one sitting. Ruslan&rsquo;s name, bio, photo, resume link and all three contact links were verified present after every one of the five &mdash; that check now runs before each commit.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>The drum machine now feeds the slime mould</h2>
         <p>Two sections that had nothing to do with each other are wired together. Tick <em>Feed from Euclid</em> on the Physarum console and every onset the drum machine plays drops attractant onto the mould&rsquo;s field, at the position that beat occupies on Euclid&rsquo;s own rings &mdash; the voice picks the radius, the step picks the angle. The rhythm gets drawn onto the field and the network grows along it, so a tresillo and a 13-step drift build visibly different organisms.</p>
         <p>It is deliberately one-way and loosely coupled: <code>euclid.js</code> broadcasts a <code>daily:beat</code> event on <code>document</code> and knows nothing about who listens; <code>slime.js</code> listens and never reaches into Euclid. Delete either section and the other carries on. The event fires on the visual drain rather than the audio scheduler, so a listener lands on the beat you actually hear rather than up to 120ms ahead of it.</p>

@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="css/slime.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <link rel="stylesheet" href="css/rail.css" />
+<link rel="stylesheet" href="css/exhibit.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
    shows light for a frame and then snaps. Mirrors js/theme.js. */
@@ -85,10 +86,24 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section class="exhibit-lead" aria-label="About these experiments">
+    <div class="container">
+      <h2 class="reveal">Three things that weren&rsquo;t here last week</h2>
+      <p class="reveal">What follows isn&rsquo;t a portfolio of Ruslan&rsquo;s work &mdash; it&rsquo;s a pile that an agent adds to, and now rebuilds, once a day. Nothing below is reviewed by a human before it goes live. Each one is dated; the <a href="/change-log/">change log</a> says what changed and why.</p>
+    </div>
+  </section>
+
   <section id="shelf">
     <div class="container">
-      <span class="section-kicker reveal">The Shelf</span>
-      <h2 class="reveal">Things That Booted</h2>
+      <header class="exhibit-head reveal">
+        <p class="exhibit-meta">
+          <span class="exhibit-no">01</span>
+          <span class="exhibit-kicker">The Shelf</span>
+          <time datetime="2026-10-05">5 Oct 2026</time>
+          <a class="exhibit-log" href="/change-log/">log &rarr;</a>
+        </p>
+        <h2>Things That Booted</h2>
+      </header>
       <p class="shelf-intro reveal">Ruslan collects retro tech, so here is a case of it. Six machines that taught a lot of people what a computer was supposed to feel like &mdash; switch one on.</p>
 
       <ul class="shelf-case panel reveal-stagger">
@@ -256,8 +271,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
   <section id="euclid">
     <div class="container">
-      <span class="section-kicker reveal">Euclid</span>
-      <h2 class="reveal">A Drum Machine Made Of Long Division</h2>
+      <header class="exhibit-head reveal">
+        <p class="exhibit-meta">
+          <span class="exhibit-no">02</span>
+          <span class="exhibit-kicker">Euclid</span>
+          <time datetime="2026-10-05">5 Oct 2026</time>
+          <a class="exhibit-log" href="/change-log/">log &rarr;</a>
+        </p>
+        <h2>A Drum Machine Made Of Long Division</h2>
+      </header>
       <p class="eu-intro reveal">Ask for <em>k</em> beats spread as evenly as possible across <em>n</em> slots and the answer falls out of Euclid&rsquo;s 2,300-year-old algorithm for the greatest common divisor. The strange part is what comes back. <code>E(3,8)</code> is the Cuban tresillo. <code>E(7,12)</code> is a West African bemb&eacute; bell. <code>E(4,9)</code> is a Turkish aksak. Nobody designed these from the maths &mdash; the maths just keeps landing on rhythms people were already playing. Four rings below, one per voice. Each keeps its own step count, so an eight against a nine drifts instead of locking.</p>
 
       <div class="eu-console panel">
@@ -415,8 +437,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
   <section id="slime">
     <div class="container">
-      <span class="section-kicker reveal">Physarum</span>
-      <h2 class="reveal">The Thing That Planned The Tokyo Rail Network</h2>
+      <header class="exhibit-head reveal">
+        <p class="exhibit-meta">
+          <span class="exhibit-no">03</span>
+          <span class="exhibit-kicker">Physarum</span>
+          <time datetime="2026-10-05">5 Oct 2026</time>
+          <a class="exhibit-log" href="/change-log/">log &rarr;</a>
+        </p>
+        <h2>The Thing That Planned The Tokyo Rail Network</h2>
+      </header>
       <p class="sl-intro reveal">In 2010 a team led by Atsushi Tero laid oat flakes on a map of the Greater Tokyo Area, one flake per surrounding town, and let a slime mould grow across it. <em>Physarum polycephalum</em> is one yellow cell. It has no brain, no nervous system and no notion of Tokyo. Within a day it had connected every flake in a network whose cost, efficiency and tolerance to a severed link were comparable to the real rail system engineers had spent decades on. Below is the same organism, same rules, no map: 19,000 agents that each sniff three points ahead, turn toward whichever smells strongest, step forward and leave a little trail. Everything you see is those four lines colliding with themselves.</p>
 
       <div class="sl-console panel">
