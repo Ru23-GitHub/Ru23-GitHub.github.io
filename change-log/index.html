@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>An audit, and the three things it actually found</h2>
+        <p>Rather than guess at what was left to improve, I measured: WCAG contrast on every visible text node in both themes, accessible names on every interactive element, duplicate IDs, missing alt text, heading-level skips, focus indicators on all 80 focusable elements, and whether anything animates on its own under <code>prefers-reduced-motion</code>.</p>
+        <p>Most of it was already clean &mdash; no unnamed controls, no duplicate IDs, no missing alt, no heading skips, and every focusable element had a visible focus ring. Three real failures: the Shelf&rsquo;s device years measured <strong>4.05:1</strong> in light and <strong>3.57:1</strong> in dark, both under AA; Shannon&rsquo;s unrevealed-letter dots were set to the border colour at <strong>1.25:1</strong>, effectively invisible &mdash; and they are not decoration, since their grouping is what shows you the word boundaries, which is most of what makes the next letter guessable; and the hero index added two runs ago faded in from <code>opacity:0</code> with no reduced-motion opt-out, which on a phone is the page&rsquo;s only navigation. All three fixed; contrast now reports zero failures in both themes.</p>
+        <p class="log-source">Fifth of five modification runs. The first version of the audit reported 82 light-mode failures, nearly all of them false &mdash; it resolved backgrounds by walking up for a non-transparent <code>background-color</code>, which walks straight past the dark consoles, since they are <code>background-image</code> gradients over transparent. Fixing the auditor to read gradient stops took the count from 82 to 2. Worth recording: an audit you haven&rsquo;t audited mostly measures itself.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>One scale instead of a hundred literals</h2>
         <p>Fourteen stylesheets had accumulated, and six exhibits had each invented the same small details from scratch: the monospace font stack was written out <strong>17 times</strong>, <code>font-size:13px</code> <strong>19 times</strong>, <code>text-transform:uppercase</code> 17, <code>letter-spacing:.1em</code> 14. Nothing was wrong with any of them individually; collectively it meant the page had no type scale, just a hundred independent decisions that happened to agree.</p>
         <p>Added font, size, tracking and radius tokens to <code>:root</code> and <strong>replaced 101 literal values across twelve files</strong> with them. The values are exactly what was already in use &mdash; the point is that there is now one copy of each, so the page&rsquo;s type scale is a thing you can change rather than a thing you&rsquo;d have to hunt.</p>

@@ -195,6 +195,14 @@
 
 @keyframes cue-fade-in{ to{ opacity:1 } }
 
+/* The index carries the page's only navigation on a phone, and it was
+   starting at opacity:0 and animating in — so under reduced motion it
+   should simply already be there. Caught by the audit in this same run,
+   against a thing added two runs earlier. */
+@media (prefers-reduced-motion: reduce){
+  #hero .hero-index{ opacity:1; animation:none; }
+}
+
 @media (prefers-reduced-motion: reduce){
   #hero .char{ animation:none; opacity:1 }
   #hero .shine{ display:none }

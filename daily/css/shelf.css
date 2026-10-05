@@ -117,7 +117,9 @@
   margin:2px 0 6px;
   font-size:var(--fs-xs);
   letter-spacing:.14em;
-  color:#6f7786;
+  /* Was #6f7786, which measured 4.05:1 on the case in light mode and 3.57:1
+     after dark mode lifted the panel — both under AA. */
+  color:#8a93a4;
 }
 .device-note{ display:block; }
 

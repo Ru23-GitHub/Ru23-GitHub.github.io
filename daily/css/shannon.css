@@ -41,7 +41,12 @@
 }
 
 #shannon .sh-done{ color:var(--text); }
-#shannon .sh-hidden{ color:var(--border); }
+/* The dots stand in for letters you have not reached yet. They were set
+   to --border, which measured 1.25:1 — all but invisible. They are not
+   decoration: their grouping is what tells you where the word boundaries
+   are, which is most of what makes the next letter guessable. --muted
+   keeps them clearly subordinate to revealed text while being legible. */
+#shannon .sh-hidden{ color:var(--muted); }
 
 #shannon .sh-cursor{
   color:var(--accent);
