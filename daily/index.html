@@ -440,6 +440,11 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
           <button class="panel-ghost" type="button" data-sl="feed">Drop food</button>
           <button class="panel-ghost" type="button" data-sl="reseed">Reseed</button>
+
+          <label class="sl-listen" for="sl-listen">
+            <input id="sl-listen" type="checkbox" data-sl="listen" />
+            Feed from Euclid
+          </label>
         </div>
 
         <div class="sl-stage">
@@ -467,7 +472,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           </label>
         </div>
 
-        <p class="sl-note">Click or drag on the field to drop attractant and watch the network re-route to reach it &mdash; the agents have no food-seeking behaviour at all, that is just a lot of trail in one place. Nudging the sensor and turn angles a few degrees reorganises the whole structure, which is the actual finding: the global pattern is not stored anywhere, it is a standing wave in the local rules. Model from Jeff Jones, <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener">&ldquo;Characteristics of pattern formation and evolution in approximations of Physarum transport networks&rdquo;</a> (2010); the Tokyo experiment is Tero et al., <a href="https://www.science.org/doi/10.1126/science.1177894" target="_blank" rel="noopener">&ldquo;Rules for Biologically Inspired Adaptive Network Design&rdquo;</a>, <em>Science</em> 327 (2010).</p>
+        <p class="sl-note">Tick <em>Feed from Euclid</em> and the drum machine two sections up starts dropping attractant in time with itself &mdash; each voice picks a radius, each step an angle, so the rhythm gets drawn onto the field and the mould grows along it. Click or drag on the field to drop attractant yourself and watch the network re-route to reach it &mdash; the agents have no food-seeking behaviour at all, that is just a lot of trail in one place. Nudging the sensor and turn angles a few degrees reorganises the whole structure, which is the actual finding: the global pattern is not stored anywhere, it is a standing wave in the local rules. Model from Jeff Jones, <a href="https://uwe-repository.worktribe.com/output/980579" target="_blank" rel="noopener">&ldquo;Characteristics of pattern formation and evolution in approximations of Physarum transport networks&rdquo;</a> (2010); the Tokyo experiment is Tero et al., <a href="https://www.science.org/doi/10.1126/science.1177894" target="_blank" rel="noopener">&ldquo;Rules for Biologically Inspired Adaptive Network Design&rdquo;</a>, <em>Science</em> 327 (2010).</p>
       </div>
 
       <p class="sl-nojs">This one needs JavaScript and a canvas &mdash; without them there is nothing to grow.</p>

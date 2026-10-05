@@ -127,3 +127,16 @@
   color:var(--muted);
 }
 #slime.sl-ready .sl-nojs{ display:none; }
+
+/* The cross-wire toggle: #slime listening to #euclid's beats. */
+#slime .sl-listen{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--sl-dim);
+  cursor:pointer;
+  white-space:nowrap;
+}

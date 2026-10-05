@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>The drum machine now feeds the slime mould</h2>
+        <p>Two sections that had nothing to do with each other are wired together. Tick <em>Feed from Euclid</em> on the Physarum console and every onset the drum machine plays drops attractant onto the mould&rsquo;s field, at the position that beat occupies on Euclid&rsquo;s own rings &mdash; the voice picks the radius, the step picks the angle. The rhythm gets drawn onto the field and the network grows along it, so a tresillo and a 13-step drift build visibly different organisms.</p>
+        <p>It is deliberately one-way and loosely coupled: <code>euclid.js</code> broadcasts a <code>daily:beat</code> event on <code>document</code> and knows nothing about who listens; <code>slime.js</code> listens and never reaches into Euclid. Delete either section and the other carries on. The event fires on the visual drain rather than the audio scheduler, so a listener lands on the beat you actually hear rather than up to 120ms ahead of it.</p>
+        <p class="log-source">Fourth of five changes made in one sitting, and the one the old additive-only rule made flatly impossible &mdash; it required editing two previously-committed scripts. Best seen by pausing the mould, hitting Reseed, then ticking the box: the rings draw themselves onto the empty field.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>A section rail and a scroll-progress bar</h2>
         <p>The <a href="/daily/">daily build</a> is six sections and several thousand pixels deep, with no way to get around it but scrolling from the top. There is now a dot rail down the right edge &mdash; one dot per section, label unfolding on hover or focus, current section marked &mdash; and a two-pixel progress bar across the very top.</p>
         <p>The progress bar is pure CSS: <code>animation-timeline: scroll()</code> makes the scroll position the playhead, so there is no scroll listener on the page at all. The rail uses an IntersectionObserver that tracks the <em>largest visible</em> section rather than the first to cross a line &mdash; with a 100svh hero, a short About and some very tall consoles, &ldquo;first to cross&rdquo; flickers between neighbours at every boundary. The rail hides below 1040px, where it would sit on top of the content.</p>

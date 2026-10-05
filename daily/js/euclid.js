@@ -408,9 +408,29 @@
       if (!dot) continue;
       dot.classList.remove('is-fade');
       dot.classList.add('is-cursor');
-      if (ev.hit) dot.classList.add('is-hit');
+      if (ev.hit) {
+        dot.classList.add('is-hit');
+        announce(track, ev.index);
+      }
       track.lastDot = dot;
     }
+  }
+
+  /* Broadcast every onset on the document so other sections can listen
+     without this one knowing they exist. Fired on the visual drain rather
+     than the audio scheduler, so a listener lands on the beat you see and
+     hear rather than up to 120ms ahead of it. */
+  var canAnnounce = typeof window.CustomEvent === 'function';
+  function announce(track, index) {
+    if (!canAnnounce) return;
+    document.dispatchEvent(new CustomEvent('daily:beat', {
+      detail: {
+        voice: track.spec.id,
+        ring: state.indexOf(track),
+        index: index,
+        steps: track.pattern.length
+      }
+    }));
   }
 
   function clearCursors() {

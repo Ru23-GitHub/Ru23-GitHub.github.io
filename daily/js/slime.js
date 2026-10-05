@@ -360,6 +360,37 @@
   canvas.addEventListener('pointerup', function () { painting = false; });
   canvas.addEventListener('pointercancel', function () { painting = false; });
 
+  /* ------------------------------------------------------------------
+     Listening to the drum machine
+
+     #euclid broadcasts a `daily:beat` on every onset. When this is armed,
+     each beat drops attractant at the position that beat occupies on
+     Euclid's own rings: the track picks the radius, the step picks the
+     angle. So the rhythm is literally drawn onto the field, and the mould
+     grows along it — the network you get is the shape of the pattern you
+     are listening to.
+
+     Nothing here reaches into #euclid. If that section is removed, or its
+     script fails, this listener simply never fires.
+     ------------------------------------------------------------------ */
+
+  var listenIn = root.querySelector('[data-sl="listen"]');
+  var RING_R = [0.42, 0.33, 0.24, 0.15];   /* fraction of the short side */
+
+  document.addEventListener('daily:beat', function (ev) {
+    if (!listenIn || !listenIn.checked) return;
+    var d = ev.detail;
+    if (!d || !d.steps) return;
+
+    var r = (RING_R[d.ring] || 0.2) * H;
+    var a = (d.index / d.steps) * TAU - Math.PI / 2;
+    var cx = (W / 2 + Math.cos(a) * r) | 0;
+    var cy = (H / 2 + Math.sin(a) * r) | 0;
+
+    feed(cx, cy, 10, 1);
+    if (!running) render();      /* so it's visible even while paused */
+  });
+
   /* ------------------------------------------------------------------ */
 
   reseed();
