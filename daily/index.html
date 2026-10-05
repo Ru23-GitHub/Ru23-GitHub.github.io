@@ -98,7 +98,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         </p>
         <h2>Things That Booted</h2>
       </header>
-      <p class="shelf-intro reveal">Ruslan collects retro tech, so here is a case of it. Six machines that taught a lot of people what a computer was supposed to feel like &mdash; switch one on.</p>
+      <p class="shelf-intro reveal">Ruslan collects retro tech, so here is a case of it. Six machines that taught a lot of people what a computer was supposed to feel like. Switch one on &mdash; the Nokia plays Snake properly, and will let you lose.</p>
 
       <ul class="shelf-case panel reveal-stagger">
 
@@ -188,17 +188,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <li class="shelf-item">
           <button class="device" type="button" aria-pressed="false" data-device="nokia">
             <span class="sr-only device-label">Switch on the Nokia 3310</span>
+            <span class="sr-only">Playable Snake. Once switched on, steer with the arrow keys.</span>
             <span class="device-led" aria-hidden="true"></span>
             <svg class="dev" viewBox="0 0 70 136" aria-hidden="true" focusable="false">
               <rect x="3" y="4" width="64" height="128" rx="15" fill="#3f5570"/>
               <rect x="8" y="9" width="54" height="118" rx="12" fill="#5a7390"/>
               <rect x="15" y="17" width="40" height="30" rx="3" fill="#44566b"/>
               <rect class="nk-screen" x="19" y="21" width="32" height="22" rx="1" fill="#6b7a56"/>
-              <g class="nk-snake" fill="#242d12">
-                <rect width="3" height="3" x="21" y="24"/><rect width="3" height="3" x="25" y="24"/>
-                <rect width="3" height="3" x="29" y="24"/><rect width="3" height="3" x="33" y="24"/>
-              </g>
-              <rect class="nk-food" x="45" y="36" width="3" height="3" fill="#242d12"/>
+              <g class="nk-snake" fill="#242d12"></g>
+              <rect class="nk-food" x="45" y="36" width="1.6" height="1.6" fill="#242d12"/>
               <rect x="27" y="52" width="16" height="9" rx="4.5" fill="#33455c"/>
               <g fill="#4a6179">
                 <rect x="14" y="68" width="12" height="7" rx="3"/><rect x="29" y="68" width="12" height="7" rx="3"/><rect x="44" y="68" width="12" height="7" rx="3"/>
@@ -209,7 +207,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             </svg>
           </button>
           <p class="device-cap"><strong>Nokia 3310</strong> <span class="device-year">2000</span>
-            <span class="device-note">133&nbsp;grams, a week between charges, and Snake II. Around 126&nbsp;million of them left the factory.</span></p>
+            <span class="device-note">133&nbsp;grams, a week between charges, and Snake II. Around 126&nbsp;million of them left the factory. Switch it on and it plays for real &mdash; arrows or WASD while it has focus, or swipe. Score <b class="device-score" data-snake-score>0</b>.</span></p>
         </li>
 
         <li class="shelf-item">

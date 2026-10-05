@@ -246,3 +246,21 @@
   .shelf-case{ gap:20px 14px; }
   .device-note{ font-size:12px; }
 }
+
+/* ---------- Snake, rewritten 2026-10-05 ----------
+   The screen's segments are created by the script now, so there is no
+   fixed markup to style; what is left here is the score and the brief
+   red flash when you crash. */
+
+.device-score{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+  font-weight:400;
+  color:#9fd27a;
+}
+
+.device.is-dead .nk-screen{ fill:#8a6a4a; }
+
+@media (prefers-reduced-motion: no-preference){
+  .device .nk-screen{ transition:fill .25s ease; }
+}

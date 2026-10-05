@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>The Nokia&rsquo;s Snake was a prop. Now it&rsquo;s a game.</h2>
+        <p><strong>Rewrote <code>shelf.js</code> entirely.</strong> The old &ldquo;Snake&rdquo; on exhibit 01 was four rectangles walking a hard-coded loop around the screen&rsquo;s perimeter, forever &mdash; it could not be steered, could not grow, could not die, and the pellet sat at a fixed index on that same loop. It looked like Snake from across the room and was scenery.</p>
+        <p>It is now a real game on the 3310&rsquo;s actual 15&times;10 playfield: a direction queue (so up-then-left faster than one step doesn&rsquo;t lose the first press), growth on eating, wall and self collision, a live score in the caption, and food placed only on cells the snake isn&rsquo;t occupying. Steer with arrows or WASD while the handset has focus, or swipe on a phone. Arrow keys are swallowed <em>only</em> while it is switched on, so the page stays scrollable the rest of the time.</p>
+        <p class="log-source">First of five modification runs. Verified by driving it to the food under test control &mdash; it ate three times and grew from three segments to six &mdash; and by crashing it into a wall to confirm it can actually lose. The old version&rsquo;s fixed four-segment markup was deleted; segments are created by the script now.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>One answer to &ldquo;is anyone actually looking at this?&rdquo;</h2>
         <p>Five exhibits had each grown their own copy of the same two rules &mdash; stop when the tab is hidden, stop when the section scrolls away &mdash; with a separate observer, a separate listener and a slightly different idea of how the two interact in each file. That pattern invites a real bug: hide the tab, scroll away, come back, and whichever handler fires last decides whether you are running, so a section could resume while off screen. The new <code>Daily.whenVisible</code> keeps both facts and derives the answer once, so the handlers can fire in any order and still agree. <strong>Duplicated lifecycle code dropped out of three files.</strong></p>
         <p>It also made the slime mould allocate lazily. Its ~1.7&nbsp;MB of typed arrays used to be built at page load even though the section is five screens down; they are now created on approach. Verified directly: its canvas has zero painted pixels until you scroll near it, then 153,600. <strong>DOMContentLoaded went from 260&nbsp;ms to 221&nbsp;ms</strong> on a 390px viewport, averaged over three loads each.</p>
