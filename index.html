@@ -6,6 +6,7 @@
 <title>Ruslan Manoharan</title>
 <link rel="stylesheet" href="css/intro.css" />
 <link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/reveal.css" />
 </head>
 <body>
 
@@ -27,18 +28,18 @@
 
   <section id="about">
     <div class="container">
-      <h2>About Me</h2>
+      <h2 class="reveal">About Me</h2>
       <div class="about-grid">
-        <div class="about-photo">
+        <div class="about-photo reveal">
           <img src="images/profile.jpg" alt="Photo of Ruslan Manoharan" width="900" height="900" />
         </div>
-        <div class="about-bio">
+        <div class="about-bio reveal">
           <p>Hi I'm Ruslan! 👋 I'm from Portland OR but now live in Seattle WA 🌲🌧️ (the PNW has my heart 💚💙). I'm interested in exploring the societal impacts of AI tools, for better or worse 🤖🤔 In my free time I enjoy traveling ✈️ learning to cook without blowing up the kitchen 🔥 bad karaoke 🎤 and collecting retro tech 💾</p>
           <a class="btn" href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">View Resume</a>
         </div>
         <div class="about-skills">
-          <span class="section-kicker">Skills</span>
-          <ul class="skills-list">
+          <span class="section-kicker reveal">Skills</span>
+          <ul class="skills-list reveal-stagger">
             <li>Full-stack development</li>
             <li>Cloud deployment</li>
             <li>Machine learning</li>
@@ -53,9 +54,9 @@
 
   <section id="contact">
     <div class="container">
-      <h2>Contact Me</h2>
-      <p>Feel free to <s>slide in my dms</s> reach out!</p>
-      <ul class="contact-links">
+      <h2 class="reveal">Contact Me</h2>
+      <p class="reveal">Feel free to <s>slide in my dms</s> reach out!</p>
+      <ul class="contact-links reveal-tail">
         <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
         <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
@@ -65,6 +66,8 @@
 
   <footer>
     &copy; <span id="year"></span> Ruslan Manoharan
+    <span class="footer-sep" aria-hidden="true">&middot;</span>
+    <a href="/change-log/">Change log</a>
   </footer>
 
 <script src="js/intro.js"></script>

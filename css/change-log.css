@@ -1,0 +1,68 @@
+/* Change log page — a plain, readable column that borrows the site's type,
+   accent color and spacing scale. No new tokens. */
+
+/* The intro and the list sit in two .container blocks, so their vertical
+   padding would otherwise stack into one oversized gap. */
+.log-head{ padding-bottom:0; }
+.log-body{ padding-top:var(--space-m); }
+
+.log-head h1{
+  font-size:clamp(22px, 4vw, 34px);
+  color:var(--accent);
+}
+
+.log-back{
+  display:inline-block;
+  margin:0 0 var(--space-s);
+  font-size:13px;
+  letter-spacing:.02em;
+}
+
+.log-intro{ color:var(--muted); max-width:56ch; }
+
+.log-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:var(--space-m);
+}
+
+.log-entry{
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:var(--space-m);
+  background:var(--bg-alt);
+}
+
+.log-entry time{
+  display:block;
+  font-size:12px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+
+.log-entry h2{
+  font-size:clamp(16px, 2.6vw, 22px);
+  margin-bottom:var(--space-s);
+}
+
+.log-entry p{ max-width:68ch; }
+.log-entry p:last-child{ margin-bottom:0; }
+
+.log-entry code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.9em;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:5px;
+  padding:1px 5px;
+}
+
+.log-source{
+  font-size:13px;
+  color:var(--muted);
+}
