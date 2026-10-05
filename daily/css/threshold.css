@@ -1,0 +1,363 @@
+/* Somebody Picks The Line — styles for #threshold
+   ----------------------------------------------------------------------
+   Added 2026-10-05. Self-contained: styles only #threshold, overrides
+   nothing in style.css, and takes its chrome from the shared .panel
+   system rather than reinventing a console.
+
+   The two outcome colours are blue and amber rather than green and red.
+   Both are distinguishable under every common form of colour blindness,
+   and neither carries a verdict: "would default" is a fact about an
+   applicant, not a moral failing, and painting it red would editorialise
+   a section whose whole point is that the judgement is the visitor's. */
+
+#threshold{
+  background:var(--bg-alt);
+  border-top:1px solid var(--border);
+}
+
+.th-intro{ max-width:62ch; color:var(--muted); }
+.th-intro strong{ color:var(--text); }
+
+/* ---------- the rig ---------- */
+
+.th-rig{
+  /* identity, handed to the shared .panel system */
+  --panel-top:#1c1f27;
+  --panel-bottom:#13151b;
+  --panel-accent:#6ea8ff;
+
+  --repay:#6ea8ff;
+  --default:#e0a141;
+
+  /* The shared panel system's --panel-dim (#8b93a6) was written for labels
+     sitting directly on the panel gradient. Most of this rig's small text
+     sits on a stat tile instead — two stacked translucent whites over that
+     gradient — and theme.css lifts the gradient again in dark mode, so the
+     same grey measured 3.93:1 in light and 3.23:1 in dark, both under AA.
+     Measured across both themes and both readout states, this clears at
+     5.14:1 worst case while staying clearly a label rather than ink. */
+  --th-dim:#b3bace;
+
+  margin:var(--space-m) 0 var(--space-s);
+}
+
+/* The rig deliberately carries no .reveal class. The shared reveal runs on
+   a cover-phase scroll range, which needs runway proportional to the
+   element's own height — and this one is 1,698px tall on a 390px viewport,
+   where it was measured peaking at opacity .93 and never resolving. A
+   permanently half-faded panel is bad enough as decoration; as the page's
+   only interactive console, with live numbers in it, it is a defect. The
+   heading and the three intro paragraphs still reveal, which is what gives
+   the section its entrance. */
+
+.th-groups{
+  display:grid;
+  gap:clamp(22px, 4vw, 34px);
+  grid-template-columns:1fr;
+}
+@media (min-width:760px){
+  .th-groups{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+}
+
+.th-gname{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(15px, 2.4vw, 18px);
+  line-height:1.2;
+  color:var(--panel-ink);
+  margin:0 0 10px;
+}
+
+.th-gmeta{
+  display:block;
+  font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--th-dim);
+  margin-top:4px;
+}
+
+/* ---------- chart ---------- */
+
+.th-chart{
+  width:100%;
+  height:auto;
+  overflow:visible;
+}
+
+.th-bar-pos{ fill:var(--repay); }
+.th-bar-neg{ fill:var(--default); }
+
+/* The rejected side of the line is dimmed rather than hidden: these are
+   still people in the population, they just got a no. */
+.th-reject{
+  fill:#0b0d12;
+  opacity:.72;
+}
+
+.th-line{
+  stroke:#fff;
+  stroke-width:1.6;
+  stroke-linecap:round;
+}
+
+.th-axis{ stroke:var(--panel-line); stroke-width:1; }
+
+.th-tick{
+  fill:var(--th-dim);
+  font-family:var(--mono);
+  /* 9px was too small for the one pair of labels that tells you what the
+     horizontal axis even is. */
+  font-size:10px;
+}
+
+/* ---------- the slider ---------- */
+
+.th-slider{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin:10px 0 2px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--th-dim);
+}
+
+.th-slider input[type="range"]{
+  flex:1 1 120px;
+  min-width:90px;
+  margin:0;
+}
+
+.th-slider output{
+  font-family:var(--mono);
+  font-size:var(--fs-base);
+  letter-spacing:0;
+  color:var(--panel-ink);
+  min-width:2.4ch;
+  text-align:right;
+}
+
+/* ---------- per-group stats ---------- */
+
+.th-stats{
+  margin:14px 0 0;
+  display:grid;
+  gap:1px;
+  background:var(--panel-line);
+  border:1px solid var(--panel-line);
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+}
+
+.th-stats > div{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:12px;
+  padding:7px 11px;
+  background:rgba(255,255,255,.035);
+}
+
+.th-stats dt{
+  font-size:var(--fs-md);
+  color:var(--th-dim);
+  min-width:0;
+}
+
+.th-stats dd{
+  margin:0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+  white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---------- legend ---------- */
+
+.th-legend{
+  list-style:none;
+  margin:16px 0 0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 18px;
+  font-size:var(--fs-md);
+  color:var(--th-dim);
+}
+.th-legend li{ display:flex; align-items:center; gap:7px; }
+.th-legend i{
+  width:11px; height:11px;
+  border-radius:3px;
+  flex:none;
+}
+.th-legend .lg-pos{ background:var(--repay); }
+.th-legend .lg-neg{ background:var(--default); }
+.th-legend .lg-rej{ background:#3a3f4b; }
+
+/* ---------- presets ---------- */
+
+.th-presets{
+  margin-top:clamp(22px, 4vw, 30px);
+  padding-top:clamp(20px, 3.5vw, 26px);
+  border-top:1px solid var(--panel-line);
+}
+
+.th-presets-head{
+  margin:0 0 12px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--th-dim);
+}
+
+.th-preset-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+}
+
+.th-preset{
+  font:inherit;
+  font-size:var(--fs-base);
+  text-align:left;
+  padding:9px 15px;
+  border-radius:var(--radius-pill);
+  border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(var(--panel-btn-top), var(--panel-btn-bottom));
+  color:var(--panel-ink);
+  cursor:pointer;
+}
+.th-preset:hover{ border-color:rgba(255,255,255,.34); }
+.th-preset[aria-pressed="true"]{
+  background:linear-gradient(var(--panel-btn-on-top), var(--panel-btn-on-bottom));
+  border-color:var(--panel-accent);
+}
+
+/* ---------- the scorecard ---------- */
+
+.th-score{ margin-top:clamp(22px, 4vw, 30px); }
+
+.th-score-head{
+  margin:0 0 12px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--th-dim);
+}
+
+.th-crits{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:9px;
+}
+
+.th-crits > li{
+  display:grid;
+  gap:2px 14px;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  padding:11px 14px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--panel-line);
+  background:rgba(255,255,255,.035);
+}
+
+.th-crit-name{
+  grid-column:1;
+  font-weight:600;
+  color:var(--panel-ink);
+}
+
+.th-crit-sub{
+  grid-column:1;
+  font-size:var(--fs-md);
+  color:var(--th-dim);
+}
+
+.th-crit-read{
+  grid-column:2;
+  grid-row:1 / span 2;
+  text-align:right;
+  white-space:nowrap;
+}
+
+.th-crit-gap{
+  display:block;
+  font-family:var(--mono);
+  font-size:15px;
+  font-variant-numeric:tabular-nums;
+  color:var(--panel-ink);
+}
+.th-crit-gap .th-unit{ font-size:var(--fs-xs); color:var(--th-dim); }
+
+.th-crit-flag{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--th-dim);
+}
+.th-crit-flag::before{
+  content:"";
+  width:7px; height:7px;
+  border-radius:50%;
+  background:#5d6577;
+  flex:none;
+}
+
+/* A met criterion lights up; the colour is the panel accent, i.e. the
+   same "this is on" signal the Shelf's power LEDs use. */
+.th-crits > li[data-met="yes"]{ border-color:var(--panel-accent); }
+.th-crits > li[data-met="yes"] .th-crit-flag{ color:var(--panel-accent); }
+.th-crits > li[data-met="yes"] .th-crit-flag::before{
+  background:var(--panel-accent);
+  box-shadow:0 0 9px 2px var(--panel-accent-soft);
+}
+
+.th-status{
+  margin:14px 0 0;
+  font-size:var(--fs-md);
+  color:var(--th-dim);
+  min-height:1.5em;
+}
+
+/* The all-three corner is the one reading worth stopping on, so it gets
+   the only emphasis in the readout. */
+.th-status[data-tone="corner"]{
+  color:var(--panel-ink);
+  padding:11px 14px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--panel-accent);
+  background:rgba(110,168,255,.08);
+}
+
+/* The all-three preset is a trap with a price tag, not a solution; a
+   dashed edge keeps it from reading as the recommended setting. */
+.th-preset-all{ border-style:dashed; }
+.th-preset-all[aria-pressed="true"]{ border-style:solid; }
+
+.th-nojs[hidden]{ display:none; }
+
+.th-foot{
+  max-width:66ch;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+/* Without the script there are no bars, no lines and no numbers, so the
+   rig is not shown at all — a dead console full of em-dashes is worse
+   than an honest sentence. */
+.th-rig[hidden]{ display:none; }
+
+@media (prefers-reduced-motion: no-preference){
+  .th-reject, .th-line{ transition:none; }
+}

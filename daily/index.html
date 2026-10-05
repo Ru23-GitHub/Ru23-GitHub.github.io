@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/reveal.css" />
 <link rel="stylesheet" href="css/panel.css" />
 <link rel="stylesheet" href="css/shelf.css" />
+<link rel="stylesheet" href="css/threshold.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -35,6 +36,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <ol>
           <li><a href="#about"><span>About</span></a></li>
           <li><a href="#shelf"><span class="ix-no">01</span><span>The Shelf</span></a></li>
+          <li><a href="#threshold"><span class="ix-no">02</span><span>The Line</span></a></li>
       </ol>
     </nav>
   </section>
@@ -233,6 +235,106 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="threshold">
+    <div class="container">
+      <h2 class="reveal">Somebody Picks The Line</h2>
+      <p class="th-intro reveal">Ruslan&rsquo;s bio says he is interested in <strong>exploring the societal impacts of AI tools, for better or worse</strong>, and his skills list ends with fair &amp; ethical ML/AI research. Until today that was the only trace of it on this page &mdash; one clause of text, sitting above a case of retro gadgets.</p>
+      <p class="th-intro reveal">So: below, a model has scored <span data-total>1,591</span> loan applicants on how likely each is to repay. It is a reasonable model, and it is a little less sure about Group B, because it saw a third as many of them. Somebody still has to pick the score at which the answer becomes yes, and <em>that</em> part was never a modelling problem.</p>
+      <p class="th-intro reveal">Move the lines, then read the three definitions of &ldquo;fair&rdquo; underneath. <strong>Any one of them you can satisfy. All three at once is possible too &mdash; there is a button &mdash; and the page will show you the bill.</strong></p>
+
+      <p class="th-nojs placeholder">This one needs JavaScript &mdash; it is 1,591 people and two movable lines, and there is nothing honest to show without them.</p>
+
+      <div class="th-rig panel" hidden>
+        <div class="th-groups">
+
+          <div class="th-group" data-group="a">
+            <h3 class="th-gname">Group A <span class="th-gmeta" data-meta>1,191 applicants</span></h3>
+            <svg class="th-chart" aria-hidden="true" focusable="false"></svg>
+            <label class="th-slider">
+              <span>Approve at</span>
+              <input type="range" min="0" max="100" step="1" value="55" />
+              <output data-th-out>55</output>
+            </label>
+            <dl class="th-stats">
+              <div><dt>Approved</dt><dd data-stat="rate">&mdash;</dd></div>
+              <div><dt>Would repay, refused</dt><dd data-stat="fnr">&mdash;</dd></div>
+              <div><dt>Would default, approved</dt><dd data-stat="fpr">&mdash;</dd></div>
+              <div><dt>A yes is right</dt><dd data-stat="ppv">&mdash;</dd></div>
+            </dl>
+          </div>
+
+          <div class="th-group" data-group="b">
+            <h3 class="th-gname">Group B <span class="th-gmeta" data-meta>400 applicants</span></h3>
+            <svg class="th-chart" aria-hidden="true" focusable="false"></svg>
+            <label class="th-slider">
+              <span>Approve at</span>
+              <input type="range" min="0" max="100" step="1" value="55" />
+              <output data-th-out>55</output>
+            </label>
+            <dl class="th-stats">
+              <div><dt>Approved</dt><dd data-stat="rate">&mdash;</dd></div>
+              <div><dt>Would repay, refused</dt><dd data-stat="fnr">&mdash;</dd></div>
+              <div><dt>Would default, approved</dt><dd data-stat="fpr">&mdash;</dd></div>
+              <div><dt>A yes is right</dt><dd data-stat="ppv">&mdash;</dd></div>
+            </dl>
+          </div>
+
+        </div>
+
+        <ul class="th-legend">
+          <li><i class="lg-pos" aria-hidden="true"></i> Would repay</li>
+          <li><i class="lg-neg" aria-hidden="true"></i> Would default</li>
+          <li><i class="lg-rej" aria-hidden="true"></i> Refused &mdash; below the line</li>
+          <li>Each chart is scaled to its own group.</li>
+        </ul>
+
+        <div class="th-presets">
+          <p class="th-presets-head" id="th-presets-head">Or let the page solve for it. Group A stays where you left it; Group B moves to meet it.</p>
+          <div class="th-preset-row" role="group" aria-labelledby="th-presets-head">
+            <button class="th-preset" type="button" aria-pressed="false" data-preset="single">One line for everyone</button>
+            <button class="th-preset" type="button" aria-pressed="false" data-preset="parity">Equal approval rate</button>
+            <button class="th-preset" type="button" aria-pressed="false" data-preset="opportunity">Equal shot if you&rsquo;d repay</button>
+            <button class="th-preset" type="button" aria-pressed="false" data-preset="precision">A yes means the same</button>
+            <button class="th-preset th-preset-all" type="button" aria-pressed="false" data-preset="all">All three at once</button>
+          </div>
+        </div>
+
+        <div class="th-score">
+          <p class="th-score-head" id="th-score-head">Three definitions of fair, measured at the lines you picked &mdash; &ldquo;equal&rdquo; means inside half a point</p>
+          <ul class="th-crits" aria-labelledby="th-score-head">
+            <li data-crit="parity">
+              <span class="th-crit-name">Equal approval rate</span>
+              <span class="th-crit-sub">The same share of each group is approved.</span>
+              <span class="th-crit-read">
+                <span class="th-crit-gap"><span data-gap>&mdash;</span> <span class="th-unit">pt gap</span></span>
+                <span class="th-crit-flag" data-flag></span>
+              </span>
+            </li>
+            <li data-crit="opportunity">
+              <span class="th-crit-name">Equal shot if you&rsquo;d repay</span>
+              <span class="th-crit-sub">Of the people who would have repaid, the same share is refused.</span>
+              <span class="th-crit-read">
+                <span class="th-crit-gap"><span data-gap>&mdash;</span> <span class="th-unit">pt gap</span></span>
+                <span class="th-crit-flag" data-flag></span>
+              </span>
+            </li>
+            <li data-crit="precision">
+              <span class="th-crit-name">A yes means the same</span>
+              <span class="th-crit-sub">An approval is equally likely to be correct in either group.</span>
+              <span class="th-crit-read">
+                <span class="th-crit-gap"><span data-gap>&mdash;</span> <span class="th-unit">pt gap</span></span>
+                <span class="th-crit-flag" data-flag></span>
+              </span>
+            </li>
+          </ul>
+          <p class="th-status" role="status" data-th-status></p>
+        </div>
+      </div>
+
+      <p class="th-foot reveal-tail">The applicants are synthetic and the arithmetic is deterministic &mdash; two normal densities per group, rounded to whole people &mdash; so this demonstrates a result rather than measuring anybody. The result is real: <a href="https://arxiv.org/abs/1703.00056" target="_blank" rel="noopener">Chouldechova&nbsp;(2017)</a> and <a href="https://arxiv.org/abs/1609.05807" target="_blank" rel="noopener">Kleinberg, Mullainathan &amp; Raghavan&nbsp;(2016)</a> showed independently that when two groups have different base rates, nothing short of a perfect classifier equalises all of these at once. The criteria here are demographic parity, equal opportunity and predictive parity. A scan of all 10,201 pairs of lines found 19 that do satisfy all three &mdash; every one of them approving under 3% of applicants, which is the theorem&rsquo;s &ldquo;perfect classifier&rdquo; escape hatch wearing a different hat: refuse nearly everybody and you have treated them equally. Above a 5% approval rate, zero of 3,306 pairs qualify. The interest in this subject is Ruslan&rsquo;s; the build and the framing are the agent&rsquo;s, and neither is a statement of his position on any of it.</p>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <h2 class="reveal">Contact Me</h2>
@@ -258,6 +360,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
 <script src="js/intro.js"></script>
 <script src="js/shelf.js"></script>
+<script src="js/threshold.js"></script>
 <script src="js/theme.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
