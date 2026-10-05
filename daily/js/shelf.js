@@ -162,6 +162,8 @@
   var buttons = shelf.querySelectorAll('.device');
   var snake = null;
   var nokiaBtn = shelf.querySelector('.device[data-device="nokia"]');
+  /* Set by a swipe, consumed by the click it generates. */
+  var suppressClick = false;
 
   function setLabel(btn, on) {
     var label = btn.querySelector('.device-label');
@@ -175,6 +177,7 @@
 
   Array.prototype.forEach.call(buttons, function (btn) {
     btn.addEventListener('click', function () {
+      if (btn === nokiaBtn && suppressClick) { suppressClick = false; return; }
       var on = btn.getAttribute('aria-pressed') !== 'true';
       btn.setAttribute('aria-pressed', on ? 'true' : 'false');
       setLabel(btn, on);
@@ -204,21 +207,62 @@
       if (snake.dead) snake.start();
     });
 
-    /* Swipe, for the shelf on a phone. */
-    var sx = 0, sy = 0, swiping = false;
+    /* Swipe, for the shelf on a phone.
+
+       The first version of this registered touchstart/touchend as
+       { passive: true }, which is a promise to the browser that it may
+       scroll without waiting — preventDefault() inside a passive listener
+       does nothing. So every attempt to steer scrolled the page instead,
+       and the game was unplayable by touch.
+
+       Two things fix it, and both are needed:
+
+         - touch-action on the handset, applied by CSS only while it is
+           switched on, so the browser never starts a single-finger pan
+           there in the first place. (Pinch-zoom is deliberately still
+           allowed; taking that away from a whole region is rude.)
+         - a non-passive touchmove that calls preventDefault, for browsers
+           that have already begun the gesture before touch-action lands.
+
+       A swipe also produces a synthetic click, which on a <button> whose
+       job is power would switch the handset off mid-game, so a gesture
+       that moved far enough swallows the click that follows it. */
+    var sx = 0, sy = 0, swiping = false, moved = false;
+    var THRESHOLD = 16;
+
+    function playing() { return nokiaBtn.getAttribute('aria-pressed') === 'true'; }
+
     nokiaBtn.addEventListener('touchstart', function (e) {
       if (!e.touches.length) return;
-      sx = e.touches[0].clientX; sy = e.touches[0].clientY; swiping = true;
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+      swiping = true; moved = false;
+      /* Disarm here rather than trusting the click to arrive. A swipe does
+         not always produce one, and a flag left armed would swallow the
+         next deliberate tap — which on this button is how you switch the
+         handset off. Clicks fire before the next touchstart, so a real
+         suppression still lands. */
+      suppressClick = false;
     }, { passive: true });
+
+    nokiaBtn.addEventListener('touchmove', function (e) {
+      if (!swiping || !playing() || !e.touches.length) return;
+      var dx = e.touches[0].clientX - sx;
+      var dy = e.touches[0].clientY - sy;
+      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
+      e.preventDefault();          /* only reachable because this is not passive */
+    }, { passive: false });
+
     nokiaBtn.addEventListener('touchend', function (e) {
       if (!swiping || !e.changedTouches.length) return;
       swiping = false;
-      if (nokiaBtn.getAttribute('aria-pressed') !== 'true') return;
+      if (!playing()) return;
       var dx = e.changedTouches[0].clientX - sx;
       var dy = e.changedTouches[0].clientY - sy;
-      if (Math.abs(dx) < 18 && Math.abs(dy) < 18) return;
+      if (Math.abs(dx) < THRESHOLD && Math.abs(dy) < THRESHOLD) return;
+      suppressClick = true;        /* don't let the steer also toggle power */
       if (Math.abs(dx) > Math.abs(dy)) snake.steer(dx > 0 ? 1 : -1, 0);
       else snake.steer(0, dy > 0 ? 1 : -1);
+      if (snake.dead) snake.start();
     }, { passive: true });
   }
 

@@ -254,6 +254,13 @@
    fixed markup to style; what is left here is the score and the brief
    red flash when you crash. */
 
+/* Only while it is switched on: with the handset off, a drag here has to
+   keep scrolling the page like anywhere else. pinch-zoom rather than none,
+   so two-finger zoom still works over the device. */
+.device[data-device="nokia"][aria-pressed="true"]{
+  touch-action:pinch-zoom;
+}
+
 .device-score{
   font-family:var(--mono);
   font-variant-numeric:tabular-nums;
