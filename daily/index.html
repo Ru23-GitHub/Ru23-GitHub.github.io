@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/reveal.css" />
 <link rel="stylesheet" href="css/shelf.css" />
+<link rel="stylesheet" href="css/euclid.css" />
 </head>
 <body>
 
@@ -225,6 +226,165 @@
     </div>
   </section>
 
+  <section id="euclid">
+    <div class="container">
+      <span class="section-kicker reveal">Euclid</span>
+      <h2 class="reveal">A Drum Machine Made Of Long Division</h2>
+      <p class="eu-intro reveal">Ask for <em>k</em> beats spread as evenly as possible across <em>n</em> slots and the answer falls out of Euclid&rsquo;s 2,300-year-old algorithm for the greatest common divisor. The strange part is what comes back. <code>E(3,8)</code> is the Cuban tresillo. <code>E(7,12)</code> is a West African bemb&eacute; bell. <code>E(4,9)</code> is a Turkish aksak. Nobody designed these from the maths &mdash; the maths just keeps landing on rhythms people were already playing. Four rings below, one per voice. Each keeps its own step count, so an eight against a nine drifts instead of locking.</p>
+
+      <div class="eu-console">
+
+        <div class="eu-transport">
+          <button class="eu-play" type="button" data-eu="play" aria-pressed="false">
+            <span class="eu-play-dot" aria-hidden="true"></span>
+            <span data-eu="play-label">Play</span>
+          </button>
+
+          <span class="eu-knob">
+            <label for="eu-tempo">Tempo</label>
+            <input id="eu-tempo" data-eu="tempo" type="range" min="50" max="180" step="1" value="98" />
+            <span class="eu-readout" data-eu="tempo-out">98 bpm</span>
+          </span>
+
+          <span class="eu-knob">
+            <label for="eu-volume">Level</label>
+            <input id="eu-volume" data-eu="volume" type="range" min="0" max="100" step="1" value="70" />
+            <span class="eu-readout" data-eu="volume-out">70%</span>
+          </span>
+
+          <span class="eu-field">
+            <label for="eu-preset"><span>Pattern</span></label>
+            <select class="eu-select" id="eu-preset" data-eu="preset">
+            <option value="tresillo" selected>Tresillo &mdash; Cuba, E(3,8)</option>
+            <option value="cinquillo">Cinquillo &mdash; Cuba, E(5,8)</option>
+            <option value="bembe">Bemb&eacute; &mdash; West Africa, E(7,12)</option>
+            <option value="aksak">Aksak &mdash; Turkey, E(4,9)</option>
+            <option value="ruchenitza">Ruchenitza &mdash; Bulgaria, E(4,7)</option>
+            <option value="venda">Venda &mdash; South Africa, E(5,12)</option>
+            <option value="khafif">Khafif-e-ramal &mdash; Persia, E(2,5)</option>
+            <option value="drift">Drift &mdash; 8 against 9 against 11 against 13</option>
+              <option value="custom">Custom</option>
+            </select>
+          </span>
+
+          <button class="eu-ghost" type="button" data-eu="random">Randomise</button>
+        </div>
+
+        <div class="eu-body">
+          <div class="eu-rings" data-eu="rings"></div>
+
+          <ol class="eu-tracks">
+        <li class="eu-track" data-track="kick">
+          <div class="eu-track-head">
+            <span class="eu-track-name">Kick</span>
+            <span class="eu-notation" data-out="notation">E(3,8)</span>
+            <span class="eu-pattern" data-out="pattern" aria-label="Kick pattern"></span>
+          </div>
+          <div class="eu-sliders">
+            <label for="eu-kick-steps">Steps
+              <input id="eu-kick-steps" data-ctl="steps" type="range" min="2" max="16" step="1" value="8" />
+              <span class="eu-num" data-out="steps">8</span>
+            </label>
+            <label for="eu-kick-pulses">Onsets
+              <input id="eu-kick-pulses" data-ctl="pulses" type="range" min="0" max="8" step="1" value="3" />
+              <span class="eu-num" data-out="pulses">3</span>
+            </label>
+            <label for="eu-kick-rotate">Rotate
+              <input id="eu-kick-rotate" data-ctl="rotate" type="range" min="0" max="7" step="1" value="0" />
+              <span class="eu-num" data-out="rotate">0</span>
+            </label>
+            <label class="eu-mute" for="eu-kick-mute">
+              <input id="eu-kick-mute" data-ctl="mute" type="checkbox" />
+              Mute
+            </label>
+          </div>
+        </li>
+        <li class="eu-track" data-track="snare">
+          <div class="eu-track-head">
+            <span class="eu-track-name">Snare</span>
+            <span class="eu-notation" data-out="notation">E(2,8)</span>
+            <span class="eu-pattern" data-out="pattern" aria-label="Snare pattern"></span>
+          </div>
+          <div class="eu-sliders">
+            <label for="eu-snare-steps">Steps
+              <input id="eu-snare-steps" data-ctl="steps" type="range" min="2" max="16" step="1" value="8" />
+              <span class="eu-num" data-out="steps">8</span>
+            </label>
+            <label for="eu-snare-pulses">Onsets
+              <input id="eu-snare-pulses" data-ctl="pulses" type="range" min="0" max="8" step="1" value="2" />
+              <span class="eu-num" data-out="pulses">2</span>
+            </label>
+            <label for="eu-snare-rotate">Rotate
+              <input id="eu-snare-rotate" data-ctl="rotate" type="range" min="0" max="7" step="1" value="2" />
+              <span class="eu-num" data-out="rotate">2</span>
+            </label>
+            <label class="eu-mute" for="eu-snare-mute">
+              <input id="eu-snare-mute" data-ctl="mute" type="checkbox" />
+              Mute
+            </label>
+          </div>
+        </li>
+        <li class="eu-track" data-track="hat">
+          <div class="eu-track-head">
+            <span class="eu-track-name">Hat</span>
+            <span class="eu-notation" data-out="notation">E(5,8)</span>
+            <span class="eu-pattern" data-out="pattern" aria-label="Hat pattern"></span>
+          </div>
+          <div class="eu-sliders">
+            <label for="eu-hat-steps">Steps
+              <input id="eu-hat-steps" data-ctl="steps" type="range" min="2" max="16" step="1" value="8" />
+              <span class="eu-num" data-out="steps">8</span>
+            </label>
+            <label for="eu-hat-pulses">Onsets
+              <input id="eu-hat-pulses" data-ctl="pulses" type="range" min="0" max="8" step="1" value="5" />
+              <span class="eu-num" data-out="pulses">5</span>
+            </label>
+            <label for="eu-hat-rotate">Rotate
+              <input id="eu-hat-rotate" data-ctl="rotate" type="range" min="0" max="7" step="1" value="0" />
+              <span class="eu-num" data-out="rotate">0</span>
+            </label>
+            <label class="eu-mute" for="eu-hat-mute">
+              <input id="eu-hat-mute" data-ctl="mute" type="checkbox" />
+              Mute
+            </label>
+          </div>
+        </li>
+        <li class="eu-track" data-track="clave">
+          <div class="eu-track-head">
+            <span class="eu-track-name">Clave</span>
+            <span class="eu-notation" data-out="notation">E(3,8)</span>
+            <span class="eu-pattern" data-out="pattern" aria-label="Clave pattern"></span>
+          </div>
+          <div class="eu-sliders">
+            <label for="eu-clave-steps">Steps
+              <input id="eu-clave-steps" data-ctl="steps" type="range" min="2" max="16" step="1" value="8" />
+              <span class="eu-num" data-out="steps">8</span>
+            </label>
+            <label for="eu-clave-pulses">Onsets
+              <input id="eu-clave-pulses" data-ctl="pulses" type="range" min="0" max="8" step="1" value="3" />
+              <span class="eu-num" data-out="pulses">3</span>
+            </label>
+            <label for="eu-clave-rotate">Rotate
+              <input id="eu-clave-rotate" data-ctl="rotate" type="range" min="0" max="7" step="1" value="1" />
+              <span class="eu-num" data-out="rotate">1</span>
+            </label>
+            <label class="eu-mute" for="eu-clave-mute">
+              <input id="eu-clave-mute" data-ctl="mute" type="checkbox" />
+              Mute
+            </label>
+          </div>
+        </li>
+          </ol>
+        </div>
+
+        <p class="eu-note">Nothing here is a recording. The kick is a sine wave falling from 165&nbsp;Hz to 46, the snare is band-passed noise over a short tuned body, the hat is noise through a high-pass, the clave is 45&nbsp;milliseconds of triangle wave. Sound starts only when you press Play, and stops if you switch tabs. Pattern generation is <a href="https://en.wikipedia.org/wiki/Euclidean_rhythm" target="_blank" rel="noopener">Bjorklund&rsquo;s algorithm</a>, from Godfried Toussaint&rsquo;s paper <a href="http://cgm.cs.mcgill.ca/~godfried/publications/banff.pdf" target="_blank" rel="noopener">&ldquo;The Euclidean Algorithm Generates Traditional Musical Rhythms&rdquo;</a> (2005).</p>
+      </div>
+
+      <p class="eu-nojs">This one needs JavaScript and the Web Audio API &mdash; without them the console above is just a diagram.</p>
+      <p class="eu-foot reveal-tail">Try Drift, then set every ring to a different prime.</p>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <h2 class="reveal">Contact Me</h2>
@@ -245,6 +405,7 @@
 
 <script src="js/intro.js"></script>
 <script src="js/shelf.js"></script>
+<script src="js/euclid.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

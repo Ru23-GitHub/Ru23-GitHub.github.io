@@ -1,0 +1,378 @@
+/* Euclid's Drum Machine — Euclidean rhythm sequencer
+   ----------------------------------------------------------------------
+   Added 2026-10-05. Self-contained and additive: every selector in this
+   file is scoped under #euclid, so it cannot reach anything that was
+   already on the page.
+
+   The console is a dark panel on the otherwise light page, deliberately
+   matching the dark display case #shelf introduced rather than restyling
+   anything around it.
+
+   Reduced motion: the only continuous animation here is the step
+   highlight travelling around each ring, which is discrete state (it is
+   also the page's only indication of where the playhead is, so it stays).
+   What gets dropped under prefers-reduced-motion is the easing, the
+   flash-decay on a triggered onset, and the pulsing play button. */
+
+#euclid{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+
+#euclid .eu-intro{
+  max-width:62ch;
+  color:var(--muted);
+}
+
+#euclid .eu-intro code{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.92em;
+  background:var(--bg-alt);
+  border:1px solid var(--border);
+  border-radius:4px;
+  padding:1px 5px;
+}
+
+/* ---------- the console ---------- */
+
+#euclid .eu-console{
+  --eu-panel:#14161d;
+  --eu-panel-2:#1c1f28;
+  --eu-line:rgba(255,255,255,.09);
+  --eu-ink:#e8eaf0;
+  --eu-dim:#8b93a6;
+
+  margin-top:var(--space-m);
+  padding:clamp(16px, 3vw, 28px);
+  border-radius:18px;
+  background:linear-gradient(#1c1f27, #11131a);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.07),
+    0 18px 40px rgba(0,0,0,.18);
+  color:var(--eu-ink);
+}
+
+/* ---------- transport bar ---------- */
+
+#euclid .eu-transport{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px 18px;
+  padding-bottom:16px;
+  border-bottom:1px solid var(--eu-line);
+}
+
+#euclid .eu-play{
+  font:inherit;
+  font-weight:600;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  min-width:118px;
+  padding:10px 18px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(#2b3040, #1f2430);
+  color:var(--eu-ink);
+  cursor:pointer;
+}
+
+#euclid .eu-play:hover{ border-color:rgba(255,255,255,.34); }
+
+#euclid .eu-play .eu-play-dot{
+  width:9px; height:9px;
+  border-radius:50%;
+  background:#5d6577;
+  flex:none;
+}
+
+#euclid .eu-play[aria-pressed="true"]{
+  background:linear-gradient(#233a6e, #1a2b52);
+  border-color:#3f63c4;
+}
+
+#euclid .eu-play[aria-pressed="true"] .eu-play-dot{
+  background:#6ea8ff;
+  box-shadow:0 0 9px 2px rgba(110,168,255,.7);
+  animation:eu-beat 1.2s ease-in-out infinite;
+}
+
+@keyframes eu-beat{
+  0%,100%{ opacity:1 }
+  50%{ opacity:.35 }
+}
+
+#euclid .eu-knob{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--eu-dim);
+}
+
+#euclid .eu-knob input[type="range"]{
+  width:clamp(80px, 16vw, 130px);
+}
+
+#euclid .eu-readout{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12px;
+  letter-spacing:0;
+  color:var(--eu-ink);
+  min-width:3.4em;
+  text-align:right;
+}
+
+#euclid .eu-select,
+#euclid .eu-ghost{
+  font:inherit;
+  font-size:14px;
+  padding:8px 12px;
+  border-radius:9px;
+  border:1px solid rgba(255,255,255,.16);
+  background:var(--eu-panel-2);
+  color:var(--eu-ink);
+  cursor:pointer;
+}
+
+#euclid .eu-ghost:hover,
+#euclid .eu-select:hover{ border-color:rgba(255,255,255,.34); }
+
+/* The preset <select> takes its intrinsic width from its longest option,
+   which is wide enough to push the page sideways on a phone. min-width:0
+   lets it shrink inside the flex row instead. */
+#euclid .eu-field{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  flex:1 1 200px;
+  min-width:0;
+}
+
+#euclid .eu-select{
+  flex:1 1 auto;
+  min-width:0;
+  max-width:100%;
+  text-overflow:ellipsis;
+}
+
+#euclid .eu-field span{
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--eu-dim);
+}
+
+/* Range + select theming: these are the browser's own widgets, so this
+   only sets the accent and a visible focus ring on the dark panel. */
+#euclid input[type="range"],
+#euclid input[type="checkbox"]{ accent-color:#6ea8ff; }
+
+#euclid .eu-console :focus-visible{
+  outline:2px solid #8fb6ff;
+  outline-offset:2px;
+}
+
+/* ---------- body: rings + tracks ---------- */
+
+#euclid .eu-body{
+  display:grid;
+  gap:clamp(18px, 3vw, 32px);
+  grid-template-columns:1fr;
+  padding-top:18px;
+}
+
+@media (min-width:760px){
+  #euclid .eu-body{ grid-template-columns:minmax(0,340px) minmax(0,1fr); align-items:start; }
+}
+
+#euclid .eu-rings{
+  margin-inline:auto;
+  width:100%;
+  max-width:340px;
+}
+
+#euclid .eu-rings svg{ width:100%; height:auto; overflow:visible; }
+
+#euclid .eu-ring-base{ fill:none; stroke:rgba(255,255,255,.07); stroke-width:1; }
+
+#euclid .eu-dot{
+  fill:#2a2f3c;
+  stroke:rgba(255,255,255,.08);
+  stroke-width:1;
+  transition:fill .25s ease, stroke .25s ease;
+}
+
+#euclid .eu-dot.is-onset{
+  fill:var(--eu-hue);
+  stroke:transparent;
+  opacity:.55;
+}
+
+/* The playhead: the step currently under each ring's own cursor. Tracks
+   can have different lengths, so every ring gets its own cursor and they
+   drift against each other. */
+#euclid .eu-dot.is-cursor{
+  stroke:#ffffff;
+  stroke-width:1.6;
+  opacity:1;
+}
+
+#euclid .eu-dot.is-hit{
+  fill:#ffffff;
+  opacity:1;
+  transition:none;
+}
+
+#euclid .eu-dot.is-fade{
+  fill:var(--eu-hue);
+  opacity:1;
+  transition:fill .42s ease-out, opacity .42s ease-out;
+}
+
+#euclid .eu-ring-tag{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:8px;
+  letter-spacing:.16em;
+  fill:var(--eu-dim);
+  dominant-baseline:middle;
+}
+
+#euclid .eu-cycle-num{
+  font-family:'GameBoy',ui-monospace,monospace;
+  font-size:21px;
+  fill:var(--eu-ink);
+}
+
+#euclid .eu-cycle-cap{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:7.5px;
+  letter-spacing:.1em;
+  fill:var(--eu-dim);
+  text-transform:uppercase;
+}
+
+/* ---------- track rows ---------- */
+
+#euclid .eu-tracks{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+
+#euclid .eu-track{
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid var(--eu-line);
+  border-left:3px solid var(--eu-hue);
+  background:rgba(255,255,255,.025);
+}
+
+#euclid .eu-track.is-muted{ opacity:.5; }
+
+#euclid .eu-track-head{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:9px;
+}
+
+#euclid .eu-track-name{
+  font-family:'GameBoy',ui-monospace,monospace;
+  font-size:14px;
+  letter-spacing:.04em;
+  color:var(--eu-ink);
+}
+
+#euclid .eu-pattern{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:13px;
+  letter-spacing:.14em;
+  color:var(--eu-hue);
+  word-break:break-all;
+  margin-inline-start:auto;
+}
+
+#euclid .eu-notation{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:11px;
+  color:var(--eu-dim);
+}
+
+#euclid .eu-sliders{
+  display:grid;
+  gap:6px 14px;
+  grid-template-columns:repeat(auto-fit, minmax(132px, 1fr));
+  align-items:center;
+}
+
+#euclid .eu-sliders label{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--eu-dim);
+}
+
+#euclid .eu-sliders input[type="range"]{ flex:1 1 44px; min-width:44px; }
+
+#euclid .eu-sliders .eu-num{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12px;
+  color:var(--eu-ink);
+  min-width:2ch;
+  text-align:right;
+  letter-spacing:0;
+}
+
+#euclid .eu-mute{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--eu-dim);
+  cursor:pointer;
+}
+
+/* ---------- footnotes ---------- */
+
+#euclid .eu-note{
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid var(--eu-line);
+  font-size:13px;
+  color:var(--eu-dim);
+}
+
+#euclid .eu-note a{ color:#8fb6ff; }
+
+#euclid .eu-foot{
+  margin-top:var(--space-s);
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* Shown only when the script never runs — the controls are inert without
+   it, so say so rather than leaving a dead panel. */
+#euclid .eu-nojs{
+  margin:var(--space-s) 0 0;
+  font-size:13px;
+  color:var(--muted);
+}
+#euclid.eu-ready .eu-nojs{ display:none; }
+
+@media (prefers-reduced-motion: reduce){
+  #euclid .eu-dot,
+  #euclid .eu-dot.is-fade{ transition:none; }
+  #euclid .eu-play[aria-pressed="true"] .eu-play-dot{ animation:none; }
+}
