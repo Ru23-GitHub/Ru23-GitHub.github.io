@@ -40,11 +40,18 @@
   canvas.width = W;
   canvas.height = H;
 
-  var trail = new Float32Array(CELLS);
-  var next = new Float32Array(CELLS);
-  var ax = new Float32Array(AGENTS);
-  var ay = new Float32Array(AGENTS);
-  var ah = new Float32Array(AGENTS);
+  /* Declared here, allocated on approach. Together these are about 1.7MB
+     of typed arrays, and there is no reason to pay for them at page load
+     when this section is five screens down. */
+  var trail, next, ax, ay, ah;
+
+  function allocate() {
+    trail = new Float32Array(CELLS);
+    next = new Float32Array(CELLS);
+    ax = new Float32Array(AGENTS);
+    ay = new Float32Array(AGENTS);
+    ah = new Float32Array(AGENTS);
+  }
 
   /* Wrap tables: the field is a torus, and looking these up beats a
      modulo in the inner loop. */
@@ -53,8 +60,12 @@
   for (var i = 0; i < W; i++) { xL[i] = (i - 1 + W) % W; xR[i] = (i + 1) % W; }
   for (var j = 0; j < H; j++) { yU[j] = (j - 1 + H) % H; yD[j] = (j + 1) % H; }
 
-  var image = ctx.createImageData(W, H);
-  var pixels = new Uint32Array(image.data.buffer);
+  var image, pixels;
+
+  function allocateImage() {
+    image = ctx.createImageData(W, H);
+    pixels = new Uint32Array(image.data.buffer);
+  }
 
   /* Endianness decides the byte order inside that Uint32 view. */
   var probe = new ArrayBuffer(4);
@@ -106,7 +117,17 @@
      Seeding
      ------------------------------------------------------------------ */
 
+  /* P and the readouts are set up at load (cheap); the field itself is
+     only painted once the arrays exist. */
+  function recomputeAllFromControls() {
+    FIELDS.forEach(function (f) {
+      var input = root.querySelector('[data-ctl="' + f[0] + '"]');
+      if (input) P[f[1]] = parseFloat(input.value);
+    });
+  }
+
   function reseed() {
+    if (!trail) return;
     trail.fill(0);
     next.fill(0);
     for (var n = 0; n < AGENTS; n++) {
@@ -120,6 +141,7 @@
   /* A blob of attractant. The agents have no special food-seeking
      behaviour — they follow trail, and this is just a lot of trail. */
   function feed(cx, cy, radius, strength) {
+    if (!trail) return;
     var r2 = radius * radius;
     for (var dy = -radius; dy <= radius; dy++) {
       var y = ((cy + dy) % H + H) % H, row = y * W;
@@ -201,6 +223,7 @@
   }
 
   function render() {
+    if (!trail || !pixels) return;
     for (var i = 0; i < CELLS; i++) {
       var v = trail[i];
       pixels[i] = LUT[v >= 1 ? 255 : (v * 255) | 0];
@@ -217,9 +240,10 @@
   var statusEl = root.querySelector('[data-sl="status"]');
   var frame = null;
   var running = false;
-  var onScreen = true;
-  var autoplay = true;    /* set once prefers-reduced-motion is read, below */
-  var started = false;
+  /* What the visitor wants, as distinct from whether it is currently
+     running: scrolling away pauses, scrolling back resumes only if they
+     had it going. */
+  var wantRunning = false;
 
   var reduced = window.matchMedia
     ? window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -253,25 +277,12 @@
   }
 
   playBtn.addEventListener('click', function () {
-    if (running) pause(''); else play();
+    if (running) { wantRunning = false; pause(''); }
+    else { wantRunning = true; play(); }
   });
 
-  /* Don't burn a CPU on a canvas nobody is looking at. */
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden && running) pause('Paused — tab was hidden.');
-  });
-
-  if (window.IntersectionObserver) {
-    new IntersectionObserver(function (entries) {
-      onScreen = entries[0].isIntersecting;
-      if (!onScreen && running) {
-        pause('');
-      } else if (onScreen && !running && autoplay && !started) {
-        started = true;
-        play();
-      }
-    }, { threshold: 0.2 }).observe(canvas);
-  }
+  /* Pausing off screen and on a hidden tab is Daily.whenVisible's job now
+     (js/lifecycle.js); this file used to carry its own copy of both. */
 
   /* ------------------------------------------------------------------
      Controls
@@ -439,18 +450,28 @@
 
   /* ------------------------------------------------------------------ */
 
-  reseed();
-
   /* Reduced motion: the whole piece is motion, so it does not start on
      its own — but the button still works, because choosing to watch it
      is different from having it thrust at you. */
-  autoplay = !reduced.matches;
+  var autoplay = !reduced.matches;
 
-  if (!autoplay) {
-    setStatus('Paused — your system asks for reduced motion. Press Grow when you want it.');
-  } else if (!window.IntersectionObserver) {
-    started = true;
-    play();
+  if (window.Daily && window.Daily.whenVisible) {
+    window.Daily.whenVisible(canvas, {
+      setup: function () {
+        allocate();
+        allocateImage();
+        reseed();
+        recomputeAllFromControls();
+        wantRunning = autoplay;
+        if (!autoplay) setStatus('Paused — your system asks for reduced motion. Press Grow when you want it.');
+      },
+      start: function () { if (wantRunning) play(); },
+      stop: function () { if (running) pause(''); }
+    });
+  } else {
+    allocate(); allocateImage(); reseed(); recomputeAllFromControls();
+    wantRunning = autoplay;
+    if (autoplay) play();
   }
 
   root.classList.add('sl-ready');

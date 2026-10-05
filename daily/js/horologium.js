@@ -178,20 +178,14 @@
   function start() { if (!timer) timer = setInterval(tick, 100); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
 
-  var visible = true;
-  if (window.IntersectionObserver) {
-    new IntersectionObserver(function (e) {
-      visible = e[0].isIntersecting;
-      if (visible && !document.hidden) { tick(); start(); } else stop();
-    }, { threshold: 0 }).observe(root);
+  if (window.Daily && window.Daily.whenVisible) {
+    window.Daily.whenVisible(root, {
+      start: function () { tick(); start(); },
+      stop: stop
+    });
   } else {
     start();
   }
-
-  document.addEventListener('visibilitychange', function () {
-    if (document.hidden) stop();
-    else if (visible) { tick(); start(); }
-  });
 
   root.classList.add('hr-ready');
 })();

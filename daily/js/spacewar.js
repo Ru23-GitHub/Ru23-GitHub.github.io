@@ -355,12 +355,14 @@
     reset(true); say('New game.'); if (!running) start(); canvas.focus();
   });
 
-  document.addEventListener('visibilitychange', function () { if (document.hidden && running) { stop(); say('Paused.'); } });
-
-  if (window.IntersectionObserver) {
-    new IntersectionObserver(function (e) {
-      if (!e[0].isIntersecting && running) { stop(); say('Paused.'); }
-    }, { threshold: 0 }).observe(canvas);
+  /* Pausing off screen and on a hidden tab comes from Daily.whenVisible
+     (js/lifecycle.js). A game deliberately does not auto-resume — coming
+     back to a match already in progress is how you lose one — so only
+     stop is wired. */
+  if (window.Daily && window.Daily.whenVisible) {
+    window.Daily.whenVisible(canvas, {
+      stop: function () { if (running) { stop(); say('Paused.'); } }
+    });
   }
 
   reset(true);

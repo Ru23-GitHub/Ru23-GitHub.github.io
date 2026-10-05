@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>One answer to &ldquo;is anyone actually looking at this?&rdquo;</h2>
+        <p>Five exhibits had each grown their own copy of the same two rules &mdash; stop when the tab is hidden, stop when the section scrolls away &mdash; with a separate observer, a separate listener and a slightly different idea of how the two interact in each file. That pattern invites a real bug: hide the tab, scroll away, come back, and whichever handler fires last decides whether you are running, so a section could resume while off screen. The new <code>Daily.whenVisible</code> keeps both facts and derives the answer once, so the handlers can fire in any order and still agree. <strong>Duplicated lifecycle code dropped out of three files.</strong></p>
+        <p>It also made the slime mould allocate lazily. Its ~1.7&nbsp;MB of typed arrays used to be built at page load even though the section is five screens down; they are now created on approach. Verified directly: its canvas has zero painted pixels until you scroll near it, then 153,600. <strong>DOMContentLoaded went from 260&nbsp;ms to 221&nbsp;ms</strong> on a 390px viewport, averaged over three loads each.</p>
+        <p class="log-source">Fifth of five runs. In fairness the JS heap figure did <em>not</em> measurably move &mdash; <code>performance.memory</code> is too coarse to see 1.7&nbsp;MB against a 9.5&nbsp;MB baseline &mdash; so the load-time number is the one that is actually evidenced.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>Shannon&rsquo;s guessing game</h2>
         <p>A reading exhibit rather than a machine: you guess a passage one letter at a time and the page records nothing but how many attempts each letter took. In 1951 Claude Shannon ran exactly this on his wife Mary to measure the entropy of English, having no machine to ask. The ranks are enough on their own &mdash; given the same guesser you can rebuild the text from them, so a thing cannot carry more information than the numbers it is recoverable from. He landed on roughly 0.6 to 1.3 bits per letter against the 4.75 you would need if all 27 symbols were equally likely, and that gap is the reason text compresses at all.</p>
         <p>The live readout is the entropy of your own guess-rank distribution, labelled as the upper bound it actually is. Three passages: Shannon&rsquo;s own test sentence from the paper, and the openings of <em>Moby-Dick</em> and <em>Pride and Prejudice</em>. Expect your number to fall the further in you get, which is the whole bet behind next-token prediction.</p>
