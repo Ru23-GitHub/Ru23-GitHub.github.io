@@ -1,14 +1,27 @@
-/* Theme — a dark mode for the whole page
+/* Theme — dark mode, with the elevation model fixed
    ----------------------------------------------------------------------
-   Added 2026-10-05, the first change made after the additive-only rule was
-   lifted. This one deliberately reaches across the entire page, which is
-   exactly what the old rule forbade.
+   Rewritten 2026-10-05.
 
-   Almost all of it is a redefinition of the custom properties style.css
-   already declares on :root, so every section that was written against
-   those variables — About, Contact, the footer, the banner — turns over
-   for free. The dark consoles (#shelf, #euclid, #slime) were already dark
-   and are left alone; what changes for them is the page around them.
+   The first version simply inverted the palette: --bg went dark, --bg-alt
+   went *lighter* than it. That was backwards, and it broke the page's one
+   consistent depth cue.
+
+   In light mode the page reads as: white body, slightly grey bands
+   (#contact, #horologium, #shannon, the banner, the footer) sitting a
+   step BACK, and white cards sitting on those bands a step FORWARD. The
+   Shannon board and its stat tiles are white-on-grey; the clock table is
+   white rows on a grey band.
+
+   With --bg-alt lighter than --bg in dark mode, every one of those
+   relationships flipped: the bands became the bright thing and the cards
+   on top of them became darker than their own background, so they read as
+   holes punched in the page rather than objects resting on it.
+
+   The rule this file now keeps, in both modes:
+
+       bands are darker than the page; cards are lighter than bands.
+
+   so --bg-alt is always a step DOWN from --bg, light or dark.
 
    Theme resolution order:
      1. an explicit choice stored by the toggle  -> [data-theme]
@@ -20,14 +33,17 @@
   --theme-swap: 240ms;
 }
 
-/* The shared dark palette, applied by either route. */
+/* The dark palette is written twice because CSS has no way to share a
+   declaration block between a media query and an attribute selector.
+   Keep the two in step. */
+
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0f1115;
-    --bg-alt:#15181f;
+    --bg:#141720;          /* the page, and anything raised onto a band */
+    --bg-alt:#0c0e13;      /* bands: a step back, as in light mode */
     --text:#e9ecf2;
     --muted:#9aa3b4;
-    --border:#272c37;
+    --border:#2b3142;
     --accent:#6e8cff;
     --accent-2:#ff6ef0;
     --shine-tint: rgba(180,205,255,.30);
@@ -35,11 +51,11 @@
 }
 
 :root[data-theme="dark"]{
-  --bg:#0f1115;
-  --bg-alt:#15181f;
+  --bg:#141720;
+  --bg-alt:#0c0e13;
   --text:#e9ecf2;
   --muted:#9aa3b4;
-  --border:#272c37;
+  --border:#2b3142;
   --accent:#6e8cff;
   --accent-2:#ff6ef0;
   --shine-tint: rgba(180,205,255,.30);
@@ -49,29 +65,70 @@ body{
   transition: background-color var(--theme-swap) ease, color var(--theme-swap) ease;
 }
 
-/* The hero's letter animation ends on the accent blue, which is too dark to
-   read against a near-black hero; land it on the lighter accent instead. */
+/* ---------- instrument panels ----------
+   The shared .panel gradient was tuned against a white page. On a dark
+   one its bottom stop (#11131a) lands within three points of the body
+   colour, so the panel dissolves into the page. Lift both stops so a
+   panel still reads as an object sitting on the page.
+
+   This deliberately does NOT reach #slime or #spacewar: their panels are
+   near-black on purpose — a petri dish and a CRT — and an ID selector in
+   their own files outranks this anyway. They get a rim instead, below. */
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .panel{
+    --panel-top:#2a3040;
+    --panel-bottom:#1c212c;
+    --panel-rim:rgba(255,255,255,.10);
+  }
+}
+:root[data-theme="dark"] .panel{
+  --panel-top:#2a3040;
+  --panel-bottom:#1c212c;
+  --panel-rim:rgba(255,255,255,.10);
+}
+
+/* The two panels that are meant to be darker than everything get an inner
+   hairline so their edges are findable against a dark page. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) #slime .sl-console,
+  :root:not([data-theme="light"]) #spacewar .sw-console{
+    box-shadow:
+      inset 0 0 0 1px rgba(255,255,255,.09),
+      0 18px 40px rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"] #slime .sl-console,
+:root[data-theme="dark"] #spacewar .sw-console{
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.09),
+    0 18px 40px rgba(0,0,0,.5);
+}
+
+/* ---------- specific repairs ---------- */
+
+/* The hero's letter animation lands on the accent blue, too dark to read
+   against a near-black hero. */
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]) #hero .gb .char{ color:#6e8cff; }
 }
 :root[data-theme="dark"] #hero .gb .char{ color:#6e8cff; }
 
-/* The resume button's hover darkened toward navy, which disappears on a dark
-   page; lighten it instead. */
-:root[data-theme="dark"] .btn:hover,
-:root[data-theme="dark"] .btn:focus-visible{ background:#9db3ff; color:#0f1115; }
+/* The resume button's hover darkened toward navy, which vanishes here. */
 @media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .btn{ color:#0f1115; }
   :root:not([data-theme="light"]) .btn:hover,
   :root:not([data-theme="light"]) .btn:focus-visible{ background:#9db3ff; color:#0f1115; }
 }
-
 :root[data-theme="dark"] .btn{ color:#0f1115; }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]) .btn{ color:#0f1115; }
-}
+:root[data-theme="dark"] .btn:hover,
+:root[data-theme="dark"] .btn:focus-visible{ background:#9db3ff; color:#0f1115; }
 
-/* The profile photo's drop shadow is invisible on dark; give it a rim. */
-:root[data-theme="dark"] .about-photo img{ box-shadow:0 8px 24px rgba(0,0,0,.5); }
+/* A drop shadow does nothing on a dark page; the photo needs an edge. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .about-photo img{ box-shadow:0 8px 24px rgba(0,0,0,.55); }
+}
+:root[data-theme="dark"] .about-photo img{ box-shadow:0 8px 24px rgba(0,0,0,.55); }
 
 /* ---------- the toggle, which lives in the footer ----------
    It was in the top banner, but its label cycles Auto/Light/Dark, so the
