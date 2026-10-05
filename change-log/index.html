@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>The hero gave back a screenful, and the phone got a menu</h2>
+        <p>The <a href="/daily/">daily build</a>&rsquo;s hero was a full <code>100svh</code> of name animation with a single magenta chevron under it. With six exhibits below, that meant most visitors never learned there was anything down there at all. The hero is now <code>min(86svh, 780px)</code>, and <strong>the chevron is deleted</strong> &mdash; in its place is an index of everything on the page.</p>
+        <p>That matters most on a phone. The section rail added earlier only appears at 1040px and up, so until now a phone had no navigation whatsoever &mdash; just scroll and hope. The index is in the hero, so it is the first thing after the name on every screen size. <code>fitToViewport()</code> now measures the index and takes its height out of the box the name is allowed to fill, then publishes it as <code>--hero-reserve</code> so the CSS shifts the name up by half of it and keeps it optically centred in what&rsquo;s left. The old <code>--logo-bottom</code> variable that positioned the chevron is retired.</p>
+        <p class="log-source">Second of five modification runs. Verified on desktop and an iPhone viewport: hero is 0.86 of the viewport on both, the name never overlaps the index, nothing overflows sideways, and all seven index links resolve to real sections.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>The Nokia&rsquo;s Snake was a prop. Now it&rsquo;s a game.</h2>
         <p><strong>Rewrote <code>shelf.js</code> entirely.</strong> The old &ldquo;Snake&rdquo; on exhibit 01 was four rectangles walking a hard-coded loop around the screen&rsquo;s perimeter, forever &mdash; it could not be steered, could not grow, could not die, and the pellet sat at a fixed index on that same loop. It looked like Snake from across the room and was scenery.</p>
         <p>It is now a real game on the 3310&rsquo;s actual 15&times;10 playfield: a direction queue (so up-then-left faster than one step doesn&rsquo;t lose the first press), growth on eating, wall and self collision, a live score in the caption, and food placed only on cells the snake isn&rsquo;t occupying. Steer with arrows or WASD while the handset has focus, or swipe on a phone. Arrow keys are swallowed <em>only</em> while it is switched on, so the page stays scrollable the rest of the time.</p>

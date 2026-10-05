@@ -28,7 +28,9 @@
   --shine-overscan: 40vw;
 
   position:relative;
-  height:100svh;
+  /* Was 100svh. With six exhibits below it, a full screen of name meant
+     most visitors never saw that there was anything under it. */
+  height:min(86svh, 780px);
   width:100%;
   overflow:hidden;
   isolation:isolate;
@@ -39,7 +41,11 @@
 
 /* Absolutely center, then scale */
 #hero .fitbox{
-  position:absolute; top:50%; left:50%;
+  position:absolute;
+  /* Nudged up by half the space the index occupies, so the name stays
+     optically centred in what's left rather than overlapping it. */
+  top:calc(50% - var(--hero-reserve, 0px) / 2);
+  left:50%;
   transform: translate(-50%,-50%) scale(1);
   transform-origin:center;
   will-change: transform;
@@ -129,22 +135,65 @@
 
 #hero .space{ display:inline-block; width:.4em; }
 
-/* Scroll-down affordance — styled after the pink "Nintendo" sub-brand text
-   under the GAME BOY logo: same real Nintendo font, magenta, sitting close
-   below the logo's actual rendered edge (--logo-bottom, set by
-   fitToViewport()). */
-#hero .scroll-cue{
-  position:absolute; left:50%;
-  top:calc(var(--logo-bottom, 60%) + clamp(28px, 6vh, 56px));
+/* The scroll cue — a lone magenta chevron — was deleted on 2026-10-05 and
+   replaced by the index below, which does the same job (there is more
+   page down there) while also saying what is down there, and is the only
+   navigation a phone gets: the rail is desktop-only. */
+
+#hero .hero-index{
+  position:absolute;
+  left:50%;
+  bottom:clamp(16px, 3.5vh, 34px);
   transform:translateX(-50%);
-  display:flex; align-items:center;
-  color:#ff3dee; text-decoration:none;
-  opacity:0; animation: cue-fade-in .6s ease-out 3s forwards;
+  width:min(92vw, 820px);
+  opacity:0;
+  animation:cue-fade-in .7s ease-out 2.6s forwards;
 }
-#hero .scroll-cue svg{
-  width:24px; height:24px;
+
+#hero .hero-index ol{
+  list-style:none;
+  margin:0; padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:6px 8px;
 }
-@keyframes cue-fade-in{ to{ opacity:.65 } }
+
+#hero .hero-index a{
+  display:inline-flex;
+  align-items:baseline;
+  gap:6px;
+  padding:5px 11px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--muted);
+  font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  font-size:12px;
+  letter-spacing:.06em;
+  text-decoration:none;
+  line-height:1.5;
+}
+
+#hero .hero-index a:hover,
+#hero .hero-index a:focus-visible{
+  color:var(--text);
+  border-color:var(--muted);
+  text-decoration:none;
+}
+
+#hero .hero-index a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+#hero .hero-index .ix-no{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:10px;
+  color:var(--accent);
+}
+
+@keyframes cue-fade-in{ to{ opacity:1 } }
 
 @media (prefers-reduced-motion: reduce){
   #hero .char{ animation:none; opacity:1 }
