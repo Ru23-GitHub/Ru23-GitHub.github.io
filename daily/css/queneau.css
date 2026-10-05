@@ -1,0 +1,305 @@
+/* One Hundred Trillion Sonnets — scoped under #queneau
+   ----------------------------------------------------------------------
+   Added 2026-10-05.
+
+   Queneau's book is a physical object: fourteen horizontal paper strips
+   per page, each cut free so you can flip one line without disturbing
+   the thirteen around it. Everything here is in service of that — the
+   hairlines between strips are the cuts, the strip lifts a millimetre
+   when you touch it, and the small monospace digit in the left gutter is
+   which of the ten strips is currently showing.
+
+   The type is a serif rather than the page's system sans. The other
+   exhibits on this page are instruments; this one is a book, and it
+   should not look like a control panel.
+
+   Nothing in this file selects outside #queneau. */
+
+#queneau .qn-intro{
+  max-width:62ch;
+  color:var(--muted);
+}
+
+#queneau .qn-machine{
+  margin-top:var(--space-m);
+  display:grid;
+  gap:var(--space-s);
+}
+
+/* ---------- the edition number ---------- */
+
+#queneau .qn-number{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:6px 10px;
+  margin:0;
+}
+
+#queneau .qn-num-k{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+#queneau .qn-num-v{
+  font-family:var(--mono);
+  font-size:clamp(17px, 3.4vw, 25px);
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.01em;
+  color:var(--accent);
+}
+
+#queneau .qn-num-of{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  font-variant-numeric:tabular-nums;
+  color:var(--muted);
+}
+
+/* ---------- the cut page ---------- */
+
+#queneau .qn-poem{
+  list-style:none;
+  margin:0;
+  padding:clamp(10px, 2.4vw, 20px) 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:var(--bg-alt);
+  counter-reset:qn;
+}
+
+#queneau .qn-strip{
+  display:grid;
+  grid-template-columns:2.4em 1fr 2.2em;
+  align-items:center;
+  gap:2px;
+}
+
+/* The cuts. Not on the first strip, so the band's own border does that job. */
+#queneau .qn-strip + .qn-strip{
+  border-top:1px dashed var(--border);
+  /* A touch lighter where color-mix is available; the line above is the
+     fallback, since a dropped declaration would lose the cuts entirely. */
+  border-top-color:color-mix(in srgb, var(--border) 85%, transparent);
+}
+
+#queneau .qn-digit{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  font-variant-numeric:tabular-nums;
+  text-align:center;
+  color:var(--muted);
+  opacity:.7;
+  user-select:none;
+}
+
+#queneau .qn-line{
+  /* a button that has to read as a line of verse */
+  appearance:none;
+  -webkit-appearance:none;
+  display:block;
+  width:100%;
+  margin:0;
+  padding:7px clamp(8px, 1.6vw, 14px);
+  border:0;
+  border-radius:var(--radius-sm);
+  background:transparent;
+  color:var(--text);
+  font-family:Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size:clamp(15px, 2.6vw, 18px);
+  line-height:1.5;
+  text-align:left;
+  cursor:pointer;
+  transition:background-color 140ms ease, transform 140ms ease, box-shadow 140ms ease;
+}
+
+#queneau .qn-line:hover{
+  background:var(--bg);
+  transform:translateX(3px);
+  box-shadow:0 1px 0 var(--border), 0 6px 14px rgba(0,0,0,.06);
+}
+
+#queneau .qn-line:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:1px;
+  background:var(--bg);
+}
+
+/* A held line keeps its own rule in the margin. */
+#queneau .qn-line.is-held{
+  background:var(--bg);
+  box-shadow:inset 3px 0 0 var(--accent);
+}
+
+/* The flip. A short wipe rather than a 3D card turn — the paper original
+   slides, it does not somersault. Gated in JS on prefers-reduced-motion,
+   and again here for anyone who has it set but no matchMedia. */
+@keyframes qn-flip{
+  0%   { opacity:0; transform:translateY(-6px); }
+  100% { opacity:1; transform:translateY(0); }
+}
+
+#queneau .qn-line.qn-flip{
+  animation:qn-flip 180ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce){
+  #queneau .qn-line{ transition:none; }
+  #queneau .qn-line:hover{ transform:none; }
+  #queneau .qn-line.qn-flip{ animation:none; }
+}
+
+/* ---------- the hold pin ---------- */
+
+#queneau .qn-lock{
+  appearance:none;
+  -webkit-appearance:none;
+  width:22px;
+  height:22px;
+  margin:0 auto;
+  padding:0;
+  display:grid;
+  place-items:center;
+  border:1px solid transparent;
+  border-radius:var(--radius-pill);
+  background:transparent;
+  cursor:pointer;
+  opacity:0;
+  transition:opacity 140ms ease, border-color 140ms ease;
+}
+
+#queneau .qn-lock-ico{
+  width:7px;
+  height:7px;
+  border-radius:var(--radius-pill);
+  background:var(--muted);
+}
+
+#queneau .qn-strip:hover .qn-lock,
+#queneau .qn-lock:focus-visible,
+#queneau .qn-lock[aria-pressed="true"]{
+  opacity:1;
+}
+
+#queneau .qn-lock[aria-pressed="true"]{
+  border-color:var(--accent);
+}
+
+#queneau .qn-lock[aria-pressed="true"] .qn-lock-ico{
+  background:var(--accent);
+}
+
+#queneau .qn-lock:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:1px;
+}
+
+/* Touch has no hover, so the pins would never appear. */
+@media (hover:none){
+  #queneau .qn-lock{ opacity:.75; }
+}
+
+/* ---------- controls ---------- */
+
+#queneau .qn-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+}
+
+#queneau .qn-btn{
+  appearance:none;
+  -webkit-appearance:none;
+  padding:8px 14px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-pill);
+  background:var(--bg);
+  color:var(--text);
+  font-family:inherit;
+  font-size:var(--fs-base);
+  cursor:pointer;
+  transition:border-color 140ms ease, color 140ms ease;
+}
+
+#queneau .qn-btn:hover,
+#queneau .qn-btn:focus-visible{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+#queneau .qn-btn:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:1px;
+}
+
+#queneau .qn-btn-primary{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+#queneau .qn-keys{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#queneau .qn-keys kbd{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  padding:1px 5px;
+  border:1px solid var(--border);
+  border-bottom-width:2px;
+  border-radius:4px;
+  background:var(--bg-alt);
+  color:var(--text);
+}
+
+#queneau .qn-status,
+#queneau .qn-tally{
+  margin:0;
+  min-height:1.4em;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#queneau .qn-note{
+  margin-top:var(--space-m);
+  max-width:62ch;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+/* Shown only while the strips are inert paper. */
+#queneau .qn-nojs{
+  margin:var(--space-s) 0 0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#queneau.qn-ready .qn-nojs{ display:none; }
+
+/* Before JS runs the fallback sonnet is plain <li> text, which should
+   still sit on the strip grid rather than jumping when it is replaced. */
+#queneau .qn-poem > li{
+  padding:0;
+}
+
+#queneau:not(.qn-ready) .qn-poem > li{
+  padding:7px clamp(8px, 1.6vw, 14px);
+  font-family:Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size:clamp(15px, 2.6vw, 18px);
+  line-height:1.5;
+}
+
+@media (max-width:520px){
+  #queneau .qn-strip{
+    grid-template-columns:1.8em 1fr 1.9em;
+  }
+  #queneau .qn-line{
+    padding-inline:8px;
+  }
+}

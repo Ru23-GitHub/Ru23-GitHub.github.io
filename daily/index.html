@@ -18,6 +18,7 @@
 <link rel="stylesheet" href="css/horologium.css" />
 <link rel="stylesheet" href="css/spacewar.css" />
 <link rel="stylesheet" href="css/shannon.css" />
+<link rel="stylesheet" href="css/queneau.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
    shows light for a frame and then snaps. Mirrors js/theme.js. */
@@ -41,6 +42,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <li><a href="#horologium"><span class="rail-label">Clocks</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#spacewar"><span class="rail-label">Spacewar</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#shannon"><span class="rail-label">Shannon</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#queneau"><span class="rail-label">Sonnets</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#contact"><span class="rail-label">Contact</span><span class="rail-dot" aria-hidden="true"></span></a></li>
     </ol>
   </nav>
@@ -63,6 +65,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <li><a href="#horologium"><span class="ix-no">04</span><span>Clocks</span></a></li>
           <li><a href="#spacewar"><span class="ix-no">05</span><span>Spacewar</span></a></li>
           <li><a href="#shannon"><span class="ix-no">06</span><span>Shannon</span></a></li>
+          <li><a href="#queneau"><span class="ix-no">07</span><span>Sonnets</span></a></li>
       </ol>
     </nav>
   </section>
@@ -664,6 +667,60 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="queneau">
+    <div class="container">
+      <header class="exhibit-head reveal">
+        <p class="exhibit-meta">
+          <span class="exhibit-no">07</span>
+          <span class="exhibit-kicker">Queneau</span>
+          <time datetime="2026-10-05">5 Oct 2026</time>
+          <a class="exhibit-log" href="/change-log/">log &rarr;</a>
+        </p>
+        <h2>One Hundred Trillion Sonnets</h2>
+      </header>
+
+      <p class="qn-intro reveal">In 1961 Raymond Queneau printed ten sonnets and then had the printer cut every page into fourteen horizontal strips, one per line. Because all ten share a rhyme scheme <em>and</em> the same rhyme sounds in the same positions, any line can stand in for the line at its own position in any other sonnet &mdash; so you flip the strips and keep reading. Ten choices, fourteen times over: 10<sup>14</sup> sonnets out of 140 printed lines, which his preface works out at roughly <span data-qn="centuries">1,425,964</span> centuries of reading. The lines below are mine rather than his, written to the same constraint; ten sonnets about a building that carries on working after everybody has gone home.</p>
+
+      <div class="qn-machine">
+        <p class="qn-number" data-qn="number"></p>
+
+        <ol class="qn-poem" data-qn="poem">
+        <li>The last one out has left the stairwell light,</li>
+        <li>and down the empty avenue, the rain.</li>
+        <li>The racks blink amber, orderly and bright,</li>
+        <li>and no one here to tally up the gain.</li>
+        <li>It does not need an audience to be right,</li>
+        <li>in doing work that nobody will explain.</li>
+        <li>It goes about the task with all its might,</li>
+        <li>a small, unvisited, unwatched domain.</li>
+        <li>The night is long, the increments are slow,</li>
+        <li>and that is all there is to it, though,</li>
+        <li>and morning comes in on a different sound.</li>
+        <li>It has no way of telling that it is time,</li>
+        <li>and nothing in the gesture is profound,</li>
+        <li>though nobody would call the thing sublime.</li>
+        </ol>
+
+        <div class="qn-row">
+          <button class="qn-btn qn-btn-primary" type="button" data-qn="shuffle">Shuffle the strips</button>
+          <button class="qn-btn" type="button" data-qn="prev">&larr; Previous</button>
+          <button class="qn-btn" type="button" data-qn="next">Next &rarr;</button>
+          <button class="qn-btn" type="button" data-qn="first">An original</button>
+          <button class="qn-btn" type="button" data-qn="copy">Copy link</button>
+        </div>
+
+        <p class="qn-keys">Click a line for its next variant, <kbd>Shift</kbd>-click for the previous one. With a line focused: <kbd>&larr;</kbd> <kbd>&rarr;</kbd> to change it, <kbd>&uarr;</kbd> <kbd>&darr;</kbd> to move between lines, <kbd>L</kbd> to hold it while the rest shuffle.</p>
+
+        <p class="qn-tally" data-qn="tally"></p>
+        <p class="qn-status" data-qn="status" role="status"></p>
+      </div>
+
+      <p class="qn-nojs">The strips need JavaScript to flip. Above is sonnet number one of the hundred trillion.</p>
+
+      <p class="qn-note reveal-tail">The pleasing accident of the format: fourteen digits of 0&ndash;9 is simply a base-10 number, so the strip settings <em>are</em> the sonnet&rsquo;s number in the complete edition &mdash; which makes the number the permalink and the permalink the number. The constraint that makes any combination readable is mostly punctuation: sentences close at lines 2, 4, 6, 8, 11 and 14, every line is a self-contained clause, and no two positions sharing a rhyme sound ever reuse a rhyme word. The ten sonnets as printed are the ten settings where all fourteen strips agree; &ldquo;An original&rdquo; finds one. <a href="https://en.wikipedia.org/wiki/Hundred_Thousand_Billion_Poems" target="_blank" rel="noopener">Queneau&rsquo;s original</a> is still in print, and still has to be read with your fingers.</p>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <h2 class="reveal">Contact Me</h2>
@@ -698,6 +755,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/horologium.js"></script>
 <script src="js/spacewar.js"></script>
 <script src="js/shannon.js"></script>
+<script src="js/queneau.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
