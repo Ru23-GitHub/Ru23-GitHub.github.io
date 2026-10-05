@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="css/exhibit.css" />
 <link rel="stylesheet" href="css/horologium.css" />
 <link rel="stylesheet" href="css/spacewar.css" />
+<link rel="stylesheet" href="css/shannon.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
    shows light for a frame and then snaps. Mirrors js/theme.js. */
@@ -39,6 +40,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <li><a href="#slime"><span class="rail-label">Physarum</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#horologium"><span class="rail-label">Clocks</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#spacewar"><span class="rail-label">Spacewar</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#shannon"><span class="rail-label">Shannon</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#contact"><span class="rail-label">Contact</span><span class="rail-dot" aria-hidden="true"></span></a></li>
     </ol>
   </nav>
@@ -609,6 +611,53 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="shannon">
+    <div class="container">
+      <header class="exhibit-head reveal">
+        <p class="exhibit-meta">
+          <span class="exhibit-no">06</span>
+          <span class="exhibit-kicker">Shannon</span>
+          <time datetime="2026-10-05">5 Oct 2026</time>
+          <a class="exhibit-log" href="/change-log/">log &rarr;</a>
+        </p>
+        <h2>Guess The Next Letter</h2>
+      </header>
+      <p class="sh-intro reveal">In 1951 Claude Shannon wanted to know how much information an English letter actually carries. Having no machine to ask, he used his wife Mary: he showed her a text one letter at a time, had her guess what came next, and wrote down nothing but how many attempts each letter took. The numbers turn out to be enough &mdash; given the same guesser you can rebuild the text from the ranks alone, so measuring their entropy bounds the entropy of English without ever modelling English. He got about 0.6 to 1.3 bits per letter, against the 4.75 you would need if all 27 symbols were equally likely. That gap is why text compresses. You are Mary.</p>
+
+      <div class="sh-board">
+        <p class="sh-cite" data-sh="cite"></p>
+        <p class="sh-text" data-sh="text"></p>
+        <p class="sh-tried" data-sh="tried" hidden></p>
+
+        <div class="sh-row">
+          <label class="sh-label" for="sh-key">Your guess</label>
+          <input class="sh-key" id="sh-key" data-sh="input" type="text" maxlength="1"
+                 autocomplete="off" autocorrect="off" autocapitalize="characters" spellcheck="false"
+                 aria-label="Type your guess for the next letter, or press space" />
+          <button class="sh-btn" type="button" data-sh="skip">Reveal letter</button>
+          <button class="sh-btn" type="button" data-sh="reset">Restart</button>
+          <select class="sh-select" data-sh="passage" aria-label="Passage">
+            <option value="shannon" selected>Shannon&rsquo;s own test sentence</option>
+            <option value="melville">Melville, Moby-Dick</option>
+            <option value="austen">Austen, Pride and Prejudice</option>
+          </select>
+        </div>
+
+        <p class="sh-status" data-sh="status" role="status"></p>
+      </div>
+
+      <ol class="sh-stats reveal-stagger">
+        <li><span class="sh-stat-k">Letters done</span><span class="sh-stat-v" data-stat="letters">0</span></li>
+        <li><span class="sh-stat-k">Guesses each</span><span class="sh-stat-v" data-stat="avg">&mdash;</span></li>
+        <li><span class="sh-stat-k">Right first try</span><span class="sh-stat-v" data-stat="first">&mdash;</span></li>
+        <li><span class="sh-stat-k">Bits per letter</span><span class="sh-stat-v" data-stat="bits">&mdash;</span></li>
+      </ol>
+
+      <p class="sh-nojs">This one needs JavaScript.</p>
+      <p class="sh-note reveal-tail">&ldquo;Bits per letter&rdquo; is the entropy of your guess-rank distribution, which is an <em>upper</em> bound on the entropy of the text: the passage is recoverable from the ranks, and a thing cannot carry more information than something it can be derived from. Revealing a letter counts as the worst case, 27. Expect the number to fall as you get further in &mdash; the more context you have, the cheaper the next letter gets, which is the entire bet behind next-token prediction.</p>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <h2 class="reveal">Contact Me</h2>
@@ -641,6 +690,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/rail.js"></script>
 <script src="js/horologium.js"></script>
 <script src="js/spacewar.js"></script>
+<script src="js/shannon.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
