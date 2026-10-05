@@ -7,6 +7,28 @@
   --accent:#1733ff;   /* echoes the final color in the hero's letter animation */
   --accent-2:#ff3dee;
 
+  /* ---- design tokens, added 2026-10-05 ----
+     Before this, the monospace stack was written out 17 times across the
+     stylesheets, text-transform:uppercase 17 times, font-size:13px 19
+     times, and so on — six exhibits each inventing the same small-caps
+     label from scratch. The values below are exactly what was already
+     being used; what changes is that there is now one copy of each. */
+
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --display: 'GameBoy', system-ui, sans-serif;
+
+  --fs-xs: 11px;      /* the smallest labels and kbd keys */
+  --fs-sm: 12px;      /* small-caps section labels */
+  --fs-md: 13px;      /* footnotes, captions, status lines */
+  --fs-base: 14px;    /* controls */
+
+  --track-wide: .1em; /* the tracking that goes with small-caps labels */
+
+  --radius-sm: 9px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-pill: 999px;
+
   --container: clamp(320px, 90vw, 960px);
   --space-s: clamp(8px, 2vw, 16px);
   --space-m: clamp(20px, 5vw, 40px);
@@ -53,7 +75,7 @@ a:hover, a:focus-visible{ text-decoration:underline; }
 }
 
 h1, h2, h3{
-  font-family:'GameBoy',system-ui,sans-serif;
+  font-family:var(--display);
   font-weight:400;
   letter-spacing:.02em;
   line-height:1.15;
@@ -69,7 +91,7 @@ p{ margin:0 0 var(--space-s); color:var(--text); }
 
 .section-kicker{
   display:block;
-  font-size:12px;
+  font-size:var(--fs-sm);
   letter-spacing:.14em;
   text-transform:uppercase;
   color:var(--muted);
@@ -126,11 +148,11 @@ p{ margin:0 0 var(--space-s); color:var(--text); }
   display:inline-block;
   margin-top:var(--space-s);
   padding:10px 24px;
-  border-radius:999px;
+  border-radius:var(--radius-pill);
   background:var(--accent);
   color:#fff;
   font-weight:600;
-  font-size:14px;
+  font-size:var(--fs-base);
   letter-spacing:.02em;
   text-decoration:none;
   transition:background-color .15s ease;
@@ -149,9 +171,9 @@ p{ margin:0 0 var(--space-s); color:var(--text); }
 }
 .skills-list li{
   border:1px solid var(--border);
-  border-radius:999px;
+  border-radius:var(--radius-pill);
   padding:6px 14px;
-  font-size:14px;
+  font-size:var(--fs-base);
   color:var(--muted);
 }
 
@@ -172,7 +194,7 @@ footer{
   padding:var(--space-m) var(--space-s);
   text-align:center;
   color:var(--muted);
-  font-size:13px;
+  font-size:var(--fs-md);
   background:var(--bg-alt);
   border-top:1px solid var(--border);
 }
@@ -190,7 +212,7 @@ footer a:hover, footer a:focus-visible{ color:var(--accent); }
   justify-content:center;
   padding:10px var(--space-s);
   text-align:center;
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--muted);
   background:var(--bg-alt);
   border-bottom:1px solid var(--border);

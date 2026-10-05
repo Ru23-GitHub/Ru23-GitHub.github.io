@@ -43,7 +43,7 @@
 
 #slime .sl-stage{
   position:relative;
-  border-radius:12px;
+  border-radius:var(--radius-md);
   overflow:hidden;
   background:#07060a;
   border:1px solid var(--sl-line);
@@ -63,7 +63,7 @@
 #slime .sl-status{
   min-height:1.4em;
   margin:9px 2px 0;
-  font-size:12px;
+  font-size:var(--fs-sm);
   color:var(--sl-dim);
 }
 
@@ -93,8 +93,8 @@
   display:flex;
   align-items:center;
   gap:9px;
-  font-size:11px;
-  letter-spacing:.1em;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
   color:var(--sl-dim);
 }
@@ -109,7 +109,7 @@
   margin:14px 0 0;
   padding-top:14px;
   border-top:1px solid var(--sl-line);
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--sl-dim);
 }
 
@@ -117,13 +117,13 @@
 
 #slime .sl-foot{
   margin-top:var(--space-s);
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--muted);
 }
 
 #slime .sl-nojs{
   margin:var(--space-s) 0 0;
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--muted);
 }
 #slime.sl-ready .sl-nojs{ display:none; }
@@ -133,8 +133,8 @@
   display:flex;
   align-items:center;
   gap:7px;
-  font-size:11px;
-  letter-spacing:.1em;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
   color:var(--sl-dim);
   cursor:pointer;

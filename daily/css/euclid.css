@@ -25,7 +25,7 @@
 }
 
 #euclid .eu-intro code{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-family:var(--mono);
   font-size:.92em;
   background:var(--bg-alt);
   border:1px solid var(--border);
@@ -75,8 +75,8 @@
   display:flex;
   align-items:center;
   gap:9px;
-  font-size:12px;
-  letter-spacing:.1em;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
   color:var(--eu-dim);
 }
@@ -86,8 +86,8 @@
 }
 
 #euclid .eu-readout{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:12px;
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
   letter-spacing:0;
   color:var(--eu-ink);
   min-width:3.4em;
@@ -152,7 +152,7 @@
 }
 
 #euclid .eu-ring-tag{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-family:var(--mono);
   font-size:8px;
   letter-spacing:.16em;
   fill:var(--eu-dim);
@@ -166,9 +166,9 @@
 }
 
 #euclid .eu-cycle-cap{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-family:var(--mono);
   font-size:7.5px;
-  letter-spacing:.1em;
+  letter-spacing:var(--track-wide);
   fill:var(--eu-dim);
   text-transform:uppercase;
 }
@@ -185,7 +185,7 @@
 
 #euclid .eu-track{
   padding:12px 14px;
-  border-radius:12px;
+  border-radius:var(--radius-md);
   border:1px solid var(--eu-line);
   border-left:3px solid var(--eu-hue);
   background:rgba(255,255,255,.025);
@@ -203,14 +203,14 @@
 
 #euclid .eu-track-name{
   font-family:'GameBoy',ui-monospace,monospace;
-  font-size:14px;
+  font-size:var(--fs-base);
   letter-spacing:.04em;
   color:var(--eu-ink);
 }
 
 #euclid .eu-pattern{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:13px;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
   letter-spacing:.14em;
   color:var(--eu-hue);
   word-break:break-all;
@@ -218,8 +218,8 @@
 }
 
 #euclid .eu-notation{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:11px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
   color:var(--eu-dim);
 }
 
@@ -234,8 +234,8 @@
   display:flex;
   align-items:center;
   gap:8px;
-  font-size:11px;
-  letter-spacing:.1em;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
   color:var(--eu-dim);
 }
@@ -248,8 +248,8 @@
   display:flex;
   align-items:center;
   gap:7px;
-  font-size:11px;
-  letter-spacing:.1em;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
   color:var(--eu-dim);
   cursor:pointer;
@@ -261,7 +261,7 @@
   margin-top:14px;
   padding-top:14px;
   border-top:1px solid var(--eu-line);
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--eu-dim);
 }
 
@@ -269,7 +269,7 @@
 
 #euclid .eu-foot{
   margin-top:var(--space-s);
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--muted);
 }
 
@@ -277,7 +277,7 @@
    it, so say so rather than leaving a dead panel. */
 #euclid .eu-nojs{
   margin:var(--space-s) 0 0;
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--muted);
 }
 #euclid.eu-ready .eu-nojs{ display:none; }

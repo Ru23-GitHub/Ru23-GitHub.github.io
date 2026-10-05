@@ -67,8 +67,8 @@
   padding:5px 2px;
   text-decoration:none;
   color:var(--muted);
-  font-size:11px;
-  letter-spacing:.1em;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
 }
 

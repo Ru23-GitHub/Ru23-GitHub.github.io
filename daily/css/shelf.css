@@ -58,7 +58,7 @@
   background:none;
   border:0;
   border-bottom:1px solid rgba(255,255,255,.09);
-  border-radius:12px 12px 0 0;
+  border-radius:var(--radius-md) 12px 0 0;
   cursor:pointer;
   color:inherit;
   font:inherit;
@@ -101,21 +101,21 @@
 .device-cap{
   margin:10px 0 0;
   color:#aeb6c4;
-  font-size:13px;
+  font-size:var(--fs-md);
   line-height:1.5;
 }
 .device-cap strong{
   display:block;
   color:#fff;
-  font-family:'GameBoy', system-ui, sans-serif;
+  font-family:var(--display);
   font-weight:400;
-  font-size:12px;
+  font-size:var(--fs-sm);
   letter-spacing:.03em;
 }
 .device-year{
   display:block;
   margin:2px 0 6px;
-  font-size:11px;
+  font-size:var(--fs-xs);
   letter-spacing:.14em;
   color:#6f7786;
 }
@@ -123,7 +123,7 @@
 
 .shelf-foot{
   margin:var(--space-s) 0 0;
-  font-size:12px;
+  font-size:var(--fs-sm);
   color:var(--muted);
 }
 
@@ -244,7 +244,7 @@
 
 @media (max-width:420px){
   .shelf-case{ gap:20px 14px; }
-  .device-note{ font-size:12px; }
+  .device-note{ font-size:var(--fs-sm); }
 }
 
 /* ---------- Snake, rewritten 2026-10-05 ----------
@@ -253,7 +253,7 @@
    red flash when you crash. */
 
 .device-score{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-family:var(--mono);
   font-variant-numeric:tabular-nums;
   font-weight:400;
   color:#9fd27a;

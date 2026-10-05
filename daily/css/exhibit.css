@@ -26,18 +26,18 @@
   align-items:baseline;
   gap:6px 12px;
   margin:0 0 6px;
-  font-size:12px;
+  font-size:var(--fs-sm);
   letter-spacing:.12em;
   text-transform:uppercase;
   color:var(--muted);
 }
 
 .exhibit-no{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:11px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
   letter-spacing:.04em;
   padding:2px 7px;
-  border-radius:999px;
+  border-radius:var(--radius-pill);
   border:1px solid var(--border);
   color:var(--accent);
 }
@@ -53,8 +53,8 @@
    across all three exhibits regardless of kicker length. */
 .exhibit-log{
   margin-inline-start:auto;
-  font-size:11px;
-  letter-spacing:.1em;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
 }
 
 .exhibit-head h2{ margin:0; }

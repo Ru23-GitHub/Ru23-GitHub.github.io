@@ -140,12 +140,12 @@ body{
   vertical-align:middle;
   margin-inline-start:10px;
   font:inherit;
-  font-size:12px;
+  font-size:var(--fs-sm);
   display:inline-flex;
   align-items:center;
   gap:6px;
   padding:4px 11px;
-  border-radius:999px;
+  border-radius:var(--radius-pill);
   border:1px solid var(--border);
   background:var(--bg);
   color:var(--muted);

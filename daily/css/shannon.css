@@ -23,15 +23,15 @@
 }
 
 #shannon .sh-cite{
-  font-size:12px;
-  letter-spacing:.1em;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
   color:var(--muted);
   margin:0 0 10px;
 }
 
 #shannon .sh-text{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-family:var(--mono);
   font-size:clamp(14px, 2.5vw, 17px);
   line-height:1.9;
   letter-spacing:.06em;
@@ -55,8 +55,8 @@
 }
 
 #shannon .sh-tried{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:13px;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
   letter-spacing:.22em;
   color:#c2403f;
   margin:0 0 12px;
@@ -78,12 +78,12 @@
 
 #shannon .sh-key{
   width:3.2em;
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-family:var(--mono);
   font-size:20px;
   text-align:center;
   text-transform:uppercase;
   padding:8px 4px;
-  border-radius:9px;
+  border-radius:var(--radius-sm);
   border:1px solid var(--muted);
   background:var(--bg);
   color:var(--text);
@@ -97,8 +97,8 @@
 #shannon .sh-key:disabled{ opacity:.4; }
 
 #shannon .sh-label{
-  font-size:12px;
-  letter-spacing:.1em;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
   color:var(--muted);
 }
@@ -106,9 +106,9 @@
 #shannon .sh-btn,
 #shannon .sh-select{
   font:inherit;
-  font-size:14px;
+  font-size:var(--fs-base);
   padding:8px 12px;
-  border-radius:9px;
+  border-radius:var(--radius-sm);
   border:1px solid var(--border);
   background:var(--bg);
   color:var(--text);
@@ -123,7 +123,7 @@
 #shannon .sh-status{
   min-height:1.4em;
   margin:12px 0 0;
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--muted);
 }
 
@@ -147,8 +147,8 @@
 
 #shannon .sh-stat-k{
   display:block;
-  font-size:11px;
-  letter-spacing:.1em;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
   text-transform:uppercase;
   color:var(--muted);
   margin-bottom:3px;
@@ -156,7 +156,7 @@
 
 #shannon .sh-stat-v{
   display:block;
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-family:var(--mono);
   font-variant-numeric:tabular-nums;
   font-size:21px;
   color:var(--accent);
@@ -164,14 +164,14 @@
 
 #shannon .sh-note{
   margin:var(--space-m) 0 0;
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--muted);
   max-width:62ch;
 }
 
 #shannon .sh-nojs{
   margin:var(--space-s) 0 0;
-  font-size:13px;
+  font-size:var(--fs-md);
   color:var(--muted);
 }
 #shannon.sh-ready .sh-nojs{ display:none; }

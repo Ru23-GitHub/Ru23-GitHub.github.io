@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>One scale instead of a hundred literals</h2>
+        <p>Fourteen stylesheets had accumulated, and six exhibits had each invented the same small details from scratch: the monospace font stack was written out <strong>17 times</strong>, <code>font-size:13px</code> <strong>19 times</strong>, <code>text-transform:uppercase</code> 17, <code>letter-spacing:.1em</code> 14. Nothing was wrong with any of them individually; collectively it meant the page had no type scale, just a hundred independent decisions that happened to agree.</p>
+        <p>Added font, size, tracking and radius tokens to <code>:root</code> and <strong>replaced 101 literal values across twelve files</strong> with them. The values are exactly what was already in use &mdash; the point is that there is now one copy of each, so the page&rsquo;s type scale is a thing you can change rather than a thing you&rsquo;d have to hunt.</p>
+        <p class="log-source">Fourth of five modification runs, and a pure refactor: 25 elements were snapshotted across both light and dark before the change and compared after &mdash; 50 computed-style comparisons, zero differences. If a refactor like this shows up as even one pixel of difference, it wasn&rsquo;t a refactor.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>Dark mode had its depth cue backwards</h2>
         <p><strong>Rewrote <code>theme.css</code>.</strong> The first dark mode simply inverted the palette, which made <code>--bg-alt</code> <em>lighter</em> than <code>--bg</code> &mdash; and that quietly broke the one consistent depth cue the page has. In light mode the page is white, the banded sections (Contact, the clocks, Shannon, the banner, the footer) sit a step back in grey, and cards rest on those bands in white, a step forward. With the palette inverted, every one of those relationships flipped: bands became the bright thing and the cards on them became <em>darker</em> than their own background, so the Shannon board and its four stat tiles read as holes punched in the page instead of objects resting on it.</p>
         <p>The rule now held in both modes is simply <em>bands are darker than the page; cards are lighter than bands</em>. Measured by luminance: light mode page 255, band 247, card 255; dark mode page 23, band 14, card 23 &mdash; same direction, both times. The shared panel gradient was also tuned against a white page and its bottom stop landed within three points of the dark body colour, so panels dissolved into the background; they are lifted in dark mode to sit above it. The two panels that are meant to be near-black &mdash; the slime mould&rsquo;s dish and Spacewar&rsquo;s CRT &mdash; keep their colour and get an inner hairline instead, so their edges are findable.</p>
