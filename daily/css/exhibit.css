@@ -6,30 +6,15 @@
    a portfolio.
 
    This replaces the loose kicker + heading in #shelf, #euclid and #slime
-   with one dated header, and puts a short lead-in above the first of them.
-   Structure, not decoration: it is what makes the pile legible as a pile. */
+   with one dated header. Structure, not decoration: the dates are what
+   make the pile legible as a pile.
 
-.exhibit-lead{
-  border-top:1px solid var(--border);
-  background:var(--bg-alt);
-}
-
-.exhibit-lead .container{
-  padding-block:var(--space-m);
-}
-
-.exhibit-lead h2{
-  font-size:clamp(18px, 2.6vw, 24px);
-  color:var(--text);
-}
-
-.exhibit-lead p{
-  max-width:60ch;
-  color:var(--muted);
-  margin:0;
-}
-
-/* ---------- the per-exhibit header ---------- */
+   A grey lead-in band used to sit above the first exhibit carrying the
+   "nothing here is reviewed by a human" disclosure. It was removed on
+   request — it read as an alert box and its heading rendered in body
+   colour while every other h2 on the page is accent blue. The disclosure
+   now lives in the top banner, where it is seen on every screen rather
+   than only by people who scroll past About. */
 
 .exhibit-head{
   margin-bottom:var(--space-s);

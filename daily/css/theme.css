@@ -73,9 +73,15 @@ body{
 /* The profile photo's drop shadow is invisible on dark; give it a rim. */
 :root[data-theme="dark"] .about-photo img{ box-shadow:0 8px 24px rgba(0,0,0,.5); }
 
-/* ---------- the toggle, which lives in the banner ---------- */
+/* ---------- the toggle, which lives in the footer ----------
+   It was in the top banner, but its label cycles Auto/Light/Dark, so the
+   banner reflowed every time it was pressed. The header is meant to be the
+   one fixed thing on a page that rebuilds itself daily, so the toggle moved
+   to the footer, where the width change costs nothing. */
 
 .theme-toggle{
+  vertical-align:middle;
+  margin-inline-start:10px;
   font:inherit;
   font-size:12px;
   display:inline-flex;
