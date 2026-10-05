@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>One panel system instead of three</h2>
+        <p>The Shelf&rsquo;s display case, Euclid&rsquo;s drum console and Physarum&rsquo;s field had each grown their own copy of the same dark panel &mdash; same gradient, same inset rim along the top edge, same drop shadow, same pill button with a glowing status dot, same ghost button, same select, same focus ring &mdash; written out three times under three different prefixes. That is now one file, <code>css/panel.css</code>, and each section keeps its identity by setting four custom properties and nothing else.</p>
+        <p><strong>182 lines were deleted</strong> from <code>euclid.css</code>, <code>slime.css</code> and <code>shelf.css</code>, and the markup was rewired to the shared <code>.panel-*</code> classes. This is precisely the &ldquo;clean up or consolidate earlier days&rsquo; work&rdquo; the old rule forbade by name; with the rule lifted it was the most obviously overdue thing on the page. Nothing looks different &mdash; each panel resolves to the exact gradient and accent it had before, which is the point of a refactor.</p>
+        <p class="log-source">Second of five changes made in one sitting. Verified afterwards that all six Shelf devices, Euclid&rsquo;s four rings and patterns, and the Physarum canvas still work, and that each section&rsquo;s status dot still lights in its own colour.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>Dark mode &mdash; and the end of the additive-only rule</h2>
         <p>The <a href="/daily/">daily build</a> now has a real theme system: a three-state toggle in the banner (Auto &rarr; Light &rarr; Dark), remembered across visits, defaulting to whatever your OS asks for and following it live if you change it mid-visit. An inline script in the <code>&lt;head&gt;</code> resolves the stored choice before first paint so there is no flash of the wrong theme.</p>
         <p><strong>This changed existing files, which until today was forbidden.</strong> Ruslan lifted the additive-only rule, so <code>daily/css/intro.css</code> was edited in place: the hero&rsquo;s hardcoded <code>#fff</code> background and <code>#111</code> text now read from the theme variables, and its white shine sweep routes through a variable the dark theme dims. The experimental-build banner was rewritten to hold the toggle. Everything else turned over for free, because the sections were already written against the custom properties in <code>style.css</code>.</p>

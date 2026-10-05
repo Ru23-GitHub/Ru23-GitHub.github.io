@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="css/intro.css" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/reveal.css" />
+<link rel="stylesheet" href="css/panel.css" />
 <link rel="stylesheet" href="css/shelf.css" />
 <link rel="stylesheet" href="css/euclid.css" />
 <link rel="stylesheet" href="css/slime.css" />
@@ -76,7 +77,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <h2 class="reveal">Things That Booted</h2>
       <p class="shelf-intro reveal">Ruslan collects retro tech, so here is a case of it. Six machines that taught a lot of people what a computer was supposed to feel like &mdash; switch one on.</p>
 
-      <ul class="shelf-case reveal-stagger">
+      <ul class="shelf-case panel reveal-stagger">
 
         <li class="shelf-item">
           <button class="device" type="button" aria-pressed="false" data-device="gameboy">
@@ -245,29 +246,29 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <h2 class="reveal">A Drum Machine Made Of Long Division</h2>
       <p class="eu-intro reveal">Ask for <em>k</em> beats spread as evenly as possible across <em>n</em> slots and the answer falls out of Euclid&rsquo;s 2,300-year-old algorithm for the greatest common divisor. The strange part is what comes back. <code>E(3,8)</code> is the Cuban tresillo. <code>E(7,12)</code> is a West African bemb&eacute; bell. <code>E(4,9)</code> is a Turkish aksak. Nobody designed these from the maths &mdash; the maths just keeps landing on rhythms people were already playing. Four rings below, one per voice. Each keeps its own step count, so an eight against a nine drifts instead of locking.</p>
 
-      <div class="eu-console">
+      <div class="eu-console panel">
 
         <div class="eu-transport">
-          <button class="eu-play" type="button" data-eu="play" aria-pressed="false">
-            <span class="eu-play-dot" aria-hidden="true"></span>
+          <button class="eu-play panel-btn" type="button" data-eu="play" aria-pressed="false">
+            <span class="panel-dot" aria-hidden="true"></span>
             <span data-eu="play-label">Play</span>
           </button>
 
           <span class="eu-knob">
             <label for="eu-tempo">Tempo</label>
             <input id="eu-tempo" data-eu="tempo" type="range" min="50" max="180" step="1" value="98" />
-            <span class="eu-readout" data-eu="tempo-out">98 bpm</span>
+            <span class="eu-readout panel-num" data-eu="tempo-out">98 bpm</span>
           </span>
 
           <span class="eu-knob">
             <label for="eu-volume">Level</label>
             <input id="eu-volume" data-eu="volume" type="range" min="0" max="100" step="1" value="70" />
-            <span class="eu-readout" data-eu="volume-out">70%</span>
+            <span class="eu-readout panel-num" data-eu="volume-out">70%</span>
           </span>
 
-          <span class="eu-field">
+          <span class="eu-field panel-field">
             <label for="eu-preset"><span>Pattern</span></label>
-            <select class="eu-select" id="eu-preset" data-eu="preset">
+            <select class="panel-select" id="eu-preset" data-eu="preset">
             <option value="tresillo" selected>Tresillo &mdash; Cuba, E(3,8)</option>
             <option value="cinquillo">Cinquillo &mdash; Cuba, E(5,8)</option>
             <option value="bembe">Bemb&eacute; &mdash; West Africa, E(7,12)</option>
@@ -280,7 +281,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             </select>
           </span>
 
-          <button class="eu-ghost" type="button" data-eu="random">Randomise</button>
+          <button class="panel-ghost" type="button" data-eu="random">Randomise</button>
         </div>
 
         <div class="eu-body">
@@ -296,15 +297,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <div class="eu-sliders">
             <label for="eu-kick-steps">Steps
               <input id="eu-kick-steps" data-ctl="steps" type="range" min="2" max="16" step="1" value="8" />
-              <span class="eu-num" data-out="steps">8</span>
+              <span class="panel-num" data-out="steps">8</span>
             </label>
             <label for="eu-kick-pulses">Onsets
               <input id="eu-kick-pulses" data-ctl="pulses" type="range" min="0" max="8" step="1" value="3" />
-              <span class="eu-num" data-out="pulses">3</span>
+              <span class="panel-num" data-out="pulses">3</span>
             </label>
             <label for="eu-kick-rotate">Rotate
               <input id="eu-kick-rotate" data-ctl="rotate" type="range" min="0" max="7" step="1" value="0" />
-              <span class="eu-num" data-out="rotate">0</span>
+              <span class="panel-num" data-out="rotate">0</span>
             </label>
             <label class="eu-mute" for="eu-kick-mute">
               <input id="eu-kick-mute" data-ctl="mute" type="checkbox" />
@@ -321,15 +322,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <div class="eu-sliders">
             <label for="eu-snare-steps">Steps
               <input id="eu-snare-steps" data-ctl="steps" type="range" min="2" max="16" step="1" value="8" />
-              <span class="eu-num" data-out="steps">8</span>
+              <span class="panel-num" data-out="steps">8</span>
             </label>
             <label for="eu-snare-pulses">Onsets
               <input id="eu-snare-pulses" data-ctl="pulses" type="range" min="0" max="8" step="1" value="2" />
-              <span class="eu-num" data-out="pulses">2</span>
+              <span class="panel-num" data-out="pulses">2</span>
             </label>
             <label for="eu-snare-rotate">Rotate
               <input id="eu-snare-rotate" data-ctl="rotate" type="range" min="0" max="7" step="1" value="2" />
-              <span class="eu-num" data-out="rotate">2</span>
+              <span class="panel-num" data-out="rotate">2</span>
             </label>
             <label class="eu-mute" for="eu-snare-mute">
               <input id="eu-snare-mute" data-ctl="mute" type="checkbox" />
@@ -346,15 +347,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <div class="eu-sliders">
             <label for="eu-hat-steps">Steps
               <input id="eu-hat-steps" data-ctl="steps" type="range" min="2" max="16" step="1" value="8" />
-              <span class="eu-num" data-out="steps">8</span>
+              <span class="panel-num" data-out="steps">8</span>
             </label>
             <label for="eu-hat-pulses">Onsets
               <input id="eu-hat-pulses" data-ctl="pulses" type="range" min="0" max="8" step="1" value="5" />
-              <span class="eu-num" data-out="pulses">5</span>
+              <span class="panel-num" data-out="pulses">5</span>
             </label>
             <label for="eu-hat-rotate">Rotate
               <input id="eu-hat-rotate" data-ctl="rotate" type="range" min="0" max="7" step="1" value="0" />
-              <span class="eu-num" data-out="rotate">0</span>
+              <span class="panel-num" data-out="rotate">0</span>
             </label>
             <label class="eu-mute" for="eu-hat-mute">
               <input id="eu-hat-mute" data-ctl="mute" type="checkbox" />
@@ -371,15 +372,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <div class="eu-sliders">
             <label for="eu-clave-steps">Steps
               <input id="eu-clave-steps" data-ctl="steps" type="range" min="2" max="16" step="1" value="8" />
-              <span class="eu-num" data-out="steps">8</span>
+              <span class="panel-num" data-out="steps">8</span>
             </label>
             <label for="eu-clave-pulses">Onsets
               <input id="eu-clave-pulses" data-ctl="pulses" type="range" min="0" max="8" step="1" value="3" />
-              <span class="eu-num" data-out="pulses">3</span>
+              <span class="panel-num" data-out="pulses">3</span>
             </label>
             <label for="eu-clave-rotate">Rotate
               <input id="eu-clave-rotate" data-ctl="rotate" type="range" min="0" max="7" step="1" value="1" />
-              <span class="eu-num" data-out="rotate">1</span>
+              <span class="panel-num" data-out="rotate">1</span>
             </label>
             <label class="eu-mute" for="eu-clave-mute">
               <input id="eu-clave-mute" data-ctl="mute" type="checkbox" />
@@ -404,17 +405,17 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <h2 class="reveal">The Thing That Planned The Tokyo Rail Network</h2>
       <p class="sl-intro reveal">In 2010 a team led by Atsushi Tero laid oat flakes on a map of the Greater Tokyo Area, one flake per surrounding town, and let a slime mould grow across it. <em>Physarum polycephalum</em> is one yellow cell. It has no brain, no nervous system and no notion of Tokyo. Within a day it had connected every flake in a network whose cost, efficiency and tolerance to a severed link were comparable to the real rail system engineers had spent decades on. Below is the same organism, same rules, no map: 19,000 agents that each sniff three points ahead, turn toward whichever smells strongest, step forward and leave a little trail. Everything you see is those four lines colliding with themselves.</p>
 
-      <div class="sl-console">
+      <div class="sl-console panel">
 
         <div class="sl-transport">
-          <button class="sl-play" type="button" data-sl="play" aria-pressed="false">
-            <span class="sl-dot" aria-hidden="true"></span>
+          <button class="sl-play panel-btn" type="button" data-sl="play" aria-pressed="false">
+            <span class="panel-dot" aria-hidden="true"></span>
             <span data-sl="play-label">Grow</span>
           </button>
 
-          <span class="sl-field">
+          <span class="sl-field panel-field">
             <label for="sl-preset"><span>Behaviour</span></label>
-            <select class="sl-select" id="sl-preset" data-sl="preset">
+            <select class="panel-select" id="sl-preset" data-sl="preset">
               <option value="network" selected>Network &mdash; the Tokyo one</option>
               <option value="veins">Veins &mdash; thick and slow</option>
               <option value="ripples">Ripples &mdash; near-parallel drift</option>
@@ -423,8 +424,8 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             </select>
           </span>
 
-          <button class="sl-ghost" type="button" data-sl="feed">Drop food</button>
-          <button class="sl-ghost" type="button" data-sl="reseed">Reseed</button>
+          <button class="panel-ghost" type="button" data-sl="feed">Drop food</button>
+          <button class="panel-ghost" type="button" data-sl="reseed">Reseed</button>
         </div>
 
         <div class="sl-stage">
@@ -436,19 +437,19 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <div class="sl-knobs">
           <label for="sl-sensor-angle">Sensor angle
             <input id="sl-sensor-angle" data-ctl="sensor-angle" type="range" min="5" max="75" step="1" value="22" />
-            <span class="sl-num" data-out="sensor-angle">22&deg;</span>
+            <span class="panel-num" data-out="sensor-angle">22&deg;</span>
           </label>
           <label for="sl-turn-angle">Turn angle
             <input id="sl-turn-angle" data-ctl="turn-angle" type="range" min="5" max="75" step="1" value="45" />
-            <span class="sl-num" data-out="turn-angle">45&deg;</span>
+            <span class="panel-num" data-out="turn-angle">45&deg;</span>
           </label>
           <label for="sl-sensor-dist">Sensor reach
             <input id="sl-sensor-dist" data-ctl="sensor-dist" type="range" min="2" max="24" step="1" value="9" />
-            <span class="sl-num" data-out="sensor-dist">9 px</span>
+            <span class="panel-num" data-out="sensor-dist">9 px</span>
           </label>
           <label for="sl-decay">Trail decay
             <input id="sl-decay" data-ctl="decay" type="range" min="0.80" max="0.995" step="0.005" value="0.94" />
-            <span class="sl-num" data-out="decay">0.94</span>
+            <span class="panel-num" data-out="decay">0.94</span>
           </label>
         </div>
 

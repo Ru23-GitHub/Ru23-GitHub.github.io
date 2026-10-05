@@ -36,20 +36,15 @@
 /* ---------- the console ---------- */
 
 #euclid .eu-console{
-  --eu-panel:#14161d;
-  --eu-panel-2:#1c1f28;
+  /* identity, handed to the shared .panel system */
+  --panel-accent:#8fb6ff;
+  --panel-accent-soft:rgba(110,168,255,.7);
+
   --eu-line:rgba(255,255,255,.09);
   --eu-ink:#e8eaf0;
   --eu-dim:#8b93a6;
 
   margin-top:var(--space-m);
-  padding:clamp(16px, 3vw, 28px);
-  border-radius:18px;
-  background:linear-gradient(#1c1f27, #11131a);
-  box-shadow:
-    inset 0 1px 0 rgba(255,255,255,.07),
-    0 18px 40px rgba(0,0,0,.18);
-  color:var(--eu-ink);
 }
 
 /* ---------- transport bar ---------- */
@@ -63,38 +58,11 @@
   border-bottom:1px solid var(--eu-line);
 }
 
-#euclid .eu-play{
-  font:inherit;
-  font-weight:600;
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  min-width:118px;
-  padding:10px 18px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.16);
-  background:linear-gradient(#2b3040, #1f2430);
-  color:var(--eu-ink);
-  cursor:pointer;
-}
+/* Chrome is .panel-btn / .panel-dot in panel.css; only the beat pulse,
+   which is particular to a metronome, stays here. */
+#euclid .eu-play{ min-width:118px; }
 
-#euclid .eu-play:hover{ border-color:rgba(255,255,255,.34); }
-
-#euclid .eu-play .eu-play-dot{
-  width:9px; height:9px;
-  border-radius:50%;
-  background:#5d6577;
-  flex:none;
-}
-
-#euclid .eu-play[aria-pressed="true"]{
-  background:linear-gradient(#233a6e, #1a2b52);
-  border-color:#3f63c4;
-}
-
-#euclid .eu-play[aria-pressed="true"] .eu-play-dot{
-  background:#6ea8ff;
-  box-shadow:0 0 9px 2px rgba(110,168,255,.7);
+#euclid .eu-play[aria-pressed="true"] .panel-dot{
   animation:eu-beat 1.2s ease-in-out infinite;
 }
 
@@ -124,56 +92,6 @@
   color:var(--eu-ink);
   min-width:3.4em;
   text-align:right;
-}
-
-#euclid .eu-select,
-#euclid .eu-ghost{
-  font:inherit;
-  font-size:14px;
-  padding:8px 12px;
-  border-radius:9px;
-  border:1px solid rgba(255,255,255,.16);
-  background:var(--eu-panel-2);
-  color:var(--eu-ink);
-  cursor:pointer;
-}
-
-#euclid .eu-ghost:hover,
-#euclid .eu-select:hover{ border-color:rgba(255,255,255,.34); }
-
-/* The preset <select> takes its intrinsic width from its longest option,
-   which is wide enough to push the page sideways on a phone. min-width:0
-   lets it shrink inside the flex row instead. */
-#euclid .eu-field{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  flex:1 1 200px;
-  min-width:0;
-}
-
-#euclid .eu-select{
-  flex:1 1 auto;
-  min-width:0;
-  max-width:100%;
-  text-overflow:ellipsis;
-}
-
-#euclid .eu-field span{
-  font-size:12px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--eu-dim);
-}
-
-/* Range + select theming: these are the browser's own widgets, so this
-   only sets the accent and a visible focus ring on the dark panel. */
-#euclid input[type="range"],
-#euclid input[type="checkbox"]{ accent-color:#6ea8ff; }
-
-#euclid .eu-console :focus-visible{
-  outline:2px solid #8fb6ff;
-  outline-offset:2px;
 }
 
 /* ---------- body: rings + tracks ---------- */
@@ -324,14 +242,7 @@
 
 #euclid .eu-sliders input[type="range"]{ flex:1 1 44px; min-width:44px; }
 
-#euclid .eu-sliders .eu-num{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:12px;
-  color:var(--eu-ink);
-  min-width:2ch;
-  text-align:right;
-  letter-spacing:0;
-}
+#euclid .eu-sliders .panel-num{ min-width:2ch; }
 
 #euclid .eu-mute{
   display:flex;

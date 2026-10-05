@@ -17,7 +17,19 @@
 }
 
 #slime .sl-console{
-  --sl-panel:#0a0a0d;
+  /* identity, handed to the shared .panel system */
+  --panel-top:#131116;
+  --panel-bottom:#08080b;
+  --panel-rim:rgba(255,220,150,.09);
+  --panel-ink:#f3e9d4;
+  --panel-dim:#9a8e78;
+  --panel-accent:#f0a81f;
+  --panel-accent-soft:rgba(240,168,31,.65);
+  --panel-btn-top:#2a241a;
+  --panel-btn-bottom:#1b1711;
+  --panel-btn-on-top:#5a3d08;
+  --panel-btn-on-bottom:#3d2905;
+
   --sl-line:rgba(255,220,150,.14);
   --sl-ink:#f3e9d4;
   --sl-dim:#9a8e78;
@@ -25,12 +37,6 @@
 
   margin-top:var(--space-m);
   padding:clamp(14px, 2.6vw, 22px);
-  border-radius:18px;
-  background:linear-gradient(#131116, #08080b);
-  box-shadow:
-    inset 0 1px 0 rgba(255,220,150,.09),
-    0 18px 40px rgba(0,0,0,.22);
-  color:var(--sl-ink);
 }
 
 /* ---------- the field ---------- */
@@ -71,74 +77,7 @@
   margin-bottom:14px;
 }
 
-#slime .sl-play{
-  font:inherit;
-  font-weight:600;
-  display:inline-flex;
-  align-items:center;
-  gap:9px;
-  min-width:116px;
-  padding:10px 18px;
-  border-radius:999px;
-  border:1px solid rgba(255,220,150,.22);
-  background:linear-gradient(#2a241a, #1b1711);
-  color:var(--sl-ink);
-  cursor:pointer;
-}
-
-#slime .sl-play:hover{ border-color:rgba(255,220,150,.5); }
-
-#slime .sl-play .sl-dot{
-  width:9px; height:9px;
-  border-radius:50%;
-  background:#6b5f49;
-  flex:none;
-}
-
-#slime .sl-play[aria-pressed="true"]{
-  background:linear-gradient(#5a3d08, #3d2905);
-  border-color:var(--sl-amber);
-}
-
-#slime .sl-play[aria-pressed="true"] .sl-dot{
-  background:var(--sl-amber);
-  box-shadow:0 0 9px 2px rgba(240,168,31,.65);
-}
-
-#slime .sl-ghost,
-#slime .sl-select{
-  font:inherit;
-  font-size:14px;
-  padding:8px 12px;
-  border-radius:9px;
-  border:1px solid rgba(255,220,150,.2);
-  background:#16131a;
-  color:var(--sl-ink);
-  cursor:pointer;
-  min-width:0;
-  max-width:100%;
-}
-
-#slime .sl-ghost:hover,
-#slime .sl-select:hover{ border-color:rgba(255,220,150,.45); }
-
-#slime .sl-field{
-  display:flex;
-  align-items:center;
-  gap:9px;
-  flex:1 1 180px;
-  min-width:0;
-}
-
-#slime .sl-field span{
-  font-size:12px;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--sl-dim);
-}
-
-#slime .sl-select{ flex:1 1 auto; text-overflow:ellipsis; }
-
+/* Chrome is .panel-* in panel.css. */
 /* ---------- sliders ---------- */
 
 #slime .sl-knobs{
@@ -162,21 +101,7 @@
 
 #slime .sl-knobs input[type="range"]{ flex:1 1 50px; min-width:50px; }
 
-#slime .sl-num{
-  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  font-size:12px;
-  letter-spacing:0;
-  color:var(--sl-ink);
-  min-width:4.2ch;
-  text-align:right;
-}
-
-#slime input[type="range"]{ accent-color:var(--sl-amber); }
-
-#slime .sl-console :focus-visible{
-  outline:2px solid #ffd77a;
-  outline-offset:2px;
-}
+#slime .panel-num{ min-width:4.2ch; }
 
 /* ---------- footnotes ---------- */
 
