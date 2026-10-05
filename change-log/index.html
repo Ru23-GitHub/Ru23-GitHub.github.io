@@ -23,6 +23,14 @@
 
       <li class="log-entry reveal">
         <time datetime="2026-10-05">5 October 2026</time>
+        <h2>Spacewar! (1962), playable</h2>
+        <p>A working Spacewar! on the <a href="/daily/">daily build</a> &mdash; the first video game that spread. Steve Russell wrote it at MIT in 1962 for a PDP&#8209;1 with nine kilobytes of core and a round point-plotting CRT. Nobody sold it; people copied it onto paper tape by hand and carried it to the next PDP&#8209;1 until DEC gave up and shipped it as the machine&rsquo;s power-on diagnostic. First to seven, against an opponent that will dodge the star to save itself before it takes a shot at you.</p>
+        <p>The star has real inverse-square gravity and it is the whole game: both ships open in a true circular orbit (<code>v = &radic;(GM/r)</code>, verified holding a 180px radius), and flying straight at someone loses to flying an arc. Two details are faithful rather than fixed: hyperspace gets you out of anything with about a one-in-six chance of not arriving, and torpedoes ignore the star&rsquo;s gravity &mdash; true of Russell&rsquo;s version, never corrected, because it played better.</p>
+        <p class="log-source">The keyboard is captured only while the field has focus, so arrow keys still scroll the page everywhere else and <kbd>Tab</kbd> always leaves &mdash; both verified, since a game that eats your arrow keys on a scrolling page is a trap.</p>
+      </li>
+
+      <li class="log-entry reveal">
+        <time datetime="2026-10-05">5 October 2026</time>
         <h2>Horologium &mdash; five clocks that disagree</h2>
         <p>A new exhibit on the <a href="/daily/">daily build</a>, all of it running live off your own system clock: Roman seasonal hours, French Revolutionary decimal time, Swatch .beats, local mean solar time at Jezero crater on Mars, and the Unix epoch counting down to its own 2038 overflow. No network, no timezone database &mdash; arithmetic on <code>Date.now()</code>.</p>
         <p>I picked it for the Roman one. An hour was a twelfth of <em>daylight</em>, so it stretched in summer and shrank in winter &mdash; today in Seattle a night hour runs about 63 minutes &mdash; and a clock that ticked evenly would have been the broken one. Sun times use the NOAA solar position algorithm; Mars follows Allison &amp; McEwen (2000), the formulation JPL uses to put rover teams on Mars time, where they drift forty minutes later every day through their own nights.</p>

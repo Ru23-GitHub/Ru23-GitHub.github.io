@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="css/rail.css" />
 <link rel="stylesheet" href="css/exhibit.css" />
 <link rel="stylesheet" href="css/horologium.css" />
+<link rel="stylesheet" href="css/spacewar.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
    shows light for a frame and then snaps. Mirrors js/theme.js. */
@@ -37,6 +38,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <li><a href="#euclid"><span class="rail-label">Euclid</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#slime"><span class="rail-label">Physarum</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#horologium"><span class="rail-label">Clocks</span><span class="rail-dot" aria-hidden="true"></span></a></li>
+        <li><a href="#spacewar"><span class="rail-label">Spacewar</span><span class="rail-dot" aria-hidden="true"></span></a></li>
         <li><a href="#contact"><span class="rail-label">Contact</span><span class="rail-dot" aria-hidden="true"></span></a></li>
     </ol>
   </nav>
@@ -560,6 +562,51 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="spacewar">
+    <div class="container">
+      <header class="exhibit-head reveal">
+        <p class="exhibit-meta">
+          <span class="exhibit-no">05</span>
+          <span class="exhibit-kicker">Spacewar!</span>
+          <time datetime="2026-10-05">5 Oct 2026</time>
+          <a class="exhibit-log" href="/change-log/">log &rarr;</a>
+        </p>
+        <h2>The First One That Spread</h2>
+      </header>
+      <p class="sw-intro reveal">Steve Russell wrote this at MIT in 1962 for a PDP&#8209;1 with nine kilobytes of core memory and a round point-plotting screen. It was never sold. It spread because people copied it onto paper tape by hand and carried it to the next PDP&#8209;1, until DEC gave up and shipped it as the machine&rsquo;s power-on test. The star in the middle has real gravity, and it is the entire game &mdash; flying straight at someone loses to flying an orbit.</p>
+
+      <div class="sw-console panel">
+        <div class="sw-bar">
+          <button class="sw-play panel-btn" type="button" data-sw="start" aria-pressed="false">
+            <span class="panel-dot" aria-hidden="true"></span>
+            <span data-sw="start-label">Play</span>
+          </button>
+          <button class="panel-ghost" type="button" data-sw="restart">New game</button>
+          <span class="sw-score is-you">You <b data-sw="score-you">0</b></span>
+          <span class="sw-score is-foe">Them <b data-sw="score-foe">0</b></span>
+        </div>
+
+        <div class="sw-stage">
+          <canvas data-sw="canvas" width="640" height="400" tabindex="0"
+                  aria-label="Spacewar: two vector ships orbiting a central star. Click or tab here to take the controls, then steer with the arrow keys."></canvas>
+        </div>
+        <p class="sw-status" data-sw="status" role="status"></p>
+
+        <p class="sw-keys">
+          <span><kbd>&larr;</kbd> <kbd>&rarr;</kbd> or <kbd>A</kbd> <kbd>D</kbd> turn</span>
+          <span><kbd>&uarr;</kbd> or <kbd>W</kbd> thrust</span>
+          <span><kbd>Space</kbd> fire</span>
+          <span><kbd>S</kbd> hyperspace</span>
+          <span><kbd>Tab</kbd> to leave</span>
+        </p>
+
+        <p class="sw-note">First to seven. Hyperspace gets you out of anything, with about a one-in-six chance of not arriving &mdash; the original punished it too. Torpedoes ignore the star&rsquo;s gravity, which was true of Russell&rsquo;s version and never fixed, because it played better that way. The keyboard is only captured while the field has focus, so arrow keys still scroll the page everywhere else and <kbd>Tab</kbd> always gets you out.</p>
+      </div>
+
+      <p class="sw-nojs">This one needs JavaScript and a canvas.</p>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
       <h2 class="reveal">Contact Me</h2>
@@ -590,6 +637,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/theme.js"></script>
 <script src="js/rail.js"></script>
 <script src="js/horologium.js"></script>
+<script src="js/spacewar.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

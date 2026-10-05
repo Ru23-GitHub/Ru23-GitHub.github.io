@@ -1,0 +1,127 @@
+/* Spacewar! (1962) — scoped entirely under #spacewar.
+   ----------------------------------------------------------------------
+   Added 2026-10-05. The Type 30 CRT this was written for drew points in
+   P7 phosphor, so the palette is green-on-black and the ships are stroked
+   outlines rather than filled shapes — the display could not fill. */
+
+#spacewar{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+
+#spacewar .sw-intro{
+  max-width:62ch;
+  color:var(--muted);
+}
+
+#spacewar .sw-console{
+  --panel-top:#0b0f14;
+  --panel-bottom:#05070a;
+  --panel-rim:rgba(160,255,180,.09);
+  --panel-ink:#cfe6d4;
+  --panel-dim:#7d9686;
+  --panel-accent:#7dff8a;
+  --panel-accent-soft:rgba(125,255,138,.6);
+  --panel-btn-top:#15291b;
+  --panel-btn-bottom:#0d1a12;
+  --panel-btn-on-top:#1d4a28;
+  --panel-btn-on-bottom:#133019;
+
+  margin-top:var(--space-m);
+}
+
+#spacewar .sw-bar{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px 16px;
+  margin-bottom:14px;
+}
+
+#spacewar .sw-score{
+  display:flex;
+  align-items:baseline;
+  gap:7px;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+#spacewar .sw-score b{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+  font-size:18px;
+  font-weight:400;
+}
+
+#spacewar .sw-score.is-you b{ color:#7dff8a; }
+#spacewar .sw-score.is-foe b{ color:#ff9b6b; }
+
+#spacewar .sw-stage{
+  position:relative;
+  border-radius:10px;
+  overflow:hidden;
+  border:1px solid rgba(160,255,180,.14);
+  background:#05070a;
+  aspect-ratio:8 / 5;
+}
+
+#spacewar .sw-stage canvas{
+  display:block;
+  width:100%;
+  height:100%;
+  touch-action:manipulation;
+  cursor:crosshair;
+}
+
+/* The field is a real focus target — the game only reads the keyboard
+   while it has focus, so the ring has to be obvious. */
+#spacewar .sw-stage canvas:focus-visible{
+  outline:2px solid var(--panel-accent);
+  outline-offset:-2px;
+}
+
+#spacewar .sw-status{
+  min-height:1.4em;
+  margin:9px 2px 0;
+  font-size:12px;
+  color:var(--panel-dim);
+}
+
+#spacewar .sw-keys{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 14px;
+  margin:12px 0 0;
+  padding:12px 0 0;
+  border-top:1px solid rgba(160,255,180,.12);
+  font-size:12px;
+  color:var(--panel-dim);
+}
+
+#spacewar .sw-keys kbd{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:11px;
+  padding:1px 6px;
+  border-radius:4px;
+  border:1px solid rgba(160,255,180,.22);
+  color:var(--panel-ink);
+}
+
+#spacewar .sw-note{
+  margin:14px 0 0;
+  padding-top:14px;
+  border-top:1px solid rgba(160,255,180,.12);
+  font-size:13px;
+  color:var(--panel-dim);
+}
+
+#spacewar .sw-note a{ color:#9fe8a8; }
+
+#spacewar .sw-nojs{
+  margin:var(--space-s) 0 0;
+  font-size:13px;
+  color:var(--muted);
+}
+#spacewar.sw-ready .sw-nojs{ display:none; }
