@@ -1,12 +1,20 @@
-/* The Shelf — an interactive case of retro hardware.
+/* The Shelf — Ruslan's actual retro collection.
    ----------------------------------------------------------------------
-   Added 2026-10-05. Self-contained: this file styles only #shelf and is
-   additive to the existing page — it overrides nothing in style.css.
+   Added 2026-10-05, rebuilt 2026-10-06. Self-contained: this file styles
+   only #shelf and is additive to the existing page — it overrides nothing
+   in style.css.
+
+   The case used to hold six famous machines nobody here owns. It now holds
+   the six Ruslan told me about by email: the Game Boy line from 1989 to the
+   DS, plus a Walkman. The Macintosh, Nokia, floppy and iPod rules that used
+   to live at the bottom of this file went with them.
 
    Each device is a <button> so power state is keyboard-operable and
    announced via aria-pressed. The "on" visuals hang off
    [aria-pressed="true"], so with JS unavailable every device simply
-   stays in its powered-off state and still reads as an illustration. */
+   stays in its powered-off state and still reads as an illustration.
+   Likewise the cartridge rig: its highlight hangs off [data-compat] on the
+   list item, which only shelf.js ever sets. */
 
 #shelf{
   background:var(--bg);
@@ -14,9 +22,10 @@
 }
 
 .shelf-intro{
-  max-width:60ch;
+  max-width:62ch;
   color:var(--muted);
 }
+.shelf-intro + .shelf-intro{ margin-top:.6em; }
 
 /* ---------- the case ---------- */
 
@@ -82,7 +91,7 @@
   .device:focus-visible .dev{ transform:translateY(-4px); }
 }
 
-/* power LED, top-right of each slot */
+/* power LED, bottom-right of each slot */
 .device-led{
   position:absolute;
   right:9px; bottom:9px;
@@ -127,15 +136,21 @@
   margin:var(--space-s) 0 0;
   font-size:var(--fs-sm);
   color:var(--muted);
+  max-width:72ch;
 }
 
 /* ======================================================================
    Powered-on behaviour, per device.
 
-   Every animation below is wrapped in prefers-reduced-motion:
-   no-preference. The reduce branch at the bottom of each block applies
-   the *finished* state instantly instead, so switching a device on is
-   still meaningful — it just doesn't move.
+   Each animation below says something true about that specific machine:
+   the Game Boy's boot emblem drops, the Color blooms, the Advance lights
+   up barely at all because the 2001 model had no lamp, the SP's frontlight
+   comes up a beat later because that was the whole point of it, and the
+   DS lights two screens and takes a tap on the lower one.
+
+   Every animation is wrapped in prefers-reduced-motion: no-preference.
+   The reduce branch applies the *finished* state instantly instead, so
+   switching a device on is still meaningful — it just doesn't move.
    ====================================================================== */
 
 /* --- Game Boy: screen lights, emblem drops into place --- */
@@ -157,6 +172,78 @@
   100% { opacity:1; transform:none }
 }
 
+/* --- Game Boy Color: the same grey screen, repainted --- */
+
+.gbc-screen{ transition:fill .3s ease; }
+.device[aria-pressed="true"] .gbc-screen{ fill:#17151f; }
+
+.gbc-bars rect{ opacity:0; transition:opacity .3s ease; }
+.device[aria-pressed="true"] .gbc-bars rect{ opacity:1; }
+
+@media (prefers-reduced-motion: no-preference){
+  .device[aria-pressed="true"] .gbc-bars rect{
+    animation:gbc-bloom .5s ease both;
+  }
+  .device[aria-pressed="true"] .gbc-bars rect:nth-child(2){ animation-delay:.09s }
+  .device[aria-pressed="true"] .gbc-bars rect:nth-child(3){ animation-delay:.18s }
+  .device[aria-pressed="true"] .gbc-bars rect:nth-child(4){ animation-delay:.27s }
+}
+@keyframes gbc-bloom{
+  from{ opacity:0 }
+  to  { opacity:1 }
+}
+
+/* --- Game Boy Advance: it lights, but barely. That is accurate. --- */
+
+.gba-screen{ transition:fill .3s ease; }
+.device[aria-pressed="true"] .gba-screen{ fill:#515f44; }
+
+/* --- Game Boy Advance SP: same dim panel, then the frontlight --- */
+
+.sp-screen{ transition:fill .3s ease; }
+.device[aria-pressed="true"] .sp-screen{ fill:#8fb08a; }
+
+.sp-glow{ opacity:0; }
+.device[aria-pressed="true"] .sp-glow{ opacity:.22; }
+
+@media (prefers-reduced-motion: no-preference){
+  .device[aria-pressed="true"] .sp-screen{
+    animation:sp-lamp 1.1s ease both;
+  }
+  .device[aria-pressed="true"] .sp-glow{
+    animation:sp-bloom 1.1s ease both;
+  }
+}
+@keyframes sp-lamp{
+  0%,38%  { fill:#515f44 }   /* dim, like the Advance it replaced */
+  100%    { fill:#8fb08a }   /* lamp on */
+}
+@keyframes sp-bloom{
+  0%,38%  { opacity:0 }
+  70%     { opacity:.34 }
+  100%    { opacity:.22 }
+}
+
+/* --- Nintendo DS: two screens, and the lower one takes a tap --- */
+
+.ds-top, .ds-bottom{ transition:fill .3s ease; }
+.device[aria-pressed="true"] .ds-top{ fill:#3b5f8f; }
+.device[aria-pressed="true"] .ds-bottom{ fill:#4a7fa8; }
+
+.ds-touch{ transform-box:fill-box; transform-origin:50% 50%; }
+.device[aria-pressed="true"] .ds-touch{ opacity:.5; }
+
+@media (prefers-reduced-motion: no-preference){
+  .device[aria-pressed="true"] .ds-touch{
+    animation:ds-tap 2.2s ease-out .35s infinite;
+  }
+}
+@keyframes ds-tap{
+  0%      { opacity:0;   transform:scale(.3) }
+  12%     { opacity:.75; transform:scale(.45) }
+  55%,100%{ opacity:0;   transform:scale(1.6) }
+}
+
 /* --- Walkman: both reels turn --- */
 
 .wm-reel{ transform-box:fill-box; transform-origin:50% 50%; }
@@ -170,72 +257,104 @@
 .wm-window{ transition:fill .25s ease; }
 .device[aria-pressed="true"] .wm-window{ fill:#241f18; }
 
-/* --- Macintosh: screen warms up, the smiling machine appears --- */
+/* ======================================================================
+   The cartridge rig — which machine runs what.
+   ====================================================================== */
 
-.mac-screen{ transition:fill .3s ease; }
-.device[aria-pressed="true"] .mac-screen{ fill:#2f3b2c; }
+.shelf-compat{
+  --panel-top:#1c1f27;
+  --panel-bottom:#13151b;
+  margin:var(--space-s) 0 0;
+}
 
-.mac-face{ opacity:0; }
-.device[aria-pressed="true"] .mac-face{ opacity:1; }
+.compat-head{
+  margin:0;
+  max-width:62ch;
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--panel-dim);
+}
+
+.compat-row{
+  /* An explicit column count rather than flex-wrap or auto-fit: wrapping
+     left a 3 + 1 orphan on a phone, and auto-fit opened six tracks on a
+     desktop for four cartridges and left two of them empty. */
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:10px;
+  margin:var(--space-s) 0 0;
+}
+
+.cart{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding:12px 10px;
+  border-radius:var(--radius-md);
+  border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(var(--panel-btn-top), var(--panel-btn-bottom));
+  color:var(--panel-ink);
+  font:inherit;
+  font-size:var(--fs-sm);
+  letter-spacing:.04em;
+  cursor:pointer;
+}
+.cart:focus-visible{
+  outline:2px solid var(--accent-2);
+  outline-offset:2px;
+}
+.cart[aria-pressed="true"]{
+  background:linear-gradient(var(--panel-btn-on-top), var(--panel-btn-on-bottom));
+  border-color:var(--panel-accent-soft);
+}
+.cart-ico{
+  width:auto;
+  height:34px;
+  filter:drop-shadow(0 3px 5px rgba(0,0,0,.45));
+}
+.cart-name{ line-height:1.35; }
 
 @media (prefers-reduced-motion: no-preference){
-  .mac-face{ transform-box:fill-box; transform-origin:50% 50%; }
-  .device[aria-pressed="true"] .mac-face{
-    animation:mac-pop .5s ease .15s both;
-  }
-}
-@keyframes mac-pop{
-  from{ opacity:0; transform:scale(.72) }
-  to  { opacity:1; transform:none }
+  .cart{ transition:border-color .2s ease, background .2s ease; }
+  .cart-ico{ transition:transform .2s ease; }
+  .cart:hover .cart-ico,
+  .cart:focus-visible .cart-ico,
+  .cart[aria-pressed="true"] .cart-ico{ transform:translateY(-3px); }
 }
 
-/* --- Nokia: LCD lights; the snake itself is moved by shelf.js --- */
+.compat-status{
+  margin:var(--space-s) 0 0;
+  max-width:62ch;
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--panel-ink);
+}
 
-.nk-screen{ transition:fill .25s ease; }
-.device[aria-pressed="true"] .nk-screen{ fill:#9ecb3b; }
+/* The matched / unmatched state on each item. Only the drawing dims —
+   the caption stays at full contrast, because greying out running text is
+   how a nice effect turns into an unreadable one. */
 
-.nk-snake, .nk-food{ opacity:0; transition:opacity .2s ease; }
-.device[aria-pressed="true"] .nk-snake,
-.device[aria-pressed="true"] .nk-food{ opacity:1; }
+.shelf-item[data-compat="no"] .dev{
+  opacity:.28;
+  filter:grayscale(1);
+}
+.shelf-item[data-compat="yes"] .device{
+  border-bottom-color:rgba(84,224,138,.55);
+}
+
+.compat-tag{
+  display:block;
+  margin-top:7px;
+  font-size:var(--fs-xs);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.shelf-item[data-compat="yes"] .compat-tag{ color:#6fe79b; }
+.shelf-item[data-compat="no"]  .compat-tag{ color:#949db0; }
 
 @media (prefers-reduced-motion: no-preference){
-  .device[aria-pressed="true"] .nk-food{ animation:nk-blink 1s steps(1) infinite; }
-}
-@keyframes nk-blink{ 0%,60%{ opacity:1 } 61%,100%{ opacity:.25 } }
-
-/* --- Floppy: the shutter slides open over the disk --- */
-
-.fd-shutter{ transition:transform .45s cubic-bezier(.3,.8,.3,1); }
-.device[aria-pressed="true"] .fd-shutter{ transform:translateX(-24px); }
-
-@media (prefers-reduced-motion: reduce){
-  .fd-shutter{ transition:none; }
-}
-
-/* --- iPod: backlight on, menu rows highlight in turn --- */
-
-.ipod-screen{ transition:fill .25s ease; }
-.device[aria-pressed="true"] .ipod-screen{ fill:#cfe6f5; }
-
-.ipod-rows rect{ transition:fill .25s ease; }
-.device[aria-pressed="true"] .ipod-rows rect{ fill:#7f8ea0; }
-.device[aria-pressed="true"] .ipod-rows rect:first-child{ fill:#1733ff; }
-
-@media (prefers-reduced-motion: no-preference){
-  .device[aria-pressed="true"] .ipod-rows rect{
-    animation:ipod-scan 2.4s steps(1) infinite;
-  }
-  .device[aria-pressed="true"] .ipod-rows rect:nth-child(2){ animation-delay:.8s }
-  .device[aria-pressed="true"] .ipod-rows rect:nth-child(3){ animation-delay:1.6s }
-}
-@keyframes ipod-scan{
-  0%,33%  { fill:#1733ff }
-  34%,100%{ fill:#7f8ea0 }
-}
-
-.ipod-wheel{ transition:filter .25s ease; }
-.device[aria-pressed="true"] .ipod-wheel{
-  filter:drop-shadow(0 0 6px rgba(23,51,255,.45));
+  .shelf-item .dev{ transition:transform .25s ease, opacity .3s ease, filter .3s ease; }
 }
 
 /* ---------- narrow screens ---------- */
@@ -244,7 +363,13 @@
   .shelf-case{ grid-template-columns:repeat(3, 1fr); }
 }
 
+@media (min-width:620px){
+  .compat-row{ grid-template-columns:repeat(4, 1fr); }
+}
+
 @media (max-width:420px){
   .shelf-case{ gap:20px 14px; }
   .device-note{ font-size:var(--fs-sm); }
+  .cart{ padding:10px 6px; }
+  .cart-ico{ height:28px; }
 }
