@@ -80,12 +80,18 @@ body{
     --panel-top:#2a3040;
     --panel-bottom:#1c212c;
     --panel-rim:rgba(255,255,255,.10);
+    --panel-dim:#a8b1c2;   /* see the note on the [data-theme] copy below */
   }
 }
 :root[data-theme="dark"] .panel{
   --panel-top:#2a3040;
   --panel-bottom:#1c212c;
   --panel-rim:rgba(255,255,255,.10);
+  /* Lifting the surface without lifting the ink cost every dim label on a
+     panel some contrast; #shelf's compatibility heading measured 4.28:1,
+     under AA. The surface moved in 2026-10-05's elevation fix and this is
+     the half of it that was missed. */
+  --panel-dim:#a8b1c2;
 }
 
 /* The two panels that are meant to be darker than everything get an inner
