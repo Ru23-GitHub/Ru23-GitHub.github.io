@@ -1,0 +1,270 @@
+/* The Karaoke Booth — his setlist, and when it was made
+   ----------------------------------------------------------------------
+   Added 2026-10-07 (second build of the day, after he answered).
+
+   His bio says "bad karaoke" and that was the entire trace of it on this
+   page. He named five songs by email; four of them carry a release year,
+   and those years turned out to sit nowhere near the years on his shelf.
+   So the section is two things: a booth you can cue a song in, and a
+   timeline that shows the fifteen-year hole between his hardware and his
+   setlist.
+
+   The timeline's two series were picked by running the palette through
+   the validator rather than by eye:
+
+     #b87d26 (shelf)  #3f93cc (booth)
+
+   against the lightest surface either can land on (--panel-top in dark
+   mode, #2a3040). All six checks pass: both inside the dark lightness
+   band, chroma above floor, CVD separation dE 22.0 worst case (protan),
+   normal-vision 23.9, and both above 3:1 on the surface. Both bands are
+   also directly labelled, so identity is never carried by colour alone,
+   and the figure's caption states the finding in words for anyone who
+   cannot see the chart at all. */
+
+.booth-rig{
+  --booth-accent:#ff5fa2;        /* the karaoke-screen pink */
+  --booth-accent-soft:rgba(255,95,162,.65);
+  --panel-accent:#ff5fa2;
+  --panel-accent-soft:rgba(255,95,162,.65);
+  --booth-screen-top:#10131d;
+  --booth-screen-bottom:#070910;
+  margin-top:var(--space-m);
+  display:grid;
+  gap:var(--space-s);
+}
+
+/* ---------- the screen ---------- */
+
+.booth-screen{
+  position:relative;
+  border-radius:var(--radius-md);
+  padding:clamp(18px, 4vw, 30px) clamp(14px, 3vw, 24px);
+  text-align:center;
+  background:
+    linear-gradient(var(--booth-screen-top), var(--booth-screen-bottom));
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.07),
+    inset 0 0 50px rgba(255,95,162,.07);
+  overflow:hidden;
+}
+
+/* Scanlines. Decorative, cheap, and pointer-transparent so they never
+   eat a click meant for something underneath. */
+.booth-screen::after{
+  content:"";
+  position:absolute; inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    rgba(255,255,255,.035) 0 1px,
+    transparent 1px 3px);
+}
+
+.bs-state{
+  margin:0 0 10px;
+  font-size:var(--fs-sm);
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--booth-accent);
+}
+
+/* The karaoke wipe: the same text twice, the top copy clipped to a width
+   that animates 0 -> 100%. Two copies rather than background-clip:text
+   because a clipped overlay wipes left-to-right across one line, which is
+   what a karaoke screen does; a gradient on the background would sweep
+   every wrapped line at once. Titles here are short enough to stay on one
+   line at 390px, which is checked rather than assumed. */
+.bs-title{
+  position:relative;
+  display:inline-block;
+  margin:0 0 8px;
+  font-family:var(--display);
+  font-size:clamp(26px, 7vw, 46px);
+  line-height:1.1;
+  white-space:nowrap;
+  max-width:100%;
+}
+
+/* The un-swept copy: present but recessive, so you can read the whole
+   title before the sweep reaches the end of it. */
+.bs-base{ color:#5f6878; }
+
+.bs-wipe{
+  position:absolute;
+  top:0; left:0; bottom:0;
+  width:0;
+  overflow:hidden;
+  color:#fff;
+  text-shadow:0 0 18px var(--booth-accent-soft);
+  white-space:nowrap;
+}
+
+/* Runs once, on demand, and stops. Nothing in this section animates on
+   its own, so there is no timer to pause when the tab hides or the
+   section scrolls away. */
+.booth-rig[data-playing] .bs-wipe{
+  animation:bs-sweep 6s linear forwards;
+}
+
+@keyframes bs-sweep{ from{ width:0 } to{ width:100% } }
+
+@media (prefers-reduced-motion: reduce){
+  .booth-rig[data-playing] .bs-wipe{ animation:none; width:100%; }
+}
+
+.bs-meta{
+  margin:0;
+  font-size:var(--fs-md);
+  color:#aeb6c6;
+}
+
+.bs-find{
+  display:inline-block;
+  margin-top:12px;
+  font-size:var(--fs-md);
+  color:#ff9ec6;
+  border-bottom:1px solid rgba(255,158,198,.4);
+}
+.bs-find:hover, .bs-find:focus-visible{ color:#ffd0e3; text-decoration:none; border-bottom-color:currentColor; }
+.bs-find[hidden]{ display:none; }
+
+/* ---------- the song book ---------- */
+
+.booth-book{
+  list-style:none;
+  margin:0; padding:0;
+  display:grid;
+  gap:8px;
+}
+
+.booth-cue{
+  font:inherit;
+  width:100%;
+  display:flex;
+  align-items:flex-start;
+  gap:14px;
+  text-align:left;
+  padding:12px 16px;
+  border-radius:var(--radius-sm);
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.035);
+  color:var(--panel-ink);
+  cursor:pointer;
+}
+.booth-cue:hover{ border-color:rgba(255,255,255,.32); background:rgba(255,255,255,.06); }
+
+.booth-row[aria-current="true"] .booth-cue{
+  border-color:var(--booth-accent);
+  background:rgba(255,95,162,.1);
+}
+
+.bc-no{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:#9aa3b6;
+  padding-top:3px;
+  flex:none;
+}
+.booth-row[aria-current="true"] .bc-no{ color:var(--booth-accent); }
+
+.bc-text{ display:flex; flex-direction:column; gap:2px; min-width:0; }
+
+.bc-title{ font-weight:600; }
+
+.bc-by{
+  font-size:var(--fs-md);
+  color:#aeb6c6;
+}
+
+.bc-year{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:#9aa3b6;
+}
+
+/* The one he singled out. The marker is a word, not a colour, so it
+   survives both a greyscale print and a screen reader. */
+.bc-flag{
+  margin-top:4px;
+  align-self:flex-start;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:#ffc2da;
+  border:1px solid rgba(255,95,162,.45);
+  border-radius:var(--radius-pill);
+  padding:2px 9px;
+}
+
+.booth-status{
+  margin:0;
+  font-size:var(--fs-md);
+  color:#c6ccda;
+  min-height:1.55em;
+}
+
+/* ---------- the timeline ---------- */
+
+.booth-time{
+  margin:var(--space-m) 0 0;
+}
+
+.bt-chart{
+  width:100%;
+  height:auto;
+  display:block;
+  overflow:visible;
+}
+
+.booth-time figcaption{
+  margin-top:var(--space-s);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.booth-foot{
+  margin-top:var(--space-m);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+/* Chart ink. The chart sits on the page, not on a panel, so its text
+   wears the page's own text tokens — never a series colour. */
+.bt-axis{ stroke:var(--border); stroke-width:1; }
+.bt-tick{ fill:var(--muted); font-family:var(--mono); font-size:11px; }
+.bt-band{ fill:var(--muted); font-size:12px; letter-spacing:.06em; text-transform:uppercase; }
+.bt-note{ fill:var(--muted); font-size:11px; font-family:var(--mono); }
+.bt-gapline{ stroke:var(--border); stroke-width:1; stroke-dasharray:3 4; }
+
+/* A 2px ring in the surface colour, so two dots a year apart still read
+   as two dots where they overlap. */
+.bt-dot{ stroke:var(--bg); stroke-width:2; }
+.bt-dot[data-series="shelf"]{ fill:#b87d26; }
+.bt-dot[data-series="booth"]{ fill:#3f93cc; }
+
+.bt-key{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  margin:10px 0 0;
+  padding:0;
+  list-style:none;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+.bt-key li{ display:flex; align-items:center; gap:7px; }
+.bt-key i{
+  width:10px; height:10px;
+  border-radius:50%;
+  flex:none;
+}
+.bt-key .k-shelf{ background:#b87d26; }
+.bt-key .k-booth{ background:#3f93cc; }
+
+/* The compact drawing has a narrower viewBox, so a unit is worth more
+   pixels; the type is re-stepped to land back near its intended size
+   instead of inheriting the wide chart's scale. */
+.bt-chart.is-compact .bt-tick{ font-size:13px; }
+.bt-chart.is-compact .bt-band{ font-size:14px; }
+.bt-chart.is-compact .bt-note{ font-size:12px; }

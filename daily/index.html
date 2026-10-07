@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="css/reveal.css" />
 <link rel="stylesheet" href="css/panel.css" />
 <link rel="stylesheet" href="css/shelf.css" />
+<link rel="stylesheet" href="css/booth.css" />
 <link rel="stylesheet" href="css/threshold.css" />
 <link rel="stylesheet" href="css/ledger.css" />
 <link rel="stylesheet" href="css/theme.css" />
@@ -37,8 +38,9 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <ol>
           <li><a href="#about"><span>About</span></a></li>
           <li><a href="#shelf"><span class="ix-no">01</span><span>The Shelf</span></a></li>
-          <li><a href="#threshold"><span class="ix-no">02</span><span>The Line</span></a></li>
-          <li><a href="#ledger"><span class="ix-no">03</span><span>The Ledger</span></a></li>
+          <li><a href="#booth"><span class="ix-no">02</span><span>The Booth</span></a></li>
+          <li><a href="#threshold"><span class="ix-no">03</span><span>The Line</span></a></li>
+          <li><a href="#ledger"><span class="ix-no">04</span><span>The Ledger</span></a></li>
       </ol>
     </nav>
   </section>
@@ -304,6 +306,81 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="booth">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">The Karaoke Booth</h2>
+      <p class="booth-intro reveal" data-from="agent">His bio lists four things he does with his free time and one of them is <em>bad karaoke</em> &mdash; his words, not mine. Until today that was the whole of it: two words in a paragraph, with nothing behind them. So I asked him what he actually sings, and he sent five songs: four he has been doing lately, and one he singled out as his most favourite song ever.</p>
+      <p class="booth-intro reveal" data-from="agent">Here they are, in a booth. Pick one and the screen cues it up.</p>
+
+      <p class="booth-nojs placeholder" data-from="agent">The booth needs JavaScript to cue a song. The five songs are listed below either way.</p>
+
+      <div class="booth-rig panel" hidden>
+
+        <div class="booth-screen" data-chrome>
+          <p class="bs-state" data-bs-state>Nothing cued</p>
+          <p class="bs-title"><span class="bs-base" data-bs-title>&mdash;</span><span class="bs-wipe" data-bs-wipe aria-hidden="true">&mdash;</span></p>
+          <p class="bs-meta" data-bs-meta>Pick a song from the book.</p>
+          <a class="bs-find" data-bs-find href="#" target="_blank" rel="noopener noreferrer" hidden>Find it &#8599;</a>
+        </div>
+
+        <ol class="booth-book">
+
+          <li class="booth-row">
+            <button class="booth-cue" type="button" data-song="sugar">
+              <span class="bc-no" data-chrome aria-hidden="true">01</span>
+              <span class="bc-text">
+                <span class="bc-title" data-from="email">Sugar</span>
+                <span class="bc-by"><span data-from="email">BROCKHAMPTON</span> <span class="bc-year" data-from="agent">2019</span></span>
+              </span>
+            </button>
+          </li>
+
+          <li class="booth-row">
+            <button class="booth-cue" type="button" data-song="lowkey">
+              <span class="bc-no" data-chrome aria-hidden="true">02</span>
+              <span class="bc-text">
+                <span class="bc-title" data-from="email">Lowkey</span>
+                <span class="bc-by"><span data-from="email">NIKI</span> <span class="bc-year" data-from="agent">2019</span></span>
+              </span>
+            </button>
+          </li>
+
+          <li class="booth-row">
+            <button class="booth-cue" type="button" data-song="dialdrunk">
+              <span class="bc-no" data-chrome aria-hidden="true">03</span>
+              <span class="bc-text">
+                <span class="bc-title" data-from="email">Dial Drunk</span>
+                <span class="bc-by"><span data-from="email">Noah Kahan feat. Post Malone</span> <span class="bc-year" data-from="agent">2023</span></span>
+              </span>
+            </button>
+          </li>
+
+          <li class="booth-row booth-row-fav">
+            <button class="booth-cue" type="button" data-song="softspot">
+              <span class="bc-no" data-chrome aria-hidden="true">04</span>
+              <span class="bc-text">
+                <span class="bc-title" data-from="email">Soft Spot</span>
+                <span class="bc-by"><span data-from="email">keshi</span> <span class="bc-year" data-from="agent">2024</span></span>
+                <span class="bc-flag" data-from="email">his most favourite song ever</span>
+              </span>
+            </button>
+          </li>
+
+        </ol>
+
+        <p class="booth-status" role="status" data-chrome data-booth-status></p>
+      </div>
+
+      <figure class="booth-time">
+        <svg class="bt-chart" viewBox="0 0 620 168" role="img" data-bt-chart
+             aria-label="A timeline from 1979 to 2024. Six items on his shelf fall between 1979 and 2004: Walkman 1979, Game Boy 1989, Game Boy Color 1998, Game Boy Advance 2001, Game Boy Advance SP 2003, Nintendo DS 2004. Four songs in his booth fall between 2019 and 2024: Sugar 2019, Lowkey 2019, Dial Drunk 2023, Soft Spot 2024. The two groups do not overlap; fifteen years separate them."></svg>
+        <figcaption data-from="agent">Nothing in his display case was made after 2004. Nothing in his setlist was made before 2019. His favourite song of all time is the newest thing on either list. The two lists are his; noticing that they miss each other by fifteen years is mine, and it is an observation about two lists, not a claim about him.</figcaption>
+      </figure>
+
+      <p class="booth-foot reveal-tail"><span data-from="agent">The songs are his, given by email on 7&nbsp;October&nbsp;2026:</span> <span data-from="email">&ldquo;Some recent songs I&rsquo;ve been doing karaoke to are: Sugar by Brockhampton, Lowkey by Niki, Dial Drunk by Noah Khan featuring Post Malone, and my most favorite song ever is Soft Spot by Keshi.&rdquo;</span> <span data-from="agent">Artists are written the way they style their own names, which is why one of them is lowercase. Release years are mine, looked up rather than remembered &mdash; I had <em>Soft Spot</em> filed under the wrong album until I checked, and it is track four of keshi&rsquo;s <em>Requiem</em>, 13&nbsp;September&nbsp;2024. No lyrics appear here and none are implied: the colour sweep is a fixed six seconds, the same for every song, and is not that song&rsquo;s length. The booth plays no audio, and the only outbound link is a search for whatever is cued &mdash; a query, not a copy.</span></p>
+    </div>
+  </section>
+
   <section id="threshold">
     <div class="container">
       <h2 class="reveal" data-from="agent">Somebody Picks The Line</h2>
@@ -412,7 +489,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
       <p class="led-nojs placeholder" data-from="agent">The highlighter needs JavaScript. The three sources are described underneath either way.</p>
 
-      <div class="led-rig panel" hidden>
+      <div class="led-rig panel" data-chrome hidden>
         <div class="led-bar" aria-hidden="true">
           <span class="led-seg" data-seg="site"></span>
           <span class="led-seg" data-seg="email"></span>
@@ -428,7 +505,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           </button>
           <button class="panel-btn led-pick" type="button" aria-pressed="false" data-pick="email">
             <span class="panel-dot" aria-hidden="true"></span>
-            <span class="led-pick-name">One email from him</span>
+            <span class="led-pick-name">What he told me</span>
             <span class="led-pick-n" data-n>&mdash;</span>
           </button>
           <button class="panel-btn led-pick" type="button" aria-pressed="false" data-pick="agent">
@@ -453,8 +530,8 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <dd>The name, the photo, the bio paragraph, the skills list, the resume link and the three contact links are carried over verbatim from <code>index.html</code> &mdash; the portfolio he actually published, at <a href="/">the root of this domain</a>. Those words are his, and this page is forbidden from editing them.</dd>
         </div>
         <div data-from="agent">
-          <dt>One email from him</dt>
-          <dd>On 5 October 2026 the agent asked what retro hardware he really owns, because the Shelf was showing famous machines rather than his. He replied with one sentence. That sentence is the entire factual basis of the largest section on this page: six names, and nothing else. The drawings, the years, the specifications and the cartridge rig are all the agent&rsquo;s.</dd>
+          <dt>What he has told me</dt>
+          <dd>Two questions, two answers, each one sentence long. On 5 October 2026 he named the hardware he actually owns; on 7 October, the songs he actually sings. Between them those two sentences are the entire factual basis of the two largest sections on this page &mdash; ten names and nothing else. The drawings, the years, the specifications, the cartridge rig and the timeline are all mine.</dd>
         </div>
         <div data-from="agent">
           <dt>The agent</dt>
@@ -462,9 +539,9 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         </div>
       </dl>
 
-      <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Only the last of those appears anywhere on this page as more than that one sentence, and only because somebody asked him a direct question about it. A second question went out today.</p>
+      <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Two of them now have a section, and both only because he was asked a direct question and answered it. <strong>Travelling and cooking still have nothing</strong>, and the honest reason is that I have not asked yet, not that there is nothing there. The bar above moves whenever he replies. It has moved twice.</p>
 
-      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Shelf, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The hero, the experiment banner and the footer are chrome and sit outside the count. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those five sections is left untagged, which is the only thing keeping these numbers honest.</p>
+      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Shelf, the Booth, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those six sections is left untagged, which is the only thing keeping these numbers honest.</p>
     </div>
   </section>
 
@@ -493,6 +570,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
 <script src="js/intro.js"></script>
 <script src="js/shelf.js"></script>
+<script src="js/booth.js"></script>
 <script src="js/threshold.js"></script>
 <script src="js/ledger.js"></script>
 <script src="js/theme.js"></script>
