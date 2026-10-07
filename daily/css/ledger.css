@@ -1,0 +1,221 @@
+/* Where This Page Gets Him — the provenance ledger
+   ----------------------------------------------------------------------
+   Added 2026-10-07.
+
+   This page is written by an agent that has never met Ruslan, under a
+   standing rule that it may not invent facts about him. Until today that
+   rule was invisible: a visitor had no way to tell which sentences were
+   his and which were the machine's, and "trust me" is a poor answer on a
+   page whose whole subject is a person.
+
+   So every content block above now carries data-from="site|email|agent",
+   and this section turns that into a control. Picking a source dims every
+   block that did not come from it.
+
+   Two rules make the dimming safe to do with opacity:
+
+     1. No tagged block ever contains another tagged block. That was the
+        reason the shelf footnote was split into sibling spans and the
+        device captions are tagged on their four children rather than on
+        the <p>. If nesting were allowed, a lit block inside a dimmed one
+        could never come back — opacity multiplies down the tree and
+        nothing below can undo it.
+
+     2. The rig itself is untagged, so the controls and the status line
+        stay fully legible no matter what is picked.
+
+   The highlight is a box-shadow rather than an outline on purpose:
+   outlines can create scrollable overflow, and a 390px page that gains a
+   sideways scrollbar because something got highlighted would be a poor
+   trade for a ring. */
+
+:root{
+  --led-tint:rgba(23,51,255,.07);
+  /* --panel-dim is too dark for 12px labels sitting on a lit button or
+     under a 6% white wash; measured worst case 3.01:1. This clears 4.85:1
+     across all six panel surfaces in both themes. */
+  --led-label:#b4bcc9;
+  --led-site:#59b37a;
+  --led-email:#e0a63c;
+  --led-agent:#6e8cff;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --led-tint:rgba(110,140,255,.15);
+  }
+}
+:root[data-theme="dark"]{
+  --led-tint:rgba(110,140,255,.15);
+}
+
+/* ---------- the highlighter ---------- */
+
+/* A deliberate, reversible drop below normal text contrast: setting the
+   rest of the page aside IS the information this control carries, and
+   Clear or Escape puts it back in one keystroke. It is never the state
+   the page loads in. */
+.led-off{ opacity:.3; }
+
+.led-on{
+  border-radius:var(--radius-sm);
+  background:var(--led-tint);
+  box-shadow:0 0 0 2px var(--accent);
+}
+
+/* The one the Previous/Next pair is currently parked on. */
+.led-cur{
+  box-shadow:0 0 0 2px var(--accent), 0 0 0 6px var(--led-tint);
+}
+
+/* Inline tags (the machine names, the quoted sentence in the shelf
+   footnote) would otherwise get a ring tight against the glyphs. */
+span.led-on, strong.led-on{
+  padding:1px 4px;
+  margin:0 -2px;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  [data-from]{ transition:opacity .22s ease, background-color .22s ease, box-shadow .22s ease; }
+}
+
+/* ---------- the rig ---------- */
+
+.led-rig{
+  --panel-accent:#6e8cff;
+  --panel-accent-soft:rgba(110,140,255,.7);
+  display:grid;
+  gap:var(--space-s);
+  margin-top:var(--space-m);
+}
+
+.led-bar{
+  display:flex;
+  height:14px;
+  border-radius:var(--radius-pill);
+  overflow:hidden;
+  background:rgba(255,255,255,.06);
+  box-shadow:inset 0 0 0 1px var(--panel-line);
+}
+
+.led-seg{
+  display:block;
+  min-width:3px;           /* his email is ~1.5% of the page; keep it visible */
+  transition:none;
+}
+.led-seg[data-seg="site"]{ background:var(--led-site); }
+.led-seg[data-seg="email"]{ background:var(--led-email); }
+.led-seg[data-seg="agent"]{ background:var(--led-agent); }
+
+.led-rig-head{
+  margin:0;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--led-label);
+}
+
+.led-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.led-pick{
+  flex:1 1 210px;
+  justify-content:flex-start;
+  text-align:left;
+}
+.led-pick[data-pick="site"]{ --panel-accent:var(--led-site); --panel-accent-soft:rgba(89,179,122,.7); }
+.led-pick[data-pick="email"]{ --panel-accent:var(--led-email); --panel-accent-soft:rgba(224,166,60,.7); }
+.led-pick[data-pick="agent"]{ --panel-accent:var(--led-agent); --panel-accent-soft:rgba(110,140,255,.7); }
+
+.led-pick-name{ flex:1 1 auto; }
+
+.led-pick-n{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  font-weight:400;
+  color:var(--led-label);
+  flex:none;
+}
+.led-pick[aria-pressed="true"] .led-pick-n{ color:var(--panel-ink); }
+
+.led-status{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+  min-height:1.55em;
+}
+
+.led-nav{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.led-nav .panel-ghost[disabled]{
+  opacity:.45;
+  cursor:default;
+}
+.led-clear{ margin-inline-start:auto; }
+
+/* ---------- the written-out sources ---------- */
+
+.led-src{
+  margin:var(--space-m) 0 0;
+  display:grid;
+  gap:var(--space-s);
+}
+@media (min-width:760px){
+  .led-src{ grid-template-columns:repeat(3,1fr); gap:var(--space-s); }
+}
+
+.led-src > div{
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  border-top-width:3px;
+  padding:14px 16px;
+}
+.led-src > div:nth-child(1){ border-top-color:var(--led-site); }
+.led-src > div:nth-child(2){ border-top-color:var(--led-email); }
+.led-src > div:nth-child(3){ border-top-color:var(--led-agent); }
+
+.led-src dt{
+  font-family:var(--display);
+  font-size:var(--fs-base);
+  letter-spacing:.02em;
+  margin-bottom:6px;
+}
+
+.led-src dd{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.led-gap,
+.led-foot{
+  margin-top:var(--space-m);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.led-gap{ font-size:inherit; color:var(--text); }
+
+#ledger code{
+  font-family:var(--mono);
+  font-size:.92em;
+}
+
+#ledger kbd{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  padding:1px 5px;
+  margin-inline-start:4px;
+  border-radius:4px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.06);
+  color:var(--led-label);
+}

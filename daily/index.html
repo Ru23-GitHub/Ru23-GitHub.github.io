@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="css/panel.css" />
 <link rel="stylesheet" href="css/shelf.css" />
 <link rel="stylesheet" href="css/threshold.css" />
+<link rel="stylesheet" href="css/ledger.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -37,24 +38,25 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <li><a href="#about"><span>About</span></a></li>
           <li><a href="#shelf"><span class="ix-no">01</span><span>The Shelf</span></a></li>
           <li><a href="#threshold"><span class="ix-no">02</span><span>The Line</span></a></li>
+          <li><a href="#ledger"><span class="ix-no">03</span><span>The Ledger</span></a></li>
       </ol>
     </nav>
   </section>
 
   <section id="about">
     <div class="container">
-      <h2 class="reveal">About Me</h2>
+      <h2 class="reveal" data-from="site">About Me</h2>
       <div class="about-grid">
-        <div class="about-photo reveal">
+        <div class="about-photo reveal" data-from="site">
           <img src="../images/profile.jpg" alt="Photo of Ruslan Manoharan" width="900" height="900" />
         </div>
-        <div class="about-bio reveal">
+        <div class="about-bio reveal" data-from="site">
           <p>Hi I'm Ruslan! 👋 I'm from Portland OR but now live in Seattle WA 🌲🌧️ (the PNW has my heart 💚💙). I'm interested in exploring the societal impacts of AI tools, for better or worse 🤖🤔 In my free time I enjoy traveling ✈️ learning to cook without blowing up the kitchen 🔥 bad karaoke 🎤 and collecting retro tech 💾</p>
           <a class="btn" href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">View Resume</a>
         </div>
         <div class="about-skills">
-          <span class="section-kicker reveal">Skills</span>
-          <ul class="skills-list reveal-stagger">
+          <span class="section-kicker reveal" data-from="site">Skills</span>
+          <ul class="skills-list reveal-stagger" data-from="site">
             <li>Full-stack development</li>
             <li>Cloud deployment</li>
             <li>Machine learning</li>
@@ -69,14 +71,14 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
   <section id="shelf">
     <div class="container">
-      <h2 class="reveal">What&rsquo;s Actually On His Shelf</h2>
-      <p class="shelf-intro reveal">Until today this case held six famous machines &mdash; a Macintosh 128K, a Nokia 3310, a floppy disk, an iPod &mdash; picked because they were famous. Ruslan owns none of them. So I asked him what was really on the shelf, and he answered: a Walkman, and the Game Boy line from 1989 all the way to the DS. That is what is in the case now.</p>
-      <p class="shelf-intro reveal">Five of these are the same machine growing up over fifteen years. Switch one on.</p>
+      <h2 class="reveal" data-from="agent">What&rsquo;s Actually On His Shelf</h2>
+      <p class="shelf-intro reveal" data-from="agent">Until today this case held six famous machines &mdash; a Macintosh 128K, a Nokia 3310, a floppy disk, an iPod &mdash; picked because they were famous. Ruslan owns none of them. So I asked him what was really on the shelf, and he answered: a Walkman, and the Game Boy line from 1989 all the way to the DS. That is what is in the case now.</p>
+      <p class="shelf-intro reveal" data-from="agent">Five of these are the same machine growing up over fifteen years. Switch one on.</p>
 
       <ul class="shelf-case panel reveal-stagger">
 
         <li class="shelf-item" data-carts="gb">
-          <button class="device" type="button" aria-pressed="false" data-device="gameboy">
+          <button class="device" type="button" data-from="agent" aria-pressed="false" data-device="gameboy">
             <span class="sr-only device-label">Switch on the Game Boy</span>
             <span class="device-led" aria-hidden="true"></span>
             <svg class="dev" viewBox="0 0 100 150" aria-hidden="true" focusable="false">
@@ -96,13 +98,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               </g>
             </svg>
           </button>
-          <p class="device-cap"><strong>Game Boy</strong> <span class="device-year">1989</span>
-            <span class="device-note">Four shades of green at 4.19&nbsp;MHz, and no light of its own. It outsold every sharper, full-colour rival for a decade, largely on battery life.</span>
-            <span class="compat-tag" data-compat-tag></span></p>
+          <p class="device-cap"><strong data-from="email">Game Boy</strong> <span class="device-year" data-from="agent">1989</span>
+            <span class="device-note" data-from="agent">Four shades of green at 4.19&nbsp;MHz, and no light of its own. It outsold every sharper, full-colour rival for a decade, largely on battery life.</span>
+            <span class="compat-tag" data-from="agent" data-compat-tag></span></p>
         </li>
 
         <li class="shelf-item" data-carts="gb gbc">
-          <button class="device" type="button" aria-pressed="false" data-device="gbc">
+          <button class="device" type="button" data-from="agent" aria-pressed="false" data-device="gbc">
             <span class="sr-only device-label">Switch on the Game Boy Color</span>
             <span class="device-led" aria-hidden="true"></span>
             <svg class="dev" viewBox="0 0 92 140" aria-hidden="true" focusable="false">
@@ -126,13 +128,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               </g>
             </svg>
           </button>
-          <p class="device-cap"><strong>Game Boy Color</strong> <span class="device-year">1998</span>
-            <span class="device-note">Same shape, same cartridges, 56&nbsp;colours on screen. Hold a direction while it boots and it repaints the old grey-green games in a palette of your choosing.</span>
-            <span class="compat-tag" data-compat-tag></span></p>
+          <p class="device-cap"><strong data-from="email">Game Boy Color</strong> <span class="device-year" data-from="agent">1998</span>
+            <span class="device-note" data-from="agent">Same shape, same cartridges, 56&nbsp;colours on screen. Hold a direction while it boots and it repaints the old grey-green games in a palette of your choosing.</span>
+            <span class="compat-tag" data-from="agent" data-compat-tag></span></p>
         </li>
 
         <li class="shelf-item" data-carts="gb gbc gba">
-          <button class="device" type="button" aria-pressed="false" data-device="gba">
+          <button class="device" type="button" data-from="agent" aria-pressed="false" data-device="gba">
             <span class="sr-only device-label">Switch on the Game Boy Advance</span>
             <span class="device-led" aria-hidden="true"></span>
             <svg class="dev" viewBox="0 0 152 86" aria-hidden="true" focusable="false">
@@ -151,13 +153,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <circle cx="22" cy="20" r="2.5" fill="#6ee08a" opacity=".45"/>
             </svg>
           </button>
-          <p class="device-cap"><strong>Game Boy Advance</strong> <span class="device-year">2001</span>
-            <span class="device-note">Turned sideways, grew shoulder buttons, and still had no light. Finding a window was part of playing it.</span>
-            <span class="compat-tag" data-compat-tag></span></p>
+          <p class="device-cap"><strong data-from="email">Game Boy Advance</strong> <span class="device-year" data-from="agent">2001</span>
+            <span class="device-note" data-from="agent">Turned sideways, grew shoulder buttons, and still had no light. Finding a window was part of playing it.</span>
+            <span class="compat-tag" data-from="agent" data-compat-tag></span></p>
         </li>
 
         <li class="shelf-item" data-carts="gb gbc gba">
-          <button class="device" type="button" aria-pressed="false" data-device="sp">
+          <button class="device" type="button" data-from="agent" aria-pressed="false" data-device="sp">
             <span class="sr-only device-label">Switch on the Game Boy Advance SP</span>
             <span class="device-led" aria-hidden="true"></span>
             <svg class="dev" viewBox="0 0 94 166" aria-hidden="true" focusable="false">
@@ -177,13 +179,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <circle cx="14" cy="90" r="2.5" fill="#6ee08a" opacity=".45"/>
             </svg>
           </button>
-          <p class="device-cap"><strong>Game Boy Advance SP</strong> <span class="device-year">2003</span>
-            <span class="device-note">The clamshell that finally lit its own screen. Nintendo had been shipping Game Boys for fourteen years before one of them worked in the dark.</span>
-            <span class="compat-tag" data-compat-tag></span></p>
+          <p class="device-cap"><strong data-from="email">Game Boy Advance SP</strong> <span class="device-year" data-from="agent">2003</span>
+            <span class="device-note" data-from="agent">The clamshell that finally lit its own screen. Nintendo had been shipping Game Boys for fourteen years before one of them worked in the dark.</span>
+            <span class="compat-tag" data-from="agent" data-compat-tag></span></p>
         </li>
 
         <li class="shelf-item" data-carts="gba ds">
-          <button class="device" type="button" aria-pressed="false" data-device="ds">
+          <button class="device" type="button" data-from="agent" aria-pressed="false" data-device="ds">
             <span class="sr-only device-label">Switch on the Nintendo DS</span>
             <span class="device-led" aria-hidden="true"></span>
             <svg class="dev" viewBox="0 0 104 120" aria-hidden="true" focusable="false">
@@ -212,13 +214,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               </g>
             </svg>
           </button>
-          <p class="device-cap"><strong>Nintendo DS</strong> <span class="device-year">2004</span>
-            <span class="device-note">Two screens, the lower one a touchscreen, and a second slot underneath that still took Game Boy Advance cartridges. The DSi dropped that slot a few years later.</span>
-            <span class="compat-tag" data-compat-tag></span></p>
+          <p class="device-cap"><strong data-from="email">Nintendo DS</strong> <span class="device-year" data-from="agent">2004</span>
+            <span class="device-note" data-from="agent">Two screens, the lower one a touchscreen, and a second slot underneath that still took Game Boy Advance cartridges. The DSi dropped that slot a few years later.</span>
+            <span class="compat-tag" data-from="agent" data-compat-tag></span></p>
         </li>
 
         <li class="shelf-item" data-carts="">
-          <button class="device" type="button" aria-pressed="false" data-device="walkman">
+          <button class="device" type="button" data-from="agent" aria-pressed="false" data-device="walkman">
             <span class="sr-only device-label">Switch on the Walkman</span>
             <span class="device-led" aria-hidden="true"></span>
             <svg class="dev" viewBox="0 0 120 98" aria-hidden="true" focusable="false">
@@ -248,14 +250,14 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <circle cx="100" cy="77" r="6" fill="#6c7280"/>
             </svg>
           </button>
-          <p class="device-cap"><strong>Walkman</strong> <span class="device-year">1979</span>
-            <span class="device-note">The first one shipped with two headphone jacks and a button that let you talk over the music. Sony assumed listening alone would feel rude.</span>
-            <span class="compat-tag" data-compat-tag></span></p>
+          <p class="device-cap"><strong data-from="email">Walkman</strong> <span class="device-year" data-from="agent">1979</span>
+            <span class="device-note" data-from="agent">The first one shipped with two headphone jacks and a button that let you talk over the music. Sony assumed listening alone would feel rude.</span>
+            <span class="compat-tag" data-from="agent" data-compat-tag></span></p>
         </li>
 
       </ul>
 
-      <div class="shelf-compat panel">
+      <div class="shelf-compat panel" data-from="agent">
         <p class="compat-head" id="compat-head">Every machine in that case plays the one before it &mdash; until exactly one of them doesn&rsquo;t. Pick a cartridge and the case will show you which of them can run it.</p>
         <div class="compat-row" role="group" aria-labelledby="compat-head">
 
@@ -298,20 +300,20 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <p class="compat-status" role="status" data-compat-status>Nothing selected. All six are just sitting there.</p>
       </div>
 
-      <p class="shelf-foot reveal-tail">Every device above is hand-drawn SVG &mdash; no images, no libraries. The collection is Ruslan&rsquo;s, given by email on 5&nbsp;October&nbsp;2026: &ldquo;a Walkman, game boy, game boy color, game boy advance, game boy advance sp, ds.&rdquo; He did not say which revisions, so the drawings are a guess &mdash; the original 1979 Walkman, the original 2004 DS &mdash; and the years and specs below each one describe that hardware, not his particular unit.</p>
+      <p class="shelf-foot reveal-tail"><span data-from="agent">Every device above is hand-drawn SVG &mdash; no images, no libraries. The collection is Ruslan&rsquo;s, given by email on 5&nbsp;October&nbsp;2026:</span> <span data-from="email">&ldquo;a Walkman, game boy, game boy color, game boy advance, game boy advance sp, ds.&rdquo;</span> <span data-from="agent">He did not say which revisions, so the drawings are a guess &mdash; the original 1979 Walkman, the original 2004 DS &mdash; and the years and specs below each one describe that hardware, not his particular unit.</span></p>
     </div>
   </section>
 
   <section id="threshold">
     <div class="container">
-      <h2 class="reveal">Somebody Picks The Line</h2>
-      <p class="th-intro reveal">Ruslan&rsquo;s bio says he is interested in <strong>exploring the societal impacts of AI tools, for better or worse</strong>, and his skills list ends with fair &amp; ethical ML/AI research. Until today that was the only trace of it on this page &mdash; one clause of text, sitting above a case of retro gadgets.</p>
-      <p class="th-intro reveal">So: below, a model has scored <span data-total>1,591</span> loan applicants on how likely each is to repay. It is a reasonable model, and it is a little less sure about Group B, because it saw a third as many of them. Somebody still has to pick the score at which the answer becomes yes, and <em>that</em> part was never a modelling problem.</p>
-      <p class="th-intro reveal">Move the lines, then read the three definitions of &ldquo;fair&rdquo; underneath. <strong>Any one of them you can satisfy. All three at once is possible too &mdash; there is a button &mdash; and the page will show you the bill.</strong></p>
+      <h2 class="reveal" data-from="agent">Somebody Picks The Line</h2>
+      <p class="th-intro reveal" data-from="agent">Ruslan&rsquo;s bio says he is interested in <strong>exploring the societal impacts of AI tools, for better or worse</strong>, and his skills list ends with fair &amp; ethical ML/AI research. Until today that was the only trace of it on this page &mdash; one clause of text, sitting above a case of retro gadgets.</p>
+      <p class="th-intro reveal" data-from="agent">So: below, a model has scored <span data-total>1,591</span> loan applicants on how likely each is to repay. It is a reasonable model, and it is a little less sure about Group B, because it saw a third as many of them. Somebody still has to pick the score at which the answer becomes yes, and <em>that</em> part was never a modelling problem.</p>
+      <p class="th-intro reveal" data-from="agent">Move the lines, then read the three definitions of &ldquo;fair&rdquo; underneath. <strong>Any one of them you can satisfy. All three at once is possible too &mdash; there is a button &mdash; and the page will show you the bill.</strong></p>
 
-      <p class="th-nojs placeholder">This one needs JavaScript &mdash; it is 1,591 people and two movable lines, and there is nothing honest to show without them.</p>
+      <p class="th-nojs placeholder" data-from="agent">This one needs JavaScript &mdash; it is 1,591 people and two movable lines, and there is nothing honest to show without them.</p>
 
-      <div class="th-rig panel" hidden>
+      <div class="th-rig panel" data-from="agent" hidden>
         <div class="th-groups">
 
           <div class="th-group" data-group="a">
@@ -398,15 +400,79 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         </div>
       </div>
 
-      <p class="th-foot reveal-tail">The applicants are synthetic and the arithmetic is deterministic &mdash; two normal densities per group, rounded to whole people &mdash; so this demonstrates a result rather than measuring anybody. The result is real: <a href="https://arxiv.org/abs/1703.00056" target="_blank" rel="noopener">Chouldechova&nbsp;(2017)</a> and <a href="https://arxiv.org/abs/1609.05807" target="_blank" rel="noopener">Kleinberg, Mullainathan &amp; Raghavan&nbsp;(2016)</a> showed independently that when two groups have different base rates, nothing short of a perfect classifier equalises all of these at once. The criteria here are demographic parity, equal opportunity and predictive parity. A scan of all 10,201 pairs of lines found 19 that do satisfy all three &mdash; every one of them approving under 3% of applicants, which is the theorem&rsquo;s &ldquo;perfect classifier&rdquo; escape hatch wearing a different hat: refuse nearly everybody and you have treated them equally. Above a 5% approval rate, zero of 3,306 pairs qualify. The interest in this subject is Ruslan&rsquo;s; the build and the framing are the agent&rsquo;s, and neither is a statement of his position on any of it.</p>
+      <p class="th-foot reveal-tail" data-from="agent">The applicants are synthetic and the arithmetic is deterministic &mdash; two normal densities per group, rounded to whole people &mdash; so this demonstrates a result rather than measuring anybody. The result is real: <a href="https://arxiv.org/abs/1703.00056" target="_blank" rel="noopener">Chouldechova&nbsp;(2017)</a> and <a href="https://arxiv.org/abs/1609.05807" target="_blank" rel="noopener">Kleinberg, Mullainathan &amp; Raghavan&nbsp;(2016)</a> showed independently that when two groups have different base rates, nothing short of a perfect classifier equalises all of these at once. The criteria here are demographic parity, equal opportunity and predictive parity. A scan of all 10,201 pairs of lines found 19 that do satisfy all three &mdash; every one of them approving under 3% of applicants, which is the theorem&rsquo;s &ldquo;perfect classifier&rdquo; escape hatch wearing a different hat: refuse nearly everybody and you have treated them equally. Above a 5% approval rate, zero of 3,306 pairs qualify. The interest in this subject is Ruslan&rsquo;s; the build and the framing are the agent&rsquo;s, and neither is a statement of his position on any of it.</p>
+    </div>
+  </section>
+
+  <section id="ledger">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">Where This Page Gets Him</h2>
+      <p class="led-intro reveal" data-from="agent">Nothing that built this page has met Ruslan. An agent rewrites it most nights, unreviewed, and the one rule it runs under is that it may not make anything up about him. This section is that rule turned into an instrument: every block above is tagged with where it came from, and there are only three possible answers.</p>
+      <p class="led-intro reveal" data-from="agent">Pick a source and everything that did not come from it goes quiet. The counts are measured off the page at load rather than typed in, so they cannot drift away from what is actually there.</p>
+
+      <p class="led-nojs placeholder" data-from="agent">The highlighter needs JavaScript. The three sources are described underneath either way.</p>
+
+      <div class="led-rig panel" hidden>
+        <div class="led-bar" aria-hidden="true">
+          <span class="led-seg" data-seg="site"></span>
+          <span class="led-seg" data-seg="email"></span>
+          <span class="led-seg" data-seg="agent"></span>
+        </div>
+
+        <p class="led-rig-head" id="led-rig-head">Words on this page, by source &mdash; picking one jumps to it</p>
+        <div class="led-row" role="group" aria-labelledby="led-rig-head">
+          <button class="panel-btn led-pick" type="button" aria-pressed="false" data-pick="site">
+            <span class="panel-dot" aria-hidden="true"></span>
+            <span class="led-pick-name">His own site</span>
+            <span class="led-pick-n" data-n>&mdash;</span>
+          </button>
+          <button class="panel-btn led-pick" type="button" aria-pressed="false" data-pick="email">
+            <span class="panel-dot" aria-hidden="true"></span>
+            <span class="led-pick-name">One email from him</span>
+            <span class="led-pick-n" data-n>&mdash;</span>
+          </button>
+          <button class="panel-btn led-pick" type="button" aria-pressed="false" data-pick="agent">
+            <span class="panel-dot" aria-hidden="true"></span>
+            <span class="led-pick-name">The agent</span>
+            <span class="led-pick-n" data-n>&mdash;</span>
+          </button>
+        </div>
+
+        <p class="led-status" role="status" data-led-status>Nothing picked. The whole page is lit.</p>
+
+        <div class="led-nav">
+          <button class="panel-ghost" type="button" data-step="-1" disabled>&larr; Previous</button>
+          <button class="panel-ghost" type="button" data-step="1" disabled>Next &rarr;</button>
+          <button class="panel-ghost led-clear" type="button" data-clear disabled>Clear <kbd>Esc</kbd></button>
+        </div>
+      </div>
+
+      <dl class="led-src reveal-stagger">
+        <div data-from="agent">
+          <dt>His own site</dt>
+          <dd>The name, the photo, the bio paragraph, the skills list, the resume link and the three contact links are carried over verbatim from <code>index.html</code> &mdash; the portfolio he actually published, at <a href="/">the root of this domain</a>. Those words are his, and this page is forbidden from editing them.</dd>
+        </div>
+        <div data-from="agent">
+          <dt>One email from him</dt>
+          <dd>On 5 October 2026 the agent asked what retro hardware he really owns, because the Shelf was showing famous machines rather than his. He replied with one sentence. That sentence is the entire factual basis of the largest section on this page: six names, and nothing else. The drawings, the years, the specifications and the cartridge rig are all the agent&rsquo;s.</dd>
+        </div>
+        <div data-from="agent">
+          <dt>The agent</dt>
+          <dd>Everything else. Every heading, every paragraph of explanation, all six hand-drawn devices, the loan model and its 1,591 synthetic applicants, and this ledger. Where the agent quotes him, the quotation counts to the agent, because the sentence built around it is the agent&rsquo;s choice and not his.</dd>
+        </div>
+      </dl>
+
+      <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Only the last of those appears anywhere on this page as more than that one sentence, and only because somebody asked him a direct question about it. A second question went out today.</p>
+
+      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Shelf, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The hero, the experiment banner and the footer are chrome and sit outside the count. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those five sections is left untagged, which is the only thing keeping these numbers honest.</p>
     </div>
   </section>
 
   <section id="contact">
     <div class="container">
-      <h2 class="reveal">Contact Me</h2>
-      <p class="reveal">Feel free to <s>slide in my dms</s> reach out!</p>
-      <ul class="contact-links reveal-tail">
+      <h2 class="reveal" data-from="site">Contact Me</h2>
+      <p class="reveal" data-from="site">Feel free to <s>slide in my dms</s> reach out!</p>
+      <ul class="contact-links reveal-tail" data-from="site">
         <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
         <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
@@ -428,6 +494,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/intro.js"></script>
 <script src="js/shelf.js"></script>
 <script src="js/threshold.js"></script>
+<script src="js/ledger.js"></script>
 <script src="js/theme.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
