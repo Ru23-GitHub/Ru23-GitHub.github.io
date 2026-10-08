@@ -1,7 +1,8 @@
 /* Where This Page Gets Him — the provenance highlighter.
    ----------------------------------------------------------------------
    Added 2026-10-07. Scoped to #ledger for its controls; it reads and
-   classes [data-from] blocks across the six content sections.
+   classes [data-from] blocks across the content sections listed in
+   SCOPE below. #north joined them on 2026-10-08.
 
    The page carries a rule it cannot demonstrate on its own: an agent
    writes it, and the agent may not invent facts about Ruslan. Every
@@ -23,7 +24,7 @@
    And the check below exists at all because the numbers are only as
    honest as the tagging. An untagged paragraph is invisible to the
    count, which is exactly the failure mode that would flatter the
-   agent — so audit() walks the same six sections looking for visible
+   agent — so audit() walks the same sections looking for visible
    text with no tagged owner, and reports it. It is exposed on
    window.__ledger rather than run as an assertion so the page never
    breaks over it, but the build runs it before every commit. */
@@ -33,7 +34,7 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'shelf', 'booth', 'threshold', 'ledger', 'contact'];
+  var SCOPE = ['about', 'north', 'shelf', 'booth', 'threshold', 'ledger', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {
@@ -107,7 +108,7 @@
     return { words: total, textBlocks: blocks };
   }
 
-  /* Visible text in the six sections with no [data-from] owner. Every
+  /* Visible text in the scoped sections with no [data-from] owner. Every
      entry here is a word the bar is silently not counting. */
   function audit() {
     var leaks = [];

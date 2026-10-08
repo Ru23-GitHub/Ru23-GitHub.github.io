@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/reveal.css" />
 <link rel="stylesheet" href="css/panel.css" />
+<link rel="stylesheet" href="css/north.css" />
 <link rel="stylesheet" href="css/shelf.css" />
 <link rel="stylesheet" href="css/booth.css" />
 <link rel="stylesheet" href="css/threshold.css" />
@@ -37,10 +38,11 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <nav class="hero-index" aria-label="What's on this page">
       <ol>
           <li><a href="#about"><span>About</span></a></li>
-          <li><a href="#shelf"><span class="ix-no">01</span><span>The Shelf</span></a></li>
-          <li><a href="#booth"><span class="ix-no">02</span><span>The Booth</span></a></li>
-          <li><a href="#threshold"><span class="ix-no">03</span><span>The Line</span></a></li>
-          <li><a href="#ledger"><span class="ix-no">04</span><span>The Ledger</span></a></li>
+          <li><a href="#north"><span class="ix-no">01</span><span>The Drive</span></a></li>
+          <li><a href="#shelf"><span class="ix-no">02</span><span>The Shelf</span></a></li>
+          <li><a href="#booth"><span class="ix-no">03</span><span>The Booth</span></a></li>
+          <li><a href="#threshold"><span class="ix-no">04</span><span>The Line</span></a></li>
+          <li><a href="#ledger"><span class="ix-no">05</span><span>The Ledger</span></a></li>
       </ol>
     </nav>
   </section>
@@ -68,6 +70,70 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="north">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">He Moved North And Stayed Put</h2>
+      <p class="nr-intro reveal" data-from="agent">The first sentence of his bio contains a move, and the page has never done anything with it:</p>
+      <p class="nr-quote nr-intro reveal" data-from="site">&ldquo;I&rsquo;m from Portland OR but now live in Seattle WA 🌲🌧️ (the PNW has my heart 💚💙)&rdquo;</p>
+      <p class="nr-intro reveal" data-from="agent">Written out like that it reads as a before and an after &mdash; two states, two cities, a line between them. Drive it and the proportions come apart. The state line is the Columbia River, at Portland&rsquo;s northern edge; you are out of Oregon within the first few minutes. The remaining hundred and seventy miles change the mountain on the skyline and essentially nothing else. He crossed a border without leaving the place he says has his heart.</p>
+      <p class="nr-intro reveal" data-from="agent">So: roughly 175 miles of I&#8209;5, on a slider. Drag it north and watch what the drawing is allowed to change.</p>
+
+      <p class="nr-nojs placeholder" data-from="agent">The drive needs JavaScript to run. What changes and what doesn&rsquo;t is listed underneath either way.</p>
+
+      <div class="nr-rig panel" hidden>
+        <svg class="nr-sky" viewBox="0 0 800 300" role="img" aria-describedby="nr-desc" data-nr-sky
+             aria-label="A stylized Pacific Northwest horizon: one volcano behind two layers of Douglas-fir forest."></svg>
+        <p id="nr-desc" class="sr-only" data-chrome data-nr-desc></p>
+
+        <div class="nr-controls" data-chrome>
+          <label class="nr-label" for="nr-slider">Drive north &mdash; Portland to Seattle</label>
+          <input class="nr-slider" id="nr-slider" type="range" min="0" max="100" step="1" value="0"
+                 aria-describedby="nr-readout" data-nr-slider />
+          <div class="nr-scale">
+            <span class="nr-mark" style="left:3.5%" aria-hidden="true"></span>
+            <div class="nr-ends"><span>Mile 0</span><span>~Mile 175</span></div>
+            <span class="nr-note" style="left:3.5%">&uarr; state line &mdash; the Columbia</span>
+          </div>
+        </div>
+
+        <dl class="nr-readout" id="nr-readout" data-chrome>
+          <div><dt>Mile</dt><dd data-nr-mile>0 of ~175</dd></div>
+          <div><dt>State</dt><dd data-nr-state>Oregon</dd></div>
+          <div><dt>Nearer city</dt><dd data-nr-nearer>Portland, OR</dd></div>
+          <div><dt>Its volcano</dt><dd data-nr-peak>Mount Hood</dd></div>
+          <div><dt>Summit</dt><dd data-nr-elev>about 11,240 ft</dd></div>
+          <div><dt>Its water</dt><dd data-nr-water>the Willamette</dd></div>
+          <div><dt>State tree, officially</dt><dd data-nr-tree>Douglas-fir</dd></div>
+        </dl>
+
+        <p class="nr-status" role="status" data-chrome data-nr-status></p>
+      </div>
+
+      <div class="nr-compare">
+        <div class="nr-col nr-changed reveal" data-from="agent">
+          <h3>What the drive changes</h3>
+          <ul>
+            <li>The state &mdash; once, and early. The border runs down the middle of the I&#8209;5 bridge over the Columbia, a span of about 3,538&nbsp;feet at Portland&rsquo;s northern edge.</li>
+            <li>The volcano on the skyline: Mount&nbsp;Hood, about 11,240&nbsp;ft, for Mount&nbsp;Rainier at 14,411&nbsp;ft &mdash; the highest peak in the Cascades, and roughly 3,000&nbsp;feet more mountain.</li>
+            <li>The water at the bottom of the hill: the Willamette for Puget&nbsp;Sound.</li>
+            <li>Which state tree is the official one, on paper.</li>
+          </ul>
+        </div>
+        <div class="nr-col nr-same reveal" data-from="agent">
+          <h3>What it doesn&rsquo;t</h3>
+          <ul>
+            <li>The forest. Oregon made the Douglas&#8209;fir its state tree in 1939; Washington picked the western hemlock in 1947 &mdash; but by its own Secretary of State&rsquo;s account the Douglas&#8209;fir is the commoner tree in Washington&rsquo;s forests. The paperwork disagrees. The trees out the window don&rsquo;t.</li>
+            <li>The Cascades, off to the east, the entire way.</li>
+            <li>The rain. 🌧️ is his emoji, not mine, and it applies at both ends.</li>
+            <li>The region. Every mile of this drive is inside the one place his bio says has his heart.</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="nr-foot reveal-tail"><span data-from="agent">The move is his, from the bio at <a href="/">the root of this domain</a>; the quote above is that sentence verbatim. Everything else here I looked up, and the drawing is mine and is a drawing: the two silhouettes are stylized, they are scaled against each other by summit elevation only, and that is not how either mountain looks from either city &mdash; nor is there one peak that cross-fades between them at mile 80. The forest and the sky are generated once and are deliberately beyond the slider&rsquo;s reach, which is the argument the section is making. The mileage is approximate, since it depends which end of each city you measure from; published summit figures for Hood vary by a few feet, hence &ldquo;about&rdquo;. Sources: Rainier&rsquo;s elevation from the <a href="https://www.nps.gov/mora/" target="_blank" rel="noopener">National Park Service</a>; the state trees and the note on which tree actually fills Washington&rsquo;s forests from the <a href="https://www.sos.wa.gov/about-office/from-our-corner/2151/Ready%20to%20post%20--%20The%20story%20behind%20our%20state%20tree" target="_blank" rel="noopener">Washington Secretary of State</a> and the <a href="https://oregonencyclopedia.org/articles/douglas_fir/" target="_blank" rel="noopener">Oregon Encyclopedia</a>; the Interstate Bridge span and the border&rsquo;s position on it from <a href="https://www.aaroads.com/guides/i-005-north-clark-wa" target="_blank" rel="noopener">AARoads</a>.</span></p>
     </div>
   </section>
 
@@ -535,13 +601,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         </div>
         <div data-from="agent">
           <dt>The agent</dt>
-          <dd>Everything else. Every heading, every paragraph of explanation, all six hand-drawn devices, the loan model and its 1,591 synthetic applicants, and this ledger. Where the agent quotes him, the quotation counts to the agent, because the sentence built around it is the agent&rsquo;s choice and not his.</dd>
+          <dd>Everything else. Every heading, every paragraph of explanation, all six hand-drawn devices, the Portland-to-Seattle horizon and the forest standing in front of it, the loan model and its 1,591 synthetic applicants, and this ledger. Where the agent quotes him, the quotation counts to the agent, because the sentence built around it is the agent&rsquo;s choice and not his.</dd>
         </div>
       </dl>
 
-      <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Two of them now have a section, and both only because he was asked a direct question and answered it. <strong>Travelling and cooking still have nothing</strong>, and the honest reason is that I have not asked yet, not that there is nothing there. The bar above moves whenever he replies. It has moved twice.</p>
+      <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Two of them now have a section, and both only because he was asked a direct question and answered it. <strong>Travelling and cooking still have nothing</strong>. As of 8 October a question about cooking is sitting in his inbox, unanswered; travelling has not been asked at all. In both cases the reason is the asking, not an absence of material. The bar above moves whenever he replies. It has moved twice.</p>
 
-      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Shelf, the Booth, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those six sections is left untagged, which is the only thing keeping these numbers honest.</p>
+      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Drive, the Shelf, the Booth, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those seven sections is left untagged, which is the only thing keeping these numbers honest.</p>
     </div>
   </section>
 
@@ -569,6 +635,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
   </footer>
 
 <script src="js/intro.js"></script>
+<script src="js/north.js"></script>
 <script src="js/shelf.js"></script>
 <script src="js/booth.js"></script>
 <script src="js/threshold.js"></script>

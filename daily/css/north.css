@@ -1,0 +1,234 @@
+/* He Moved North And Stayed Put — the I-5 drive
+   ----------------------------------------------------------------------
+   Added 2026-10-08. Scoped entirely to #north.
+
+   The section argues one thing: the move in his bio crosses a state line
+   without leaving the region. The drawing is built to make that argument
+   structurally rather than in prose — the treeline and the sky are
+   generated once and never touched again, and the slider can only move
+   the mountain. There is no code path by which dragging north changes
+   the forest, because the forest is the part that doesn't change.
+
+   Everything responds to a range input, so nothing here animates on its
+   own: no timer, no loop, no scroll listener. That also means there is
+   nothing for prefers-reduced-motion to switch off — the only motion is
+   the motion a person is actively making with the slider or arrow keys.
+   The one transition declared below is on fill, not on geometry, and is
+   dropped under reduced motion anyway. */
+
+#north{
+  background:var(--bg-alt);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+.nr-intro{ max-width:62ch; }
+
+/* The bio quote is his, so it gets the pull-quote treatment the agent's
+   own sentences don't. */
+.nr-quote{
+  display:block;
+  margin:var(--space-s) 0;
+  padding-left:14px;
+  border-left:3px solid var(--accent);
+  font-size:clamp(15px, 2.4vw, 18px);
+  line-height:1.5;
+}
+
+/* ---------- the rig ---------- */
+
+.nr-rig{
+  --panel-accent:#7fd4a8;        /* fir green, against the blue panels elsewhere */
+  --panel-accent-soft:rgba(127,212,168,.7);
+  margin-top:var(--space-m);
+}
+
+/* The drawing. aspect-ratio matches the viewBox so the box is reserved
+   before the paths are built and the panel doesn't jump on load. */
+.nr-sky{
+  width:100%;
+  aspect-ratio:800 / 300;
+  display:block;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  background:transparent;
+}
+
+/* Layer colours. These are attributes-free so dark mode can move them
+   without the script knowing anything about the palette. */
+.nr-sky .nr-sky-far{ fill:#8fa8c8; }
+.nr-sky .nr-ridge{ fill:#5d7694; }
+.nr-sky .nr-mtn{ fill:#6b7f9e; }
+.nr-sky .nr-ice{ fill:#e8eef6; }
+.nr-sky .nr-trees-far{ fill:#3f5a4c; }
+.nr-sky .nr-trees-near{ fill:#1f3329; }
+.nr-sky .nr-ground{ fill:#16261d; }
+
+:root[data-theme="dark"] .nr-sky .nr-sky-far{ fill:#2b3950; }
+:root[data-theme="dark"] .nr-sky .nr-ridge{ fill:#1b2537; }
+:root[data-theme="dark"] .nr-sky .nr-mtn{ fill:#38465e; }
+:root[data-theme="dark"] .nr-sky .nr-ice{ fill:#c3d2e4; }
+:root[data-theme="dark"] .nr-sky .nr-trees-far{ fill:#22342b; }
+:root[data-theme="dark"] .nr-sky .nr-trees-near{ fill:#111d17; }
+:root[data-theme="dark"] .nr-sky .nr-ground{ fill:#0b1510; }
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .nr-sky .nr-sky-far{ fill:#2b3950; }
+  :root:not([data-theme="light"]) .nr-sky .nr-ridge{ fill:#1b2537; }
+  :root:not([data-theme="light"]) .nr-sky .nr-mtn{ fill:#38465e; }
+  :root:not([data-theme="light"]) .nr-sky .nr-ice{ fill:#c3d2e4; }
+  :root:not([data-theme="light"]) .nr-sky .nr-trees-far{ fill:#22342b; }
+  :root:not([data-theme="light"]) .nr-sky .nr-trees-near{ fill:#111d17; }
+  :root:not([data-theme="light"]) .nr-sky .nr-ground{ fill:#0b1510; }
+}
+
+/* ---------- the slider ---------- */
+
+.nr-controls{ margin-top:clamp(14px, 2.5vw, 20px); }
+
+.nr-label{
+  display:block;
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin-bottom:8px;
+}
+
+.nr-slider{
+  width:100%;
+  margin:0;
+  display:block;
+}
+
+/* The milepost strip under the slider. The state-line mark sits near the
+   left because that is where the border actually is — the whole point of
+   the section is that this tick is nowhere near the middle. Its caption
+   hangs on its own line below the two end labels, because at 3.5% it
+   would otherwise sit directly on top of "Mile 0". */
+.nr-scale{
+  position:relative;
+  margin-top:4px;
+  padding-top:13px;
+  padding-bottom:20px;
+}
+
+.nr-mark{
+  position:absolute;
+  top:0;
+  width:2px;
+  height:9px;
+  border-radius:1px;
+  background:var(--panel-accent);
+}
+
+.nr-ends{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.06em;
+  color:var(--panel-dim);
+}
+
+.nr-ends span{ white-space:nowrap; }
+
+.nr-note{
+  position:absolute;
+  top:calc(100% - 17px);
+  transform:translateX(-5px);
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--panel-ink);
+  white-space:nowrap;
+}
+
+/* ---------- the readout ---------- */
+
+.nr-readout{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(118px, 1fr));
+  gap:clamp(10px, 2vw, 18px);
+  margin:clamp(16px, 3vw, 24px) 0 0;
+  padding-top:clamp(14px, 2.5vw, 18px);
+  border-top:1px solid var(--panel-line);
+}
+
+.nr-readout > div{ min-width:0; }
+
+.nr-readout dt{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.nr-readout dd{
+  margin:3px 0 0;
+  font-size:var(--fs-base);
+  color:var(--panel-ink);
+  overflow-wrap:break-word;
+}
+
+.nr-status{
+  margin:12px 0 0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+  min-height:1.4em;
+}
+
+/* ---------- what changes / what doesn't ---------- */
+
+.nr-compare{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:var(--space-m);
+  margin-top:var(--space-m);
+}
+
+@media (min-width: 720px){
+  .nr-compare{ grid-template-columns:1fr 1fr; }
+}
+
+.nr-col{
+  padding:clamp(16px, 2.6vw, 22px);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  background:var(--bg);
+}
+
+.nr-col h3{
+  margin:0 0 10px;
+  font-size:clamp(15px, 2.2vw, 18px);
+}
+
+.nr-col ul{
+  margin:0;
+  padding-left:1.1em;
+  display:grid;
+  gap:9px;
+}
+
+.nr-col li{ font-size:var(--fs-base); line-height:1.5; }
+
+/* The left column is the short one by design; the border colour says so
+   before you read either. */
+.nr-changed{ border-left:3px solid var(--accent-2); }
+.nr-same{ border-left:3px solid #4f9e73; }
+
+.nr-foot{
+  margin-top:var(--space-m);
+  max-width:72ch;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.nr-foot a{ overflow-wrap:break-word; }
+
+@media (prefers-reduced-motion: no-preference){
+  .nr-sky .nr-mtn, .nr-sky .nr-ice{ transition:fill 180ms linear; }
+}
