@@ -1,0 +1,198 @@
+/* Five You Ship, One You Ask — his skills list, read as a stack
+   ----------------------------------------------------------------------
+   Added 2026-10-09.
+
+   The skills list is the one thing this page carries over from his real
+   portfolio and then does nothing with: six strings in an <ul> in the
+   About grid, and that was all of it. Everything else the site gives —
+   the name, the photo, the bio, the resume link, the contact links — is
+   at least placed deliberately. The six skills were a bullet list.
+
+   So this section reads them. Five of the six name something you build;
+   the sixth names something you ask, and asking it is the only one of
+   the six with no layer of its own. The rig is one slider: how far down
+   the stack the sixth item reaches. Everything it changes is an
+   attribute, so the five layers and their five decisions are legible
+   prose with the slider at zero, with JavaScript off, and in a reader.
+
+   The accent is teal rather than the blue the other panels use, because
+   three sections already light up blue and a fourth stops meaning
+   anything. #4fc3a1 is 7.6:1 on --panel-top (#1c1f27) and 6.1:1 on the
+   lightest surface it lands on (#2a3040), and it is
+   never the only carrier of state: an asked layer also gains a filled
+   dot, a left stripe, and a word in the status line underneath. */
+
+#stack{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+
+.st-intro{ max-width:66ch; }
+
+/* ---------- the rig ---------- */
+
+.st-rig{
+  --panel-accent:#4fc3a1;
+  --panel-accent-soft:rgba(79,195,161,.7);
+  --panel-btn-on-top:#1d4a3d;
+  --panel-btn-on-bottom:#163a30;
+  margin:var(--space-m) 0 var(--space-s);
+}
+
+/* ---------- the sixth item, which is not a layer ---------- */
+
+.st-sixth{
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:4px 10px;
+  padding-bottom:12px;
+  margin-bottom:14px;
+  border-bottom:1px solid var(--panel-line);
+}
+
+.st-sixth-name{
+  font-weight:600;
+  color:var(--panel-accent);
+}
+
+.st-sixth-note{
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+/* ---------- the control ---------- */
+
+.st-control{ margin:0 0 16px; }
+
+.st-control-head{
+  display:block;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin-bottom:8px;
+}
+
+.st-slider{
+  width:100%;
+  margin:0;
+}
+
+.st-ticks{
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--panel-dim);
+  margin-top:2px;
+}
+
+/* ---------- the five layers ---------- */
+
+.st-edge{
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin:0 0 6px;
+}
+
+.st-edge.is-bottom{ margin:6px 0 0; }
+
+.st-list{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:8px;
+}
+
+.st-layer{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:12px;
+  align-items:start;
+  padding:12px 14px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--panel-line);
+  /* The stripe is a 3px inset shadow rather than a border-left so that
+     switching it on does not shift the text by 3px. */
+  box-shadow:inset 3px 0 0 transparent;
+  background:rgba(255,255,255,.03);
+}
+
+.st-layer[data-asked="true"]{
+  box-shadow:inset 3px 0 0 var(--panel-accent);
+  background:rgba(79,195,161,.08);
+  border-color:rgba(79,195,161,.32);
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .st-layer{ transition:box-shadow 160ms, background-color 160ms, border-color 160ms; }
+}
+
+/* The dot is the second, non-colour carrier of the same state: hollow
+   when the question is not asked at that layer, filled when it is. */
+.st-dot{
+  width:12px; height:12px;
+  margin-top:5px;
+  border-radius:50%;
+  border:2px solid var(--panel-dim);
+  background:transparent;
+  flex:none;
+}
+
+.st-layer[data-asked="true"] .st-dot{
+  border-color:var(--panel-accent);
+  background:var(--panel-accent);
+  box-shadow:0 0 9px 2px var(--panel-accent-soft);
+}
+
+.st-name{
+  margin:0;
+  font-weight:600;
+  color:var(--panel-ink);
+}
+
+.st-role{
+  margin:1px 0 0;
+  font-size:var(--fs-md);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.st-call{
+  margin:7px 0 0;
+  font-size:var(--fs-base);
+  line-height:1.5;
+  color:var(--panel-ink);
+  max-width:60ch;
+}
+
+/* ---------- the readout ---------- */
+
+.st-status{
+  margin:14px 0 0;
+  padding-top:12px;
+  border-top:1px solid var(--panel-line);
+  font-size:var(--fs-base);
+  line-height:1.5;
+  color:var(--panel-ink);
+  min-height:3em;
+}
+
+.st-count{
+  font-family:var(--mono);
+  color:var(--panel-accent);
+}
+
+.st-note{ max-width:66ch; }
+
+/* ---------- phone ---------- */
+
+@media (max-width:520px){
+  .st-layer{ padding:11px 12px; gap:10px; }
+  .st-call{ font-size:var(--fs-md); }
+}

@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/north.css" />
 <link rel="stylesheet" href="css/shelf.css" />
 <link rel="stylesheet" href="css/booth.css" />
+<link rel="stylesheet" href="css/stack.css" />
 <link rel="stylesheet" href="css/threshold.css" />
 <link rel="stylesheet" href="css/ledger.css" />
 <link rel="stylesheet" href="css/theme.css" />
@@ -41,8 +42,9 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <li><a href="#north"><span class="ix-no">01</span><span>The Drive</span></a></li>
           <li><a href="#shelf"><span class="ix-no">02</span><span>The Shelf</span></a></li>
           <li><a href="#booth"><span class="ix-no">03</span><span>The Booth</span></a></li>
-          <li><a href="#threshold"><span class="ix-no">04</span><span>The Line</span></a></li>
-          <li><a href="#ledger"><span class="ix-no">05</span><span>The Ledger</span></a></li>
+          <li><a href="#stack"><span class="ix-no">04</span><span>The Stack</span></a></li>
+          <li><a href="#threshold"><span class="ix-no">05</span><span>The Line</span></a></li>
+          <li><a href="#ledger"><span class="ix-no">06</span><span>The Ledger</span></a></li>
       </ol>
     </nav>
   </section>
@@ -447,6 +449,85 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="stack">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">Five You Ship, One You Ask</h2>
+
+      <p class="st-intro reveal" data-from="agent">His skills list is six lines long, and it is the only claim his portfolio makes about what he can actually do &mdash; no projects, no employers, no dates, and this page is forbidden from inventing any. It was also, until today, the one thing carried over from his real site that this page did nothing whatsoever with: six strings in a bullet list beside the photo.</p>
+
+      <p class="st-intro reveal" data-from="agent">Read them again, though, and they are not six of the same kind of thing. Five of them name something you <em>build</em>. The sixth &mdash; fair &amp; ethical ML/AI research &mdash; names something you <em>ask</em>, and it is the only one of the six with no layer of its own. Which is precisely what makes it the easiest item on a list like this to quietly leave off.</p>
+
+      <p class="st-nojs placeholder" data-from="agent">The slider below needs JavaScript. The five layers, and the decision sitting at each one, are there without it.</p>
+
+      <div class="st-rig panel">
+        <div class="st-sixth" data-from="agent">
+          <span class="st-sixth-name">Fair &amp; ethical ML/AI research</span>
+          <span class="st-sixth-note">&mdash; the sixth item. Not a layer. A question asked of the other five.</span>
+        </div>
+
+        <div class="st-control" data-chrome hidden>
+          <label class="st-control-head" for="st-slider">How far down the question reaches</label>
+          <input class="st-slider" id="st-slider" type="range" min="0" max="5" step="1" value="0"
+                 data-st-slider aria-valuetext="Asked at none of the five layers." />
+          <div class="st-ticks" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div>
+        </div>
+
+        <p class="st-edge" data-chrome>Nearest the person</p>
+
+        <ol class="st-list">
+          <li class="st-layer" data-asked="false" data-chrome>
+            <span class="st-dot" aria-hidden="true"></span>
+            <div class="st-layer-text" data-from="agent">
+              <p class="st-name">Full-stack development</p>
+              <p class="st-role">What the person actually touches</p>
+              <p class="st-call">Whether the decision can be seen, understood and argued with. A screen that hands back a score and no reason is a design choice, not a technical limit.</p>
+            </div>
+          </li>
+          <li class="st-layer" data-asked="false" data-chrome>
+            <span class="st-dot" aria-hidden="true"></span>
+            <div class="st-layer-text" data-from="agent">
+              <p class="st-name">Cloud deployment</p>
+              <p class="st-role">Where it runs, and for how many</p>
+              <p class="st-call">How many people it reaches before anybody reads a single output. Scale is the dial that decides how large a mistake is permitted to get.</p>
+            </div>
+          </li>
+          <li class="st-layer" data-asked="false" data-chrome>
+            <span class="st-dot" aria-hidden="true"></span>
+            <div class="st-layer-text" data-from="agent">
+              <p class="st-name">AI/LLM engineering</p>
+              <p class="st-role">The words it comes out in</p>
+              <p class="st-call">How certain the thing is allowed to sound. The model keeps a number for its own doubt; whether any of that doubt survives into the sentence is somebody&rsquo;s call, and it is rarely the model&rsquo;s.</p>
+            </div>
+          </li>
+          <li class="st-layer" data-asked="false" data-chrome>
+            <span class="st-dot" aria-hidden="true"></span>
+            <div class="st-layer-text" data-from="agent">
+              <p class="st-name">Machine learning</p>
+              <p class="st-role">Fitting it to what already happened</p>
+              <p class="st-call">Who the training data was, and who it was not. A model is an extremely good memory of the past, which is the whole problem whenever the past was uneven.</p>
+            </div>
+          </li>
+          <li class="st-layer" data-asked="false" data-chrome>
+            <span class="st-dot" aria-hidden="true"></span>
+            <div class="st-layer-text" data-from="agent">
+              <p class="st-name">Predictive analytics</p>
+              <p class="st-role">Choosing the thing to predict</p>
+              <p class="st-call">What the target even is. &ldquo;Will repay&rdquo; and &ldquo;was approved last time&rdquo; are different questions that the same table will cheerfully answer, and nothing downstream can tell which one it was handed.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="st-edge is-bottom" data-chrome>Furthest from the person &mdash; and the first decision made</p>
+
+        <p class="st-status" role="status" data-st-status data-chrome hidden></p>
+      </div>
+
+      <p class="st-note reveal" data-from="agent">The six strings are his, word for word off the skills list on his portfolio. The order they are stacked in, the roles, the five decisions and the slider are mine. He has never said he thinks about his skills this way and this page is not claiming that he does &mdash; by the rule the ledger below keeps, a quotation sitting inside the agent&rsquo;s own sentence counts as the agent&rsquo;s. What his list says with no help from me is that the sixth item is on it at all, next to the five that pay.</p>
+
+      <p class="st-note reveal-tail" data-from="agent">The next section takes exactly one of those five decisions all the way down to a number you can move with your thumb.</p>
+    </div>
+  </section>
+
   <section id="threshold">
     <div class="container">
       <h2 class="reveal" data-from="agent">Somebody Picks The Line</h2>
@@ -601,13 +682,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         </div>
         <div data-from="agent">
           <dt>The agent</dt>
-          <dd>Everything else. Every heading, every paragraph of explanation, all six hand-drawn devices, the Portland-to-Seattle horizon and the forest standing in front of it, the loan model and its 1,591 synthetic applicants, and this ledger. Where the agent quotes him, the quotation counts to the agent, because the sentence built around it is the agent&rsquo;s choice and not his.</dd>
+          <dd>Everything else. Every heading, every paragraph of explanation, all six hand-drawn devices, the Portland-to-Seattle horizon and the forest standing in front of it, the loan model and its 1,591 synthetic applicants, the five-layer reading of his own skills list, and this ledger. Where the agent quotes him, the quotation counts to the agent, because the sentence built around it is the agent&rsquo;s choice and not his.</dd>
         </div>
       </dl>
 
       <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Two of them now have a section, and both only because he was asked a direct question and answered it. <strong>Travelling and cooking still have nothing</strong>. As of 8 October a question about cooking is sitting in his inbox, unanswered; travelling has not been asked at all. In both cases the reason is the asking, not an absence of material. The bar above moves whenever he replies. It has moved twice.</p>
 
-      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Drive, the Shelf, the Booth, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those seven sections is left untagged, which is the only thing keeping these numbers honest.</p>
+      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Drive, the Shelf, the Booth, the Stack, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those seven sections is left untagged, which is the only thing keeping these numbers honest.</p>
     </div>
   </section>
 
@@ -638,6 +719,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/north.js"></script>
 <script src="js/shelf.js"></script>
 <script src="js/booth.js"></script>
+<script src="js/stack.js"></script>
 <script src="js/threshold.js"></script>
 <script src="js/ledger.js"></script>
 <script src="js/theme.js"></script>
