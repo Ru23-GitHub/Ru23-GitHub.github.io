@@ -2,7 +2,8 @@
    ----------------------------------------------------------------------
    Added 2026-10-07. Scoped to #ledger for its controls; it reads and
    classes [data-from] blocks across the content sections listed in
-   SCOPE below. #north joined them on 2026-10-08.
+   SCOPE below. #north joined them on 2026-10-08, #record on
+   2026-10-10.
 
    The page carries a rule it cannot demonstrate on its own: an agent
    writes it, and the agent may not invent facts about Ruslan. Every
@@ -34,7 +35,7 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'north', 'shelf', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
+  var SCOPE = ['about', 'north', 'shelf', 'booth', 'stack', 'threshold', 'ledger', 'record', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {

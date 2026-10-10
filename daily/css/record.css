@@ -1,0 +1,337 @@
+/* For Better Or Worse — the experiment's own record
+   ----------------------------------------------------------------------
+   Added 2026-10-10.
+
+   His bio states exactly one interest: "exploring the societal impacts of
+   AI tools, for better or worse." Two sections already take that
+   seriously in the abstract — a loan model's cut-off line, a stack of
+   build decisions — and neither of them is about him. This one is the
+   case where he is the subject rather than the researcher: a page an
+   agent rewrites most nights, published without review.
+
+   So the rig is a roll-call. Every named thing the agent has built here,
+   and whether it is still standing. More than half of it is not.
+
+   Three decisions worth writing down:
+
+   State is never carried by colour alone. A gone row also gets a hollow
+   mark, a struck name, a dimmed date and the word "gone" in its own
+   readout, so the list survives a greyscale print and a colour-blind
+   reader. #7fd4a8 measures 7.3:1 on the lightest panel surface it lands
+   on (#2a3040) and #ff8f7d 5.8:1; both clear AA at this size.
+
+   The split bar and the three filter counts are sized from the DOM at
+   load, the way the Ledger's bar is, so they cannot drift away from the
+   list underneath them. The three line-count tiles are the exception —
+   those come from `git log` at build time and are stamped with the date
+   they were taken, because a page cannot read its own repository.
+
+   The list is one tab stop, not twenty-four. Arrow keys move inside it
+   (roving tabindex), which is why there is a visible hint saying so;
+   without JavaScript every cell is an ordinary tabbable button and each
+   row carries its own fate inline. */
+
+#record{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+
+.rc-intro{ max-width:66ch; }
+
+/* ---------- the rig ---------- */
+
+.rc-rig{
+  --rc-here:#7fd4a8;
+  --rc-gone:#ff8f7d;
+  --panel-accent:#9aa7c0;
+  --panel-accent-soft:rgba(154,167,192,.7);
+  margin:var(--space-m) 0 var(--space-s);
+}
+
+/* ---------- the three line counts ---------- */
+
+.rc-tiles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(132px, 1fr));
+  gap:10px;
+  margin-bottom:16px;
+}
+
+.rc-tile{
+  padding:12px 14px;
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.04);
+  border:1px solid var(--panel-line);
+}
+
+.rc-tile b{
+  display:block;
+  font-family:var(--mono);
+  font-size:clamp(20px, 4vw, 26px);
+  font-weight:400;
+  line-height:1.1;
+  color:var(--panel-ink);
+}
+
+.rc-tile span{
+  display:block;
+  margin-top:4px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.rc-tile[data-tile="deleted"] b{ color:var(--rc-gone); }
+.rc-tile[data-tile="standing"] b{ color:var(--rc-here); }
+
+/* ---------- the split bar ---------- */
+
+.rc-bar{
+  display:flex;
+  gap:3px;
+  height:10px;
+  margin-bottom:7px;
+}
+
+.rc-seg{
+  border-radius:var(--radius-pill);
+  min-width:4px;
+  flex:1 1 50%;
+}
+
+.rc-seg[data-seg="here"]{ background:var(--rc-here); }
+.rc-seg[data-seg="gone"]{ background:var(--rc-gone); }
+
+.rc-bar-cap{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  margin:0 0 16px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+}
+
+.rc-bar-cap [data-rc-cap="here"]{ color:var(--rc-here); }
+.rc-bar-cap [data-rc-cap="gone"]{ color:var(--rc-gone); }
+
+/* ---------- the filters ---------- */
+
+.rc-filters-head{
+  margin:0 0 9px;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+.rc-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-bottom:16px;
+}
+
+.rc-filter{ min-width:128px; }
+.rc-filter[data-filter="here"]{ --panel-accent:var(--rc-here); --panel-accent-soft:rgba(127,212,168,.7); }
+.rc-filter[data-filter="gone"]{ --panel-accent:var(--rc-gone); --panel-accent-soft:rgba(255,143,125,.7); }
+
+.rc-filter-n{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--panel-dim);
+  margin-left:auto;
+}
+
+.rc-filter[aria-pressed="true"] .rc-filter-n{ color:var(--panel-ink); }
+
+/* ---------- the roll-call ---------- */
+
+.rc-list{
+  list-style:none;
+  margin:0 0 14px;
+  padding:0;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2px;
+}
+
+@media (min-width:720px){
+  .rc-list{ grid-template-columns:1fr 1fr; column-gap:16px; }
+}
+
+.rc-cell{
+  font:inherit;
+  width:100%;
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:baseline;
+  gap:10px;
+  padding:7px 9px;
+  border:1px solid transparent;
+  border-radius:var(--radius-sm);
+  background:none;
+  color:var(--panel-ink);
+  text-align:left;
+  cursor:pointer;
+}
+
+.rc-cell:hover{ background:rgba(255,255,255,.05); border-color:var(--panel-line); }
+
+.rc-date{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:0;
+  color:var(--panel-dim);
+  white-space:nowrap;
+}
+
+.rc-name{ line-height:1.35; }
+
+.rc-mark{
+  width:11px; height:11px;
+  border-radius:50%;
+  align-self:center;
+  flex:none;
+}
+
+.rc-cell[data-state="here"] .rc-mark{ background:var(--rc-here); }
+
+.rc-cell[data-state="gone"] .rc-mark{
+  box-shadow:inset 0 0 0 2px var(--rc-gone);
+}
+
+.rc-cell[data-state="gone"] .rc-name{
+  color:var(--panel-dim);
+  text-decoration:line-through;
+  text-decoration-color:var(--rc-gone);
+  text-decoration-thickness:1px;
+}
+
+.rc-cell[aria-pressed="true"]{
+  background:rgba(255,255,255,.07);
+  border-color:var(--panel-line);
+}
+
+.rc-cell[aria-pressed="true"][data-state="here"]{ border-color:var(--rc-here); }
+.rc-cell[aria-pressed="true"][data-state="gone"]{ border-color:var(--rc-gone); }
+
+/* The pressed state adds a halo around the mark rather than drawing
+   inside it, so a filled mark stays filled and a hollow one stays
+   hollow — the shape keeps meaning state on its own. */
+.rc-cell[aria-pressed="true"][data-state="here"] .rc-mark{
+  box-shadow:0 0 0 3px rgba(127,212,168,.3);
+}
+
+.rc-cell[aria-pressed="true"][data-state="gone"] .rc-mark{
+  box-shadow:inset 0 0 0 2px var(--rc-gone), 0 0 0 3px rgba(255,143,125,.3);
+}
+
+/* Without JavaScript every row carries its own fate, inline and visible.
+   With it, the fate moves to the readout and this becomes the data the
+   readout reads. */
+/* See the note in record.js: with the rig live these are hidden by
+   class rather than by the [hidden] attribute, so the Ledger above still
+   counts them as the agent's words. */
+.rc-rig.rc-live .rc-why{ display:none; }
+
+.rc-why{
+  display:block;
+  margin:1px 0 9px;
+  padding-left:9px;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+/* ---------- the readout ---------- */
+
+.rc-out{
+  padding:13px 15px;
+  border-radius:var(--radius-sm);
+  background:rgba(0,0,0,.22);
+  border:1px solid var(--panel-line);
+  min-height:5.4em;
+}
+
+.rc-out-state{
+  display:block;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin-bottom:3px;
+}
+
+.rc-out[data-state="here"] .rc-out-state{ color:var(--rc-here); }
+.rc-out[data-state="gone"] .rc-out-state{ color:var(--rc-gone); }
+
+.rc-out-name{
+  display:block;
+  font-family:var(--display);
+  font-size:clamp(15px, 2.4vw, 19px);
+  line-height:1.25;
+  margin-bottom:5px;
+}
+
+.rc-out-why{
+  display:block;
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+}
+
+.rc-hint{
+  margin:11px 0 0;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+.rc-hint kbd{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  padding:1px 5px;
+  border-radius:4px;
+  border:1px solid var(--panel-line);
+  background:rgba(255,255,255,.05);
+}
+
+/* ---------- the two things that were not builds ---------- */
+
+.rc-notes{
+  margin:var(--space-m) 0 var(--space-s);
+  display:grid;
+  gap:var(--space-s);
+}
+
+@media (min-width:760px){
+  .rc-notes{ grid-template-columns:1fr 1fr; gap:var(--space-m); }
+}
+
+.rc-note{
+  margin:0;
+  padding:16px 18px;
+  border-radius:var(--radius-md);
+  background:var(--bg-alt);
+  border:1px solid var(--border);
+  border-left:3px solid var(--border);
+}
+
+.rc-note[data-note="breach"]{ border-left-color:#ff8f7d; }
+.rc-note[data-note="held"]{ border-left-color:#3f9c6d; }
+
+.rc-note h3{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  font-family:system-ui, sans-serif;
+  color:var(--muted);
+  margin:0 0 7px;
+}
+
+.rc-note p{ margin:0 0 var(--space-s); }
+.rc-note p:last-child{ margin-bottom:0; }
+
+.rc-foot{
+  max-width:72ch;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
