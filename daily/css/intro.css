@@ -137,8 +137,9 @@
 
 /* The scroll cue — a lone magenta chevron — was deleted on 2026-10-05 and
    replaced by the index below, which does the same job (there is more
-   page down there) while also saying what is down there, and is the only
-   navigation a phone gets: the rail is desktop-only. */
+   page down there) while also saying what is down there. The desktop-only
+   rail it shared that job with was deleted in the 5 October prune, so it
+   is now the only navigation the page has, at any width. */
 
 #hero .hero-index{
   position:absolute;

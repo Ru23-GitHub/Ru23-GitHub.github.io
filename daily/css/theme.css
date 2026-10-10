@@ -7,10 +7,10 @@
    consistent depth cue.
 
    In light mode the page reads as: white body, slightly grey bands
-   (#contact, #horologium, #shannon, the banner, the footer) sitting a
-   step BACK, and white cards sitting on those bands a step FORWARD. The
-   Shannon board and its stat tiles are white-on-grey; the clock table is
-   white rows on a grey band.
+   (#contact, the banner, the footer) sitting a step BACK, and white
+   cards sitting on those bands a step FORWARD. When this was written the
+   bands also carried a stat board and a clock table, both white-on-grey;
+   both were deleted in the 5 October prune and the rule outlived them.
 
    With --bg-alt lighter than --bg in dark mode, every one of those
    relationships flipped: the bands became the bright thing and the cards
@@ -71,9 +71,10 @@ body{
    colour, so the panel dissolves into the page. Lift both stops so a
    panel still reads as an object sitting on the page.
 
-   This deliberately does NOT reach #slime or #spacewar: their panels are
-   near-black on purpose — a petri dish and a CRT — and an ID selector in
-   their own files outranks this anyway. They get a rim instead, below. */
+   This used to carve out #slime and #spacewar, whose panels were meant to
+   be near-black — a petri dish and a CRT. Both sections were deleted in
+   the 5 October prune, so the carve-out and the inner hairline that went
+   with it are gone too: every panel still on the page wants the lift. */
 
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]) .panel{
@@ -92,23 +93,6 @@ body{
      under AA. The surface moved in 2026-10-05's elevation fix and this is
      the half of it that was missed. */
   --panel-dim:#a8b1c2;
-}
-
-/* The two panels that are meant to be darker than everything get an inner
-   hairline so their edges are findable against a dark page. */
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]) #slime .sl-console,
-  :root:not([data-theme="light"]) #spacewar .sw-console{
-    box-shadow:
-      inset 0 0 0 1px rgba(255,255,255,.09),
-      0 18px 40px rgba(0,0,0,.5);
-  }
-}
-:root[data-theme="dark"] #slime .sl-console,
-:root[data-theme="dark"] #spacewar .sw-console{
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.09),
-    0 18px 40px rgba(0,0,0,.5);
 }
 
 /* ---------- specific repairs ---------- */
