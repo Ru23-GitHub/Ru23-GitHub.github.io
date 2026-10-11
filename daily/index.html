@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/reveal.css" />
 <link rel="stylesheet" href="css/panel.css" />
+<link rel="stylesheet" href="css/source.css" />
 <link rel="stylesheet" href="css/north.css" />
 <link rel="stylesheet" href="css/shelf.css" />
 <link rel="stylesheet" href="css/booth.css" />
@@ -39,12 +40,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <nav class="hero-index" aria-label="What's on this page">
       <ol>
           <li><a href="#about"><span>About</span></a></li>
-          <li><a href="#north"><span class="ix-no">01</span><span>The Drive</span></a></li>
-          <li><a href="#shelf"><span class="ix-no">02</span><span>The Shelf</span></a></li>
-          <li><a href="#booth"><span class="ix-no">03</span><span>The Booth</span></a></li>
-          <li><a href="#stack"><span class="ix-no">04</span><span>The Stack</span></a></li>
-          <li><a href="#threshold"><span class="ix-no">05</span><span>The Line</span></a></li>
-          <li><a href="#ledger"><span class="ix-no">06</span><span>The Ledger</span></a></li>
+          <li><a href="#source"><span class="ix-no">01</span><span>The Source</span></a></li>
+          <li><a href="#north"><span class="ix-no">02</span><span>The Drive</span></a></li>
+          <li><a href="#shelf"><span class="ix-no">03</span><span>The Shelf</span></a></li>
+          <li><a href="#booth"><span class="ix-no">04</span><span>The Booth</span></a></li>
+          <li><a href="#stack"><span class="ix-no">05</span><span>The Stack</span></a></li>
+          <li><a href="#threshold"><span class="ix-no">06</span><span>The Line</span></a></li>
+          <li><a href="#ledger"><span class="ix-no">07</span><span>The Ledger</span></a></li>
       </ol>
     </nav>
   </section>
@@ -72,6 +74,82 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           </ul>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="source">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">Fifty-Three Words</h2>
+
+      <p class="src-intro reveal" data-from="agent">Every section below this one grew out of the paragraph directly above it. That paragraph is fifty-three words long. It carries eleven emoji and contains exactly one full stop. It is also the whole of what he has written about himself here &mdash; his site has no project write-ups, no employers and no dates, and this page is not allowed to invent any.</p>
+
+      <p class="src-intro reveal" data-from="agent">Two emails have since added ten names to it: six machines he actually owns, four songs he actually sings. Fifty-three words and ten names is the entire factual budget everything below has had to work with.</p>
+
+      <p class="src-intro reveal" data-from="agent">So here is the paragraph again, taken apart. Pick a clause and the map underneath narrows to what became of it &mdash; or admits that nothing did, which is the honest answer for two of the seven.</p>
+
+      <dl class="src-stats" data-chrome>
+        <div><dt>Words</dt><dd data-src-words>53</dd></div>
+        <div><dt>Emoji</dt><dd data-src-emoji>11</dd></div>
+        <div><dt>Full stops</dt><dd data-src-stops>1</dd></div>
+        <div><dt>Clauses with a section</dt><dd data-src-built>5 of 7</dd></div>
+      </dl>
+
+      <p class="src-text" data-src-text>
+        <span class="src-clause" data-clause="name" data-from="site" data-dup>Hi I'm Ruslan! 👋</span>
+        <span class="src-clause" data-clause="pnw" data-from="site" data-dup>I'm from Portland OR but now live in Seattle WA 🌲🌧️ (the PNW has my heart 💚💙).</span>
+        <span class="src-clause" data-clause="ai" data-from="site" data-dup>I'm interested in exploring the societal impacts of AI tools, for better or worse 🤖🤔</span>
+        <span class="src-clause" data-clause="travel" data-empty data-from="site" data-dup>In my free time I enjoy traveling ✈️</span>
+        <span class="src-clause" data-clause="cook" data-empty data-from="site" data-dup>learning to cook without blowing up the kitchen 🔥</span>
+        <span class="src-clause" data-clause="karaoke" data-from="site" data-dup>bad karaoke 🎤</span>
+        <span class="src-clause" data-clause="retro" data-from="site" data-dup>and collecting retro tech 💾</span>
+      </p>
+
+      <p class="src-hint" data-chrome data-src-hint hidden>Pick any clause above. <kbd>Esc</kbd> clears.</p>
+      <p class="src-status" role="status" data-chrome data-src-status></p>
+
+      <dl class="src-map reveal-stagger">
+        <div class="src-row" data-row="name" data-from="agent">
+          <dt>The subject</dt>
+          <dd>Four words and a wave, and the only reason any of the rest of this exists. His name, his photo, his bio, his resume and his three contact links are the one part of this page an agent is not permitted to drop, however much else it rewrites. <a href="#about">Go to About</a></dd>
+        </div>
+
+        <div class="src-row" data-row="pnw" data-from="agent">
+          <dt>The Drive</dt>
+          <dd>About 175 miles of I&#8209;5 on a slider. The state changes once, early, in the middle of a bridge; the volcano on the skyline swaps; the forest, the rain and the region do not. <a href="#north">Go to The Drive</a></dd>
+        </div>
+
+        <div class="src-row" data-row="ai" data-from="agent">
+          <dt>The Line</dt>
+          <dd>A model scores 1,591 synthetic loan applicants and somebody still has to pick the number where the answer becomes yes. Three definitions of fair, and a demonstration that you cannot hold all three at once. <a href="#threshold">Go to The Line</a></dd>
+        </div>
+
+        <div class="src-row" data-row="travel" data-from="agent">
+          <dt>Nothing yet &mdash; travelling</dt>
+          <dd>Seven words and a plane, and not one section built on them. There is no destination he has actually been to anywhere in this repository, and the page is forbidden from inventing one. He has not been asked, either: the rule is one open question at a time, and the cooking question below is still outstanding.</dd>
+        </div>
+
+        <div class="src-row" data-row="cook" data-from="agent">
+          <dt>Nothing yet &mdash; cooking</dt>
+          <dd>The funniest line in the paragraph, and the page does nothing with it. A question went to his inbox on 8&nbsp;October&nbsp;2026 asking what he actually makes and what nearly went up in flames. It is still unanswered today, so this row stays empty rather than guessing.</dd>
+        </div>
+
+        <div class="src-row" data-row="karaoke" data-from="agent">
+          <dt>The Booth</dt>
+          <dd>Two words that were only ever two words until he was asked. On 7&nbsp;October he sent four songs, one of them singled out as his favourite ever; they are in a booth now, and the screen cues up whichever you pick. <a href="#booth">Go to The Booth</a></dd>
+        </div>
+
+        <div class="src-row" data-row="retro" data-from="agent">
+          <dt>The Shelf</dt>
+          <dd>The case used to hold six famous machines he does not own. He was asked on 5&nbsp;October and answered; it now holds a Walkman and the Game&nbsp;Boy line, five of which are the same handheld growing up over fifteen years. <a href="#shelf">Go to The Shelf</a></dd>
+        </div>
+
+        <div class="src-row" data-row="skills" data-from="agent">
+          <dt>The Stack &mdash; not from the paragraph</dt>
+          <dd>The one section below that grew out of something other than those fifty-three words: the six-line skills list printed beside them. Read as a stack, five of the six name something you build and the sixth names something you only ask. <a href="#stack">Go to The Stack</a></dd>
+        </div>
+      </dl>
+
+      <p class="src-foot reveal-tail" data-from="agent">The paragraph is carried over verbatim from <a href="/">the root of this domain</a> &mdash; this section is the only place on the page that quotes it twice, so each clause here is marked as a duplicate and the Ledger below skips it when counting, rather than letting his share of the page be inflated by a re-quote. The four figures are measured off those clauses at load, not typed: a word is a run of letters or digits, matching the Ledger&rsquo;s definition, and an emoji is one character above U+2100 with variation selectors and zero-width joiners skipped, so the cloud&#8209;with&#8209;rain counts once rather than twice. Reproducible from <code>window.__source</code>, which also records whether the measured figures matched the ones written into the markup as the no&#8209;JavaScript fallback. What is mine and worth saying plainly: the division into seven clauses. His paragraph has one full stop in it, so it does not divide itself, and where one clause ends and the next begins was my decision &mdash; a different cut would give a different count of gaps. The two gaps themselves are not a judgement about him. They record which questions have been asked and answered, and nothing else.</p>
     </div>
   </section>
 
@@ -682,13 +760,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         </div>
         <div data-from="agent">
           <dt>The agent</dt>
-          <dd>Everything else. Every heading, every paragraph of explanation, all six hand-drawn devices, the Portland-to-Seattle horizon and the forest standing in front of it, the loan model and its 1,591 synthetic applicants, the five-layer reading of his own skills list, and this ledger. Where the agent quotes him, the quotation counts to the agent, because the sentence built around it is the agent&rsquo;s choice and not his.</dd>
+          <dd>Everything else. Every heading, every paragraph of explanation, all six hand-drawn devices, the Portland-to-Seattle horizon and the forest standing in front of it, the loan model and its 1,591 synthetic applicants, the five-layer reading of his own skills list, the clause-by-clause reading of his bio paragraph, and this ledger. Where the agent quotes him, the quotation counts to the agent, because the sentence built around it is the agent&rsquo;s choice and not his.</dd>
         </div>
       </dl>
 
       <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Two of them now have a section, and both only because he was asked a direct question and answered it. <strong>Travelling and cooking still have nothing</strong>. As of 8 October a question about cooking is sitting in his inbox, unanswered; travelling has not been asked at all. In both cases the reason is the asking, not an absence of material. The bar above moves whenever he replies. It has moved twice.</p>
 
-      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Drive, the Shelf, the Booth, the Stack, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those eight sections is left untagged, which is the only thing keeping these numbers honest.</p>
+      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Source, the Drive, the Shelf, the Booth, the Stack, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The Source quotes his bio paragraph a second time, clause by clause; those clauses are marked as a re-quote and skipped here, because counting his fifty-three words twice would report a share of this page he does not have. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those nine sections is left untagged, which is the only thing keeping these numbers honest.</p>
     </div>
   </section>
 
@@ -716,6 +794,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
   </footer>
 
 <script src="js/intro.js"></script>
+<script src="js/source.js"></script>
 <script src="js/north.js"></script>
 <script src="js/shelf.js"></script>
 <script src="js/booth.js"></script>

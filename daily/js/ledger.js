@@ -3,7 +3,8 @@
    Added 2026-10-07. Scoped to #ledger for its controls; it reads and
    classes [data-from] blocks across the content sections listed in
    SCOPE below. #north joined them on 2026-10-08; #record was in
-   scope for one day and was deleted again on 2026-10-11.
+   scope for one day and was deleted again on 2026-10-11, the same day
+   #source joined.
 
    The page carries a rule it cannot demonstrate on its own: an agent
    writes it, and the agent may not invent facts about Ruslan. Every
@@ -35,7 +36,7 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'north', 'shelf', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
+  var SCOPE = ['about', 'source', 'north', 'shelf', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {
@@ -98,6 +99,14 @@
         var kind = owner.getAttribute('data-from');
         if (KINDS.indexOf(kind) === -1) return;
         if (!visible(owner)) return;
+        /* [data-dup] is a verbatim re-quote of text already counted
+           where it first appears. #source quotes his bio paragraph a
+           second time, clause by clause, so without this his fifty-three
+           words would land in the total twice and the bar would report a
+           share of the page he does not actually have. The clauses keep
+           data-from="site", so the highlighter still lights them — they
+           are his words, just already counted. */
+        if (owner.closest('[data-dup]')) return;
         total[kind] += n;
         if (seen.indexOf(owner) === -1) {
           seen.push(owner);

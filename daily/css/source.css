@@ -1,0 +1,219 @@
+/* Fifty-Three Words — his bio as the page's source text
+   ----------------------------------------------------------------------
+   Added 2026-10-11, the same day #record was deleted. The page had two
+   sections about itself and five about him; this is an attempt to put a
+   structural section back on his side of that count by making its whole
+   subject the one paragraph he actually wrote.
+
+   The paragraph is re-quoted here, which is a thing no other section
+   does. Two consequences, both handled rather than ignored:
+
+     1. The Ledger must not count those fifty-three words twice, so each
+        clause carries data-dup and ledger.js skips it when measuring.
+        The clauses keep data-from="site" so the highlighter still lights
+        them, because they are still his words — they are just already
+        counted where they first appear, in About.
+
+     2. The clauses sit inside an untagged <p>, so the Ledger's rule that
+        no tagged block may contain another tagged block still holds.
+
+   The clauses are <span>s, not <button>s, and that is deliberate. A
+   <button> is an inline box that will not break across lines, so the
+   longest clause here — twenty-one words with a parenthetical — would
+   either push a 390px page sideways or need its own line. Spans wrap.
+   js/source.js promotes them to role="button" at runtime, which also
+   means that with JavaScript off they are plain text rather than
+   controls that do nothing. */
+
+:root{
+  --src-tint:rgba(23,51,255,.09);
+  --src-gap:#b3391f;        /* the two clauses nothing was built on */
+  --src-gap-bg:rgba(179,57,31,.07);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --src-tint:rgba(110,140,255,.18);
+    --src-gap:#ff9478;
+    --src-gap-bg:rgba(255,148,120,.10);
+  }
+}
+:root[data-theme="dark"]{
+  --src-tint:rgba(110,140,255,.18);
+  --src-gap:#ff9478;
+  --src-gap-bg:rgba(255,148,120,.10);
+}
+
+.src-intro{ max-width:62ch; }
+
+/* ---------- the three measured facts ---------- */
+
+.src-stats{
+  margin:var(--space-m) 0 0;
+  padding:0;
+  display:grid;
+  gap:10px;
+  grid-template-columns:repeat(auto-fit, minmax(128px, 1fr));
+}
+
+.src-stats > div{
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:12px 14px;
+}
+
+.src-stats dt{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.src-stats dd{
+  margin:4px 0 0;
+  font-family:var(--mono);
+  font-size:clamp(20px, 4vw, 26px);
+  line-height:1.2;
+}
+
+/* ---------- the paragraph, taken apart ---------- */
+
+.src-text{
+  margin:var(--space-m) 0 0;
+  font-size:clamp(17px, 2.4vw, 21px);
+  line-height:1.85;
+  max-width:54ch;
+}
+
+/* Only once js/source.js has promoted the clauses do they look or behave
+   like controls. */
+.src-text.src-live .src-clause{
+  cursor:pointer;
+  border-radius:var(--radius-sm);
+  /* clone so a clause that wraps across two lines gets the box on both */
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+  padding:2px 4px;
+  margin:0 -2px;
+  box-shadow:inset 0 -2px 0 var(--border);
+}
+
+.src-text.src-live .src-clause:hover{
+  background:var(--src-tint);
+}
+
+.src-text.src-live .src-clause[aria-pressed="true"]{
+  background:var(--src-tint);
+  box-shadow:inset 0 -2px 0 var(--accent);
+}
+
+.src-text.src-live .src-clause[data-empty]{
+  box-shadow:inset 0 -2px 0 var(--src-gap);
+}
+.src-text.src-live .src-clause[data-empty]:hover,
+.src-text.src-live .src-clause[data-empty][aria-pressed="true"]{
+  background:var(--src-gap-bg);
+}
+
+.src-text .src-clause:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+.src-hint{
+  margin:10px 0 0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.src-status{
+  margin:10px 0 0;
+  font-size:var(--fs-md);
+  color:var(--text);
+  min-height:1.55em;
+}
+
+/* ---------- the map ---------- */
+
+.src-map{
+  margin:var(--space-m) 0 0;
+  display:grid;
+  gap:10px;
+}
+
+@media (min-width:760px){
+  .src-map{ grid-template-columns:repeat(2, 1fr); }
+}
+
+.src-map > div{
+  border:1px solid var(--border);
+  border-left-width:3px;
+  border-left-color:var(--accent);
+  border-radius:var(--radius-md);
+  padding:13px 16px;
+}
+
+.src-map > div[data-row="travel"],
+.src-map > div[data-row="cook"]{
+  border-left-color:var(--src-gap);
+}
+
+/* The dimming is opacity on purpose, matching the Ledger: it is a
+   deliberate, reversible drop below normal text contrast, Escape puts it
+   back, and it is never the state the page loads in. */
+.src-map > div.src-aside{ opacity:.32; }
+
+.src-map > div.src-on{
+  background:var(--src-tint);
+  box-shadow:0 0 0 2px var(--accent);
+}
+.src-map > div[data-row="travel"].src-on,
+.src-map > div[data-row="cook"].src-on{
+  background:var(--src-gap-bg);
+  box-shadow:0 0 0 2px var(--src-gap);
+}
+
+.src-map dt{
+  font-family:var(--display);
+  font-size:var(--fs-base);
+  letter-spacing:.02em;
+  margin-bottom:5px;
+}
+
+.src-map > div[data-row="travel"] dt,
+.src-map > div[data-row="cook"] dt{ color:var(--src-gap); }
+
+.src-map dd{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.src-map dd a{ white-space:nowrap; }
+
+.src-foot{
+  margin-top:var(--space-m);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#source code{
+  font-family:var(--mono);
+  font-size:.92em;
+}
+
+#source kbd{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  padding:1px 5px;
+  border-radius:4px;
+  border:1px solid var(--border);
+  background:var(--bg-alt);
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .src-text.src-live .src-clause,
+  .src-map > div{
+    transition:opacity .22s ease, background-color .22s ease, box-shadow .22s ease;
+  }
+}
