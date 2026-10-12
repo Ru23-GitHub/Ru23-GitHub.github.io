@@ -3,7 +3,11 @@
    Added 2026-10-11.
 
    The substance of this section is in the HTML: his paragraph split into
-   seven clauses, and a map of eight rows saying what each one became.
+   seven clauses, and a map saying what each one became. The map has more
+   rows than there are clauses, because two sections on this page grew out
+   of something other than the paragraph; its row count is read off the
+   DOM rather than written into the copy, which is what stopped the status
+   line below saying "eight" after a ninth row was added on 12 October.
    With JavaScript off, both read straight down the page and nothing is
    missing — which is why the clauses ship as plain <span>s and only
    become controls here.
@@ -29,7 +33,7 @@
    honest about what is and is not interactive.
 
    Escape clears, and so does picking the lit clause again, so no visitor
-   can get stuck looking at a page with six of eight rows set aside. */
+   can get stuck looking at a page with all but one row set aside. */
 (function () {
   'use strict';
 
@@ -129,7 +133,8 @@
   function describe() {
     if (!status) return;
     if (current === null) {
-      status.textContent = 'Nothing picked. All eight rows below are shown.';
+      status.textContent = 'Nothing picked. All ' + rows.length +
+        ' rows below are shown.';
       return;
     }
     var row = rowFor(current);

@@ -4,13 +4,17 @@
    classes [data-from] blocks across the content sections listed in
    SCOPE below. #north joined them on 2026-10-08; #record was in
    scope for one day and was deleted again on 2026-10-11, the same day
-   #source joined.
+   #source joined. #log joined on 2026-10-12, and widened what 'site'
+   means: his commit messages are his writing, published in the same
+   repository as index.html, so they are counted to him rather than to
+   the agent that quotes them.
 
    The page carries a rule it cannot demonstrate on its own: an agent
    writes it, and the agent may not invent facts about Ruslan. Every
    content block is therefore tagged with one of three provenances —
 
-     site   his own published portfolio at the root of this domain
+     site   his own repository — the portfolio published at the root of
+            this domain, and the commit messages he wrote in it
      email  what he has told this build directly, by email
      agent  everything the machine wrote, drew or computed
 
@@ -36,11 +40,11 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'source', 'north', 'shelf', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
+  var SCOPE = ['about', 'source', 'log', 'north', 'shelf', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {
-    site: 'his own site',
+    site: 'his own repo',
     email: 'his emails',   /* plural since 7 Oct; it stays true as more arrive */
     agent: 'the agent'
   };
