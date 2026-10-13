@@ -20,6 +20,16 @@
    data, honestly rescaled, telling a different story about him depending
    on what you compare him to.
 
+   Corrected 2026-10-13. The eleven rows this shipped with on 12 October
+   were read out of a *shallow* clone. git log in a shallow clone stops
+   early without saying so, and reports its oldest reachable commit as a
+   root — the whole tree as insertions, nothing deleted — which is where
+   the phantom "542 lines, seven files" first row came from. Two real
+   commits from earlier the same evening were missing, and 54d5642's
+   counts belonged to the fabricated root rather than to 54d5642. The
+   rows below come from an unshallowed clone; the derivation here was
+   never wrong, only its input.
+
    The elapsed gaps are computed from the timestamps rather than trusted
    from the markup, and the markup's own copies are then checked against
    what was computed. A typed "70 days later" is true until someone edits
