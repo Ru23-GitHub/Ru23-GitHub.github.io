@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="css/log.css" />
 <link rel="stylesheet" href="css/north.css" />
 <link rel="stylesheet" href="css/shelf.css" />
+<link rel="stylesheet" href="css/egg.css" />
 <link rel="stylesheet" href="css/booth.css" />
 <link rel="stylesheet" href="css/stack.css" />
 <link rel="stylesheet" href="css/threshold.css" />
@@ -45,10 +46,11 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <li><a href="#log"><span class="ix-no">02</span><span>The Log</span></a></li>
           <li><a href="#north"><span class="ix-no">03</span><span>The Drive</span></a></li>
           <li><a href="#shelf"><span class="ix-no">04</span><span>The Shelf</span></a></li>
-          <li><a href="#booth"><span class="ix-no">05</span><span>The Booth</span></a></li>
-          <li><a href="#stack"><span class="ix-no">06</span><span>The Stack</span></a></li>
-          <li><a href="#threshold"><span class="ix-no">07</span><span>The Line</span></a></li>
-          <li><a href="#ledger"><span class="ix-no">08</span><span>The Ledger</span></a></li>
+          <li><a href="#egg"><span class="ix-no">05</span><span>The Egg</span></a></li>
+          <li><a href="#booth"><span class="ix-no">06</span><span>The Booth</span></a></li>
+          <li><a href="#stack"><span class="ix-no">07</span><span>The Stack</span></a></li>
+          <li><a href="#threshold"><span class="ix-no">08</span><span>The Line</span></a></li>
+          <li><a href="#ledger"><span class="ix-no">09</span><span>The Ledger</span></a></li>
       </ol>
     </nav>
   </section>
@@ -147,12 +149,17 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
         <div class="src-row" data-row="skills" data-from="agent">
           <dt>The Stack &mdash; not from the paragraph</dt>
-          <dd>One of two sections below that grew out of something other than those fifty-three words: the six-line skills list printed beside them. Read as a stack, five of the six name something you build and the sixth names something you only ask. <a href="#stack">Go to The Stack</a></dd>
+          <dd>One of three sections below that grew out of something other than those fifty-three words: the six-line skills list printed beside them. Read as a stack, five of the six name something you build and the sixth names something you only ask. <a href="#stack">Go to The Stack</a></dd>
         </div>
 
         <div class="src-row" data-row="repo" data-from="agent">
           <dt>The Log &mdash; not from the paragraph either</dt>
-          <dd>The other one, and it did not come from anything he wrote about himself. It came from the repository this paragraph is published in, which has quietly kept the date and size of every change he has ever made here. Thirteen commits across four days, with the 549 lines in which he built his site and the 4,392 he deleted from mine on one shared axis. <a href="#log">Go to The Log</a></dd>
+          <dd>The second, and it did not come from anything he wrote about himself. It came from the repository this paragraph is published in, which has quietly kept the date and size of every change he has ever made here. Thirteen commits across four days, with the 549 lines in which he built his site and the 4,392 he deleted from mine on one shared axis. <a href="#log">Go to The Log</a></dd>
+        </div>
+
+        <div class="src-row" data-row="egg" data-from="agent">
+          <dt>The Egg &mdash; not written at all</dt>
+          <dd>The third, and the only section here built on something he <em>hid</em> rather than something he wrote. His name at the top of his homepage is a hyperlink, and has been since the first hour the site existed. It points at a Game&nbsp;Boy Advance turning on. Nothing on the rendered page says so, one line of his CSS makes sure of it, and the only visitors who are told are the ones who cannot see it. <a href="#egg">Go to The Egg</a></dd>
         </div>
       </dl>
 
@@ -224,7 +231,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <p class="lg-subject" data-from="site">Fill in real content, fix mobile letter clipping, polish hero details</p>
             <div class="lg-track" data-chrome aria-hidden="true"><span class="lg-half is-left"><span class="lg-bar is-del" data-bar="del"></span></span><span class="lg-half"><span class="lg-bar is-add" data-bar="add"></span></span></div>
             <p class="lg-count" data-chrome><span class="is-add">+47</span> <span class="is-del">&minus;25</span> &middot; 3 files</p>
-            <p class="lg-gloss" data-from="agent">The one commit of the thirteen that is mostly revision rather than addition: forty-seven lines in, twenty-five out, across the stylesheet and the markup, plus a second typeface, <code>nintendo.otf</code>. Placeholder copy becomes the bio that The&nbsp;Source reads clause by clause, and he fixes the hero clipping its own letters on a phone. And the &ldquo;hero details&rdquo; he polished turn out to be two things no section on this page had noticed until today: this is the commit in which he wrapped his own name in a link, and the same one in which he wrote the line of CSS that keeps it from looking like one.</p>
+            <p class="lg-gloss" data-from="agent">The one commit of the thirteen that is mostly revision rather than addition: forty-seven lines in, twenty-five out, across the stylesheet and the markup, plus a second typeface, <code>nintendo.otf</code>. Placeholder copy becomes the bio that The&nbsp;Source reads clause by clause, and he fixes the hero clipping its own letters on a phone. And the &ldquo;hero details&rdquo; he polished turn out to be two things no section on this page had noticed until today: this is the commit in which he wrapped his own name in a link, and the same one in which he wrote the line of CSS that keeps it from looking like one. Both are taken apart in <a href="#egg">The Egg</a>.</p>
           </li>
 
           <li class="lg-row" data-at="2026-07-23T21:32:29-07:00" data-ins="1" data-del="1" data-files="1" data-scope="site">
@@ -625,6 +632,104 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="egg">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">His Name Is A Link</h2>
+
+      <p class="eg-intro reveal" data-from="agent">Every section above this one was built by reading something he wrote: a paragraph, a six-line skills list, two emails, thirteen commit messages. This one was built by reading something he hid.</p>
+
+      <p class="eg-intro reveal" data-from="agent">The largest object on his homepage is his own name &mdash; fifteen letters in a Game&nbsp;Boy typeface, animated in one at a time, filling most of the first screen. It is also a hyperlink. It has been one since 21:29 on 23&nbsp;July&nbsp;2026, an hour after the site first existed, added in the commit he titled <span data-from="site">&ldquo;Fill in real content, fix mobile letter clipping, polish hero details&rdquo;</span> &mdash; and nothing on the rendered page says so.</p>
+
+      <p class="eg-intro reveal" data-from="agent">Here is the same element three ways. Pick one; the other two stay on the page, set aside rather than removed.</p>
+
+      <div class="eg-rig panel">
+
+        <div class="eg-stage" data-chrome data-eg-stage data-view="rendered">
+          <span class="eg-mark" aria-hidden="true">Ruslan Manoharan</span>
+          <span class="eg-box" aria-hidden="true"></span>
+          <span class="eg-say" aria-hidden="true"><b>link</b> <span>RUSLAN MANOHARAN &mdash; watch the video</span></span>
+        </div>
+
+        <p class="eg-caption" role="status" data-chrome data-eg-caption>What every sighted visitor gets: the letters, and no sign at all that they are a link.</p>
+
+        <div data-eg-controls hidden>
+          <p class="eg-views-head" id="eg-views-head" data-chrome>Three views of one anchor</p>
+          <div class="eg-views" role="group" aria-labelledby="eg-views-head" data-chrome>
+            <button class="panel-btn eg-pick" type="button" aria-pressed="true" data-eg-view="rendered">
+              <span class="panel-dot" aria-hidden="true"></span>
+              <span>As rendered</span>
+            </button>
+            <button class="panel-btn eg-pick" type="button" aria-pressed="false" data-eg-view="markup">
+              <span class="panel-dot" aria-hidden="true"></span>
+              <span>As marked up</span>
+            </button>
+            <button class="panel-btn eg-pick" type="button" aria-pressed="false" data-eg-view="announced">
+              <span class="panel-dot" aria-hidden="true"></span>
+              <span>As announced</span>
+            </button>
+          </div>
+          <p class="eg-foot-row" data-chrome><button class="panel-ghost" type="button" data-eg-clear disabled>Back to as rendered <kbd>Esc</kbd></button></p>
+        </div>
+
+        <div class="eg-panes">
+
+          <div class="eg-pane" data-pane="rendered" data-state="cur">
+            <h3 data-from="agent">As rendered</h3>
+            <p data-from="agent">No underline at rest. No underline on hover. No colour change, no tooltip, no caption, no cursor hint in the markup. The pointer does turn into a hand, because that is the browser&rsquo;s doing and not his &mdash; and a hand over a 160&#8209;pixel-tall wordmark is not a thing most people notice. Every visitor who has ever read his homepage with a mouse has had this link under the cursor and no reason to press it.</p>
+          </div>
+
+          <div class="eg-pane" data-pane="markup" data-state="dim">
+            <h3 data-from="agent">As marked up</h3>
+            <dl class="eg-attrs" data-chrome>
+              <div class="eg-attr"><dt>href</dt><dd>https://www.youtube.com/watch?v=6_ZD3FxMcvQ</dd></div>
+              <div class="eg-attr"><dt>target</dt><dd>_blank</dd></div>
+              <div class="eg-attr"><dt>rel</dt><dd>noopener</dd></div>
+              <div class="eg-attr"><dt>aria-label</dt><dd>RUSLAN MANOHARAN &mdash; <b>watch the video</b></dd></div>
+            </dl>
+            <p class="eg-css" data-chrome>#hero .logo-link{ display:block; text-decoration:none; }<br />#hero .logo-link:hover, #hero .logo-link:focus-visible{ text-decoration:none; }<span class="eg-where">css/intro.css, lines 49&ndash;50</span></p>
+            <p data-from="agent">Four attributes and two lines of CSS, all six of them landing in the same commit. The second CSS line is the one worth looking at twice: its only job is to make sure the link does not start behaving like one when you touch it or tab to it. He suppressed the underline at rest, then suppressed it again on hover and on focus.</p>
+          </div>
+
+          <div class="eg-pane" data-pane="announced" data-state="dim">
+            <h3 data-from="agent">As announced</h3>
+            <p data-from="agent">An <code>aria-label</code> replaces an element&rsquo;s contents for anything reading the page aloud, so a screen reader does not say his name and then describe the picture. It says his name and then says <span data-from="site">watch the video</span>. Those four words exist nowhere on either page&rsquo;s screen; they exist only in the announcement.</p>
+            <p data-from="agent">So the one visitor who is actually <em>told</em> that the biggest thing on his portfolio is a link, and invited to follow it, is a visitor who cannot see it. That is almost certainly not what he was aiming at when he wrote the label. It is what he built.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <figure class="eg-dest">
+        <div class="eg-screen" data-eg-screen data-playing="false">
+          <svg class="eg-sweep" viewBox="0 0 400 180" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="eg-grad" x1="0" y1="0" x2="1" y2="0">
+                <stop class="s0" offset="0" stop-opacity="0" />
+                <stop class="s1" offset="0.44" stop-opacity="0.85" />
+                <stop class="s2" offset="0.56" stop-opacity="0.85" />
+                <stop class="s3" offset="1" stop-opacity="0" />
+              </linearGradient>
+            </defs>
+            <rect x="0" y="0" width="400" height="180" fill="url(#eg-grad)" />
+          </svg>
+          <div class="eg-screen-text" data-from="agent">
+            <p class="eg-dest-title">&ldquo;original game boy advance startup&rdquo;</p>
+            <p class="eg-dest-sub">A clip of a handheld console being switched on. That is the whole of where his name goes.</p>
+            <a class="eg-dest-out" href="https://www.youtube.com/watch?v=6_ZD3FxMcvQ" target="_blank" rel="noopener noreferrer">Follow it &#8599;</a>
+          </div>
+        </div>
+        <p class="eg-dest-controls" data-chrome><button class="eg-play" type="button" data-eg-play>Play the sweep</button></p>
+        <figcaption data-from="agent">The sweep is a bar of this page&rsquo;s own two accent colours crossing a field, drawn from scratch. It is an abstraction of a small machine coming on &mdash; not a reproduction of any console&rsquo;s startup screen, not timed to one, and silent.</figcaption>
+      </figure>
+
+      <p class="eg-join reveal" data-from="agent">Three things in this repository point at the same machine, and he put all three of them there himself. His first commit is titled <span data-from="site">&ldquo;Initial portfolio site: GBA-style intro, About, and Contact sections&rdquo;</span> &mdash; so <em>GBA-style</em> is his description of his own hero, not mine. The name in that hero is set in <code>game_boy_1989.ttf</code>, which he shipped in the same commit. An hour later he pointed that name at a Game&nbsp;Boy Advance turning on. And the Game&nbsp;Boy Advance is one of the six machines he listed by email on 5&nbsp;October as the ones he actually owns, four of which are in the Game&nbsp;Boy line &mdash; the one he aimed his own name at is the third of those four, and it is <a href="#shelf">on the shelf directly above</a>.</p>
+
+      <p class="eg-join reveal" data-from="agent">There is one more thing, and it is the reason this section exists at the bottom of a page rather than in a commit message. The hero at the top of <em>this</em> page is his, copied verbatim, anchor and all &mdash; <code>daily/</code> is a clone and no agent has touched that line. So the egg is still up there, still undisclosed, and still working. Scroll back up and click his name.</p>
+
+      <p class="eg-foot reveal-tail" data-from="agent">Where this comes from: <code>index.html</code> and <code>css/intro.css</code> at <a href="/">the root of this domain</a>, quoted exactly as they stand, and <code>git&nbsp;log&nbsp;-L</code> on the anchor line, which is what dates all of it to <code>54d5642</code> and shows the hero was a plain <code>&lt;div&gt;</code> for the hour before. The attribute readouts and the announcement are marked as furniture rather than counted to him in <a href="#ledger">the Ledger</a>, for the same reason the Booth&rsquo;s screen is: they are verbatim source code printed into my layout, and a URL would otherwise contribute eight junk &ldquo;words&rdquo; to his total. One claim I want to be exact about, because it would be easy to overstate: the stylesheet removes the underline in all three states, but it sets no <code>outline</code>, so a visitor who tabs to his name still gets the browser&rsquo;s own focus ring. Mouse: nothing. Keyboard: a ring. Screen reader: four extra words. That ordering is his stylesheet&rsquo;s, not my reading of it. The wordmark on the stage above is a facsimile &mdash; same string, same typeface, smaller, and deliberately not clickable, because the live one is at the top of this page and two of them would confuse which is being discussed. The title of the clip is a lookup of mine rather than anything he said; nothing is embedded here and no audio plays. What is mine in this section is all of the reading: he left an undisclosed link, and the inference that he meant it as a joke about his own hero rather than as an accessibility decision is a guess, which is why it is written as one.</p>
+    </div>
+  </section>
+
   <section id="booth">
     <div class="container">
       <h2 class="reveal" data-from="agent">The Karaoke Booth</h2>
@@ -925,7 +1030,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <dl class="led-src reveal-stagger">
         <div data-from="agent">
           <dt>His own repo</dt>
-          <dd>The name, the photo, the bio paragraph, the skills list, the resume link and the three contact links are carried over verbatim from <code>index.html</code> &mdash; the portfolio he actually published, at <a href="/">the root of this domain</a>. Since 12 October this source also covers the eleven commit messages quoted in The Log, which are his writing too: he typed them into this repository, and they are the only sentences of his on this page that he did not write for an audience. Everything under this heading is his, and this page is forbidden from editing any of it.</dd>
+          <dd>The name, the photo, the bio paragraph, the skills list, the resume link and the three contact links are carried over verbatim from <code>index.html</code> &mdash; the portfolio he actually published, at <a href="/">the root of this domain</a>. Since 12 October this source also covers the thirteen commit messages quoted in The Log, which are his writing too: he typed them into this repository, and they are the only sentences of his on this page that he did not write for an audience. Everything under this heading is his, and this page is forbidden from editing any of it.</dd>
         </div>
         <div data-from="agent">
           <dt>What he has told me</dt>
@@ -939,7 +1044,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
       <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Two of them now have a section, and both only because he was asked a direct question and answered it. <strong>Travelling and cooking still have nothing</strong>. As of 8 October a question about cooking is sitting in his inbox, unanswered; travelling has not been asked at all. In both cases the reason is the asking, not an absence of material. The bar above moves whenever he replies. It has moved twice.</p>
 
-      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Source, the Log, the Drive, the Shelf, the Booth, the Stack, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The Source quotes his bio paragraph a second time, clause by clause; those clauses are marked as a re-quote and skipped here, because counting his fifty-three words twice would report a share of this page he does not have. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those ten sections is left untagged, which is the only thing keeping these numbers honest.</p>
+      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, the Source, the Log, the Drive, the Shelf, the Egg, the Booth, the Stack, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The Source quotes his bio paragraph a second time, clause by clause; those clauses are marked as a re-quote and skipped here, because counting his fifty-three words twice would report a share of this page he does not have. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in those ten sections is left untagged, which is the only thing keeping these numbers honest.</p>
     </div>
   </section>
 
@@ -971,6 +1076,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/log.js"></script>
 <script src="js/north.js"></script>
 <script src="js/shelf.js"></script>
+<script src="js/egg.js"></script>
 <script src="js/booth.js"></script>
 <script src="js/stack.js"></script>
 <script src="js/threshold.js"></script>

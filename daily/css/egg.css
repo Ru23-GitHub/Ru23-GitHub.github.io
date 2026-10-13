@@ -1,0 +1,436 @@
+/* The Egg — the one thing he hid
+   ----------------------------------------------------------------------
+   Added 2026-10-13. Every other section on this page was built by reading
+   something Ruslan wrote: a paragraph, a skills list, two emails, thirteen
+   commit messages. This one was built by reading something he concealed —
+   the anchor wrapped around his own name in the hero of his real homepage,
+   which carries no visible affordance at all.
+
+   Three notes on the construction:
+
+   The stage is a *facsimile*. It prints the same string in the same
+   typeface as the hero above it, at a size that fits in a panel, and it is
+   deliberately not a working link: the live one is at the top of this page
+   and a second clickable copy down here would muddle which one the
+   section is talking about. It is aria-hidden for the same reason —
+   a screen reader would otherwise read his name a second time with no way
+   to tell it apart from the real heading.
+
+   The three views DIM rather than hide. Hiding them would be easier, but
+   the Ledger two sections down measures every visible word on the page and
+   skips [hidden] subtrees as fallbacks for one another. Three tabbed panes
+   are not fallbacks — they are three different pieces of writing — so
+   hiding two would quietly drop them out of the count, and the page's one
+   honest number would start depending on which tab you had open. Dimming
+   is also already this page's idiom for "set aside, not removed": the
+   Ledger's own highlighter works exactly this way.
+
+   The URL has to wrap. On a 390px phone the href is wider than the
+   viewport, and a monospace <code> will not break a long token on its
+   own, so every code readout here sets overflow-wrap:anywhere. Without it
+   this one line pushes the whole page sideways. */
+
+#egg .eg-rig{
+  --panel-top:#241d33;        /* a shade off the Shelf's, so the two read as different instruments */
+  --panel-bottom:#15111f;
+  --panel-accent:#b98cff;
+  --panel-accent-soft:rgba(185,140,255,.7);
+  --panel-btn-on-top:#3b2a63;
+  --panel-btn-on-bottom:#2a1d4a;
+
+  display:grid;
+  gap:var(--space-s);
+  margin-block:var(--space-s);
+}
+
+/* ---------- the stage: a small page with his name on it ---------- */
+
+#egg .eg-stage{
+  position:relative;
+  display:grid;
+  place-items:center;
+  min-height:clamp(110px, 24vw, 165px);
+  padding:clamp(14px, 4vw, 26px) clamp(10px, 3vw, 20px);
+  border-radius:var(--radius-md);
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  overflow:hidden;
+}
+
+#egg .eg-mark{
+  font-family:'GameBoy', system-ui, sans-serif;
+  font-weight:900;
+  font-style:italic;
+  text-transform:uppercase;
+  letter-spacing:-.04em;
+  transform:scaleY(1.2);
+  font-size:clamp(17px, 5.4vw, 40px);
+  line-height:1;
+  white-space:nowrap;
+  max-width:100%;
+  text-align:center;
+  transition:opacity 180ms ease, filter 180ms ease;
+}
+
+/* The anchor's own box, drawn only in the markup view. Inset by a hair so
+   the dashes sit clear of the glyphs rather than on them. */
+#egg .eg-box{
+  position:absolute;
+  inset:clamp(8px, 2.5vw, 18px);
+  border-radius:var(--radius-sm);
+  border:1px dashed var(--accent);
+  opacity:0;
+  transition:opacity 180ms ease;
+  pointer-events:none;
+}
+
+#egg .eg-box::after{
+  content:'<a>';
+  position:absolute;
+  top:-9px; left:10px;
+  padding:0 5px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  line-height:1.5;
+  color:var(--bg);
+  background:var(--accent);
+  border-radius:3px;
+}
+
+/* The announcement, laid over the stage: what is said INSTEAD of what is
+   shown, which is the whole point of the third view — so it sits centred
+   on the letters rather than beneath them. Parked at the bottom edge it
+   simply covered the dimmed wordmark on a 390px screen, and the third
+   view stopped being a comparison at all. */
+#egg .eg-say{
+  position:absolute;
+  left:clamp(10px, 3vw, 20px);
+  right:clamp(10px, 3vw, 20px);
+  bottom:clamp(10px, 3vw, 18px);
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:4px 8px;
+  padding:8px 10px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--border);
+  background:var(--bg-alt);
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  line-height:1.4;
+  opacity:0;
+  transition:opacity 180ms ease;
+  pointer-events:none;
+  overflow-wrap:anywhere;
+}
+
+#egg .eg-say b{
+  font-weight:700;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--accent);
+}
+
+#egg .eg-stage[data-view="markup"] .eg-box{ opacity:1; }
+#egg .eg-stage[data-view="announced"] .eg-say{ opacity:1; }
+/* Lifted clear of the transcript rather than sitting behind it: the third
+   view is a comparison between the letters and what is said instead of
+   them, and it only works if both are legible at once. */
+#egg .eg-stage[data-view="announced"] .eg-mark{
+  opacity:.3;
+  filter:grayscale(1);
+  transform:scaleY(1.2) translateY(-24%);
+}
+
+/* Under 560px the stage is too short to hold both at once however they are
+   placed, so the announcement drops into normal flow under the letters and
+   the stage grows to fit. It is display:none until picked rather than
+   merely transparent, because reserving the space in the other two views
+   would leave an unexplained gap. The whole stage is [data-chrome], so
+   none of this moves the Ledger's numbers. */
+@media (max-width:559px){
+  #egg .eg-stage{ display:block; text-align:center; }
+  #egg .eg-mark{ display:inline-block; }
+  #egg .eg-stage[data-view="announced"] .eg-mark{ transform:scaleY(1.2); }
+  #egg .eg-say{
+    position:static;
+    display:none;
+    margin-top:14px;
+  }
+  #egg .eg-stage[data-view="announced"] .eg-say{ display:flex; opacity:1; }
+}
+
+#egg .eg-caption{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+/* ---------- the view picker ---------- */
+
+#egg .eg-views-head{
+  margin:0;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+#egg .eg-views{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+#egg .eg-views .panel-btn{ min-width:0; flex:1 1 150px; }
+
+#egg .eg-foot-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+}
+
+/* ---------- the three panes ---------- */
+
+#egg .eg-panes{
+  display:grid;
+  gap:var(--space-s);
+}
+
+#egg .eg-pane{
+  padding:clamp(12px, 3vw, 18px);
+  border-radius:var(--radius-md);
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);
+  transition:opacity 180ms ease;
+}
+
+#egg .eg-pane > h3{
+  font-family:inherit;
+  font-size:var(--fs-sm);
+  font-weight:700;
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-accent);
+  margin:0 0 8px;
+}
+
+#egg .eg-pane p{ margin:0; color:var(--panel-ink); font-size:var(--fs-base); }
+#egg .eg-pane p + p{ margin-top:8px; }
+
+/* Picked: lit and outlined. Set aside: pushed below normal contrast, the
+   same gesture the Ledger uses, and for the same reason — the comparison
+   between the three is the content. */
+#egg .eg-pane[data-state="cur"]{
+  border-color:var(--panel-accent);
+  background:rgba(185,140,255,.09);
+}
+#egg .eg-pane[data-state="dim"]{ opacity:.42; }
+
+/* ---------- code readouts ---------- */
+
+#egg .eg-attrs{
+  margin:0;
+  display:grid;
+  gap:6px;
+}
+
+#egg .eg-attr{
+  display:grid;
+  gap:2px 10px;
+  grid-template-columns:1fr;
+}
+
+@media (min-width:560px){
+  #egg .eg-attr{ grid-template-columns:7.5rem 1fr; }
+}
+
+#egg .eg-attr dt{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--panel-dim);
+}
+
+#egg .eg-attr dd{
+  margin:0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+  overflow-wrap:anywhere;
+}
+
+#egg .eg-attr dd b{ color:var(--panel-accent); font-weight:600; }
+
+#egg .eg-css{
+  margin:10px 0 0;
+  padding:10px 12px;
+  border-radius:var(--radius-sm);
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(0,0,0,.22);
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  line-height:1.5;
+  color:var(--panel-ink);
+  overflow-wrap:anywhere;
+  white-space:normal;
+}
+
+#egg .eg-where{
+  display:block;
+  margin-top:6px;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+/* ---------- the destination ---------- */
+
+#egg .eg-dest{
+  margin:var(--space-m) 0 0;
+}
+
+#egg .eg-screen{
+  position:relative;
+  display:grid;
+  place-items:center;
+  gap:6px;
+  min-height:clamp(120px, 28vw, 180px);
+  padding:clamp(16px, 4vw, 28px);
+  border-radius:var(--radius-md);
+  border:1px solid var(--border);
+  background:var(--bg-alt);
+  overflow:hidden;
+  text-align:center;
+}
+
+#egg .eg-sweep{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  opacity:0;
+}
+
+#egg .eg-screen-text{ position:relative; }
+
+#egg .eg-dest-title{
+  margin:0;
+  font-family:var(--mono);
+  font-size:clamp(14px, 3.2vw, 19px);
+  color:var(--text);
+}
+
+#egg .eg-dest-sub{
+  margin:4px 0 0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#egg .eg-dest-out{
+  display:inline-block;
+  margin-top:10px;
+  font-size:var(--fs-base);
+  font-weight:600;
+}
+
+#egg .eg-dest-controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:center;
+  margin-top:var(--space-s);
+}
+
+#egg .eg-play{
+  font:inherit;
+  font-size:var(--fs-base);
+  font-weight:600;
+  padding:8px 16px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  cursor:pointer;
+}
+#egg .eg-play:hover{ border-color:var(--muted); }
+#egg .eg-play:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+#egg .eg-dest figcaption{
+  margin-top:var(--space-s);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+/* SVG gradient stops. These are set here rather than as stop-color
+   presentation attributes in the markup, because var() does not resolve
+   inside a presentation attribute — it has to come through CSS. */
+#egg .eg-sweep .s0,
+#egg .eg-sweep .s1{ stop-color:var(--accent); }
+#egg .eg-sweep .s2,
+#egg .eg-sweep .s3{ stop-color:var(--accent-2); }
+
+/* The sweep: a bar of this page's own two accent colours crossing a field,
+   and a short white flash behind it. It is an abstraction of a handheld
+   coming on, drawn from scratch — not a reproduction of any console's
+   startup screen, and not timed to one. */
+@keyframes eg-sweep-across{
+  0%   { opacity:0; transform:translateX(-62%) }
+  12%  { opacity:1 }
+  88%  { opacity:1 }
+  100% { opacity:0; transform:translateX(62%) }
+}
+
+/* The readout holds off until the sweep has passed, then settles in: the
+   screen comes on, then it says where it goes. It ends at full opacity,
+   so the frame after the animation is cleared looks identical to the one
+   before it was pressed. */
+@keyframes eg-settle{
+  0%   { opacity:0 }
+  62%  { opacity:0 }
+  100% { opacity:1 }
+}
+
+#egg .eg-screen[data-playing="true"] .eg-sweep{
+  animation:eg-sweep-across 1400ms ease-in-out 1 both;
+}
+
+#egg .eg-screen[data-playing="true"] .eg-screen-text{
+  animation:eg-settle 1400ms ease-out 1 both;
+}
+
+/* Anyone who asks for reduced motion gets the readout and the button, and
+   the sweep collapses to a single frame rather than travelling. */
+@media (prefers-reduced-motion: reduce){
+  #egg .eg-screen[data-playing="true"] .eg-sweep,
+  #egg .eg-screen[data-playing="true"] .eg-screen-text{
+    animation-duration:1ms;
+  }
+  #egg .eg-mark,
+  #egg .eg-box,
+  #egg .eg-say,
+  #egg .eg-pane{ transition:none; }
+}
+
+/* ---------- footnotes ---------- */
+
+#egg .eg-foot{
+  margin-top:var(--space-m);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#egg .eg-foot code{ overflow-wrap:anywhere; }
+
+/* On a dark page the stage and the destination screen are both meant to
+   read as "a page being looked at", so they follow --bg/--bg-alt like the
+   rest of the document rather than the panel they sit in. The one thing
+   that needs a nudge is the stage's border, which at #2b3142 disappears
+   against the lifted panel surface. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) #egg .eg-stage{ border-color:#3c4560; }
+}
+:root[data-theme="dark"] #egg .eg-stage{ border-color:#3c4560; }

@@ -7,7 +7,9 @@
    #source joined. #log joined on 2026-10-12, and widened what 'site'
    means: his commit messages are his writing, published in the same
    repository as index.html, so they are counted to him rather than to
-   the agent that quotes them.
+   the agent that quotes them. #egg joined on 2026-10-13; its verbatim
+   attribute and CSS readouts are [data-chrome] rather than 'site',
+   because a href would otherwise land eight junk tokens in his total.
 
    The page carries a rule it cannot demonstrate on its own: an agent
    writes it, and the agent may not invent facts about Ruslan. Every
@@ -40,7 +42,7 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'source', 'log', 'north', 'shelf', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
+  var SCOPE = ['about', 'source', 'log', 'north', 'shelf', 'egg', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {
