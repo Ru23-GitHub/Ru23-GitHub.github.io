@@ -10,6 +10,11 @@
    the agent that quotes them. #egg joined on 2026-10-13; its verbatim
    attribute and CSS readouts are [data-chrome] rather than 'site',
    because a href would otherwise land eight junk tokens in his total.
+   #type joined on 2026-10-14 on the same terms: its diffs, its quoted
+   CSS comment and the two fonts' name tables are all [data-chrome],
+   partly for that same junk-token reason and partly because a font's
+   metadata belongs to whoever drew the font, which is none of the
+   three sources this page is able to name.
 
    The page carries a rule it cannot demonstrate on its own: an agent
    writes it, and the agent may not invent facts about Ruslan. Every
@@ -42,7 +47,7 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'source', 'log', 'north', 'shelf', 'egg', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
+  var SCOPE = ['about', 'source', 'log', 'north', 'shelf', 'egg', 'type', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {
