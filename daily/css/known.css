@@ -1,0 +1,160 @@
+/* Everything This Page Actually Knows
+   ----------------------------------------------------------------------
+   A front door. The ten sections below are titled "The Source", "The Egg",
+   "The Font" — codenames that tell an arriving visitor nothing about the
+   person. This restates the same ten as flat sentences about Ruslan, so
+   the page has a fifteen-second version of him before the long one.
+
+   Deliberately the only section here with no JavaScript: it is the part
+   that has to work when everything else doesn't, so there is nothing in
+   it that can fail to load. */
+
+#known{
+  background:var(--bg-alt);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+#known .kn-intro{
+  max-width:68ch;
+  color:var(--muted);
+}
+
+/* ---------- the list ---------- */
+
+.kn-list{
+  list-style:none;
+  margin:var(--space-m) 0 0;
+  padding:0;
+  display:grid;
+  gap:1px;                     /* the gap IS the rule between rows */
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+
+.kn-row{
+  background:var(--bg);
+  padding:clamp(14px, 2.4vw, 20px) clamp(14px, 2.6vw, 22px);
+  display:grid;
+  grid-template-columns:auto 1fr;
+  grid-template-areas:
+    "no   fact"
+    "no   meta";
+  column-gap:clamp(12px, 2vw, 18px);
+  row-gap:6px;
+  align-items:baseline;
+}
+
+.kn-no{
+  grid-area:no;
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--accent);
+  line-height:1.5;
+  /* The numbers run 01–10 and match the hero index, so the two ways into
+     a section agree with each other. Tabular so the column stays straight. */
+  font-variant-numeric:tabular-nums;
+}
+
+.kn-fact{
+  grid-area:fact;
+  margin:0;
+  font-size:clamp(15px, 1.9vw, 17px);
+  line-height:1.45;
+  color:var(--text);
+  text-wrap:pretty;
+}
+
+.kn-fact em{ font-style:italic; }
+
+.kn-meta{
+  grid-area:meta;
+  margin:0;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px 8px;
+}
+
+/* ---------- source chips ----------
+   Three flavours, but only two real sources: his bio and his commits are
+   both his own repository. The colouring says "his" vs "he told me" vs
+   "this page's own bookkeeping" and no more than that. */
+
+.kn-src{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  padding:2px 8px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  color:var(--muted);
+  background:var(--bg-alt);
+  white-space:nowrap;
+}
+
+.kn-src[data-src="email"]{
+  color:var(--accent);
+  border-color:color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+.kn-go{
+  margin-inline-start:auto;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  color:var(--accent);
+  white-space:nowrap;
+}
+
+.kn-go::after{ content:" \2193"; }
+
+.kn-go:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:4px;
+  text-decoration:none;
+}
+
+/* A row is not a link — only the section name is — so the hover cue sits
+   on the row to show the association without over-promising a click. */
+@media (hover: hover){
+  .kn-row:hover{ background:var(--bg-alt); }
+  .kn-row:hover .kn-go{ text-decoration:underline; }
+}
+
+/* ---------- tail ---------- */
+
+.kn-gap{
+  margin-top:var(--space-m);
+  max-width:68ch;
+}
+
+.kn-gap strong{ color:var(--text); }
+
+.kn-foot{
+  margin-top:var(--space-s);
+  max-width:72ch;
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--muted);
+}
+
+/* ---------- phone ----------
+   At 390px the number column plus a nowrap chip row is what pushes this
+   over the edge, so the number goes inline with the chips instead of
+   holding a column of its own. */
+
+@media (max-width: 560px){
+  .kn-row{
+    grid-template-columns:1fr;
+    grid-template-areas:
+      "fact"
+      "meta";
+    row-gap:8px;
+  }
+  .kn-no{ display:none; }
+  .kn-go{ margin-inline-start:0; }
+}
