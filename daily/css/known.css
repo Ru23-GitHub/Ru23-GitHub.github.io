@@ -53,7 +53,7 @@
   font-size:var(--fs-sm);
   color:var(--accent);
   line-height:1.5;
-  /* The numbers run 01–10 and match the hero index, so the two ways into
+  /* The numbers run 01–10 and match the navigator's, so the two ways into
      a section agree with each other. Tabular so the column stays straight. */
   font-variant-numeric:tabular-nums;
 }

@@ -67,15 +67,8 @@
       // add bounce headroom (~3.2em up + small extra)
       const bounceHeadroomPx = emToPx(gb, 4);
 
-      // The index sits at the bottom of the hero; take its height out of
-      // the box the name is allowed to fill, and publish it so the CSS
-      // can shift the name up by half of it and keep it looking centred.
-      const index = hero.querySelector('.hero-index');
-      const reserve = index ? index.getBoundingClientRect().height + 18 : 0;
-      hero.style.setProperty('--hero-reserve', `${reserve}px`);
-
       const maxW = vw - paddingX * 2;
-      const maxH = vh - paddingY * 2 - bounceHeadroomPx - reserve;
+      const maxH = vh - paddingY * 2 - bounceHeadroomPx;
 
       const scaleW = maxW / rect.width;
       const scaleH = maxH / rect.height;
@@ -86,9 +79,12 @@
       fitbox.style.transform = `translate(-50%,-50%) scale(${scale})`;
       fitbox.style.visibility = 'visible';
 
-      // --logo-bottom used to position the scroll cue relative to the
-      // logo's rendered edge. The cue is gone; the index is anchored to
-      // the hero's bottom instead, so nothing needs it any more.
+      // The hero has held three different navigation affordances at the
+      // bottom of it — a chevron, then ten codename pills — and reserved
+      // room for each. Both are deleted and the job moved to the sticky
+      // bar below the hero, so there is nothing left to measure or to
+      // publish: no --logo-bottom, no --hero-reserve. The name simply
+      // fills the hero.
     });
   }
 

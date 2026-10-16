@@ -20,6 +20,7 @@
 <link rel="stylesheet" href="css/stack.css" />
 <link rel="stylesheet" href="css/threshold.css" />
 <link rel="stylesheet" href="css/ledger.css" />
+<link rel="stylesheet" href="css/rail.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -41,23 +42,107 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         </div>
       </a>
     </div>
-    <nav class="hero-index" aria-label="What's on this page">
-      <ol>
-          <li><a href="#about"><span>About</span></a></li>
-          <li><a href="#known"><span>What&rsquo;s known</span></a></li>
-          <li><a href="#source"><span class="ix-no">01</span><span>The Source</span></a></li>
-          <li><a href="#log"><span class="ix-no">02</span><span>The Log</span></a></li>
-          <li><a href="#north"><span class="ix-no">03</span><span>The Drive</span></a></li>
-          <li><a href="#shelf"><span class="ix-no">04</span><span>The Shelf</span></a></li>
-          <li><a href="#egg"><span class="ix-no">05</span><span>The Egg</span></a></li>
-          <li><a href="#type"><span class="ix-no">06</span><span>The Font</span></a></li>
-          <li><a href="#booth"><span class="ix-no">07</span><span>The Booth</span></a></li>
-          <li><a href="#stack"><span class="ix-no">08</span><span>The Stack</span></a></li>
-          <li><a href="#threshold"><span class="ix-no">09</span><span>The Line</span></a></li>
-          <li><a href="#ledger"><span class="ix-no">10</span><span>The Ledger</span></a></li>
-      </ol>
-    </nav>
   </section>
+
+  <!-- The navigator. Chrome, not a section: no number, no codename, and
+       outside the Ledger's count, like the hero and the banner. It sits
+       here, after the hero, so that position:sticky never covers the
+       hero — it simply has not been reached yet. -->
+  <nav class="rail" aria-label="On this page">
+    <div class="rail-inner">
+      <a class="rail-home" href="#hero">Ruslan Manoharan</a>
+      <span class="rail-flag">unreviewed daily rebuild</span>
+
+      <details class="rail-menu" data-rail-menu>
+        <summary class="rail-open" data-rail-open>
+          <span class="rail-here"><span class="rail-here-no" data-rail-no>&mdash;</span><span data-rail-name>Contents</span></span>
+          <svg class="rail-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </summary>
+
+        <div class="rail-sheet">
+          <p class="rail-note">An AI agent rebuilds this page every night and no human reviews it before it goes live. <a href="/">The real site</a> &middot; <a href="/change-log/">What it changed</a></p>
+
+          <span class="rail-k">Thirteen parts</span>
+          <ol class="rail-list">
+            <li><a href="#about" data-name="About">
+              <span class="rail-no" aria-hidden="true">&mdash;</span>
+              <span class="rail-t">About</span>
+              <span class="rail-d">His photo, his bio, his resume</span>
+            </a></li>
+            <li><a href="#known" data-name="What&rsquo;s known">
+              <span class="rail-no" aria-hidden="true">&mdash;</span>
+              <span class="rail-t">What&rsquo;s known</span>
+              <span class="rail-d">All ten findings, in one list</span>
+            </a></li>
+            <li><a href="#source" data-no="01" data-name="The Source">
+              <span class="rail-no" aria-hidden="true">01</span>
+              <span class="rail-t">The Source</span>
+              <span class="rail-d">His bio, read clause by clause</span>
+            </a></li>
+            <li><a href="#log" data-no="02" data-name="The Log">
+              <span class="rail-no" aria-hidden="true">02</span>
+              <span class="rail-t">The Log</span>
+              <span class="rail-d">Thirteen commits, four days, ending in a deletion</span>
+            </a></li>
+            <li><a href="#north" data-no="03" data-name="The Drive">
+              <span class="rail-no" aria-hidden="true">03</span>
+              <span class="rail-t">The Drive</span>
+              <span class="rail-d">Portland to Seattle, 175 miles north</span>
+            </a></li>
+            <li><a href="#shelf" data-no="04" data-name="The Shelf">
+              <span class="rail-no" aria-hidden="true">04</span>
+              <span class="rail-t">The Shelf</span>
+              <span class="rail-d">A Walkman and five Nintendo handhelds</span>
+            </a></li>
+            <li><a href="#egg" data-no="05" data-name="The Egg">
+              <span class="rail-no" aria-hidden="true">05</span>
+              <span class="rail-t">The Egg</span>
+              <span class="rail-d">His own name has been a link all along</span>
+            </a></li>
+            <li><a href="#type" data-no="06" data-name="The Font">
+              <span class="rail-no" aria-hidden="true">06</span>
+              <span class="rail-t">The Font</span>
+              <span class="rail-d">A Nintendo typeface, for one word he then cut</span>
+            </a></li>
+            <li><a href="#booth" data-no="07" data-name="The Booth">
+              <span class="rail-no" aria-hidden="true">07</span>
+              <span class="rail-t">The Booth</span>
+              <span class="rail-d">Bad karaoke, and keshi&rsquo;s <em>Soft Spot</em></span>
+            </a></li>
+            <li><a href="#stack" data-no="08" data-name="The Stack">
+              <span class="rail-no" aria-hidden="true">08</span>
+              <span class="rail-t">The Stack</span>
+              <span class="rail-d">Six skills, and the odd one out</span>
+            </a></li>
+            <li><a href="#threshold" data-no="09" data-name="The Line">
+              <span class="rail-no" aria-hidden="true">09</span>
+              <span class="rail-t">The Line</span>
+              <span class="rail-d">The societal impact of AI tools &mdash; his one stated interest</span>
+            </a></li>
+            <li><a href="#ledger" data-no="10" data-name="The Ledger">
+              <span class="rail-no" aria-hidden="true">10</span>
+              <span class="rail-t">The Ledger</span>
+              <span class="rail-d">How little of this page is actually him</span>
+            </a></li>
+            <li><a href="#contact" data-name="Contact">
+              <span class="rail-no" aria-hidden="true">&mdash;</span>
+              <span class="rail-t">Contact</span>
+              <span class="rail-d">Where he answers</span>
+            </a></li>
+          </ol>
+
+          <span class="rail-k">Reach him</span>
+          <ul class="rail-reach">
+            <li><a href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
+            <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
+            <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+    <div class="rail-prog" aria-hidden="true"><span data-rail-prog></span></div>
+  </nav>
 
   <section id="about">
     <div class="container">
@@ -1271,7 +1356,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
       <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Two of them now have a section, and both only because he was asked a direct question and answered it. <strong>Travelling and cooking still have nothing</strong>. As of 8 October a question about cooking is sitting in his inbox, unanswered; travelling has not been asked at all. In both cases the reason is the asking, not an absence of material. The bar above moves whenever he replies. It has moved twice.</p>
 
-      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, What This Page Knows, the Source, the Log, the Drive, the Shelf, the Egg, the Font, the Booth, the Stack, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The Source quotes his bio paragraph a second time, clause by clause; those clauses are marked as a re-quote and skipped here, because counting his fifty-three words twice would report a share of this page he does not have. The hero, the experiment banner, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in any of those sections is left untagged, which is the only thing keeping these numbers honest.</p>
+      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in About, What This Page Knows, the Source, the Log, the Drive, the Shelf, the Egg, the Font, the Booth, the Stack, the Line, this section and Contact, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. The Source quotes his bio paragraph a second time, clause by clause; those clauses are marked as a re-quote and skipped here, because counting his fifty-three words twice would report a share of this page he does not have. The hero, the experiment banner, the navigator that rides above the page, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a chart legend, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner to attribute it to. While a source is picked the rest of the page is deliberately pushed below normal text contrast &mdash; setting it aside is the information the control carries, not an oversight &mdash; and <em>Clear</em>, or the Escape key, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in any of those sections is left untagged, which is the only thing keeping these numbers honest.</p>
     </div>
   </section>
 
@@ -1309,6 +1394,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/stack.js"></script>
 <script src="js/threshold.js"></script>
 <script src="js/ledger.js"></script>
+<script src="js/rail.js"></script>
 <script src="js/theme.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>

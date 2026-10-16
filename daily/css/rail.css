@@ -1,0 +1,307 @@
+/* The navigator — the bar that rides above the page
+   ----------------------------------------------------------------------
+   Added 2026-10-16, and it exists because the page was measured first.
+   Rendered at 1440x900 it is 28,252px tall; on a 390px phone, 39,394px —
+   thirty-one screens and forty-seven. The Log alone is nine screens on a
+   phone and the Font is another nine.
+
+   Across all of that the page had navigation in exactly one place: a row
+   of ten codename pills at the bottom of the hero, inside the first 774
+   pixels. Scroll past them and there was no way to tell where you were,
+   no way to jump, and no way to reach Ruslan — his email, LinkedIn and
+   Instagram sit at 39,085px, at the very end. Anyone arriving on a deep
+   link (/daily/#type is a real URL that a real section links to) landed
+   mid-page with no name, no nav and no contact anywhere on screen.
+
+   So: three things, kept visible for all forty-seven screens instead of
+   the first one. Whose page this is. Which of the thirteen parts you are
+   standing in. How to reach him.
+
+   Mechanics worth knowing:
+
+   The bar is position:sticky and sits AFTER the hero in document order,
+   which is why it never covers the hero — it has not been reached yet.
+   No JS decides that. Without JS the bar still names him, still links
+   every section, and still carries the contact links, because the sheet
+   is a <details>/<summary>: the disclosure, the keyboard handling and the
+   focus order are the browser's, not mine. JS adds three things on top —
+   which section is current, the progress line, and closing the sheet when
+   you pick something out of it.
+
+   This is chrome, not a section. It gets no number and no codename, and
+   it sits outside the Ledger's count along with the hero, the banner and
+   the footer, which is noted in the Ledger itself.
+
+   Every line of gloss under a section name restates a finding already
+   established in that section — nothing here is a new claim about him. */
+
+.rail{
+  position:sticky;
+  top:0;
+  z-index:40;
+  background:var(--bg);
+  border-bottom:1px solid var(--border);
+}
+
+.rail-inner{
+  width:var(--container);
+  margin-inline:auto;
+  height:46px;
+  display:flex;
+  align-items:stretch;
+  gap:10px;
+}
+
+/* ---------- who ---------- */
+
+.rail-home{
+  display:inline-flex;
+  align-items:center;
+  color:var(--text);
+  text-decoration:none;
+  font-size:var(--fs-base);
+  font-weight:600;
+  letter-spacing:.01em;
+  white-space:nowrap;
+}
+
+.rail-home:hover,
+.rail-home:focus-visible{ color:var(--accent); text-decoration:none; }
+
+/* The disclosure, repeated. The banner at the top of the document is the
+   required one and it is untouched; this is the same sentence compressed
+   so that it does not scroll away after the first screen. There is not
+   room for it next to a section name on a phone, so below 640px the
+   banner remains the only copy, as it was before this bar existed. */
+.rail-flag{
+  display:none;
+  align-self:center;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  color:var(--muted);
+  padding:2px 8px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-pill);
+  background:var(--bg-alt);
+  white-space:nowrap;
+}
+
+@media (min-width:640px){
+  .rail-flag{ display:inline-block; }
+}
+
+/* ---------- where you are, which is also the opener ---------- */
+
+.rail-menu{
+  margin-inline-start:auto;
+  position:relative;
+  display:flex;
+  align-items:center;
+  min-width:0;
+}
+
+.rail-open{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  max-width:min(54vw, 320px);
+  padding:5px 10px 5px 12px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-pill);
+  background:var(--bg-alt);
+  color:var(--muted);
+  font-size:var(--fs-sm);
+  letter-spacing:.03em;
+  cursor:pointer;
+  list-style:none;          /* kills the default triangle in Firefox */
+}
+
+.rail-open::-webkit-details-marker{ display:none; }
+
+.rail-open:hover{ color:var(--text); border-color:var(--muted); }
+
+.rail-open:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+.rail-here{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.rail-here-no{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--accent);
+  margin-inline-end:5px;
+}
+
+.rail-chev{
+  width:11px; height:11px;
+  flex:none;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  transition:transform 160ms ease;
+}
+
+.rail-menu[open] .rail-chev{ transform:rotate(180deg); }
+.rail-menu[open] .rail-open{ color:var(--text); border-color:var(--muted); }
+
+/* ---------- the sheet ---------- */
+
+.rail-sheet{
+  position:absolute;
+  top:calc(100% + 10px);
+  right:0;
+  width:min(92vw, 430px);
+  /* --rail-room is the space actually left below the bar, set by the
+     script each frame the sheet is open; the 72vh is the no-JS floor. */
+  max-height:min(580px, var(--rail-room, 72vh));
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  padding:14px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  box-shadow:0 16px 44px rgba(0,0,0,.16);
+  z-index:41;
+}
+
+.rail-note{
+  margin:0 0 12px;
+  font-size:var(--fs-md);
+  line-height:1.5;
+  color:var(--muted);
+}
+
+.rail-k{
+  display:block;
+  margin:0 0 7px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.rail-list{
+  list-style:none;
+  margin:0 0 15px;
+  padding:0;
+}
+
+.rail-list a{
+  display:grid;
+  grid-template-columns:24px 1fr;
+  gap:1px 8px;
+  padding:7px 8px;
+  border-radius:var(--radius-sm);
+  color:var(--text);
+  text-decoration:none;
+}
+
+.rail-list a:hover,
+.rail-list a:focus-visible{
+  background:var(--bg-alt);
+  text-decoration:none;
+}
+
+.rail-list a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:-2px;
+}
+
+.rail-no{
+  grid-row:1 / span 2;
+  padding-top:2px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--accent);
+  font-variant-numeric:tabular-nums;
+}
+
+.rail-t{ font-size:var(--fs-base); line-height:1.35; }
+
+.rail-d{
+  grid-column:2;
+  font-size:var(--fs-xs);
+  line-height:1.45;
+  color:var(--muted);
+}
+
+/* Set by the script; without it no row is marked and the list is still
+   a perfectly good list. */
+.rail-list a[aria-current]{ background:var(--bg-alt); }
+.rail-list a[aria-current] .rail-t{ color:var(--accent); font-weight:600; }
+.rail-list a[aria-current] .rail-no::after{
+  content:'';
+  display:inline-block;
+  width:4px; height:4px;
+  margin-inline-start:3px;
+  border-radius:50%;
+  background:var(--accent);
+  vertical-align:2px;
+}
+
+/* ---------- reach him ---------- */
+
+.rail-reach{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin:0;
+  padding:0;
+}
+
+.rail-reach a{
+  display:inline-block;
+  padding:5px 12px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-pill);
+  background:var(--bg);
+  color:var(--accent);
+  font-size:var(--fs-sm);
+  text-decoration:none;
+}
+
+.rail-reach a:hover,
+.rail-reach a:focus-visible{
+  border-color:var(--accent);
+  text-decoration:none;
+}
+
+/* ---------- progress ---------- */
+
+.rail-prog{
+  height:2px;
+  background:transparent;
+}
+
+.rail-prog > span{
+  display:block;
+  height:100%;
+  width:0;
+  background:var(--accent);
+}
+
+/* The line can only be honest once something is measuring the scroll. */
+.rail:not(.rail-js) .rail-prog{ display:none; }
+
+/* ---------- the bar's one obligation to the rest of the page ----------
+   A sticky header hides whatever an in-page anchor lands on, and this page
+   is full of them: the hero index's replacement below, every "jump to"
+   link in What's Known, and the Ledger's own next/previous stepping. 49px
+   of bar plus air. */
+
+section[id]{ scroll-margin-top:62px; }
+
+@media (prefers-reduced-motion: reduce){
+  .rail-chev{ transition:none; }
+}
