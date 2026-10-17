@@ -196,13 +196,15 @@ span.led-on, strong.led-on{
 }
 
 .led-gap,
+.led-cut,
 .led-foot{
   margin-top:var(--space-m);
   font-size:var(--fs-md);
   color:var(--muted);
 }
 
-.led-gap{ font-size:inherit; color:var(--text); }
+.led-gap,
+.led-cut{ font-size:inherit; color:var(--text); }
 
 #ledger code{
   font-family:var(--mono);
