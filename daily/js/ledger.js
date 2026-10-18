@@ -14,7 +14,11 @@
    CSS comment and the two fonts' name tables are all [data-chrome],
    partly for that same junk-token reason and partly because a font's
    metadata belongs to whoever drew the font, which is none of the
-   three sources this page is able to name.
+   three sources this page is able to name. #cross joined on
+   2026-10-18; everything of his that it quotes is already counted
+   somewhere else, so all of it carries [data-dup] — and adding it
+   turned up two commit titles in #egg and #type that had been double-
+   counted since those sections were built. Both are now marked too.
 
    The page carries a rule it cannot demonstrate on its own: an agent
    writes it, and the agent may not invent facts about Ruslan. Every
@@ -47,7 +51,7 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'known', 'source', 'log', 'north', 'shelf', 'egg', 'type', 'booth', 'stack', 'threshold', 'ledger', 'contact'];
+  var SCOPE = ['about', 'known', 'source', 'log', 'north', 'shelf', 'egg', 'type', 'booth', 'stack', 'threshold', 'ledger', 'cross', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {

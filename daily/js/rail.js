@@ -3,19 +3,21 @@
    Added 2026-10-16. Everything load-bearing about the bar is in the HTML
    and the CSS: it is a position:sticky element containing a <details>,
    so with this file removed it still names Ruslan, still links all
-   thirteen parts of the page, and still carries his three contact links,
+   fourteen parts of the page, and still carries his three contact links,
    with the browser doing the disclosure and the keyboard handling.
 
    What this adds is the part that cannot be done declaratively:
 
      1. which section you are standing in, written into the closed bar
         and marked in the open list with aria-current
-     2. how far through 39,000 pixels you are
+     2. how far through the document you are — read off
+        scrollHeight rather than a figure typed in here, which would be
+        wrong the next time a section is added or cut
      3. closing the sheet when you pick a destination out of it, so the
         anchor you just jumped to is not sitting underneath it
 
    Section tops are cached rather than read per frame. The page animates
-   on scroll (animation-timeline: view()) and reading thirteen bounding
+   on scroll (animation-timeline: view()) and reading fourteen bounding
    boxes on every rAF while that runs is a measurable amount of layout
    for no benefit — the tops only move when the viewport does, or when
    the document's height changes, and both are watched below. */
@@ -67,7 +69,7 @@
   function paint() {
     frame = 0;
 
-    /* One layout read, not thirteen. If the page has grown or shrunk —
+    /* One layout read, not fourteen. If the page has grown or shrunk —
        a font landing, an exhibit opening a panel — the cache is stale. */
     if (document.documentElement.scrollHeight !== docH) measure();
 
