@@ -19,6 +19,11 @@
    somewhere else, so all of it carries [data-dup] — and adding it
    turned up two commit titles in #egg and #type that had been double-
    counted since those sections were built. Both are now marked too.
+   #frame joined on 2026-10-20: it reads the one photograph in the
+   repository, so nothing in it is his writing at all — the JPEG's own
+   segment table and the byte counts are [data-chrome] on the same terms
+   as The Egg's attribute readouts, being machine-readable fields rather
+   than anyone's prose.
 
    The page carries a rule it cannot demonstrate on its own: an agent
    writes it, and the agent may not invent facts about Ruslan. Every
@@ -51,7 +56,7 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'known', 'source', 'log', 'north', 'shelf', 'egg', 'type', 'hand', 'booth', 'stack', 'threshold', 'ledger', 'cross', 'contact'];
+  var SCOPE = ['about', 'known', 'source', 'log', 'north', 'frame', 'shelf', 'egg', 'type', 'hand', 'booth', 'stack', 'threshold', 'ledger', 'cross', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {

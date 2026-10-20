@@ -1,0 +1,269 @@
+/* The Frame — the one photograph in the repository
+   ----------------------------------------------------------------------
+   Added 2026-10-20. Every section before this one reads something he
+   typed. This one reads the only object here he did not type: a 900-pixel
+   JPEG of himself, committed once in July 2026 and never touched again.
+
+   Three notes on the construction:
+
+   The plate shows the picture at up to 520px. His own stylesheet caps it
+   at clamp(140px, 30vw, 220px) on both pages, so this is the largest it
+   has ever been rendered anywhere on this domain — a decision of mine
+   about a file of his, and the section says so out loud rather than
+   letting it pass as layout.
+
+   The markers are ellipses positioned in per cent of the frame, not
+   pixels, so they stay on their subjects at every width without a
+   resize listener. None of them is placed on his face. The fourth is not
+   an ellipse at all: it rings the whole frame, because the thing it
+   points at is the room, and the room is the one item here deliberately
+   left unnamed.
+
+   The readings DIM rather than hide, for the reason The Egg gives: the
+   Ledger counts every visible word, and four readings are four pieces of
+   writing, not fallbacks for one another. */
+
+#frame{ --fr-leaf:#2f6b45; }
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) #frame{ --fr-leaf:#6fd49a; }
+}
+:root[data-theme="dark"] #frame{ --fr-leaf:#6fd49a; }
+
+#frame .fr-rig{
+  --panel-accent:#6fd49a;            /* the one colour the picture has plenty of; 9.0:1 on --panel-top */
+  --panel-accent-soft:rgba(111,212,154,.62);
+  --panel-btn-on-top:#1d4c33;
+  --panel-btn-on-bottom:#143524;
+
+  display:grid;
+  gap:var(--space-s);
+  margin-block:var(--space-m);
+}
+
+/* ---------- the plate ---------- */
+
+#frame .fr-plate{
+  margin:0;
+  display:grid;
+  justify-items:center;
+}
+
+#frame .fr-shot{
+  position:relative;
+  width:100%;
+  max-width:520px;
+  aspect-ratio:1/1;
+  border-radius:var(--radius-md);
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.14);
+}
+
+#frame .fr-shot img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* An ellipse over a region of the frame. --x/--y is its centre, --w/--h
+   its size, all four in per cent of the plate. */
+#frame .fr-mark{
+  position:absolute;
+  left:calc(var(--x) - var(--w) / 2);
+  top:calc(var(--y) - var(--h) / 2);
+  width:var(--w);
+  height:var(--h);
+  border:2px solid var(--panel-accent);
+  border-radius:50%;
+  box-shadow:0 0 0 1px rgba(0,0,0,.45), 0 0 18px 2px var(--panel-accent-soft);
+  opacity:0;
+  transform:scale(.92);
+  transition:opacity 200ms ease, transform 200ms ease;
+  pointer-events:none;
+}
+
+/* The room: not a region of the frame, the whole of it. */
+#frame .fr-mark.is-full{
+  left:2.5%; top:2.5%;
+  width:95%; height:95%;
+  border-radius:var(--radius-sm);
+  border-style:dashed;
+}
+
+#frame .fr-mark[data-state="on"]{ opacity:1; transform:scale(1); }
+
+/* With a marker up, everything outside it is pushed back a little so the
+   ring reads as a pointer rather than as decoration on the photo. */
+#frame .fr-shot[data-marked="yes"] img{ filter:brightness(.78) saturate(.85); }
+#frame .fr-shot img{ transition:filter 200ms ease; }
+
+#frame .fr-size{
+  margin:8px 0 0;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:0;
+  color:var(--panel-dim);
+  text-align:center;
+}
+
+#frame .fr-cap{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+  min-height:3.2em;
+}
+
+/* ---------- the picker ---------- */
+
+#frame .fr-looks-head{
+  margin:0 0 8px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+#frame .fr-looks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+#frame .fr-pick{ flex:1 1 150px; justify-content:center; }
+
+#frame .fr-foot-row{ margin:var(--space-s) 0 0; }
+
+/* ---------- the four readings ---------- */
+
+#frame .fr-reads{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+
+@media (min-width:760px){
+  #frame .fr-reads{ grid-template-columns:repeat(2, 1fr); }
+}
+
+#frame .fr-read{
+  padding:clamp(12px, 3vw, 18px);
+  border-radius:var(--radius-md);
+  border:1px solid rgba(255,255,255,.1);
+  background:rgba(255,255,255,.04);
+  transition:opacity 180ms ease;
+}
+
+#frame .fr-read > h3{
+  margin:0 0 6px;
+  font-family:inherit;
+  font-size:var(--fs-sm);
+  font-weight:700;
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-accent);
+}
+
+#frame .fr-read p{
+  margin:0;
+  font-size:var(--fs-base);
+  color:var(--panel-ink);
+}
+
+#frame .fr-read[data-state="cur"]{ border-color:var(--panel-accent-soft); }
+#frame .fr-read[data-state="dim"]{ opacity:.42; }
+
+/* ---------- what he shipped, by weight ---------- */
+
+#frame .fr-weigh{
+  list-style:none;
+  margin:var(--space-m) 0;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+
+#frame .fr-weigh > li{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:2px 12px;
+  align-items:baseline;
+}
+
+#frame .fr-wt{ font-size:var(--fs-base); }
+
+#frame .fr-wn{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--muted);
+  text-align:right;
+  white-space:nowrap;
+}
+
+#frame .fr-wbar{
+  grid-column:1 / -1;
+  height:10px;
+  border-radius:var(--radius-pill);
+  background:var(--bg-alt);
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+
+#frame .fr-wbar > span{
+  display:block;
+  height:100%;
+  width:var(--w);
+  background:var(--fr-leaf);
+  border-radius:var(--radius-pill);
+}
+
+/* ---------- what the file says about itself ---------- */
+
+#frame .fr-meta{
+  margin:var(--space-s) 0 var(--space-m);
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  background:var(--bg-alt);
+  display:grid;
+  gap:6px;
+}
+
+#frame .fr-meta-row{
+  display:grid;
+  grid-template-columns:minmax(118px, 30%) 1fr;
+  gap:4px 14px;
+  align-items:baseline;
+}
+
+#frame .fr-meta dt{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+#frame .fr-meta dd{
+  margin:0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--text);
+  overflow-wrap:anywhere;
+}
+
+#frame .fr-meta dd.is-absent{ color:var(--muted); }
+
+#frame .fr-foot{
+  margin-top:var(--space-m);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#frame .fr-foot code{ overflow-wrap:anywhere; }
+
+@media (prefers-reduced-motion: reduce){
+  #frame .fr-mark,
+  #frame .fr-shot img,
+  #frame .fr-read{ transition:none; }
+}
