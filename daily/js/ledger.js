@@ -56,7 +56,7 @@
   var section = document.getElementById('ledger');
   if (!section) return;
 
-  var SCOPE = ['about', 'known', 'source', 'log', 'north', 'frame', 'shelf', 'egg', 'type', 'hand', 'booth', 'stack', 'threshold', 'ledger', 'cross', 'contact'];
+  var SCOPE = ['about', 'known', 'source', 'log', 'north', 'frame', 'shelf', 'egg', 'type', 'hand', 'palette', 'booth', 'stack', 'threshold', 'ledger', 'cross', 'contact'];
   var KINDS = ['site', 'email', 'agent'];
 
   var LABEL = {

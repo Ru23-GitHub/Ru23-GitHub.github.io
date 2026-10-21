@@ -1,0 +1,326 @@
+/* The Palette — where his site's two accent colours came from
+   ----------------------------------------------------------------------
+   Added 2026-10-21. Companion to The Hand, which reads js/intro.js for
+   the letters' positions; this one reads css/intro.css for their colour.
+
+   One constraint drives most of the layout decisions below. His hero's
+   background is #fff in both themes (--hero-bg is set in intro.css and
+   nothing in theme.css overrides it), and the first stop of his letter
+   animation is also #fff — so for the first fraction of a second each
+   letter is white on white, invisible. If the facsimile sat straight on
+   this section's dark panel, a letter at the 0% stop would be the
+   brightest thing on the page at the exact moment it cannot be seen on
+   his. So the name gets its own white plate, light mode and dark, and the
+   opacity curve out of his char-entry keyframes is reproduced on top of
+   the colour one. At t=0 the plate is empty, which is correct.
+
+   The console's lit colour is #05f9f7 — the fifth of his own six, picked
+   because the final blue (#1733ff) is unreadable on a dark surface, which
+   is the same problem theme.css already had to repair for the hero. */
+
+#palette .pl-intro{ max-width:68ch; }
+
+/* His keyframe block, quoted. Marked data-chrome in the markup: a line of
+   his code printed into my layout is furniture, per the Ledger's rule. */
+.pl-code{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  line-height:1.6;
+  margin:0 0 var(--space-s);
+  padding:clamp(12px, 2.4vw, 18px);
+  border-radius:var(--radius-md);
+  border:1px solid var(--border);
+  background:var(--bg-alt);
+  color:var(--text);
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+}
+
+.pl-quote{
+  margin:0 0 var(--space-s);
+  padding-inline-start:clamp(12px, 2.4vw, 18px);
+  border-inline-start:3px solid var(--accent);
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--text);
+}
+
+/* ---------- the rig ---------- */
+
+.pl-rig{
+  --panel-accent:#05f9f7;
+  --panel-accent-soft:rgba(5,249,247,.55);
+  --panel-btn-on-top:#0d4f52;
+  --panel-btn-on-bottom:#07383b;
+  margin:var(--space-m) 0;
+}
+
+.pl-plate{
+  background:#fff;
+  border-radius:var(--radius-md);
+  border:1px solid rgba(0,0,0,.14);
+  padding:clamp(14px, 3vw, 26px) clamp(10px, 2vw, 20px);
+}
+
+/* A facsimile of his hero's wordmark: his typeface, his tracking, his
+   vertical stretch, his 0.04s stagger — at a fraction of the size, and
+   wrapping at the space rather than forcing one line, because 15 italic
+   display glyphs on a 390px screen cannot have both. */
+.pl-name{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-end;
+  justify-content:center;
+  gap:0 .4em;              /* his #hero .space, which is .4em wide */
+  font-family:var(--display);
+  font-weight:900;
+  font-style:italic;
+  text-transform:uppercase;
+  letter-spacing:-0.04em;
+  font-size:clamp(21px, 6.6vw, 52px);
+  line-height:1.25;
+}
+
+/* One box per word: the row may wrap between them and nowhere else. */
+.pl-word{ display:inline-flex; flex-wrap:nowrap; align-items:flex-end; }
+.pl-name .pl-ch{
+  display:inline-block;
+  transform:scaleY(1.2);
+  padding-right:.28em;
+  margin-right:-.28em;
+  /* Set from JS. The fallback is his rest colour, which is what a
+     visitor without the script sees. */
+  color:#1733ff;
+}
+
+.pl-read{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 16px;
+  align-items:center;
+  margin:14px 0 0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+.pl-read b{ color:var(--panel-ink); font-weight:600; }
+.pl-read .pl-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+
+.pl-dab{
+  width:13px; height:13px;
+  border-radius:4px;
+  border:1px solid rgba(255,255,255,.4);
+  flex:none;
+}
+
+.pl-scrub{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin:18px 0 0;
+}
+.pl-scrub label{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  flex:none;
+}
+.pl-scrub input[type="range"]{
+  flex:1 1 auto;
+  min-width:0;
+  margin:0;
+}
+
+.pl-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin:16px 0 0;
+}
+
+.pl-stops{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:14px 0 0;
+  padding:0;
+  list-style:none;
+}
+.pl-stop{
+  font:inherit;
+  font-size:var(--fs-md);
+  font-family:var(--mono);
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 11px;
+  border-radius:var(--radius-sm);
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.04);
+  color:var(--panel-ink);
+  cursor:pointer;
+}
+.pl-stop:hover{ border-color:rgba(255,255,255,.4); }
+.pl-stop[aria-current="true"]{
+  border-color:var(--panel-accent);
+  background:rgba(5,249,247,.12);
+}
+.pl-stop .pl-pc{ color:var(--panel-dim); }
+
+.pl-cap{
+  margin:14px 0 0;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+/* The no-script listing of the same six stops. Shown unless JS replaces
+   the rig's controls, so the numbers are never only in a script. */
+.pl-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:var(--space-s) 0 var(--space-m);
+  font-size:var(--fs-md);
+}
+.pl-table caption{
+  text-align:start;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  padding-bottom:8px;
+}
+.pl-table th,
+.pl-table td{
+  text-align:start;
+  padding:7px 10px 7px 0;
+  border-bottom:1px solid var(--border);
+  vertical-align:middle;
+}
+.pl-table th{
+  font-weight:600;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+.pl-table td.pl-hex,
+.pl-table td.pl-ms{ font-family:var(--mono); white-space:nowrap; }
+.pl-table .pl-dab{
+  display:inline-block;
+  border-color:rgba(0,0,0,.25);
+  vertical-align:-2px;
+  margin-inline-end:7px;
+}
+
+/* ---------- what survived ---------- */
+
+.pl-fate{
+  margin:var(--space-s) 0 var(--space-m);
+  padding:0;
+  list-style:none;
+  display:grid;
+  gap:var(--space-s);
+}
+.pl-fate > li{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:clamp(12px, 3vw, 20px);
+  align-items:start;
+  padding:clamp(14px, 2.6vw, 20px);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  background:var(--bg-alt);
+}
+.pl-slab{
+  width:clamp(52px, 13vw, 78px);
+  height:clamp(52px, 13vw, 78px);
+  border-radius:var(--radius-sm);
+  border:1px solid rgba(0,0,0,.18);
+  flex:none;
+}
+.pl-fate h3{
+  font-family:var(--mono);
+  font-weight:600;
+  font-size:var(--fs-base);
+  letter-spacing:0;
+  margin:0 0 4px;
+  color:var(--text);
+}
+.pl-fate p{ margin:0 0 6px; }
+.pl-fate p:last-child{ margin-bottom:0; }
+.pl-where{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+.pl-where li{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  padding:3px 9px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--muted);
+}
+
+.pl-unused{
+  border-style:dashed;
+}
+
+/* A strip of his five neutrals, which is the whole rest of his palette. */
+.pl-greys{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:var(--space-s) 0 var(--space-m);
+  padding:0;
+  list-style:none;
+}
+.pl-greys li{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--muted);
+  padding:5px 11px 5px 7px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-pill);
+}
+.pl-greys .pl-dab{ border-color:rgba(0,0,0,.25); }
+
+/* ---------- dark mode ----------
+   Written twice, as theme.css explains: a media query and an attribute
+   selector cannot share a declaration block.
+
+   His swatches are his, so none of them move here. What moves is the
+   hairline drawn around them: a black rim is invisible against #141720,
+   and without it a dark swatch (#16181d, #1733ff) has no edge at all. */
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .pl-slab,
+  :root:not([data-theme="light"]) .pl-table .pl-dab,
+  :root:not([data-theme="light"]) .pl-greys .pl-dab{
+    border-color:rgba(255,255,255,.30);
+  }
+  :root:not([data-theme="light"]) .pl-plate{
+    border-color:rgba(255,255,255,.22);
+  }
+}
+:root[data-theme="dark"] .pl-slab,
+:root[data-theme="dark"] .pl-table .pl-dab,
+:root[data-theme="dark"] .pl-greys .pl-dab{
+  border-color:rgba(255,255,255,.30);
+}
+:root[data-theme="dark"] .pl-plate{
+  border-color:rgba(255,255,255,.22);
+}
