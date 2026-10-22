@@ -196,6 +196,15 @@
   padding:0;
 }
 
+/* Four groups since 2026-10-22, not one list: the findings split into
+   what he said about himself and what his repository gave up. A rule
+   between groups so the headings read as headings. */
+.rail-list + .rail-k{
+  margin-top:3px;
+  padding-top:13px;
+  border-top:1px solid var(--border);
+}
+
 .rail-list a{
   display:grid;
   grid-template-columns:24px 1fr;
