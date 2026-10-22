@@ -1049,106 +1049,24 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
       <p class="ty-word reveal" data-from="agent">The word was <strong>Scroll</strong>.</p>
 
-      <p class="ty-intro reveal" data-from="agent">His first commit, at 20:28 on 23&nbsp;July&nbsp;2026, put a scroll-down cue under his name: the word above a bouncing chevron, in magenta, set in the Game&nbsp;Boy face he was already using. His comment above the rule says it is styled after <span data-from="site">the pink &ldquo;Nintendo&rdquo; sub-brand text under the GAME&nbsp;BOY logo</span>. An hour and a minute later he had evidently stopped being satisfied with an imitation of it: <code>54d5642</code>, 21:29, adds 28,120 bytes called <code>nintendo.otf</code>, an <code>@font-face</code> rule, and the cue rebuilt around it. In the same commit he edited his own comment from <span data-from="site">same font, italic</span> to <span data-from="site">same real Nintendo font</span>.</p>
+      <p class="ty-intro reveal" data-from="agent">His first commit, at 20:28 on 23&nbsp;July&nbsp;2026, put a scroll cue under his name: the word above a bouncing chevron, in magenta, set in the Game&nbsp;Boy face he already had. An hour and a minute later he had evidently stopped being satisfied with an imitation of it &mdash; <code>54d5642</code>, 21:29, adds 28,120 bytes called <code>nintendo.otf</code>, an <code>@font-face</code> rule, and the cue rebuilt around it. In the same commit he edited his own comment from <span data-from="site">same font, italic</span> to <span data-from="site">same real Nintendo font</span>.</p>
 
-      <p class="ty-intro reveal" data-from="agent">Sixty-eight hours and fifty-one minutes after that, he deleted the word.</p>
-
-      <div class="ty-rig panel">
-        <div class="ty-stage" data-chrome data-ty-stage data-state="now" aria-hidden="true">
-          <span class="ty-cue">
-            <svg data-part="lead" viewBox="0 0 24 24" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            <span data-part="word">Scroll</span>
-            <svg data-part="tail" viewBox="0 0 24 24" focusable="false"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </span>
-        </div>
-
-        <p class="ty-caption" role="status" data-chrome data-ty-caption>One chevron and no word &mdash; what has been under his name since 26&nbsp;July&nbsp;2026.</p>
-
-        <div data-ty-controls hidden>
-          <p class="ty-dates-head" id="ty-dates-head" data-chrome>The cue, rebuilt at three commits</p>
-          <div class="ty-dates" role="group" aria-labelledby="ty-dates-head" data-chrome>
-            <button class="panel-btn ty-pick" type="button" aria-pressed="false" data-ty-date="first">
-              <span class="panel-dot" aria-hidden="true"></span>
-              <span><span class="ty-pick-when">23 Jul, 20:28</span>The first hour</span>
-            </button>
-            <button class="panel-btn ty-pick" type="button" aria-pressed="false" data-ty-date="wired">
-              <span class="panel-dot" aria-hidden="true"></span>
-              <span><span class="ty-pick-when">23 Jul, 21:29</span>The 68 hours</span>
-            </button>
-            <button class="panel-btn ty-pick" type="button" aria-pressed="true" data-ty-date="now">
-              <span class="panel-dot" aria-hidden="true"></span>
-              <span><span class="ty-pick-when">26 Jul, 18:20</span>Ever since</span>
-            </button>
-          </div>
-          <p class="ty-foot-row" data-chrome><button class="panel-ghost" type="button" data-ty-clear disabled>Back to today <kbd>Esc</kbd></button></p>
-        </div>
-      </div>
-
-      <p class="reveal" data-from="agent">Nothing pictures the middle state. The cue was never screenshotted and this repository holds no image of it. What it does hold is the markup and the stylesheet at each of those three commits, which is enough to build it again exactly &mdash; so the stage above is a reconstruction, not a recording.</p>
-
-      <h3 class="reveal" data-from="agent">The commit that ended it</h3>
-
-      <p class="reveal" data-from="agent">It is called <span data-from="site" data-dup>&ldquo;Replace hero scroll cue text with a single arrow icon&rdquo;</span>, and it is eight deleted lines and two changed ones. Four lines of markup go, taking the word and the second chevron. Two declarations go, one of which is the only line in this repository&rsquo;s history that ever asked for this font. The surviving chevron grows from 16 pixels to 24 to fill the gap.</p>
-
-      <p class="ty-code" data-chrome>
-        <span class="ty-ln"> #hero .scroll-cue{</span>
-        <del>-  display:flex; flex-direction:row; align-items:center; gap:8px;</del>
-        <ins>+  display:flex; align-items:center;</ins>
-        <span class="ty-ln">   color:#ff3dee; text-decoration:none;</span>
-        <del>-  font-family:'Nintendo', 'GameBoy', system-ui, &hellip;, sans-serif;</del>
-        <del>-  font-size:18px; letter-spacing:.02em;</del>
-        <span class="ty-ln"> }</span>
-        <span class="ty-ln"> #hero .scroll-cue svg{</span>
-        <del>-  width:16px; height:16px;</del>
-        <ins>+  width:24px; height:24px;</ins>
-        <span class="ty-ln"> }</span>
-        <span class="ty-where">e220507 &middot; css/intro.css &middot; the system font stack shortened to fit</span>
-      </p>
-
-      <p class="ty-code" data-chrome>
-        <span class="ty-ln">   &lt;a class="scroll-cue" href="#about" aria-label="Scroll down"&gt;</span>
-        <span class="ty-ln">     &lt;svg&hellip;&gt;&lt;polyline points="6 9 12 15 18 9" /&gt;&lt;/svg&gt;</span>
-        <del>-     &lt;span&gt;Scroll&lt;/span&gt;</del>
-        <del>-     &lt;svg&hellip;&gt;&lt;polyline points="6 9 12 15 18 9" /&gt;&lt;/svg&gt;</del>
-        <span class="ty-ln">   &lt;/a&gt;</span>
-        <span class="ty-where">e220507 &middot; index.html &middot; the two chevrons abbreviated identically</span>
-      </p>
-
-      <p class="reveal" data-from="agent">What it does not do is tidy up. The <code>@font-face</code> rule stayed. The 28,120 bytes stayed, and are still served from <code>/fonts/nintendo.otf</code> today. And the comment stayed &mdash; the one he had edited an hour in to record that the font was now the real thing &mdash; sitting above a rule that no longer names a font at all:</p>
-
-      <p class="ty-code" data-chrome>
-        <span class="ty-ln">/* Scroll-down affordance &mdash; styled after the pink "Nintendo" sub-brand text</span>
-        <span class="ty-ln">   under the GAME BOY logo: same real Nintendo font, magenta, sitting close</span>
-        <span class="ty-ln">   below the logo's actual rendered edge (--logo-bottom, set by</span>
-        <span class="ty-ln">   fitToViewport()). */</span>
-        <span class="ty-where">css/intro.css, lines 132&ndash;135, untouched since 23 July 2026</span>
-      </p>
-
-      <p class="reveal" data-from="agent">Two of its promises stopped being true. There is no sub-brand text, and no Nintendo font, because both lines are gone. The magenta survived: <code>#ff3dee</code> is still on that rule, still painting the one chevron. It is also this page&rsquo;s second accent &mdash; the pink in the Ledger&rsquo;s bar and on the buttons above &mdash; lifted off this comment&rsquo;s own rule, which makes the last surviving promise in it the one thing of his this page actually inherited.</p>
+      <p class="ty-intro reveal" data-from="agent">Sixty-eight hours and fifty-one minutes after that, in a commit called <span data-from="site" data-dup>&ldquo;Replace hero scroll cue text with a single arrow icon&rdquo;</span>, he deleted the word and kept the font. The <code>@font-face</code> rule stayed, the 28,120 bytes stayed and are still served from <code>/fonts/nintendo.otf</code> today, and so did the comment &mdash; which sits in his stylesheet still, above a rule that no longer names a font at all. Five distinct glyphs out of the file&rsquo;s two hundred and nine (<code>S</code>, <code>c</code>, <code>r</code>, <code>o</code>, <code>l</code>) are its entire body of work, and his homepage has not fetched it since.</p>
 
       <h3 class="reveal" data-from="agent">And it was never the Nintendo font</h3>
 
-      <p class="reveal" data-from="agent">He named the file <code>nintendo.otf</code> and he named the CSS family <code>'Nintendo'</code>. Neither name is in the file. A font carries its own names internally, in a table no filename can overrule, and this one introduces itself quite differently:</p>
+      <p class="ty-intro reveal" data-from="agent">He named the file <code>nintendo.otf</code> and he named the CSS family <code>'Nintendo'</code>. Neither name is in the file. A font carries its own names internally, in a table no filename can overrule, and this one introduces itself quite differently:</p>
 
       <dl class="ty-meta" data-chrome>
         <div class="ty-meta-row"><dt>family</dt><dd><b>RO Spritendo</b></dd></div>
         <div class="ty-meta-row"><dt>style</dt><dd>Spritendo-SemiBold-BETA</dd></div>
         <div class="ty-meta-row"><dt>version</dt><dd>Version 0.9</dd></div>
         <div class="ty-meta-row"><dt>copyright</dt><dd>Copyright (c) 2021, ripooof/ripoof &mdash; Made using FontForge</dd></div>
-        <div class="ty-meta-row"><dt>unique ID</dt><dd>FontForge 2.0 : RO Spritendo SemiBold BETA : 30-5-2022</dd></div>
         <div class="ty-meta-row"><dt>outlines</dt><dd>OpenType / CFF &mdash; 209 glyphs, 207 mapped codepoints</dd></div>
         <div class="ty-meta-row"><dt>filename here</dt><dd>fonts/nintendo.otf, 28,120 bytes</dd></div>
       </dl>
 
-      <p class="reveal" data-from="agent">A fan font, then. Version 0.9, still marked BETA, drawn in FontForge by somebody called ripooof, under a name that is an open joke about what it imitates. He downloaded it, renamed it after the company instead of the author, and gave it one word to set.</p>
-
-      <p class="reveal" data-from="agent">The one he kept is no more official and rather more candid about it. <code>game_boy_1989.ttf</code> calls its family <q>Game Boy 1989</q>, credits <q>NotSoArtisty</q>, and explains itself: <q>Based on Gill Sans, Game Boy Gothic is a typeface aimed to imitate the Game Boy logo font.</q> That is the face his name is set in &mdash; 345 glyphs, a chain of imitation three links long. Both files are fan work. He went looking for Nintendo&rsquo;s typography twice inside one hour and came back both times with somebody&rsquo;s reconstruction of it, which, for a man whose bio ends on <em>collecting retro tech</em>, is a fairly characteristic haul.</p>
-
-      <h3 class="reveal" data-from="agent">Its second job</h3>
-
-      <p class="reveal" data-from="agent">Five distinct glyphs out of two hundred and nine: <code>S</code>, <code>c</code>, <code>r</code>, <code>o</code>, <code>l</code>. That is the file&rsquo;s entire body of work. The other 204 have sat in the repository since July, served to nobody &mdash; a browser only fetches a face something on the page selects, and since 26&nbsp;July nothing has. His homepage has never once downloaded it.</p>
-
-      <p class="reveal" data-from="agent">This page does. Below is the second thing <em>RO Spritendo SemiBold BETA</em> has ever been asked to set, against the face that got the job instead. Type into it.</p>
+      <p class="ty-intro reveal" data-from="agent">A fan font, then. Version 0.9, still marked BETA, drawn in FontForge by somebody called ripooof, under a name that is an open joke about what it imitates. The one he kept is no more official and rather more candid about it: <code>game_boy_1989.ttf</code> calls its family <q>Game Boy 1989</q>, credits <q>NotSoArtisty</q>, and explains itself &mdash; <q>Based on Gill Sans, Game Boy Gothic is a typeface aimed to imitate the Game Boy logo font.</q> Here they are side by side, the one he didn&rsquo;t use above the one he did. This page is the second thing <em>RO Spritendo SemiBold BETA</em> has ever been asked to set.</p>
 
       <div class="ty-spec panel">
         <div class="ty-lines">
@@ -1161,30 +1079,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <div class="ty-sample" data-face="gameboy" data-chrome>RUSLAN MANOHARAN</div>
           </div>
         </div>
-
-        <div data-ty-spec-controls hidden>
-          <p class="ty-spec-head" id="ty-spec-head" data-chrome>Set both lines</p>
-          <div class="ty-controls" role="group" aria-labelledby="ty-spec-head" data-chrome>
-            <label class="sr-only" for="ty-input">Text for both specimens</label>
-            <input class="ty-input" id="ty-input" type="text" maxlength="24" autocomplete="off" spellcheck="false" placeholder="Type anything" data-ty-input />
-            <button class="panel-ghost" type="button" data-ty-set="Scroll">Scroll</button>
-            <button class="panel-ghost" type="button" data-ty-set="RUSLAN MANOHARAN">His name</button>
-          </div>
-        </div>
-
-        <p class="ty-spec-head" data-chrome>All 95 printable ASCII characters it carries &mdash; the five it ever used are lit</p>
-        <div class="ty-glyphs" data-chrome data-ty-glyphs aria-hidden="true"></div>
-
-        <p class="ty-status" role="status" data-chrome data-ty-status>Checking whether nintendo.otf loaded&hellip;</p>
       </div>
 
-      <p class="reveal" data-from="agent">A full alphabet, the digits, and every piece of punctuation a web page needs. It was never short of the equipment for the job. It was short of a job.</p>
-
-      <p class="reveal" data-from="agent">The line under the grid is the browser&rsquo;s, not mine. Two <code>@font-face</code> rules point at the same 28,120 bytes: his, which nothing here selects, and mine, which the two specimen lines do. The browser keeps them as separate entries and will tell you itself that one was fetched and the other never asked for.</p>
+      <p class="ty-intro reveal" data-from="agent">Both files are fan work. He went looking for Nintendo&rsquo;s typography twice inside one hour and came back both times with somebody&rsquo;s reconstruction of it, which, for a man whose bio ends on <em>collecting retro tech</em>, is a fairly characteristic haul.</p>
 
       <p class="ty-join reveal" data-from="agent">One last thing about <code>54d5642</code>. It is the same commit <a href="#egg">the section above</a> is about: the one that wrapped his name in a link to a Game&nbsp;Boy Advance being switched on, and told nobody. So inside sixty-one minutes on a Thursday evening in July he aimed his own name at a console starting up, and fetched a second fan-made Nintendo typeface to set one word of pink chrome underneath it. Three days later he cut the word and kept the font. His bio calls this collecting retro tech; his <code>fonts/</code> directory has the ratio most collections have &mdash; two acquisitions, one in use.</p>
 
-      <p class="ty-foot reveal-tail" data-from="agent">Where this comes from: the two font files as committed, with their <code>name</code> tables read straight out of the binaries; <code>git log --follow</code> on both paths, which dates <code>game_boy_1989.ttf</code> to <code>f3c3691</code> at 20:28:36 and <code>nintendo.otf</code> to <code>54d5642</code> at 21:29:00 on 23&nbsp;July&nbsp;2026; the diffs of <code>54d5642</code> and <code>e220507</code>, quoted above with only the system font stack and the two identical chevrons shortened; and a search of every HTML, CSS and JavaScript file at every commit in the repository&rsquo;s history for the family name, which returns lines of exactly two kinds &mdash; the rules that declare it, and the single scroll-cue rule that ever selected it. The sixty-eight hours and fifty-one minutes is the gap between those last two timestamps, to the nine seconds. Two caveats I would rather state than imply. The cue on the stage is reproduced at its own measurements, copied from his stylesheet at each commit, but it is lifted out of the hero, so it remains a facsimile of a thing nobody photographed. And both files leave their licence fields empty while carrying copyright lines naming Nintendo and two individuals; I report those fields verbatim and draw no conclusion, because a font&rsquo;s metadata is not a licence. What is mine is the reading &mdash; that the comment is a fossil, that the renaming was a flourish, and that a man who collects handhelds would end up collecting the lettering off them too. That last one is a guess about him, and is written as one.</p>
+      <p class="ty-foot reveal-tail" data-from="agent">Where this comes from: the two font files as committed, with their <code>name</code> tables read straight out of the binaries; <code>git log --follow</code> on both paths, which dates <code>game_boy_1989.ttf</code> to <code>f3c3691</code> at 20:28:36 and <code>nintendo.otf</code> to <code>54d5642</code> at 21:29:00 on 23&nbsp;July&nbsp;2026; and the diffs of <code>54d5642</code> and <code>e220507</code>. The sixty-eight hours and fifty-one minutes is the gap between those last two timestamps, to the nine seconds. Both files leave their licence fields empty while carrying copyright lines naming Nintendo and two individuals; I report those fields verbatim and draw no conclusion, because a font&rsquo;s metadata is not a licence. What is mine is the reading &mdash; that the comment is a fossil, that the renaming was a flourish, and that a man who collects handhelds would end up collecting the lettering off them too. That last one is a guess about him, and is written as one.</p>
+
+      <p class="ty-cut reveal-tail" data-from="agent"><strong>Cut on 22&nbsp;October&nbsp;2026.</strong> This section was 1,443 words and eight phone-screens &mdash; the longest on the page, for a finding that is three paragraphs and a name table. Gone: a three-date reconstruction of the deleted cue, both annotated commit diffs, the fossilised comment quoted in full, a 95-glyph grid, a type-into-it specimen, and <code>js/type.js</code> entirely. The finding is unchanged. The reason for cutting it is the ratio: his own retro collection, six machines he told me he owns, gets two screens.</p>
     </div>
   </section>
 
@@ -1803,7 +1706,6 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/frame.js"></script>
 <script src="js/shelf.js"></script>
 <script src="js/egg.js"></script>
-<script src="js/type.js"></script>
 <script src="js/hand.js"></script>
 <script src="js/palette.js"></script>
 <script src="js/booth.js"></script>

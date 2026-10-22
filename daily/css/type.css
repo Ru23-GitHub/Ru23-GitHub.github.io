@@ -1,6 +1,6 @@
 /* The Font That Set One Word — #type
    ----------------------------------------------------------------------
-   Added 2026-10-14.
+   Added 2026-10-14. Trimmed hard on 2026-10-22.
 
    Two typefaces ship in this repository. fonts/game_boy_1989.ttf sets
    every heading on both pages and the fifteen letters of his name.
@@ -9,24 +9,23 @@
    @font-face rule, its 28,120 bytes and the comment describing its job
    are all still in css/intro.css today.
 
-   This file does two things his stylesheet no longer does.
-
-   It re-declares that file under the name the file gives itself. His
+   What is left here does one thing his stylesheet no longer does: it
+   re-declares that file under the name the file gives itself. His
    @font-face calls the family 'Nintendo'; the font's own name table
    says "RO Spritendo", so the family here is 'Spritendo'. Both rules
    point at the same URL, so the browser fetches it once.
 
-   And it reconstructs the scroll cue at three dates. The cue is lifted
-   out of the hero — no --logo-bottom, no absolute centring, no
-   fade-in — but every measurement inside it (the sizes, the gaps, the
-   flex direction, the colour, the final opacity) is copied from the
-   stylesheet as it stood on each date. The stage stays white with #111
-   ink in dark mode on purpose: #hero sets --hero-bg:#fff and theme.css
-   never overrides it, so his hero really is white in both modes, and a
-   facsimile that went dark would be a facsimile of nothing.
+   The rest of this file used to drive a three-date reconstruction of
+   the deleted scroll cue, two annotated commit diffs, a 95-glyph grid
+   and a type-into-it specimen, with js/type.js behind them. All of it
+   went on 2026-10-22: the section was eight phone-screens long, the
+   largest on the page, for a finding that is three paragraphs and a
+   name table. The two static specimen lines survive because they are
+   what makes "it was never the Nintendo font" visible rather than
+   merely asserted, and they need no script.
 
-   Everything else uses the page's own tokens and the shared .panel, so
-   dark mode needs no repairs here. */
+   Everything uses the page's own tokens and the shared .panel, so dark
+   mode needs no repairs here. */
 
 @font-face{
   font-family:'Spritendo';
@@ -36,175 +35,7 @@
   font-display:swap;
 }
 
-/* ---------- the reconstruction rig ---------- */
-
-.ty-rig{
-  --panel-accent:#ff3dee;                   /* the cue's own magenta */
-  --panel-accent-soft:rgba(255,61,238,.7);
-  --panel-btn-on-top:#5a1a55;
-  --panel-btn-on-bottom:#3d1239;
-  margin-block:var(--space-m);
-}
-
-.ty-stage{
-  background:#fff;
-  color:#111;
-  border-radius:var(--radius-md);
-  min-height:132px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:var(--space-s);
-  overflow:hidden;
-}
-
-/* The cue itself. Three arrangements, one per date; the shared pieces
-   (colour, the .65 the fade-in settles on, no underline) sit here. */
-.ty-cue{
-  color:#ff3dee;
-  opacity:.65;
-  display:flex;
-  align-items:center;
-  text-decoration:none;
-  letter-spacing:.02em;
-}
-
-.ty-cue svg{
-  stroke:currentColor;
-  fill:none;
-  stroke-width:2;
-  stroke-linecap:round;
-  stroke-linejoin:round;
-  flex:none;
-}
-
-.ty-cue > span{ white-space:nowrap; }
-
-/* 23 July, 20:28 — the first hour. Stacked, the word above the chevron,
-   set in game_boy_1989.ttf at italic 700, and the chevron bounced. */
-.ty-stage[data-state="first"] .ty-cue{
-  flex-direction:column;
-  gap:6px;
-  font-family:var(--display);
-  font-style:italic;
-  font-weight:700;
-  font-size:16px;
-}
-.ty-stage[data-state="first"] .ty-cue svg{
-  width:20px; height:20px;
-  animation:ty-bounce 1.6s ease-in-out infinite;
-}
-
-/* 23 July, 21:29 — the next 68 hours. Inline, a chevron either side, the
-   word set in nintendo.otf at 18px, and the bounce gone. */
-.ty-stage[data-state="wired"] .ty-cue{
-  flex-direction:row;
-  gap:8px;
-  font-family:'Spritendo', var(--display), sans-serif;
-  font-size:18px;
-}
-.ty-stage[data-state="wired"] .ty-cue svg{ width:16px; height:16px; }
-
-/* 26 July, 18:20 — and every day since. One chevron, no word. */
-.ty-stage[data-state="now"] .ty-cue{ flex-direction:row; }
-.ty-stage[data-state="now"] .ty-cue svg{ width:24px; height:24px; }
-
-/* Each arrangement hides the parts that were not in it. */
-.ty-stage[data-state="first"] [data-part="lead"],
-.ty-stage[data-state="now"]   [data-part="word"],
-.ty-stage[data-state="now"]   [data-part="tail"]{ display:none; }
-
-@keyframes ty-bounce{
-  0%,100%{ transform:translateY(0) }
-  50%    { transform:translateY(6px) }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .ty-stage[data-state="first"] .ty-cue svg{ animation:none; }
-}
-
-.ty-caption{
-  font-size:var(--fs-md);
-  color:var(--panel-dim);
-  margin:var(--space-s) 0 0;
-  min-height:2.6em;
-}
-
-.ty-dates-head,
-.ty-spec-head{
-  font-size:var(--fs-sm);
-  letter-spacing:var(--track-wide);
-  text-transform:uppercase;
-  color:var(--panel-dim);
-  margin:var(--space-s) 0 8px;
-}
-
-.ty-dates{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-}
-
-.ty-dates .panel-btn{
-  flex:1 1 180px;
-  min-width:0;
-  justify-content:flex-start;
-  text-align:left;
-  line-height:1.3;
-}
-
-.ty-pick-when{
-  font-family:var(--mono);
-  font-size:var(--fs-sm);
-  display:block;
-  color:var(--panel-dim);
-}
-.panel-btn[aria-pressed="true"] .ty-pick-when{ color:var(--panel-ink); }
-
-.ty-foot-row{ margin:var(--space-s) 0 0; }
-
-/* ---------- code readouts ---------- */
-
-/* A diff readout. Each line is its own block element rather than a run of
-   text inside one pre-wrap box: whitespace-only text nodes between block
-   children are not rendered, so the source can stay one-line-per-line
-   without the newlines showing up as blank rows. */
-.ty-code{
-  font-size:var(--fs-md);
-  background:var(--bg-alt);
-  border:1px solid var(--border);
-  border-left:3px solid var(--accent-2);
-  border-radius:var(--radius-sm);
-  padding:var(--space-s);
-  margin-block:var(--space-s);
-  color:var(--text);
-}
-
-.ty-code .ty-ln,
-.ty-code ins,
-.ty-code del{
-  display:block;
-  font-family:var(--mono);
-  line-height:1.7;
-  white-space:pre-wrap;
-  overflow-wrap:anywhere;
-  text-decoration:none;
-  padding-inline:4px;
-  border-radius:3px;
-}
-.ty-code del{ background:rgba(255,61,238,.14); color:var(--muted); }
-.ty-code ins{ background:rgba(23,51,255,.10); }
-
-.ty-where{
-  display:block;
-  white-space:normal;
-  margin-top:8px;
-  font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  font-size:var(--fs-sm);
-  letter-spacing:var(--track-wide);
-  text-transform:uppercase;
-  color:var(--muted);
-}
+.ty-word{ font-size:clamp(17px, 3vw, 21px); }
 
 /* ---------- the name table ---------- */
 
@@ -242,10 +73,10 @@
 
 .ty-meta-row dd b{ color:var(--accent); font-weight:600; }
 
-/* ---------- the specimen ---------- */
+/* ---------- the specimen: two static lines, no script ---------- */
 
 .ty-spec{
-  --panel-accent:#ff3dee;
+  --panel-accent:#ff3dee;                   /* the deleted cue's magenta */
   --panel-accent-soft:rgba(255,61,238,.7);
   margin-block:var(--space-m);
 }
@@ -283,84 +114,18 @@
 .ty-sample[data-face="spritendo"]{ font-family:'Spritendo', var(--display), sans-serif; }
 .ty-sample[data-face="gameboy"]{ font-family:var(--display); }
 
-.ty-controls{
-  display:flex;
-  flex-wrap:wrap;
-  gap:9px;
-  align-items:center;
-  margin-top:var(--space-s);
-}
-
-.ty-input{
-  font:inherit;
-  font-size:var(--fs-base);
-  flex:1 1 200px;
-  min-width:0;
-  padding:9px 12px;
-  border-radius:var(--radius-sm);
-  border:1px solid rgba(255,255,255,.16);
-  background:rgba(255,255,255,.04);
-  color:var(--panel-ink);
-}
-.ty-input:hover{ border-color:rgba(255,255,255,.34); }
-.ty-input::placeholder{ color:var(--panel-dim); }
-
-.ty-status{
-  font-size:var(--fs-md);
-  color:var(--panel-dim);
-  margin:var(--space-s) 0 0;
-}
-
-/* ---------- the glyph grid ---------- */
-
-/* 95 cells in an auto-fill grid leave the last row part empty. The rules
-   are drawn as cell borders rather than as a 1px gap over a coloured
-   backing, so that unfilled tail reads as empty grid rather than as a
-   lighter block hanging off the end of the alphabet. */
-.ty-glyphs{
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(34px, 1fr));
-  margin-top:var(--space-s);
-  background:var(--panel-top);
-  border:1px solid var(--panel-line);
-  border-radius:var(--radius-sm);
-  overflow:hidden;
-}
-
-.ty-glyph{
-  font-family:'Spritendo', var(--display), sans-serif;
-  font-size:19px;
-  line-height:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  aspect-ratio:1/1;
-  border-right:1px solid var(--panel-line);
-  border-bottom:1px solid var(--panel-line);
-  color:var(--panel-ink);
-}
-
-/* The five that ever did any work. */
-.ty-glyph[data-used="1"]{
-  background:rgba(255,61,238,.16);
-  color:#ff9bf3;
-}
-
 .ty-foot{
   font-size:var(--fs-md);
   color:var(--muted);
   margin-top:var(--space-m);
 }
 
-#type kbd{
-  font-family:var(--mono);
-  font-size:var(--fs-xs);
-  padding:1px 5px;
-  margin-inline-start:4px;
-  border-radius:4px;
-  border:1px solid rgba(255,255,255,.22);
-  background:rgba(255,255,255,.06);
-  color:var(--panel-dim);
+.ty-cut{
+  font-size:var(--fs-md);
+  color:var(--muted);
+  margin-top:var(--space-s);
+  padding-top:var(--space-s);
+  border-top:1px solid var(--border);
 }
 
-.ty-word{ font-size:clamp(17px, 3vw, 21px); }
+.ty-cut strong{ color:var(--ink); }
