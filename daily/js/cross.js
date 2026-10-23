@@ -26,7 +26,7 @@
    which of his four spans are display:none, so this file cannot put a
    word in his mouth even by accident — the only strings it owns are the
    three captions below, and they are the agent's own writing, tagged as
-   chrome in the markup and left out of the Ledger's count. */
+   chrome in the markup rather than as anything he said. */
 (function () {
   'use strict';
 

@@ -17,13 +17,11 @@
    to tell it apart from the real heading.
 
    The three views DIM rather than hide. Hiding them would be easier, but
-   the Ledger two sections down measures every visible word on the page and
-   skips [hidden] subtrees as fallbacks for one another. Three tabbed panes
-   are not fallbacks — they are three different pieces of writing — so
-   hiding two would quietly drop them out of the count, and the page's one
-   honest number would start depending on which tab you had open. Dimming
-   is also already this page's idiom for "set aside, not removed": the
-   Ledger's own highlighter works exactly this way.
+   three tabbed panes are not fallbacks for one another — they are three
+   different pieces of writing — and hiding two would quietly take real
+   writing off the page depending on which tab you had open. Dimming is
+   also this page's idiom for "set aside, not removed", used the same way
+   in The Source and The Crossing-Out.
 
    The URL has to wrap. On a 390px phone the href is wider than the
    viewport, and a monospace <code> will not break a long token on its
@@ -148,8 +146,8 @@
    placed, so the announcement drops into normal flow under the letters and
    the stage grows to fit. It is display:none until picked rather than
    merely transparent, because reserving the space in the other two views
-   would leave an unexplained gap. The whole stage is [data-chrome], so
-   none of this moves the Ledger's numbers. */
+   would leave an unexplained gap. The whole stage is [data-chrome]: it is
+   a facsimile of his wordmark, not writing by anybody. */
 @media (max-width:559px){
   #egg .eg-stage{ display:block; text-align:center; }
   #egg .eg-mark{ display:inline-block; }
@@ -221,9 +219,9 @@
 #egg .eg-pane p{ margin:0; color:var(--panel-ink); font-size:var(--fs-base); }
 #egg .eg-pane p + p{ margin-top:8px; }
 
-/* Picked: lit and outlined. Set aside: pushed below normal contrast, the
-   same gesture the Ledger uses, and for the same reason — the comparison
-   between the three is the content. */
+/* Picked: lit and outlined. Set aside: pushed below normal contrast
+   rather than removed, because the comparison between the three is the
+   content. */
 #egg .eg-pane[data-state="cur"]{
   border-color:var(--panel-accent);
   background:rgba(185,140,255,.09);

@@ -29,8 +29,8 @@
    you pick something out of it.
 
    This is chrome, not a section. It gets no number and no codename, and
-   it sits outside the Ledger's count along with the hero, the banner and
-   the footer, which is noted in the Ledger itself.
+   it is not counted among the findings, along with the hero, the banner
+   and the footer.
 
    Every line of gloss under a section name restates a finding already
    established in that section — nothing here is a new claim about him. */
@@ -306,7 +306,7 @@
 /* ---------- the bar's one obligation to the rest of the page ----------
    A sticky header hides whatever an in-page anchor lands on, and this page
    is full of them: the hero index's replacement below, every "jump to"
-   link in What's Known, and the Ledger's own next/previous stepping. 49px
+   link in What's Known, and every cross-reference between sections. 49px
    of bar plus air. */
 
 section[id]{ scroll-margin-top:62px; }

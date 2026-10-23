@@ -19,9 +19,9 @@
    points at is the room, and the room is the one item here deliberately
    left unnamed.
 
-   The readings DIM rather than hide, for the reason The Egg gives: the
-   Ledger counts every visible word, and four readings are four pieces of
-   writing, not fallbacks for one another. */
+   The readings DIM rather than hide, for the reason The Egg gives: four
+   readings are four pieces of writing, not fallbacks for one another, and
+   hiding three would quietly drop real writing off the page. */
 
 #frame{ --fr-leaf:#2f6b45; }
 

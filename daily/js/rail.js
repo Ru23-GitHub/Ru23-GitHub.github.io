@@ -85,8 +85,8 @@
 
     /* Contact is the last section and it can never reach the probe: there
        are only ~320px of document below its top and the probe sits 68px
-       down, so the page runs out of scroll first and the bar would say
-       "The Ledger" to someone who is plainly reading Contact. At the
+       down, so the page runs out of scroll first and the bar would name
+       the section above to someone plainly reading Contact. At the
        bottom of the page, the bottom section is the one you are in. */
     if (runway > 0 && y >= runway - 2) found = rows[rows.length - 1];
 
@@ -163,10 +163,10 @@
     }
     fitSheet();
 
-    /* Opened from The Ledger, the list scrolls to About and the row you
-       are actually standing in is off the bottom of the sheet. Bring it
-       into view — no animation, because this is the sheet's opening
-       state rather than a movement anyone asked to watch. */
+    /* Opened from near the foot of the page, the list scrolls to About and
+       the row you are actually standing in is off the bottom of the sheet.
+       Bring it into view — no animation, because this is the sheet's
+       opening state rather than a movement anyone asked to watch. */
     if (current) {
       var row = current.a;
       var sheet = row.closest('.rail-sheet');

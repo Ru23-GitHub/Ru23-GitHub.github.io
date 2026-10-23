@@ -8,14 +8,13 @@
    The paragraph is re-quoted here, which is a thing no other section
    does. Two consequences, both handled rather than ignored:
 
-     1. The Ledger must not count those fifty-three words twice, so each
-        clause carries data-dup and ledger.js skips it when measuring.
-        The clauses keep data-from="site" so the highlighter still lights
-        them, because they are still his words — they are just already
-        counted where they first appear, in About.
+     1. A second showing of his paragraph must not read as a second
+        paragraph of his, so each clause carries data-dup. The clauses
+        keep data-from="site" because they are still his words — they are
+        just already on the page once, in About, where they first appear.
 
-     2. The clauses sit inside an untagged <p>, so the Ledger's rule that
-        no tagged block may contain another tagged block still holds.
+     2. The clauses sit inside an untagged <p>, so the page's rule that no
+        tagged block may contain another tagged block still holds.
 
    The clauses are <span>s, not <button>s, and that is deliberate. A
    <button> is an inline box that will not break across lines, so the
@@ -158,9 +157,9 @@
   border-left-color:var(--src-gap);
 }
 
-/* The dimming is opacity on purpose, matching the Ledger: it is a
-   deliberate, reversible drop below normal text contrast, Escape puts it
-   back, and it is never the state the page loads in. */
+/* The dimming is opacity on purpose: a deliberate, reversible drop below
+   normal text contrast, Escape puts it back, and it is never the state
+   the page loads in. */
 .src-map > div.src-aside{ opacity:.32; }
 
 .src-map > div.src-on{

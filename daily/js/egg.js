@@ -14,10 +14,9 @@
 
    Two deliberate choices:
 
-   Panes are dimmed, never hidden. The Ledger measures every visible word
-   on this page and treats [hidden] subtrees as fallbacks; three tabbed
-   panes are not fallbacks for one another, so hiding two would drop real
-   writing out of the one number this page stakes its honesty on.
+   Panes are dimmed, never hidden. Three tabbed panes are not fallbacks
+   for one another, so hiding two would take two thirds of this section's
+   writing off the page depending on which tab you had open.
 
    The sweep on the destination screen is a one-shot animation driven by a
    data attribute, and it is cleared on animationend rather than left set,

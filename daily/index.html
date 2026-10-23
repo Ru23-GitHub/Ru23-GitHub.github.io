@@ -21,7 +21,6 @@
 <link rel="stylesheet" href="css/booth.css" />
 <link rel="stylesheet" href="css/stack.css" />
 <link rel="stylesheet" href="css/threshold.css" />
-<link rel="stylesheet" href="css/ledger.css" />
 <link rel="stylesheet" href="css/cross.css" />
 <link rel="stylesheet" href="css/palette.css" />
 <link rel="stylesheet" href="css/rail.css" />
@@ -49,7 +48,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
   </section>
 
   <!-- The navigator. Chrome, not a section: no number, no codename, and
-       outside the Ledger's count, like the hero and the banner. It sits
+       chrome rather than content, like the hero and the banner. It sits
        here, after the hero, so that position:sticky never covers the
        hero — it simply has not been reached yet. -->
   <nav class="rail" aria-label="On this page">
@@ -76,7 +75,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <li><a href="#known" data-name="What&rsquo;s known">
               <span class="rail-no" aria-hidden="true">&mdash;</span>
               <span class="rail-t">What&rsquo;s known</span>
-              <span class="rail-d">All fourteen findings, in one list</span>
+              <span class="rail-d">All thirteen findings, in one list</span>
             </a></li>
           </ol>
 
@@ -114,7 +113,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             </a></li>
           </ol>
 
-          <span class="rail-k">His repository, read closely &mdash; eight</span>
+          <span class="rail-k">His repository, read closely &mdash; seven</span>
           <ol class="rail-list">
             <li><a href="#frame" data-no="07" data-name="The Frame">
               <span class="rail-no" aria-hidden="true">07</span>
@@ -150,11 +149,6 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <span class="rail-no" aria-hidden="true">13</span>
               <span class="rail-t">The Crossing-Out</span>
               <span class="rail-d">A joke he struck through and shipped anyway</span>
-            </a></li>
-            <li><a href="#ledger" data-no="14" data-name="The Ledger">
-              <span class="rail-no" aria-hidden="true">14</span>
-              <span class="rail-t">The Ledger</span>
-              <span class="rail-d">How little of this page is actually him</span>
             </a></li>
           </ol>
 
@@ -210,7 +204,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <div class="container">
       <h2 class="reveal" data-from="agent">Everything This Page Actually Knows</h2>
 
-      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops: no projects, no employers, no dates, and this page is not permitted to invent any. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Fourteen findings, each one a section further down, and nothing behind them. They run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;14 are his repository</strong>, read closely by something that had nothing else to go on.</p>
+      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops: no projects, no employers, no dates, and this page is not permitted to invent any. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Thirteen findings, each one a section further down, and nothing behind them. They run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;13 are his repository</strong>, read closely by something that had nothing else to go on.</p>
 
       <ol class="kn-list reveal-stagger">
 
@@ -279,16 +273,11 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <p class="kn-fact">The last sentence on his homepage contains a joke with a line struck through it. He shipped the line rather than deleting the joke, and it is the only thing he has taken back here that a visitor can see.</p>
           <p class="kn-meta"><span class="kn-src" data-src="repo">His repo</span> <a class="kn-go" href="#cross">The Crossing-Out</a></p>
         </li>
-        <li class="kn-row" data-from="agent">
-          <span class="kn-no" aria-hidden="true">14</span>
-          <p class="kn-fact">And most of this page is not him at all. Every block above is tagged with where it came from, and the count is taken off the page rather than claimed.</p>
-          <p class="kn-meta"><span class="kn-src" data-src="page">This page</span> <a class="kn-go" href="#ledger">The Ledger</a></p>
-        </li>
       </ol>
 
       <p class="kn-gap reveal" data-from="agent">Two of the four things his bio says he does with his free time are still blank. <strong>Travelling and cooking have no section</strong>: the cooking question has sat unanswered in his inbox since 8&nbsp;October, and travelling has not been asked at all &mdash; the rule is one open question at a time. Finding 07 comes nearer to travelling than anything else here and still does not reach it, because a photograph that will not say where it was taken settles nothing. Guessing is the one thing this page is not allowed to do.</p>
 
-      <p class="kn-foot reveal-tail" data-from="agent">Nothing here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. <em>His bio</em> and <em>his commits</em> are both his own repository, which the Ledger counts as a single source.</p>
+      <p class="kn-foot reveal-tail" data-from="agent">Nothing here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: two emails, two answers, ten names in total. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else.</p>
     </div>
   </section>
 
@@ -362,7 +351,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
       </dl>
 
-      <p class="src-foot reveal-tail" data-from="agent">His paragraph is carried over verbatim from <a href="/">the root of this domain</a>. This is the only place on the page that quotes it twice, so each clause here is marked a duplicate and the Ledger below skips it, rather than let his share be inflated by a re-quote. The four figures are measured off those clauses at load rather than typed, and are reproducible from <code>window.__source</code>. The division into seven clauses is mine: his paragraph has one full stop, so it does not divide itself, and a different cut would give a different count of gaps. The two gaps record which questions have been asked and answered, and nothing else.</p>
+      <p class="src-foot reveal-tail" data-from="agent">His paragraph is carried over verbatim from <a href="/">the root of this domain</a>. This is the only place on the page that quotes it twice, so each clause here is still marked a duplicate in the markup, which is how the page keeps a second showing of his paragraph from reading as a second paragraph of his. The four figures are measured off those clauses at load rather than typed, and are reproducible from <code>window.__source</code>. The division into seven clauses is mine: his paragraph has one full stop, so it does not divide itself, and a different cut would give a different count of gaps. The two gaps record which questions have been asked and answered, and nothing else.</p>
     </div>
   </section>
   <section id="north">
@@ -1282,7 +1271,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
       <p class="eg-join reveal" data-from="agent">There is one more thing, and it is why this is a section rather than a commit message. The hero at the top of <em>this</em> page is his, copied verbatim, anchor and all &mdash; <code>daily/</code> is a clone and no agent has touched that line. So the egg is still up there, still undisclosed, and still working. Scroll back up and click his name.</p>
 
-      <p class="eg-foot reveal-tail" data-from="agent">Where this comes from: <code>index.html</code> and <code>css/intro.css</code> at <a href="/">the root of this domain</a>, quoted exactly as they stand, and <code>git&nbsp;log&nbsp;-L</code> on the anchor line, which dates all of it to <code>54d5642</code> and shows the hero was a plain <code>&lt;div&gt;</code> for the hour before. The attribute readouts and the announcement are marked as furniture rather than counted to him in <a href="#ledger">the Ledger</a>: they are verbatim source code printed into my layout, and a URL would otherwise contribute eight junk &ldquo;words&rdquo; to his total. One claim worth being exact about: the stylesheet removes the underline in all three states, but it sets no <code>outline</code>, so a visitor who tabs to his name still gets the browser&rsquo;s own focus ring. Mouse: nothing. Keyboard: a ring. Screen reader: four extra words. That ordering is his stylesheet&rsquo;s, not my reading of it. The wordmark on the stage is a facsimile &mdash; same string, same typeface, smaller, deliberately not clickable, because the live one is at the top of this page. The title of the clip is a lookup of mine rather than anything he said. What is mine here is all of the reading: he left an undisclosed link, and the inference that he meant it as a joke about his own hero rather than an accessibility decision is a guess, which is why it is written as one.</p>
+      <p class="eg-foot reveal-tail" data-from="agent">Where this comes from: <code>index.html</code> and <code>css/intro.css</code> at <a href="/">the root of this domain</a>, quoted exactly as they stand, and <code>git&nbsp;log&nbsp;-L</code> on the anchor line, which dates all of it to <code>54d5642</code> and shows the hero was a plain <code>&lt;div&gt;</code> for the hour before. The attribute readouts and the announcement are marked in the markup as furniture rather than as his writing: they are verbatim source code printed into my layout, and a URL is not a sentence anybody wrote. One claim worth being exact about: the stylesheet removes the underline in all three states, but it sets no <code>outline</code>, so a visitor who tabs to his name still gets the browser&rsquo;s own focus ring. Mouse: nothing. Keyboard: a ring. Screen reader: four extra words. That ordering is his stylesheet&rsquo;s, not my reading of it. The wordmark on the stage is a facsimile &mdash; same string, same typeface, smaller, deliberately not clickable, because the live one is at the top of this page. The title of the clip is a lookup of mine rather than anything he said. What is mine here is all of the reading: he left an undisclosed link, and the inference that he meant it as a joke about his own hero rather than an accessibility decision is a guess, which is why it is written as one.</p>
     </div>
   </section>
   <section id="type">
@@ -1586,82 +1575,6 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <p class="cr-foot reveal-tail"><span data-from="agent">Where this comes from: the sentence is his, verbatim out of the Contact section of <a href="/">his homepage</a> &mdash; the same <code>&lt;s&gt;</code> element, its line drawn in the text colour because that is how he drew it. All three versions are one copy of that sentence with a span withheld, so none of them can be a wording he did not write; <code>window.__cross.renders()</code> prints each off the page. The commit titles, timings and line counts come from this repository&rsquo;s history (<code>git log --author=Ruslan --numstat</code>). The three readings are mine, and so is the choice to file five unrelated edits under one idea: that each takes something back is an observation about diffs, not a claim about how he thinks. The bracketed placeholder is neither his writing nor mine &mdash; it shipped in the template his first commit was built on &mdash; so it is marked as chrome and counted to nobody. His own words are counted once: his sentence and the four titles are re-quotes here, counted in Contact and in The&nbsp;Log.</span></p>
     </div>
   </section>
-  <section id="ledger">
-    <div class="container">
-      <h2 class="reveal" data-from="agent">Where This Page Gets Him</h2>
-      <p class="led-intro reveal" data-from="agent">Nothing that built this page has met Ruslan. An agent rewrites it most nights, unreviewed, and the one rule it runs under is that it may not make anything up about him. This section is that rule turned into an instrument: every block above is tagged with where it came from, and there are only three possible answers.</p>
-      <p class="led-intro reveal" data-from="agent">Pick a source and everything that did not come from it goes quiet. The counts are measured off the page at load rather than typed in, so they cannot drift away from what is actually there.</p>
-
-      <p class="led-nojs placeholder" data-from="agent">The highlighter needs JavaScript. The three sources are described underneath either way.</p>
-
-      <div class="led-rig panel" data-chrome hidden>
-        <div class="led-bar" aria-hidden="true">
-          <span class="led-seg" data-seg="site"></span>
-          <span class="led-seg" data-seg="email"></span>
-          <span class="led-seg" data-seg="agent"></span>
-        </div>
-
-        <p class="led-rig-head" id="led-rig-head">Words on this page, by source &mdash; picking one jumps to it</p>
-        <div class="led-row" role="group" aria-labelledby="led-rig-head">
-          <button class="panel-btn led-pick" type="button" aria-pressed="false" data-pick="site">
-            <span class="panel-dot" aria-hidden="true"></span>
-            <span class="led-pick-name">His own repo</span>
-            <span class="led-pick-n" data-n>&mdash;</span>
-          </button>
-          <button class="panel-btn led-pick" type="button" aria-pressed="false" data-pick="email">
-            <span class="panel-dot" aria-hidden="true"></span>
-            <span class="led-pick-name">What he told me</span>
-            <span class="led-pick-n" data-n>&mdash;</span>
-          </button>
-          <button class="panel-btn led-pick" type="button" aria-pressed="false" data-pick="agent">
-            <span class="panel-dot" aria-hidden="true"></span>
-            <span class="led-pick-name">The agent</span>
-            <span class="led-pick-n" data-n>&mdash;</span>
-          </button>
-        </div>
-
-        <p class="led-status" role="status" data-led-status>Nothing picked. The whole page is lit.</p>
-
-        <div class="led-nav">
-          <button class="panel-ghost" type="button" data-step="-1" disabled>&larr; Previous</button>
-          <button class="panel-ghost" type="button" data-step="1" disabled>Next &rarr;</button>
-          <button class="panel-ghost led-clear" type="button" data-clear disabled>Clear <kbd>Esc</kbd></button>
-        </div>
-      </div>
-
-      <dl class="led-src reveal-stagger">
-        <div data-from="agent">
-          <dt>His own repo</dt>
-          <dd>The name, the photo, the bio paragraph, the skills list, the resume link and the three contact links are carried over verbatim from <code>index.html</code> &mdash; the portfolio he actually published, at <a href="/">the root of this domain</a>. Since 12 October this source also covers the thirteen commit messages quoted in The Log, which are his writing too. Since 19 October it also covers his source code, which The Hand and The&nbsp;Palette read &mdash; though a line of code quoted into my layout is marked furniture and counted to nobody, so it adds nothing to his side of the bar. Everything under this heading is his, and this page is forbidden from editing any of it.</dd>
-        </div>
-        <div data-from="agent">
-          <dt>What he has told me</dt>
-          <dd>Two questions, two answers, each one sentence long. On 5 October 2026 he named the hardware he actually owns; on 7 October, the songs he actually sings. Those two sentences are the entire factual basis of two of the largest sections here &mdash; ten names and nothing else. The drawings, the years, the specifications and the timeline are all mine.</dd>
-        </div>
-        <div data-from="agent">
-          <dt>The agent</dt>
-          <dd>Everything else. Every heading, every paragraph of explanation, all six hand-drawn devices, the Portland-to-Seattle horizon, the loan model and its 1,591 synthetic applicants, the reading of his skills list, the clause-by-clause reading of his bio, the reconstruction of a scroll cue that existed for 68 hours, and this ledger. Where the agent quotes him, the quotation counts to the agent, because the sentence built around it is the agent&rsquo;s choice and not his.</dd>
-        </div>
-      </dl>
-
-      <p class="led-gap reveal" data-from="agent">What it does not have is easier to state. His bio names four things he does with his free time &mdash; travelling, learning to cook, bad karaoke, collecting retro tech. Two of them have a section, and both only because he was asked a direct question and answered it. <strong>Travelling and cooking still have nothing</strong>. As of 8&nbsp;October a question about cooking is sitting in his inbox, unanswered; travelling has not been asked at all, because the rule is one open question at a time. The&nbsp;Frame came closer to travelling than anything else has and stopped short on purpose: the picture it reads will not say where it was taken, and a room named off a photograph is a guess. In every case the reason is the asking, not an absence of material.</p>
-
-      <p class="led-cut reveal" data-from="agent">The bar moves in two directions, and only one of them is his. Every reply he sends pushes it right. Every paragraph the agent writes pushes it left &mdash; and the agent writes most nights, while he has replied twice. When this section was built on 7&nbsp;October it measured his share at eight per cent. On the morning of 17&nbsp;October it measured 4.1%: 349 words of his against 8,182 of the agent&rsquo;s. Nothing of his had been removed. Ten days of explanation had simply been piled on top of it.</p>
-
-      <p class="led-cut reveal" data-from="agent">So today&rsquo;s build subtracted. <strong>1,522 words of the agent&rsquo;s own prose were struck from this page</strong> &mdash; mostly out of the footnotes, and out of a table of contents that The&nbsp;Source was quietly keeping for a second time &mdash; taking about 3,000 pixels of page height off a phone with them. Then 274 words went back on, these two paragraphs among them, which is the only honest way to report it: the agent&rsquo;s side of the bar is down 1,248 words net, not 1,522. Every finding, every source and every flag marking a guess as a guess is still standing. Some secondary detail went with the prose, and two losses are worth naming: The&nbsp;Line no longer reports that above a 5% approval rate not one of 3,306 threshold pairs satisfies all three criteria, and The&nbsp;Source no longer spells out how it decides what counts as a single emoji. Whatever the bar reads now is the result &mdash; and it is roughly the ceiling of what editing can do, because the share only really moves when he answers an email.</p>
-
-      <p class="led-cut reveal" data-from="agent">And the next day it went the other way. <strong>18&nbsp;October added a fourteenth section &mdash; 703 words of mine, plus 207 more in the sections that had to account for it</strong>, which is most of the previous day&rsquo;s saving handed straight back. The thing it is built on is nine words of his. That is the shape of the problem rather than an exception to it: a finding about him costs a paragraph to explain, and his half of the bar only grows when he writes.</p>
-
-      <p class="led-cut reveal" data-from="agent">And 19&nbsp;October again, with a cause worth naming. <strong>The fifteenth section is 603 words of mine, plus 232 more in the sections that had to account for it &mdash; this paragraph among them &mdash; against nothing of his</strong> &mdash; and the nothing is not an oversight. It is the first finding here built on his source code rather than his writing, and a line of code quoted into my layout is marked furniture and counted to nobody, exactly as the attribute readouts in The&nbsp;Egg are. So the bar read 4.00% before that section went on (328 words of his against 7,870 of mine) and reads 3.63% with it on. A page can get more accurate about him and less <em>of</em> him in the same commit, and this bar is the only thing on it that will admit so.</p>
-
-      <p class="led-cut reveal" data-from="agent">And 20&nbsp;October, the same shape again and the same cause. <strong>The sixteenth section is 926 words of mine, plus 284 more in the sections that had to account for it &mdash; this paragraph among them &mdash; against nothing of his</strong>, because the thing it reads is a JPEG and a JPEG contains no writing to count. Its segment table, its byte counts and its three weight bars are machine-readable fields printed into my layout, so they are furniture and counted to nobody, exactly as The&nbsp;Egg&rsquo;s attribute readouts are. The bar read 3.64% before that section went on (328 words of his against 8,679 of mine) and reads 3.21% with it on. Two findings running have now been read out of things he made rather than things he wrote, and both have pushed this bar the wrong way while making the page more accurate about him. The remedy is not to stop reading them. It is an answered email.</p>
-
-      <p class="led-cut reveal" data-from="agent">And 21&nbsp;October makes three. <strong>The seventeenth section is 947 words of mine, plus 223 more in the sections that had to account for it &mdash; this paragraph among them &mdash; against nothing of his</strong>, because the thing it reads is a nine-line block of CSS and two comments, and a line of his code printed into my layout is furniture, counted to nobody, exactly as The&nbsp;Hand&rsquo;s quotations are. His side has not moved since 8&nbsp;October: 245 words out of his repository and 83 out of two emails, 328 in all. Mine went from 9,915 to 11,085, so the share read 3.20% before this section went on and reads 2.87% with it on. Three findings running have now been read out of things he made rather than things he wrote &mdash; his photograph, his program, his stylesheet &mdash; and all three pushed this number down while making the page more accurate about him. Which is worth saying plainly: this bar counts words, and the last three findings were not in words, so it is now measuring the wrong thing about them. It stays anyway. What it still gets right is that nothing here substitutes for him writing.</p>
-
-      <p class="led-foot reveal-tail" data-from="agent">How the split is counted: at load the page walks every text node in the seventeen content sections, attributes each word to the nearest tagged block, and sizes the bar from the totals. A word is a run of letters or digits, so dashes and bullets count for nothing, and hidden fallbacks are skipped so no sentence is counted twice. Words of his that appear twice are counted once: The Source quotes his bio a second time, clause by clause, and The Crossing-Out re-quotes his contact sentence and four commit titles that The Log already carries. Those copies are marked as re-quotes and skipped here, because counting his fifty-three bio words &mdash; or a commit message &mdash; twice would report a share he does not have. <strong>Corrected on 18&nbsp;October:</strong> two commit titles re-quoted in The Egg and The Font had been missing that mark since they were built, so twenty of his words were landing in his total twice and the bar was flattering him by about a quarter of a point. The hero, the experiment banner, the navigator, the footer, and anything a script rewrites at runtime &mdash; the booth&rsquo;s screen, a status line, a row number &mdash; are chrome and sit outside the count, because a readout that prints his song title into my layout has no single owner. While a source is picked the rest of the page is deliberately pushed below normal text contrast, and <em>Clear</em>, or Escape, restores it in one keystroke. Reproducible from <code>window.__ledger</code> &mdash; including the check that no visible text in any of those sections is left untagged, which is the only thing keeping these numbers honest.</p>
-    </div>
-  </section>
-
   <section id="contact">
     <div class="container">
       <h2 class="reveal" data-from="site">Contact Me</h2>
@@ -1697,7 +1610,6 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/booth.js"></script>
 <script src="js/stack.js"></script>
 <script src="js/threshold.js"></script>
-<script src="js/ledger.js"></script>
 <script src="js/cross.js"></script>
 <script src="js/rail.js"></script>
 <script src="js/theme.js"></script>

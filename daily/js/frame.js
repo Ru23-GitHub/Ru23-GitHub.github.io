@@ -22,7 +22,7 @@
    Nothing here writes a word onto the picture. The markers are empty
    elements positioned in per cent, and the only strings this file owns
    are the five captions below — the agent's own writing, tagged as
-   chrome in the markup and left out of the Ledger's count. */
+   chrome in the markup rather than as anything he said. */
 (function () {
   'use strict';
 

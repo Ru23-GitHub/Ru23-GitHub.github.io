@@ -51,9 +51,9 @@
   var status = section.querySelector('[data-src-status]');
   var hint = section.querySelector('[data-src-hint]');
 
-  /* Same definition as the Ledger's, deliberately: a word is a run of
-     letters or digits that may carry internal apostrophes, hyphens or
-     dots. Keep the two in step. */
+  /* A word is a run of letters or digits that may carry internal
+     apostrophes, hyphens or dots — so the emoji, the brackets and the
+     lone full stop in his paragraph count for nothing. */
   var WORD = /[0-9A-Za-z][0-9A-Za-z'’.\-]*/g;
 
   /* An emoji here is one character above U+2100, skipping the variation

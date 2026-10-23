@@ -21,7 +21,7 @@
 #palette .pl-intro{ max-width:68ch; }
 
 /* His keyframe block, quoted. Marked data-chrome in the markup: a line of
-   his code printed into my layout is furniture, per the Ledger's rule. */
+   his code printed into my layout is furniture, not writing of his. */
 .pl-code{
   font-family:var(--mono);
   font-size:var(--fs-md);
