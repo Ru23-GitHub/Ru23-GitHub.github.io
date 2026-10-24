@@ -1,0 +1,315 @@
+/* The Card — what his homepage hands over when it is sent somewhere
+   ----------------------------------------------------------------------
+   Added 2026-10-24. Finding 14, and the last of the seven built out of his
+   repository. The material is six lines: everything between <head> and
+   </head> in his index.html, which is the only part of his page that
+   speaks to machines rather than to visitors.
+
+   Three notes on the construction:
+
+   No JavaScript. Every other rig on this page has a control that changes
+   what it shows, and that is the right shape when there is a thing to
+   compare against itself — the Egg's one anchor read three ways, the
+   Crossing-Out's one sentence with a piece withheld. Here there is
+   nothing to toggle: the head is six lines and all six fit on screen at
+   once, and the three previews are three different surfaces rather than
+   three states of one. A toggle would have been chrome pretending to be
+   an instrument.
+
+   The previews are <div>s and hand-written SVG, not screenshots. Every
+   browser draws a tab differently and every chat app draws a link card
+   differently, so an exact imitation of one of them would be a claim
+   this section cannot support. They are drawn plainly and labelled as
+   drawings; what the section actually asserts is not how it looks but
+   what is offered, which is a title and nothing else.
+
+   The third preview is marked with a dashed rim and the --cd-ghost
+   colour everywhere it appears, because it is the one thing in this
+   section that is not his page. It is the same card carrying
+   images/profile.jpg, the photograph already in his repository, and the
+   dashes are there so that nobody can read it as something his site
+   does. */
+
+#card{ background:var(--bg); }
+
+#card{
+  --cd-lit:var(--accent);
+  --cd-ghost:#7a6a2e;
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) #card{ --cd-ghost:#d9bf6c; }
+}
+:root[data-theme="dark"] #card{ --cd-ghost:#d9bf6c; }
+
+.cd-intro{ max-width:62ch; }
+
+/* ---------- the head, printed ---------- */
+
+.cd-head{
+  --panel-accent:#6ea8ff;
+  margin:var(--space-m) 0;
+}
+
+.cd-head-cap{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin:0 0 12px;
+}
+
+.cd-src{
+  margin:0;
+  font-family:var(--mono);
+  /* The longest line is the viewport meta at 62 characters. Below ~430px
+     it cannot fit at any readable size, so the block scrolls sideways by
+     itself rather than pushing the page sideways — overflow-x on the
+     <ol>, never on the section. */
+  font-size:clamp(11px, 2.6vw, 13px);
+  line-height:1.8;
+  list-style:none;
+  padding:0;
+  overflow-x:auto;
+}
+
+.cd-src li{
+  display:block;
+  white-space:pre;
+  color:var(--panel-dim);
+  padding-inline:10px;
+  border-inline-start:2px solid transparent;
+}
+
+/* The one line that is about him. */
+.cd-src li[data-lit]{
+  color:var(--panel-ink);
+  border-inline-start-color:var(--panel-accent);
+  background:rgba(110,168,255,.09);
+}
+
+.cd-src b{ color:#ffd98a; font-weight:400; }
+
+.cd-tally{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 18px;
+  margin:16px 0 0;
+  padding:14px 0 0;
+  border-top:1px solid var(--panel-line);
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+.cd-tally span strong{ color:var(--panel-ink); font-weight:600; }
+
+/* ---------- the three previews ---------- */
+
+.cd-pair{
+  display:grid;
+  gap:var(--space-s);
+  grid-template-columns:1fr;
+  margin:var(--space-m) 0;
+}
+@media (min-width:760px){
+  .cd-pair{ grid-template-columns:repeat(3, 1fr); }
+}
+
+/* Three stages of different natural heights (a tab strip, a card, a card
+   with a picture in it) made one row: the grid rows are fixed so the
+   label, the stage and the caption line up across all three, and the
+   stage row takes the slack. Without this the three captions start at
+   three different heights and the row stops reading as a comparison. */
+.cd-prev{
+  margin:0;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:10px;
+}
+
+.cd-prev-k{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.cd-stage{
+  background:var(--bg-alt);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:16px;
+  min-height:150px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.cd-prev[data-prev="ghost"] .cd-stage{
+  border-style:dashed;
+  border-color:var(--cd-ghost);
+}
+.cd-prev[data-prev="ghost"] .cd-prev-k{ color:var(--cd-ghost); }
+
+.cd-prev figcaption{
+  font-size:var(--fs-md);
+  color:var(--muted);
+  line-height:1.5;
+}
+.cd-prev[data-prev="ghost"] figcaption strong{ color:var(--cd-ghost); font-weight:600; }
+
+/* --- the tab --- */
+
+.cd-tab{
+  width:100%;
+  max-width:260px;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  padding:9px 12px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-bottom:none;
+  border-radius:10px 10px 0 0;
+  box-shadow:0 -1px 0 var(--border);
+}
+
+/* The favicon slot. There is no icon file in his repository and no
+   rel="icon" in his HTML, so what goes here is whatever mark the browser
+   keeps for pages that do not supply one. Drawn as a plain sheet of
+   paper, deliberately generic — imitating any one browser's placeholder
+   would be a claim about that browser. */
+.cd-fav{
+  width:16px; height:16px;
+  flex:none;
+  color:var(--muted);
+}
+.cd-fav svg{ width:16px; height:16px; stroke:currentColor; fill:none; stroke-width:1.6; }
+
+.cd-tab-t{
+  font-size:var(--fs-md);
+  color:var(--text);
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* --- the link card --- */
+
+.cd-card{
+  width:100%;
+  max-width:260px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+}
+.cd-prev[data-prev="ghost"] .cd-card{ border-color:var(--cd-ghost); border-style:dashed; }
+
+/* Where a preview image would go. Empty, because nothing in his head
+   names one. The height is held so that the absence has a size — a card
+   that simply collapsed would read as a smaller card rather than as a
+   missing picture. */
+.cd-thumb{
+  height:84px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 7px,
+      var(--border) 7px 8px
+    );
+  border-bottom:1px solid var(--border);
+}
+.cd-thumb span{
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  background:var(--bg-alt);
+  padding:3px 8px;
+  border-radius:var(--radius-pill);
+}
+
+.cd-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.cd-card-body{ padding:11px 12px 13px; }
+
+.cd-card-dom{
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 4px;
+}
+.cd-card-t{
+  font-size:var(--fs-base);
+  font-weight:600;
+  color:var(--text);
+  margin:0;
+  line-height:1.35;
+}
+/* The description line. It is a rule rather than text because there is no
+   text: his head has no <meta name="description">, so a preview has
+   nothing to put on this line. */
+.cd-card-d{
+  margin:7px 0 0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+.cd-card-d em{ font-style:italic; opacity:.8; }
+
+/* ---------- the absences ---------- */
+
+.cd-miss{
+  list-style:none;
+  margin:var(--space-s) 0 0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  max-width:62ch;
+}
+.cd-miss li{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--muted);
+  border:1px dashed var(--border);
+  border-radius:var(--radius-sm);
+  padding:5px 11px;
+}
+
+.cd-read{ max-width:62ch; margin-top:var(--space-m); }
+
+.cd-names{
+  list-style:none;
+  margin:var(--space-s) 0;
+  padding:0;
+  max-width:62ch;
+  border-inline-start:2px solid var(--border);
+}
+.cd-names li{
+  padding:4px 0 4px 14px;
+  font-size:var(--fs-base);
+  color:var(--text);
+}
+.cd-names li span{
+  display:block;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.cd-foot{
+  max-width:74ch;
+  margin-top:var(--space-m);
+  padding-top:var(--space-s);
+  border-top:1px solid var(--border);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+.cd-foot code{ font-family:var(--mono); font-size:.95em; }
