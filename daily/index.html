@@ -25,6 +25,7 @@
 <link rel="stylesheet" href="css/palette.css" />
 <link rel="stylesheet" href="css/card.css" />
 <link rel="stylesheet" href="css/rail.css" />
+<link rel="stylesheet" href="css/doors.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -76,7 +77,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <li><a href="#known" data-name="What&rsquo;s known">
               <span class="rail-no" aria-hidden="true">&mdash;</span>
               <span class="rail-t">What&rsquo;s known</span>
-              <span class="rail-d">All fourteen findings, in one list</span>
+              <span class="rail-d">All fifteen findings, in one list</span>
             </a></li>
           </ol>
 
@@ -114,7 +115,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             </a></li>
           </ol>
 
-          <span class="rail-k">His repository, read closely &mdash; eight</span>
+          <span class="rail-k">His repository, read closely &mdash; nine</span>
           <ol class="rail-list">
             <li><a href="#frame" data-no="07" data-name="The Frame">
               <span class="rail-no" aria-hidden="true">07</span>
@@ -156,14 +157,10 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <span class="rail-t">The Card</span>
               <span class="rail-d">Six lines of head, and one of them is his name</span>
             </a></li>
-          </ol>
-
-          <span class="rail-k">And then</span>
-          <ol class="rail-list">
-            <li><a href="#contact" data-name="Contact">
-              <span class="rail-no" aria-hidden="true">&mdash;</span>
-              <span class="rail-t">Contact</span>
-              <span class="rail-d">Where he answers</span>
+            <li><a href="#contact" data-no="15" data-name="The Doors">
+              <span class="rail-no" aria-hidden="true">15</span>
+              <span class="rail-t">The Doors</span>
+              <span class="rail-d">Eight spellings of one name &mdash; and his contact links</span>
             </a></li>
           </ol>
 
@@ -210,7 +207,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <div class="container">
       <h2 class="reveal" data-from="agent">Everything This Page Actually Knows</h2>
 
-      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops: no projects, no employers, no dates, and this page is not permitted to invent any. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Fourteen findings, each one a section further down, and nothing behind them. They run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;14 are his repository</strong>, read closely by something that had nothing else to go on.</p>
+      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops: no projects, no employers, no dates, and this page is not permitted to invent any. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Fifteen findings, each one a section further down, and nothing behind them. They run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;15 are his repository</strong>, read closely by something that had nothing else to go on.</p>
 
       <ol class="kn-list reveal-stagger">
 
@@ -284,11 +281,16 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <p class="kn-fact">The head of his homepage is six lines long. Three are stylesheets, two are boilerplate, and the one that is left is his name &mdash; typed in his first commit, never edited since. There is no icon, no description and no share image anywhere in the file&rsquo;s history, so his name is also the whole of what a pasted link shows.</p>
           <p class="kn-meta"><span class="kn-src" data-src="repo">His code</span> <a class="kn-go" href="#card">The Card</a></p>
         </li>
+        <li class="kn-row" data-from="agent">
+          <span class="kn-no" aria-hidden="true">15</span>
+          <p class="kn-fact">His name is written eight different ways in the places he has put it on this domain, and no two of the eight are the same string. The longest is the address you type to get here &mdash; twenty-one characters of it, and none of them his name. The shortest is two letters.</p>
+          <p class="kn-meta"><span class="kn-src" data-src="repo">His repo</span> <span class="kn-src" data-src="email">He told me</span> <a class="kn-go" href="#contact">The Doors</a></p>
+        </li>
       </ol>
 
       <p class="kn-gap reveal" data-from="agent">Two of the four things his bio says he does with his free time are still blank. <strong>Travelling and cooking have no section</strong>: the cooking question has sat unanswered in his inbox since 8&nbsp;October, and travelling has not been asked at all &mdash; the rule is one open question at a time. Finding 07 comes nearer to travelling than anything else here and still does not reach it, because a photograph that will not say where it was taken settles nothing. Guessing is the one thing this page is not allowed to do.</p>
 
-      <p class="kn-foot reveal-tail" data-from="agent">Nothing here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: two emails, two answers, ten names in total. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else.</p>
+      <p class="kn-foot reveal-tail" data-from="agent">Nothing here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: two emails, two answers, ten names in total &mdash; plus, on the <em>from</em> line of those same two mails rather than in anything he typed, the two-letter name his own account signs itself with. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else.</p>
     </div>
   </section>
 
@@ -1695,13 +1697,117 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
   </section>
   <section id="contact">
     <div class="container">
-      <h2 class="reveal" data-from="site">Contact Me</h2>
-      <p class="reveal" data-from="site">Feel free to <s>slide in my dms</s> reach out!</p>
-      <ul class="contact-links reveal-tail" data-from="site">
-        <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
-        <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
-      </ul>
+      <h2 class="reveal" data-from="agent">No Two Of Them Spell His Name The Same</h2>
+
+      <!-- His, first, and the reason this section exists at all. An
+           exhibit is not allowed to stand between a visitor and an email
+           address, so the four ways out of here come before a word of
+           mine. The crossed-out joke is his and is shipped as he shipped
+           it; it is read closely two sections up, in The Crossing-Out. -->
+      <div class="dr-reach reveal" data-from="site">
+        <h3>Contact Me</h3>
+        <p>Feel free to <s>slide in my dms</s> reach out!</p>
+        <ul class="contact-links">
+          <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
+        </ul>
+      </div>
+
+      <p class="dr-intro reveal" data-from="agent">Those four links are the whole of the way off this page, and until today they were also the whole of this section &mdash; the last part of the page still carried over from his homepage and doing nothing but pointing outward. So: what is actually written on them. His name appears eight different ways in the places he has put it on this domain, and no two of the eight are the same string.</p>
+
+      <p class="dr-intro reveal" data-from="agent">The odd one is the one you had to type. This site answers at <code>ru23-github.github.io</code>, which GitHub Pages builds out of the repository&rsquo;s own name &mdash; and the repository is named after the account, not after the person. Twenty-one characters to get here and not one of them is <em>Ruslan</em>. His name starts on the first paint.</p>
+
+      <p class="dr-intro reveal" data-from="agent">At the far end of the list is <strong>Ru</strong>. Two letters, and it is nowhere in this repository: it is the display name on his Gmail account, so it is what a mail from him actually says in the <em>from</em> line. Between those two ends, three of the forms are exactly sixteen characters long and all three are different strings.</p>
+
+      <ol class="dr-plates reveal-stagger">
+
+        <li class="dr-plate" data-kind="derived" data-face="mono" data-from="agent">
+          <p class="dr-form" data-from="site">ru23-github.github.io</p>
+          <span class="dr-count" data-dr-count>21 chars</span>
+          <p class="dr-where"><strong>The address.</strong> Made by GitHub Pages out of the repository name, <code>Ru23-GitHub.github.io</code>. Met by anyone who has not arrived yet.</p>
+          <span class="dr-bar" data-chrome aria-hidden="true"><span></span></span>
+        </li>
+
+        <li class="dr-plate" data-face="display" data-from="agent">
+          <p class="dr-form" data-from="site">RUSLAN MANOHARAN</p>
+          <span class="dr-count" data-dr-count>16 chars</span>
+          <p class="dr-where"><strong>The sign.</strong> The hero&rsquo;s <code>data-text</code>, thrown onto the screen a letter at a time, and the <code>aria-label</code> on the link wrapped round it. Met by everyone, before anything else paints. Seven of those letters he placed by hand &mdash; <a href="#hand">The Hand</a> &mdash; and the whole of it is a link he never mentioned: <a href="#egg">The Egg</a>.</p>
+          <span class="dr-bar" data-chrome aria-hidden="true"><span></span></span>
+        </li>
+
+        <li class="dr-plate" data-from="agent">
+          <p class="dr-form" data-from="site">Ruslan Manoharan</p>
+          <span class="dr-count" data-dr-count>16 chars</span>
+          <p class="dr-where"><strong>The label.</strong> The <code>&lt;title&gt;</code>, the screen-reader <code>&lt;h1&gt;</code>, the photograph&rsquo;s <code>alt</code>, the footer&rsquo;s copyright line, and the author field on his commits. Met by browser tabs, search results, screen readers and git.</p>
+          <span class="dr-bar" data-chrome aria-hidden="true"><span></span></span>
+        </li>
+
+        <li class="dr-plate" data-from="agent">
+          <p class="dr-form" data-from="site">Ruslan</p>
+          <span class="dr-count" data-dr-count>6 chars</span>
+          <p class="dr-where"><strong>The greeting.</strong> How his bio opens: &ldquo;Hi I&rsquo;m Ruslan! 👋&rdquo;. The only form he writes as speech rather than as a label or a path. Met by anyone who reads as far as <a href="#about">About</a>.</p>
+          <span class="dr-bar" data-chrome aria-hidden="true"><span></span></span>
+        </li>
+
+        <li class="dr-plate" data-face="mono" data-from="agent">
+          <p class="dr-form" data-from="site">ruslan.manoharan</p>
+          <span class="dr-count" data-dr-count>16 chars</span>
+          <p class="dr-where"><strong>The mailbox.</strong> The local part of the <code>mailto:</code> at the top of this section. Met by anyone who writes &mdash; this page included, twice, in <a href="#shelf">The Shelf</a> and <a href="#booth">The Booth</a>.</p>
+          <span class="dr-bar" data-chrome aria-hidden="true"><span></span></span>
+        </li>
+
+        <li class="dr-plate" data-face="mono" data-from="agent">
+          <p class="dr-form" data-from="site">ruslanmanoharan</p>
+          <span class="dr-count" data-dr-count>15 chars</span>
+          <p class="dr-where"><strong>The profile.</strong> The path of his LinkedIn, <code>/in/ruslanmanoharan/</code>. The mailbox with the dot taken out.</p>
+          <span class="dr-bar" data-chrome aria-hidden="true"><span></span></span>
+        </li>
+
+        <li class="dr-plate" data-face="mono" data-from="agent">
+          <p class="dr-form" data-from="site">rumanoharan</p>
+          <span class="dr-count" data-dr-count>11 chars</span>
+          <p class="dr-where"><strong>The handle.</strong> The path of his Instagram, <code>/rumanoharan/</code>. The profile with four more letters taken out, from the middle of his first name.</p>
+          <span class="dr-bar" data-chrome aria-hidden="true"><span></span></span>
+        </li>
+
+        <li class="dr-plate" data-from="agent">
+          <p class="dr-form" data-from="email">Ru</p>
+          <span class="dr-count" data-dr-count>2 chars</span>
+          <p class="dr-where"><strong>The signature.</strong> Not in this repository anywhere: it is the display name on his Gmail account, the two letters in front of the address on mail from it. Met by anyone he has actually written to.</p>
+          <span class="dr-bar" data-chrome aria-hidden="true"><span></span></span>
+        </li>
+
+      </ol>
+
+      <h3 class="dr-h3 reveal" data-from="agent">Three Doors, One String</h3>
+
+      <p class="dr-intro reveal" data-from="agent">The three forms on his three links are not really three spellings. They are one spelling losing pieces. A LinkedIn path cannot hold a full stop, so the dot goes; the Instagram handle is shorter again by four letters out of the middle of <em>Ruslan</em>. Run it forward and nothing is ever added back.</p>
+
+      <p class="dr-nojs placeholder" data-from="agent">The three steps need JavaScript to run. All three forms are listed in the nameplates above, and spelled out in the note at the end, either way.</p>
+
+      <div class="dr-rig panel">
+
+        <div class="dr-card">
+          <p class="dr-string" data-dr-string data-state="email"><span data-part="ru" data-from="site">ru</span><span data-part="slan" data-drop="slan" data-from="site">slan</span><span data-part="dot" data-drop="dot" data-from="site">.</span><span data-part="manoharan" data-from="site">manoharan</span></p>
+        </div>
+
+        <p class="dr-reads" role="status" data-chrome data-dr-reads hidden></p>
+
+        <div data-dr-controls hidden>
+          <p class="dr-views-head" id="dr-views-head">Which door</p>
+          <div class="dr-views" role="group" aria-labelledby="dr-views-head">
+            <button class="panel-btn dr-pick" type="button" data-dr-view="email" aria-pressed="true"><span class="panel-dot" aria-hidden="true"></span>Email</button>
+            <button class="panel-btn dr-pick" type="button" data-dr-view="linkedin" aria-pressed="false"><span class="panel-dot" aria-hidden="true"></span>LinkedIn</button>
+            <button class="panel-btn dr-pick" type="button" data-dr-view="instagram" aria-pressed="false"><span class="panel-dot" aria-hidden="true"></span>Instagram</button>
+          </div>
+          <p class="dr-foot-row"><button class="panel-ghost" type="button" data-dr-clear disabled>Back to the mailbox</button></p>
+        </div>
+
+      </div>
+
+      <p class="dr-foot reveal-tail" data-from="agent">Seven of the eight forms are in this repository and can be checked against it: the address in the repository&rsquo;s own name, the sign in the hero&rsquo;s <code>data-text</code>, the label in the <code>&lt;head&gt;</code>, the <code>alt</code> text, the footer and the git author field, the greeting in his bio, and the three doors in the three links at the top of this section. GitHub lowercases a domain; the capitals in <code>Ru23-GitHub</code> are his. The eighth, <strong>Ru</strong>, is the one claim here that the repository cannot settle &mdash; it is the display name on his Gmail account, read off the two mails quoted in The Shelf and The Booth, and you have to take the page&rsquo;s word for it. The character counts are measured off the eight strings at load rather than typed, and <code>window.__doors.audit()</code> returns any nameplate whose printed digits disagree with its own spelling. The reducer holds a single copy of <code>ru&middot;slan&middot;&middot;&middot;manoharan</code> and strikes pieces out of it rather than writing three strings, so the three doors here cannot drift from the three links above; <code>window.__doors.renders()</code> reads back what each state actually spells. Cutting his name into eight forms is mine. A different cut &mdash; counting the <code>aria-label</code> separately, or leaving out the domain because GitHub rather than he assembled it &mdash; would give a different number, and the forms are in the order a visitor meets them rather than sorted by length.</p>
     </div>
   </section>
 
@@ -1729,6 +1835,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/stack.js"></script>
 <script src="js/threshold.js"></script>
 <script src="js/cross.js"></script>
+<script src="js/doors.js"></script>
 <script src="js/rail.js"></script>
 <script src="js/theme.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

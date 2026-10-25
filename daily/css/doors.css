@@ -1,0 +1,255 @@
+/* The Doors — eight spellings of one name, and the three that are one string
+   ----------------------------------------------------------------------
+   Added 2026-10-25. This is the first thing built in the Contact section,
+   which until today was the last part of the page still carried over from
+   his homepage verbatim and doing nothing but linking out.
+
+   The section does two jobs at once and the order of the markup is the
+   whole of how it keeps them apart: his contact block comes FIRST, in his
+   own voice, on its own card, with his crossed-out sentence intact and the
+   four ways to reach him under it. The finding comes after. Nobody who
+   arrives here to find an email address has to read an exhibit to get one.
+
+   Three construction notes:
+
+   The nameplates are typeset in the face each form actually wears where it
+   lives — the hero's form in --display, the machine-readable ones in
+   --mono, his greeting in the body face. That is the point of the list:
+   eight strings that are all his name and no two of which look alike, so
+   showing them all in one face would delete the finding.
+
+   The length bars are the only part of this section that needs JavaScript,
+   and they are a redundant reading of a number that is also printed as
+   text. Without the script you get the eight counts as digits; with it you
+   also get them as lengths. Nothing is hidden in the no-script case except
+   the bars themselves and the reducer's controls.
+
+   The reducer withholds characters rather than rewriting the string, the
+   way The Crossing-Out withholds his joke: there is ONE copy of
+   "ru|slan|.|manoharan" in the markup and the state attribute decides
+   which spans are struck. So this file cannot spell his address wrong
+   even by accident — the three forms are one string with pieces taken out,
+   which is also exactly the claim being made about them. Dropped pieces
+   stay visible and struck through instead of going display:none, because
+   what left is the subject. */
+
+/* ---------- his block, first ---------- */
+
+#contact .dr-reach{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:clamp(16px, 4vw, 30px);
+  margin-block:var(--space-s) var(--space-m);
+}
+
+#contact .dr-reach > h3{
+  margin:0;
+  font-size:clamp(18px, 3vw, 24px);
+  color:var(--text);
+}
+
+#contact .dr-reach > p{ margin:6px 0 0; }
+
+/* His three links plus the resume, laid out across the card rather than
+   stacked, which is what .contact-links does on his own page. The rule
+   below is scoped inside .dr-reach so the shared class keeps its
+   behaviour everywhere else it is used. */
+#contact .dr-reach .contact-links{
+  flex-direction:row;
+  flex-wrap:wrap;
+  gap:10px 22px;
+}
+
+/* ---------- the eight nameplates ---------- */
+
+#contact .dr-plates{
+  list-style:none;
+  margin:var(--space-s) 0 0;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+
+#contact .dr-plate{
+  display:grid;
+  gap:4px 14px;
+  grid-template-columns:1fr auto;
+  align-items:baseline;
+  padding:12px 16px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:0 var(--radius-md) var(--radius-md) 0;
+}
+
+/* The address is on the list but it is not a name he wrote, so it does not
+   get the accent rule the seven authored forms get. */
+#contact .dr-plate[data-kind="derived"]{ border-left-color:var(--muted); }
+
+#contact .dr-form{
+  grid-column:1;
+  margin:0;
+  font-size:clamp(15px, 3.4vw, 21px);
+  line-height:1.25;
+  color:var(--text);
+  overflow-wrap:anywhere;
+}
+
+#contact .dr-plate[data-face="mono"] .dr-form{
+  font-family:var(--mono);
+  font-size:clamp(13px, 3vw, 18px);
+  letter-spacing:0;
+}
+
+#contact .dr-plate[data-face="display"] .dr-form{
+  font-family:var(--display);
+  letter-spacing:.06em;
+  color:var(--accent);
+}
+
+#contact .dr-count{
+  grid-column:2;
+  grid-row:1;
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+#contact .dr-where{
+  grid-column:1 / -1;
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#contact .dr-where strong{
+  color:var(--text);
+  font-weight:600;
+}
+
+#contact .dr-where code{
+  font-family:var(--mono);
+  font-size:.95em;
+  overflow-wrap:anywhere;
+}
+
+/* The bar is the count again, as a length. It is written by doors.js and
+   stays at zero width — invisible, and not a stray hairline — until a
+   measurement has actually been taken. */
+#contact .dr-bar{
+  grid-column:1 / -1;
+  height:3px;
+  /* Capped, or the longest form's bar runs the full width of a desktop
+     card and stops reading as a measurement — it reads as the rule along
+     the bottom of the card. A bar has to be visibly shorter than the
+     thing it sits in. */
+  max-width:300px;
+  margin-top:2px;
+  border-radius:999px;
+  background:var(--border);
+  overflow:hidden;
+}
+
+#contact .dr-bar > span{
+  display:block;
+  height:100%;
+  width:0;
+  border-radius:999px;
+  background:var(--accent);
+}
+
+#contact .dr-plate[data-kind="derived"] .dr-bar > span{ background:var(--muted); }
+
+/* ---------- the reducer: three doors, one string ---------- */
+
+#contact .dr-h3{
+  margin-top:var(--space-m);
+  font-size:clamp(17px, 2.8vw, 22px);
+  color:var(--text);
+}
+
+#contact .dr-rig{
+  display:grid;
+  gap:var(--space-s);
+  margin-block:var(--space-m) var(--space-s);
+}
+
+#contact .dr-card{
+  display:grid;
+  place-items:center;
+  min-height:clamp(96px, 20vw, 136px);
+  padding:clamp(16px, 4vw, 28px) clamp(12px, 3vw, 20px);
+  border-radius:var(--radius-md);
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+}
+
+#contact .dr-string{
+  margin:0;
+  font-family:var(--mono);
+  font-size:clamp(17px, 5vw, 32px);
+  letter-spacing:0;
+  line-height:1.3;
+  text-align:center;
+  overflow-wrap:anywhere;
+}
+
+#contact .dr-string [data-drop]{
+  transition:opacity 180ms ease, color 180ms ease;
+}
+
+/* What this state has taken out. Struck in the text colour, not the
+   accent: the deletion is the subject, not a decoration. */
+#contact .dr-string[data-state="linkedin"] [data-drop="dot"],
+#contact .dr-string[data-state="instagram"] [data-drop="dot"],
+#contact .dr-string[data-state="instagram"] [data-drop="slan"]{
+  text-decoration-line:line-through;
+  text-decoration-thickness:from-font;
+  opacity:.38;
+}
+
+#contact .dr-reads{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+  min-height:2.6em;
+}
+
+#contact .dr-views-head{
+  margin:0 0 8px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+#contact .dr-views{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+#contact .dr-pick{ flex:1 1 150px; justify-content:center; }
+
+#contact .dr-foot-row{ margin:var(--space-s) 0 0; }
+
+/* ---------- the closing note ---------- */
+
+#contact .dr-foot{
+  margin-top:var(--space-m);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#contact .dr-foot code{
+  font-family:var(--mono);
+  overflow-wrap:anywhere;
+}
+
+@media (prefers-reduced-motion: reduce){
+  #contact .dr-bar > span,
+  #contact .dr-string [data-drop]{ transition:none; }
+}

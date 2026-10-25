@@ -31,7 +31,24 @@
   background:var(--border);
   border:1px solid var(--border);
   border-radius:var(--radius-md);
-  overflow:hidden;
+
+  /* This was overflow:hidden, to clip the square corners of the first and
+     last rows against the rounded border. But overflow:hidden makes the
+     list a scroll container, and a scroll container is what
+     animation-timeline:view() measures a child against — so every row in
+     here had its reveal timed against a box that never scrolls instead of
+     against the window. The rows nearest the top still finished, the ones
+     below them finished less and less, and by the fourteenth there was
+     almost no progress left: measured 2026-10-25 at 1280x900, row 12 came
+     to rest at opacity .94, row 13 at .58, row 14 at .25, and row 15 —
+     added the same day — at 0. The findings index had been quietly losing
+     its tail for weeks, one row at a time, which is the hard kind of bug
+     to notice: nothing breaks, the list just stops a little earlier than
+     it did yesterday.
+
+     clip-path clips the corners the same way and establishes nothing, so
+     the rows are timed against the window again. */
+  clip-path:inset(0 round var(--radius-md));
 }
 
 .kn-row{
