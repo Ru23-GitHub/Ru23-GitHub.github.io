@@ -1,9 +1,10 @@
 /* Everything This Page Actually Knows
    ----------------------------------------------------------------------
-   A front door. The twelve sections below are titled "The Source", "The Egg",
-   "The Font" — codenames that tell an arriving visitor nothing about the
-   person. This restates the same twelve as flat sentences about Ruslan, so
-   the page has a fifteen-second version of him before the long one.
+   A front door. The sixteen sections below are titled "The Source", "The
+   Egg", "The Font" — codenames that tell an arriving visitor nothing about
+   the person. This restates the same sixteen as flat sentences about
+   Ruslan, so the page has a fifteen-second version of him before the long
+   one.
 
    Deliberately the only section here with no JavaScript: it is the part
    that has to work when everything else doesn't, so there is nothing in
@@ -70,8 +71,8 @@
   font-size:var(--fs-sm);
   color:var(--accent);
   line-height:1.5;
-  /* The numbers run 01–10 and match the navigator's, so the two ways into
-     a section agree with each other. Tabular so the column stays straight. */
+  /* The numbers match the navigator's, so the two ways into a
+     section agree with each other. Tabular so the column stays straight. */
   font-variant-numeric:tabular-nums;
 }
 

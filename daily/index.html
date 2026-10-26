@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="css/card.css" />
 <link rel="stylesheet" href="css/rail.css" />
 <link rel="stylesheet" href="css/doors.css" />
+<link rel="stylesheet" href="css/under.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -77,7 +78,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <li><a href="#known" data-name="What&rsquo;s known">
               <span class="rail-no" aria-hidden="true">&mdash;</span>
               <span class="rail-t">What&rsquo;s known</span>
-              <span class="rail-d">All fifteen findings, in one list</span>
+              <span class="rail-d">All sixteen findings, in one list</span>
             </a></li>
           </ol>
 
@@ -164,6 +165,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             </a></li>
           </ol>
 
+          <span class="rail-k">What the fifteen add up to &mdash; one</span>
+          <ol class="rail-list">
+            <li><a href="#under" data-no="16" data-name="The Smaller Word">
+              <span class="rail-no" aria-hidden="true">16</span>
+              <span class="rail-t">The Smaller Word</span>
+              <span class="rail-d">Seven times he had the larger claim available and shipped the smaller one</span>
+            </a></li>
+          </ol>
+
           <span class="rail-k">Reach him</span>
           <ul class="rail-reach">
             <li><a href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
@@ -207,7 +217,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <div class="container">
       <h2 class="reveal" data-from="agent">Everything This Page Actually Knows</h2>
 
-      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops: no projects, no employers, no dates, and this page is not permitted to invent any. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Fifteen findings, each one a section further down, and nothing behind them. They run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;15 are his repository</strong>, read closely by something that had nothing else to go on.</p>
+      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops: no projects, no employers, no dates, and this page is not permitted to invent any. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Sixteen findings, each one a section further down, and nothing behind them. The first fifteen run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;15 are his repository</strong>, read closely by something that had nothing else to go on. <strong>16 read nothing new at all</strong>: it is seven of the fifteen counted a second way.</p>
 
       <ol class="kn-list reveal-stagger">
 
@@ -286,9 +296,14 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <p class="kn-fact">His name is written eight different ways in the places he has put it on this domain, and no two of the eight are the same string. The longest is the address you type to get here &mdash; twenty-one characters of it, and none of them his name. The shortest is two letters.</p>
           <p class="kn-meta"><span class="kn-src" data-src="repo">His repo</span> <span class="kn-src" data-src="email">He told me</span> <a class="kn-go" href="#contact">The Doors</a></p>
         </li>
+        <li class="kn-row" data-from="agent">
+          <span class="kn-no" aria-hidden="true">16</span>
+          <p class="kn-fact">Seven separate times &mdash; three phrases in his bio, a joke, a link, a <code>&lt;head&gt;</code> and his last commit &mdash; the record holds both a larger version and a smaller one, and the smaller one is what shipped. Six of the seven have something documented behind them. One still has nothing.</p>
+          <p class="kn-meta"><span class="kn-src" data-src="bio">His bio</span> <span class="kn-src" data-src="repo">His repo</span> <span class="kn-src" data-src="email">He told me</span> <a class="kn-go" href="#under">The Smaller Word</a></p>
+        </li>
       </ol>
 
-      <p class="kn-gap reveal" data-from="agent">Two of the four things his bio says he does with his free time are still blank. <strong>Travelling and cooking have no section</strong>: the cooking question has sat unanswered in his inbox since 8&nbsp;October, and travelling has not been asked at all &mdash; the rule is one open question at a time. Finding 07 comes nearer to travelling than anything else here and still does not reach it, because a photograph that will not say where it was taken settles nothing. Guessing is the one thing this page is not allowed to do.</p>
+      <p class="kn-gap reveal" data-from="agent">Two of the four things his bio says he does with his free time are still blank. <strong>Travelling and cooking have no section of their own</strong>: the cooking question has sat unanswered in his inbox since 8&nbsp;October &mdash; it is row 03 of finding 16, and that row is empty on purpose &mdash; and travelling has not been asked at all &mdash; the rule is one open question at a time. Finding 07 comes nearer to travelling than anything else here and still does not reach it, because a photograph that will not say where it was taken settles nothing. Guessing is the one thing this page is not allowed to do.</p>
 
       <p class="kn-foot reveal-tail" data-from="agent">Nothing here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: two emails, two answers, ten names in total &mdash; plus, on the <em>from</em> line of those same two mails rather than in anything he typed, the two-letter name his own account signs itself with. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else.</p>
     </div>
@@ -667,10 +682,10 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
   <section id="booth">
     <div class="container">
       <h2 class="reveal" data-from="agent">The Karaoke Booth</h2>
-      <p class="booth-intro reveal" data-from="agent">His bio lists four things he does with his free time and one of them is <em>bad karaoke</em> &mdash; his words, not mine. Until I asked, that was the whole of it: two words in a paragraph. He sent back five songs, four he has been doing lately and one he singled out as his most favourite ever.</p>
+      <p class="booth-intro reveal" data-from="agent">His bio lists four things he does with his free time and one of them is <em>bad karaoke</em> &mdash; his words, not mine. Until I asked, that was the whole of it: two words in a paragraph. He sent back four songs: three he has been doing lately, and one he singled out as his most favourite ever.</p>
       <p class="booth-intro reveal" data-from="agent">Here they are, in a booth. Pick one and the screen cues it up.</p>
 
-      <p class="booth-nojs placeholder" data-from="agent">The booth needs JavaScript to cue a song. The five songs are listed below either way.</p>
+      <p class="booth-nojs placeholder" data-from="agent">The booth needs JavaScript to cue a song. The four songs are listed below either way.</p>
 
       <div class="booth-rig panel" hidden>
 
@@ -1811,6 +1826,138 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <!-- 16 / The Smaller Word. The one section here that read nothing new:
+       it is seven of the fifteen findings above, lined up because they
+       have the same shape. It sits last because it is an argument about
+       the other fifteen and cannot be read before them — and because the
+       page previously ended on the character count of a domain name,
+       which is a weak last word about a person. His contact links are
+       one section up, at the top of The Doors, and in the navigator. -->
+  <section id="under">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">Seven Times He Could Have Said More, And Seven Times He Said Less</h2>
+
+      <p class="un-intro reveal" data-from="agent">Every finding above this one was read out of something: a paragraph, two emails, thirteen commits, one photograph, one program, one stylesheet. This one reads nothing new. It is seven of those fifteen findings put side by side, because side by side they turn out to be the same finding seven times.</p>
+
+      <p class="un-intro reveal" data-from="agent">In each of the seven there is a record of the larger version and the smaller one, and the smaller one is what shipped. <strong>His words are on the front of each row; what can be documented behind them is underneath.</strong> One of the seven has nothing underneath it, and that is the true state of it rather than a gap in the build.</p>
+
+      <ol class="un-list reveal-stagger">
+
+        <li class="un-row">
+          <details class="un-det">
+            <summary class="un-sum">
+              <span class="un-no" aria-hidden="true">01</span>
+              <span class="un-said" data-from="site"><q>bad karaoke</q><span class="un-src" data-from="agent">two words, in his bio</span></span>
+              <span class="un-cue" data-from="agent">what&rsquo;s behind it<svg class="un-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="un-body">
+              <p>Asked on 7&nbsp;October&nbsp;2026 what he actually sings, he named four songs without hesitating. Three he has been doing lately &mdash; <em>Sugar</em> by BROCKHAMPTON, <em>Lowkey</em> by NIKI, <em>Dial Drunk</em> by Noah Kahan and Post Malone &mdash; and then, unprompted, a fourth: <span data-from="email">&ldquo;my most favorite song ever is Soft Spot by Keshi&rdquo;</span>. <strong>Two words on his page; a setlist and an all-time favourite one email away.</strong></p>
+              <p>He still calls it bad, and this page has never heard him sing. What the smaller word leaves out is not that he is good at it &mdash; it is that he cares enough to have an answer ready.</p>
+              <p class="un-go"><a href="#booth">04 &middot; The Booth</a></p>
+            </div>
+          </details>
+        </li>
+
+        <li class="un-row">
+          <details class="un-det">
+            <summary class="un-sum">
+              <span class="un-no" aria-hidden="true">02</span>
+              <span class="un-said" data-from="site"><q>collecting retro tech</q><span class="un-src" data-from="agent">three words, in his bio</span></span>
+              <span class="un-cue" data-from="agent">what&rsquo;s behind it<svg class="un-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="un-body">
+              <p>Asked on 5&nbsp;October&nbsp;2026 what is actually on the shelf, he listed it: <span data-from="email">&ldquo;I own a Walkman, game boy, game boy color, game boy advance, game boy advance sp, ds, stuff like that&rdquo;</span>. <strong>A Walkman and five Nintendo handhelds &mdash; a twenty-five-year run of hardware, 1979 to 2004, in three words.</strong></p>
+              <p>And then <em>stuff like that</em>, which is the same move again inside the answer: having named six machines he declined to finish the list.</p>
+              <p class="un-go"><a href="#shelf">03 &middot; The Shelf</a></p>
+            </div>
+          </details>
+        </li>
+
+        <li class="un-row">
+          <details class="un-det" data-empty>
+            <summary class="un-sum">
+              <span class="un-no" aria-hidden="true">03</span>
+              <span class="un-said" data-from="site"><q>learning to cook without blowing up the kitchen</q><span class="un-src" data-from="agent">seven words, in his bio</span></span>
+              <span class="un-cue" data-from="agent">what&rsquo;s behind it<svg class="un-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="un-body">
+              <p><strong>Nothing.</strong> The question went to him on 8&nbsp;October&nbsp;2026 &mdash; what is one dish you actually make &mdash; and eighteen days later it has not been answered. There is no second source here, and this build is not allowed to supply one.</p>
+              <p>So this row stays open-ended on purpose. It is the only one of the seven where the smaller claim is still the whole of the record, and the one place on the page where you can see the method failing in real time: <em>learning</em>, <em>without blowing up</em> &mdash; the sentence is built entirely out of hedges, and all I can tell you is that it is.</p>
+              <p class="un-go"><a href="#source">01 &middot; The Source</a></p>
+            </div>
+          </details>
+        </li>
+
+        <li class="un-row">
+          <details class="un-det">
+            <summary class="un-sum">
+              <span class="un-no" aria-hidden="true">04</span>
+              <span class="un-said" data-from="site"><q>Feel free to <s>slide in my dms</s> reach out!</q><span class="un-src" data-from="agent">the last sentence on his homepage</span></span>
+              <span class="un-cue" data-from="agent">what&rsquo;s behind it<svg class="un-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="un-body">
+              <p>He wrote the funnier line, drew a line through it, and shipped both. The strikethrough is an <code>&lt;s&gt;</code> element in his HTML, not an effect this page added: <strong>he published the retraction instead of the deletion.</strong></p>
+              <p>It is the only thing on his site where you can watch him decide against something, and he left the evidence in the markup where anyone can read it.</p>
+              <p class="un-go"><a href="#cross">13 &middot; The Crossing-Out</a></p>
+            </div>
+          </details>
+        </li>
+
+        <li class="un-row">
+          <details class="un-det">
+            <summary class="un-sum">
+              <span class="un-no" aria-hidden="true">05</span>
+              <span class="un-said" data-from="agent">His name is a link, and the page says so nowhere<span class="un-src" data-from="agent">the largest thing on his first screen</span></span>
+              <span class="un-cue" data-from="agent">what&rsquo;s behind it<svg class="un-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="un-body">
+              <p>At 21:29 on 23&nbsp;July&nbsp;2026, an hour after the site first existed, he wrapped the fifteen letters of his own name in an anchor pointing at a video. No underline, no colour change, no cursor hint, nothing in the visible text. <strong>The only visitor who is told is one using a screen reader</strong>, because he wrote the label himself: <span data-from="site">&ldquo;RUSLAN MANOHARAN &mdash; watch the video&rdquo;</span>.</p>
+              <p>Three months on it is still there, still unannounced, and still the one joke on his homepage that most people will never find.</p>
+              <p class="un-go"><a href="#egg">09 &middot; The Egg</a></p>
+            </div>
+          </details>
+        </li>
+
+        <li class="un-row">
+          <details class="un-det">
+            <summary class="un-sum">
+              <span class="un-no" aria-hidden="true">06</span>
+              <span class="un-said" data-from="agent">Paste his link anywhere and all it carries is his name<span class="un-src" data-from="agent">six lines of <code>&lt;head&gt;</code></span></span>
+              <span class="un-cue" data-from="agent">what&rsquo;s behind it<svg class="un-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="un-body">
+              <p>No description, no icon, no share image, no author tag &mdash; and not in the current file only: <strong>in none of the nine versions of it he has ever committed.</strong> He typed the title in his first hour and has not touched that line in three months. What a chat app or a search result gets from his page is <em>Ruslan Manoharan</em> and the URL.</p>
+              <p>Whether that is the most confident thing on this domain or simply a head nobody got round to filling in is the one question The Card could not answer, and it is still unanswered here. It belongs in this list either way: the smaller version is what is live.</p>
+              <p class="un-go"><a href="#card">14 &middot; The Card</a></p>
+            </div>
+          </details>
+        </li>
+
+        <li class="un-row">
+          <details class="un-det">
+            <summary class="un-sum">
+              <span class="un-no" aria-hidden="true">07</span>
+              <span class="un-said" data-from="site"><q>Replace hero scroll cue text with a single arrow icon</q><span class="un-src" data-from="agent">his last change to his own homepage &mdash; +2, &minus;8</span></span>
+              <span class="un-cue" data-from="agent">what&rsquo;s behind it<svg class="un-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
+            </summary>
+            <div class="un-body">
+              <p>Sunday 26&nbsp;July&nbsp;2026, 18:20. Words of scrolling instruction out, one arrow in, net six lines gone &mdash; and <strong>nothing has changed on that page since.</strong> The last thing he did to his portfolio was take words off it.</p>
+              <p>It was not the first time either. Four minutes after the site first existed he deleted a three-link navigation bar and the numbered <em>01 / Who I Am</em> labels above his two headings: twenty-nine lines out, nothing back in, the only commit of his with no insertions at all. Three of his thirteen commits left this repository smaller than they found it, and two of those three are the two in this row.</p>
+              <p class="un-go"><a href="#log">08 &middot; The Log</a></p>
+            </div>
+          </details>
+        </li>
+
+      </ol>
+
+      <p class="un-all" data-un-all hidden><button class="un-allbtn" type="button" data-un-allbtn>Open all seven</button></p>
+
+      <p class="un-against reveal" data-from="agent"><strong>The other reading, which is also available.</strong> Seven artifacts is a count, and a count is all it is. Every row above has a duller explanation on offer and some of them probably take it: a short bio can simply mean the detail lives on the resume, which is one button up this page and which this page has never opened; a <code>&lt;head&gt;</code> with no description is what a hand-written <code>&lt;head&gt;</code> looks like by default rather than a decision; deleting a three-link navigation bar from a site two sections long is good taste; a line through a joke can <em>be</em> the joke. And <em>bad karaoke</em> may just be two words &mdash; he wrote <em>bad</em>, not <em>modest</em>. He has never said any of this about himself, nobody has asked him, and reading seven small choices as one habit is exactly the sort of claim this page is least equipped to make and most tempted by. It is mine, it is offered as a reading, and the seven facts under it stand whether or not the reading does.</p>
+
+      <p class="un-foot reveal-tail" data-from="agent">Where this comes from: nothing new. The seven rows are findings 01, 03, 04, 08, 09, 13 and 14 restated, each linked back to the section where it is shown with its working &mdash; his bio for the first three, his commits and his markup for the last four, and the two emails he answered for what sits behind rows 01 and 02. Quoted phrases are his, character for character, including the lowercase and the missing apostrophes; his commit subject is quoted as he wrote it. Row 03 is deliberately empty rather than filled with something plausible, and will stay empty until he answers. The rows are in the order a reader meets the underlying findings, not ranked, and the seven <code>&lt;details&gt;</code> elements need no JavaScript to open &mdash; <code>js/under.js</code> adds the open-all button and nothing else. <code>window.__under.audit()</code> reports any row whose citation points at a section that is no longer on this page, because sections here get deleted and a closing argument that cites a missing one is worse than none. Grouping the seven, and the word <em>understatement</em>, are mine.</p>
+    </div>
+  </section>
+
   <footer>
     &copy; <span id="year"></span> Ruslan Manoharan
     <span class="footer-sep" aria-hidden="true">&middot;</span>
@@ -1836,6 +1983,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/threshold.js"></script>
 <script src="js/cross.js"></script>
 <script src="js/doors.js"></script>
+<script src="js/under.js"></script>
 <script src="js/rail.js"></script>
 <script src="js/theme.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>

@@ -3,7 +3,7 @@
    Added 2026-10-16. Everything load-bearing about the bar is in the HTML
    and the CSS: it is a position:sticky element containing a <details>,
    so with this file removed it still names Ruslan, still links all
-   fifteen parts of the page, and still carries his three contact links,
+   sixteen parts of the page, and still carries his three contact links,
    with the browser doing the disclosure and the keyboard handling.
 
    What this adds is the part that cannot be done declaratively:
@@ -17,7 +17,7 @@
         anchor you just jumped to is not sitting underneath it
 
    Section tops are cached rather than read per frame. The page animates
-   on scroll (animation-timeline: view()) and reading fifteen bounding
+   on scroll (animation-timeline: view()) and reading sixteen bounding
    boxes on every rAF while that runs is a measurable amount of layout
    for no benefit — the tops only move when the viewport does, or when
    the document's height changes, and both are watched below. */
@@ -69,7 +69,7 @@
   function paint() {
     frame = 0;
 
-    /* One layout read, not fifteen. If the page has grown or shrunk —
+    /* One layout read, not sixteen. If the page has grown or shrunk —
        a font landing, an exhibit opening a panel — the cache is stale. */
     if (document.documentElement.scrollHeight !== docH) measure();
 
@@ -83,11 +83,14 @@
       else break;
     }
 
-    /* Contact is the last section and it can never reach the probe: there
-       are only ~320px of document below its top and the probe sits 68px
-       down, so the page runs out of scroll first and the bar would name
-       the section above to someone plainly reading Contact. At the
-       bottom of the page, the bottom section is the one you are in. */
+    /* The last section on the page can never reach the probe: there is
+       less document below its top than the probe sits down from the
+       viewport, so the page runs out of scroll first and the bar would
+       name the section above to someone plainly reading the last one.
+       (Measured when that section was #contact: ~320px below its top
+       against a 68px probe. #under took the last place on 2026-10-26
+       and the arithmetic is the same.) At the bottom of the page, the
+       bottom section is the one you are in. */
     if (runway > 0 && y >= runway - 2) found = rows[rows.length - 1];
 
     if (found !== current) {

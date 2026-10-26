@@ -1,0 +1,259 @@
+/* The Smaller Word — #under
+   ----------------------------------------------------------------------
+   Added 2026-10-26, and the only section here built out of no new
+   material. Fifteen findings sit above it; this one is seven of those
+   fifteen, lined up because they have the same shape.
+
+   Two decisions worth writing down.
+
+   It has no accent of its own. Every other exhibit on the page claims a
+   colour — the Crossing-Out's pencil yellow, the Font's magenta, the
+   Palette's #1733ff — and a section whose whole subject is the smaller
+   choice is not the place to start a sixteenth. Links stay the page's
+   accent, numbers and bodies stay --muted, and the one piece of colour
+   is the hairline that appears down the side of a row once it is open.
+
+   The disclosure is a real <details>. There is no JavaScript anywhere in
+   the mechanism: the browser does the toggling, the keyboard handling,
+   the find-in-page expansion and the ARIA. js/under.js adds one
+   open-all-seven control and an audit, and with that file deleted every
+   word in this section is still reachable with a keyboard. That is not
+   incidental — the seven rows are the page's closing argument, so they
+   have to work when the rest of it doesn't, the way #known does.
+
+   The list uses clip-path rather than overflow:hidden to clip its rows
+   against the rounded border, for the reason written out at length in
+   known.css: overflow:hidden makes a scroll container, and a scroll
+   container is what animation-timeline:view() measures a child against,
+   which silently strands the bottom rows of a staggered list part-faded. */
+
+#under{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+
+#under .un-intro{
+  max-width:68ch;
+  color:var(--muted);
+}
+
+#under .un-intro strong{ color:var(--text); }
+
+/* ---------- the list ---------- */
+
+.un-list{
+  list-style:none;
+  margin:var(--space-m) 0 0;
+  padding:0;
+  display:grid;
+  gap:1px;                       /* the gap IS the rule between rows */
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  clip-path:inset(0 round var(--radius-md));
+}
+
+.un-row{ background:var(--bg); }
+
+.un-det{ min-width:0; }
+
+/* ---------- the closed face: his words, and nothing of mine ---------- */
+
+.un-sum{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  column-gap:clamp(12px, 2vw, 18px);
+  row-gap:6px;
+  align-items:baseline;
+  padding:clamp(14px, 2.4vw, 20px) clamp(14px, 2.6vw, 22px);
+  cursor:pointer;
+  list-style:none;               /* Firefox */
+}
+
+.un-sum::-webkit-details-marker{ display:none; }
+
+.un-sum:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:-3px;
+}
+
+@media (hover: hover){
+  .un-sum:hover{ background:var(--bg-alt); }
+}
+
+.un-no{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--muted);
+  line-height:1.5;
+  font-variant-numeric:tabular-nums;
+}
+
+.un-said{
+  font-size:clamp(15px, 1.9vw, 17px);
+  line-height:1.45;
+  color:var(--text);
+  text-wrap:pretty;
+}
+
+/* The quoted phrases are his, so they read as quotation rather than as
+   this page's prose. The non-quoted rows (a commit, a link, a head tag)
+   get a plain upright line instead: putting quote marks round a
+   description of his would be putting words in his mouth. */
+.un-said q{
+  font-style:italic;
+  quotes:'\201C' '\201D';
+}
+
+.un-said .un-src{
+  display:block;
+  margin-top:4px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  font-style:normal;
+  color:var(--muted);
+}
+
+/* The cue is the only part of the closed row that is mine, so it is sized
+   and coloured like the chrome it is. */
+.un-cue{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  color:var(--accent);
+  white-space:nowrap;
+}
+
+.un-chev{
+  width:11px; height:11px;
+  flex:none;
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2.4;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .un-chev{ transition:transform 160ms ease; }
+}
+
+.un-det[open] .un-chev{ transform:rotate(180deg); }
+
+.un-det[open] .un-cue{ color:var(--muted); }
+
+@media (hover: hover){
+  .un-sum:hover .un-cue{ text-decoration:underline; }
+  .un-det[open] .un-sum:hover .un-cue{ text-decoration:none; }
+}
+
+/* ---------- what is behind it ---------- */
+
+.un-body{
+  padding:0 clamp(14px, 2.6vw, 22px) clamp(16px, 2.6vw, 22px);
+  margin-inline-start:clamp(14px, 2.6vw, 22px);
+  border-inline-start:2px solid var(--border);
+}
+
+.un-body > p{
+  margin:0 0 var(--space-s);
+  max-width:64ch;
+  font-size:var(--fs-md);
+  line-height:1.65;
+  color:var(--muted);
+}
+
+.un-body > p:last-child{ margin-bottom:0; }
+
+.un-body strong{ color:var(--text); font-weight:600; }
+
+.un-body q{ quotes:'\201C' '\201D'; font-style:italic; }
+
+/* The one row with nothing behind it. It is marked rather than written
+   around: an empty exhibit is the finding. */
+.un-det[data-empty] .un-body{ border-inline-start-color:var(--accent-2); }
+
+.un-det[data-empty] .un-body > p:first-child strong{ color:var(--accent-2); }
+
+.un-go{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  color:var(--accent);
+}
+
+.un-go::before{ content:"\2193  "; }
+
+/* ---------- the open-all control, which only js/under.js shows ---------- */
+
+.un-all{
+  margin:var(--space-s) 0 0;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.un-all[hidden]{ display:none; }
+
+.un-allbtn{
+  font:inherit;
+  font-size:var(--fs-base);
+  padding:7px 15px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--muted);
+  cursor:pointer;
+  line-height:1.4;
+}
+
+.un-allbtn:hover{ color:var(--text); border-color:var(--muted); }
+
+.un-allbtn:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+/* ---------- the other reading, and the provenance ---------- */
+
+.un-against{
+  margin-top:var(--space-m);
+  max-width:68ch;
+  padding-inline-start:var(--space-s);
+  border-inline-start:2px solid var(--accent-2);
+}
+
+.un-against strong{ color:var(--text); }
+
+.un-foot{
+  margin-top:var(--space-m);
+  max-width:72ch;
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--muted);
+}
+
+/* ---------- phone ----------
+   At 390px the three-column summary is what pushes the row sideways: the
+   number column, a line of his prose and a nowrap cue cannot share a
+   line. The number goes away (it is aria-hidden chrome and the list is
+   already an <ol>) and the cue drops under his words, which is also the
+   order they should be read in. */
+
+@media (max-width: 560px){
+  .un-sum{
+    grid-template-columns:1fr;
+    row-gap:9px;
+  }
+  .un-no{ display:none; }
+  .un-body{
+    margin-inline-start:0;
+    padding-inline:0 0;
+    padding-inline-start:var(--space-s);
+  }
+  .un-all{ justify-content:stretch; }
+  .un-allbtn{ width:100%; }
+}
