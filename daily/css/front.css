@@ -1,0 +1,171 @@
+/* The front door — his paragraph, read three ways
+   ----------------------------------------------------------------------
+   Added 2026-10-27. #about is the one section on this page that is him
+   rather than a reading of him, and it was 0.9 of the page's sixty-six
+   phone-screens: a photo, his paragraph, a resume button, six pills, and
+   a column of dead space to the right of them. His three contact links
+   were at screen fifty-five, or behind the navigator's disclosure.
+
+   Two things change here. The contact links come up to the top of the
+   page, under the skills, where the whitespace already was. And his
+   paragraph gets a control.
+
+   The control is the finding. Fifty-three words carrying one full stop,
+   one comma and one exclamation mark — and eleven emoji, which are doing
+   the rest of the punctuation. Take them out and the sentence before
+   "In my free time" never ends, and the four things he does with it run
+   together without a single separator. That is not a thing you can
+   assert and have anyone feel; it is a thing you have to let them
+   switch off.
+
+   Everything here is progressive. The paragraph ships verbatim in the
+   markup and js/front.js unhides the controls only once it has run, so
+   with the file removed #about is exactly what it was, plus the links. */
+
+.fd-head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:10px 14px;
+  margin:0 0 var(--space-s);
+}
+
+/* ---------- the paragraph itself ---------- */
+
+.fd-bio{
+  margin:0;
+}
+
+/* The spans are written by front.js. Until it runs there are none, and
+   the paragraph is a plain run of text. */
+
+.fd-p{
+  transition:opacity .18s ease;
+}
+
+.fd-bio[data-view="words"] .fd-p{
+  display:none;
+}
+
+/* The eleven on their own. Centred inside the height reserved for the
+   longest of the three views, rather than sitting at the top of it with
+   a hole underneath. */
+.fd-bio[data-view="pictures"]{
+  display:flex;
+  flex-wrap:wrap;
+  align-content:center;
+  gap:10px 16px;
+  font-size:clamp(30px, 9vw, 40px);
+  line-height:1.25;
+}
+.fd-bio[data-view="pictures"] .fd-w{
+  display:none;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .fd-p{ transition:none; }
+}
+
+/* ---------- the three buttons ---------- */
+
+.fd-rig{
+  margin-top:var(--space-s);
+}
+
+.fd-views-head{
+  margin:0 0 8px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.fd-views{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+/* Deliberately not .panel-btn: that system is the dark console the
+   exhibits further down are built out of, and this is the top of a
+   portfolio. Same shape as the skills pills immediately beside it. */
+.fd-pick{
+  font:inherit;
+  font-size:var(--fs-base);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 15px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  cursor:pointer;
+}
+.fd-pick:hover{ border-color:var(--muted); }
+.fd-pick:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+.fd-pick[aria-pressed="true"]{
+  border-color:var(--accent);
+  color:var(--accent);
+  font-weight:600;
+}
+
+.fd-dot{
+  width:8px; height:8px;
+  border-radius:50%;
+  background:var(--border);
+  flex:none;
+}
+.fd-pick[aria-pressed="true"] .fd-dot{
+  background:var(--accent);
+}
+
+.fd-say{
+  margin:12px 0 0;
+  /* min-height is set by front.js, to the tallest of the three captions,
+     so switching view does not move the resume button under a thumb. */
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--muted);
+  max-width:60ch;
+}
+.fd-say em{ color:var(--text); font-style:italic; }
+.fd-say strong{ color:var(--text); }
+
+/* ---------- reach him ---------- */
+
+.fd-reach{
+  margin-top:var(--space-m);
+}
+
+.fd-reach-list{
+  list-style:none;
+  margin:0; padding:0;
+  display:flex; flex-wrap:wrap;
+  gap:8px;
+}
+.fd-reach-list a{
+  display:inline-block;
+  border:1px solid var(--border);
+  border-radius:var(--radius-pill);
+  padding:6px 14px;
+  font-size:var(--fs-base);
+  color:var(--text);
+  text-decoration:none;
+}
+.fd-reach-list a:hover,
+.fd-reach-list a:focus-visible{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+
+/* ---------- footnote ---------- */
+
+.fd-foot{
+  margin:var(--space-m) 0 0;
+  font-size:var(--fs-md);
+  line-height:1.65;
+  color:var(--muted);
+  max-width:72ch;
+}

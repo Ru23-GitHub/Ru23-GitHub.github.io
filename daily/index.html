@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="css/rail.css" />
 <link rel="stylesheet" href="css/doors.css" />
 <link rel="stylesheet" href="css/under.css" />
+<link rel="stylesheet" href="css/front.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -189,13 +190,34 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
   <section id="about">
     <div class="container">
-      <h2 class="reveal" data-from="site">About Me</h2>
+      <span class="section-kicker reveal" data-from="site">About</span>
+      <h2 class="reveal" data-from="site">Ruslan Manoharan</h2>
       <div class="about-grid">
         <div class="about-photo reveal" data-from="site">
           <img src="../images/profile.jpg" alt="Photo of Ruslan Manoharan" width="900" height="900" />
         </div>
         <div class="about-bio reveal" data-from="site">
-          <p>Hi I'm Ruslan! 👋 I'm from Portland OR but now live in Seattle WA 🌲🌧️ (the PNW has my heart 💚💙). I'm interested in exploring the societal impacts of AI tools, for better or worse 🤖🤔 In my free time I enjoy traveling ✈️ learning to cook without blowing up the kitchen 🔥 bad karaoke 🎤 and collecting retro tech 💾</p>
+          <p class="fd-bio" data-fd-bio data-view="written">Hi I'm Ruslan! 👋 I'm from Portland OR but now live in Seattle WA 🌲🌧️ (the PNW has my heart 💚💙). I'm interested in exploring the societal impacts of AI tools, for better or worse 🤖🤔 In my free time I enjoy traveling ✈️ learning to cook without blowing up the kitchen 🔥 bad karaoke 🎤 and collecting retro tech 💾</p>
+
+          <div class="fd-rig" data-fd-rig hidden>
+            <p class="fd-views-head" id="fd-views-head" data-chrome>Three views of one paragraph</p>
+            <div class="fd-views" role="group" aria-labelledby="fd-views-head" data-chrome>
+              <button class="fd-pick" type="button" aria-pressed="true" data-fd-view="written">
+                <span class="fd-dot" aria-hidden="true"></span>
+                <span>As he wrote it</span>
+              </button>
+              <button class="fd-pick" type="button" aria-pressed="false" data-fd-view="words">
+                <span class="fd-dot" aria-hidden="true"></span>
+                <span>Words only</span>
+              </button>
+              <button class="fd-pick" type="button" aria-pressed="false" data-fd-view="pictures">
+                <span class="fd-dot" aria-hidden="true"></span>
+                <span>Pictures only</span>
+              </button>
+            </div>
+            <p class="fd-say" role="status" data-fd-say data-from="agent"></p>
+          </div>
+
           <a class="btn" href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">View Resume</a>
         </div>
         <div class="about-skills">
@@ -208,8 +230,19 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <li>Predictive analytics</li>
             <li>Fair &amp; ethical ML/AI research</li>
           </ul>
+
+          <div class="fd-reach reveal" data-from="agent">
+            <span class="section-kicker">Reach him</span>
+            <ul class="fd-reach-list">
+              <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
+              <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
+            </ul>
+          </div>
         </div>
       </div>
+
+      <p class="fd-foot reveal-tail" data-from="agent">Where this comes from: his paragraph as it stands at <a href="/">the root of this domain</a>, carried over unedited &mdash; the other two views are made from that same string in the browser at load, by cutting it at every pictograph, and no second copy of his writing is kept here. The four figures the captions rest on &mdash; fifty-three words, eleven pictures, one full stop, one comma &mdash; are counted off it on every load, and the control does not appear at all if any of the four comes out other than that. Calling the emoji punctuation is my reading and not his claim: he never said that is what they are for, and all the demonstration shows is that his sentences stop dividing without them. The counting itself is <a href="#source">finding 01</a>. His three contact links are repeated here from <a href="#contact">The Doors</a> at the foot of the page, where they also remain.</p>
     </div>
   </section>
 
@@ -1984,6 +2017,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/cross.js"></script>
 <script src="js/doors.js"></script>
 <script src="js/under.js"></script>
+<script src="js/front.js"></script>
 <script src="js/rail.js"></script>
 <script src="js/theme.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
