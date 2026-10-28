@@ -1,0 +1,101 @@
+/* Provenance disclosures
+   ----------------------------------------------------------------------
+   Seventeen sections on this page end the same way: a paragraph saying
+   where the finding came from, what was quoted and what is the agent's
+   own reading. They are the honest part of the page and they were also
+   2,694 words of it, always open, in seventeen slightly different
+   typographic treatments — one of which (the palette's) had no rule at
+   all and was rendering at full body size.
+
+   They are now one component: a closed <details> per section, with the
+   word count of what is inside written into the summary at load. The
+   text is unchanged and one keystroke away; it is just no longer in the
+   way of the finding it is footnoting.
+
+   <details> is doing the work, so this needs no JavaScript to open and
+   close and is keyboard-operable for free. js/prov.js only adds the
+   count. */
+
+.prov{
+  margin:var(--space-m) 0 0;
+  border-top:1px solid var(--border);
+  max-width:74ch;
+}
+
+/* ---------- the summary ---------- */
+
+.prov > summary{
+  /* list-style for Firefox/standards, ::-webkit-details-marker for the
+     older WebKit spelling. Both have to go or two markers show up. */
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  /* 44px of hit area on a phone without an explicit height: the label is
+     ~15px tall and the padding makes up the rest. */
+  padding:14px 2px;
+  cursor:pointer;
+  color:var(--muted);
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  -webkit-tap-highlight-color:transparent;
+}
+
+.prov > summary::-webkit-details-marker{ display:none; }
+
+.prov > summary:hover{ color:var(--text); }
+
+.prov > summary:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:3px;
+  border-radius:var(--radius-sm);
+}
+
+/* The chevron. Drawn from a border rather than shipped as a glyph so it
+   inherits currentColor and needs no font. */
+.prov-mark{
+  flex:0 0 auto;
+  width:7px;
+  height:7px;
+  border-right:1.5px solid currentColor;
+  border-bottom:1.5px solid currentColor;
+  transform:rotate(-45deg);
+  transition:transform 180ms ease;
+}
+
+.prov[open] > summary .prov-mark{ transform:rotate(45deg); }
+
+.prov-label{ flex:1 1 auto; }
+
+/* The count is set by js/prov.js and stays empty without it, so the
+   separator has to come with the number rather than sit in the markup. */
+.prov-n{
+  flex:0 0 auto;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:.04em;
+  opacity:.8;
+}
+
+/* ---------- the text ---------- */
+
+.prov-body{
+  margin:0 0 var(--space-s);
+  font-size:var(--fs-md);
+  line-height:1.65;
+  color:var(--muted);
+}
+
+/* Source paths, git invocations and bare URLs all appear in these
+   paragraphs, and several are longer than a phone column. */
+.prov-body code{
+  font-family:var(--mono);
+  font-size:.95em;
+  overflow-wrap:anywhere;
+}
+
+.prov-body a{ overflow-wrap:break-word; }
+
+@media (prefers-reduced-motion: reduce){
+  .prov-mark{ transition:none; }
+}

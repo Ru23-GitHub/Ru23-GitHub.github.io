@@ -347,12 +347,6 @@
 
 .th-nojs[hidden]{ display:none; }
 
-.th-foot{
-  max-width:66ch;
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
 /* Without the script there are no bars, no lines and no numbers, so the
    rig is not shown at all — a dead console full of em-dashes is worse
    than an honest sentence. */

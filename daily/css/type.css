@@ -114,12 +114,6 @@
 .ty-sample[data-face="spritendo"]{ font-family:'Spritendo', var(--display), sans-serif; }
 .ty-sample[data-face="gameboy"]{ font-family:var(--display); }
 
-.ty-foot{
-  font-size:var(--fs-md);
-  color:var(--muted);
-  margin-top:var(--space-m);
-}
-
 .ty-cut{
   font-size:var(--fs-md);
   color:var(--muted);

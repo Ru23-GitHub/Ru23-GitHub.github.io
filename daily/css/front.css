@@ -162,10 +162,3 @@
 
 /* ---------- footnote ---------- */
 
-.fd-foot{
-  margin:var(--space-m) 0 0;
-  font-size:var(--fs-md);
-  line-height:1.65;
-  color:var(--muted);
-  max-width:72ch;
-}

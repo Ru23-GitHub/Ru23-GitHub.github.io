@@ -254,14 +254,6 @@
 
 #frame .fr-meta dd.is-absent{ color:var(--muted); }
 
-#frame .fr-foot{
-  margin-top:var(--space-m);
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
-#frame .fr-foot code{ overflow-wrap:anywhere; }
-
 @media (prefers-reduced-motion: reduce){
   #frame .fr-mark,
   #frame .fr-shot img,

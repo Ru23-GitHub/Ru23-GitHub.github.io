@@ -304,12 +304,3 @@
   color:var(--muted);
 }
 
-.cd-foot{
-  max-width:74ch;
-  margin-top:var(--space-m);
-  padding-top:var(--space-s);
-  border-top:1px solid var(--border);
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-.cd-foot code{ font-family:var(--mono); font-size:.95em; }

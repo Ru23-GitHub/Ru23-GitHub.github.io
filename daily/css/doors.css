@@ -238,17 +238,6 @@
 
 /* ---------- the closing note ---------- */
 
-#contact .dr-foot{
-  margin-top:var(--space-m);
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
-#contact .dr-foot code{
-  font-family:var(--mono);
-  overflow-wrap:anywhere;
-}
-
 @media (prefers-reduced-motion: reduce){
   #contact .dr-bar > span,
   #contact .dr-string [data-drop]{ transition:none; }

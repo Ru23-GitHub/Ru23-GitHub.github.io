@@ -204,14 +204,6 @@
 
 #cross .cr-his span{ color:var(--text); }
 
-#cross .cr-foot{
-  margin-top:var(--space-m);
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
-#cross .cr-foot code{ overflow-wrap:anywhere; }
-
 @media (prefers-reduced-motion: reduce){
   #cross .cr-read{ transition:none; }
 }

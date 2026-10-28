@@ -132,13 +132,6 @@
 }
 .device-note{ display:block; }
 
-.shelf-foot{
-  margin:var(--space-s) 0 0;
-  font-size:var(--fs-sm);
-  color:var(--muted);
-  max-width:72ch;
-}
-
 /* ======================================================================
    Powered-on behaviour, per device.
 

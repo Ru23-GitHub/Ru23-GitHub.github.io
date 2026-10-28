@@ -228,14 +228,6 @@
 
 .un-against strong{ color:var(--text); }
 
-.un-foot{
-  margin-top:var(--space-m);
-  max-width:72ch;
-  font-size:var(--fs-md);
-  line-height:1.6;
-  color:var(--muted);
-}
-
 /* ---------- phone ----------
    At 390px the three-column summary is what pushes the row sideways: the
    number column, a line of his prose and a nowrap cue cannot share a

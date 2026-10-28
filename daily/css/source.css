@@ -190,12 +190,6 @@
 
 .src-map dd a{ white-space:nowrap; }
 
-.src-foot{
-  margin-top:var(--space-m);
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
 #source code{
   font-family:var(--mono);
   font-size:.92em;

@@ -415,14 +415,6 @@
 
 /* ---------- footnotes ---------- */
 
-#egg .eg-foot{
-  margin-top:var(--space-m);
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
-#egg .eg-foot code{ overflow-wrap:anywhere; }
-
 /* On a dark page the stage and the destination screen are both meant to
    read as "a page being looked at", so they follow --bg/--bg-alt like the
    rest of the document rather than the panel they sit in. The one thing

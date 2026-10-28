@@ -152,14 +152,6 @@
 
 .kn-gap strong{ color:var(--text); }
 
-.kn-foot{
-  margin-top:var(--space-s);
-  max-width:72ch;
-  font-size:var(--fs-md);
-  line-height:1.6;
-  color:var(--muted);
-}
-
 /* ---------- phone ----------
    At 390px the number column plus a nowrap chip row is what pushes this
    over the edge, so the number goes inline with the chips instead of

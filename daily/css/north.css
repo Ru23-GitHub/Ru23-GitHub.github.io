@@ -220,15 +220,6 @@
 .nr-changed{ border-left:3px solid var(--accent-2); }
 .nr-same{ border-left:3px solid #4f9e73; }
 
-.nr-foot{
-  margin-top:var(--space-m);
-  max-width:72ch;
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
-.nr-foot a{ overflow-wrap:break-word; }
-
 @media (prefers-reduced-motion: no-preference){
   .nr-sky .nr-mtn, .nr-sky .nr-ice{ transition:fill 180ms linear; }
 }

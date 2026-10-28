@@ -223,12 +223,6 @@
   color:var(--muted);
 }
 
-.booth-foot{
-  margin-top:var(--space-m);
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
 /* Chart ink. The chart sits on the page, not on a panel, so its text
    wears the page's own text tokens — never a series colour. */
 .bt-axis{ stroke:var(--border); stroke-width:1; }

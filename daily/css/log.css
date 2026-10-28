@@ -289,8 +289,6 @@
   background:rgba(255,255,255,.07);
 }
 
-.lg-note{ max-width:66ch; }
-
 #log code{
   font-family:var(--mono);
   font-size:.92em;
@@ -316,3 +314,7 @@
   .lg-pick{ flex:1 1 100%; }
   .lg-legend{ gap:7px; }
 }
+
+/* The one note left in this section after the provenance paragraph moved
+   into a .prov disclosure: the 13 October correction, which stays open. */
+.lg-note{ max-width:66ch; }
