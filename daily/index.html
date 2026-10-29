@@ -143,7 +143,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <li><a href="#hand" data-no="11" data-name="The Hand">
               <span class="rail-no" aria-hidden="true">11</span>
               <span class="rail-t">The Hand</span>
-              <span class="rail-d">Seven letters of his name he placed himself, eight by formula</span>
+              <span class="rail-d">Seven letters of his name he placed himself, eight by formula &mdash; and the one function he left open</span>
             </a></li>
             <li><a href="#palette" data-no="12" data-name="The Palette">
               <span class="rail-no" aria-hidden="true">12</span>
@@ -1458,11 +1458,47 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       </p>
       <p class="hd-status" role="status" data-chrome data-hd-status></p>
 
-      <p class="hd-api reveal" data-from="agent">That second row is not a hypothetical. The last block in his file hangs a function off <code>window</code>: call <code>setBootText('&hellip;')</code> from the console on <a href="/">his homepage</a> and the hero retypes itself and replays. It is the only public API his portfolio has, and nothing on either page mentions that it is there. It also calls the builder without the offsets &mdash; so the one handle he left out for the world throws away the seven figures he sat and tuned, and all fifteen letters fall back to the fan. His name is one function call away from being evenly spaced.</p>
+      <p class="hd-api reveal" data-from="agent">That second row is not a hypothetical. The last block in his file hangs a function off <code>window</code>, under a comment he wrote himself &mdash; <span data-from="site">&ldquo;Public API to change text &amp; keep single-line fit&rdquo;</span>. Call <code>setBootText('&hellip;')</code> and the hero retypes itself, refits and replays. It is the only thing his program exposes to the outside; the rest is sealed inside a wrapper whose whole job is to hide it. He poked one hole in that wrapper, for this. It also calls the builder without the offsets &mdash; so the one handle he left out for the world throws away the seven figures he sat and tuned, and all fifteen letters fall back to the fan. <strong>His name is one function call away from being evenly spaced.</strong></p>
+
+      <p class="hd-api reveal" data-from="agent">He built the handle and then built nothing that turns it. Nothing in his repository calls it, and no page of his says it is there, so since 23&nbsp;July it has been reachable only by a visitor who opens a console and already knows the name of a function nobody told them about. So here is the control he never wrote. The hero at the top of this page is his, running this directory&rsquo;s copy of his file, and his function is still hanging off <code>window</code> up there. Type something in and it goes to the real one.</p>
+
+      <p class="hd-call-nojs placeholder" data-from="agent">The control below needs JavaScript, and needs his function to be present. The finding is the array printed further up, which holds either way.</p>
+
+      <div class="hd-call" data-hd-call hidden>
+        <p class="hd-call-head" id="hd-call-head" data-chrome>His function, with a field on it</p>
+
+        <form class="hd-call-form" data-hd-form aria-labelledby="hd-call-head">
+          <span class="hd-call-fn" aria-hidden="true">setBootText('</span>
+          <label class="sr-only" for="hd-call-in">Text to put in the hero at the top of this page</label>
+          <input class="hd-call-in" id="hd-call-in" data-hd-in type="text" maxlength="22"
+                 autocomplete="off" autocapitalize="characters" spellcheck="false"
+                 placeholder="RUSLAN MANOHARAN" />
+          <span class="hd-call-fn" aria-hidden="true">')</span>
+          <button class="hd-btn hd-call-go" type="submit">Run it on the hero &uarr;</button>
+        </form>
+
+        <p class="hd-call-presets" data-chrome>
+          <span>Or something already established on this page:</span>
+          <button class="hd-chip" type="button" data-hd-set="GAME BOY">GAME BOY</button>
+          <button class="hd-chip" type="button" data-hd-set="SOFT SPOT">SOFT SPOT</button>
+          <button class="hd-chip" type="button" data-hd-set="SEATTLE WA">SEATTLE WA</button>
+          <button class="hd-chip" type="button" data-hd-set="RUSLAN MANOHARAN">RUSLAN MANOHARAN</button>
+        </p>
+
+        <p class="hd-call-say" role="status" data-hd-say data-from="agent"></p>
+
+        <p class="hd-call-foot" data-chrome><button class="hd-btn" type="button" data-hd-reload hidden>Reload the page to put his seven figures back</button></p>
+      </div>
+
+      <ul class="hd-call-notes reveal-stagger">
+        <li data-from="agent"><strong>The seven figures go.</strong> His function rebuilds the letters without handing his array back in, so from the moment anything calls it every letter launches from the formula &mdash; his own name included, if you type it back. The hand survives on the page only until the one door he left open is used once. A reload restores it.</li>
+        <li data-from="agent"><strong>The name does not go with them.</strong> The heading at the top of the hero is his name and is never drawn on screen at all, and the four words a screen reader gets &mdash; <span data-from="site">&ldquo;RUSLAN MANOHARAN &mdash; watch the video&rdquo;</span> &mdash; sit on the link wrapped round the letters rather than on the letters. His function touches neither. So whatever the hero is made to say, everything reading this page aloud goes on saying his name. That label is <a href="#egg">finding 09</a>.</li>
+        <li data-from="agent"><strong>It will fit whatever you give it.</strong> That is the half of his comment that is a promise, and his code keeps it: the same measure-and-rescale routine that sizes his fifteen letters runs again on yours, so any string lands on one line inside the first screen. The twenty-two-character cap on the field is mine. His function has none.</li>
+      </ul>
 
       <details class="prov reveal-tail">
         <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
-        <p class="prov-body" data-from="agent"><code>js/intro.js</code> as committed, at <a href="/">the root of this domain</a>, and <code>git log --follow</code> on that path, which returns one commit &mdash; <code>f3c3691</code>, 23&nbsp;July&nbsp;2026 20:28 &mdash; so every line of it is his and none of it has moved since. The hero at the top of this page runs its own copy, identical in every line the letters touch, which is why that name is flying on his seven numbers right now. Only three values are quoted &mdash; his string, his array, and the 0.35 in his expression &mdash; and the chart and both flights are re-derived from those at load rather than typed in, so they cannot drift from his file: <code>window.__hand.table()</code> prints every letter&rsquo;s two figures. The facsimile is a facsimile: his typeface, his tracking, his vertical stretch and his 0.04s stagger at a fraction of the size, not clickable, and without the scale and the bounce, so it shows the sideways convergence rather than the whole entry. What is mine is the reading &mdash; that seven typed figures and eight computed ones mean he fussed over his first name and stopped. That is an observation about an array, not a claim about how he feels about his surname.</p>
+        <p class="prov-body" data-from="agent"><code>js/intro.js</code> as committed, at <a href="/">the root of this domain</a>, and <code>git log --follow</code> on that path, which returns one commit &mdash; <code>f3c3691</code>, 23&nbsp;July&nbsp;2026 20:28 &mdash; so every line of it is his and none of it has moved since. The hero at the top of this page runs its own copy, identical in every line the letters touch, which is why that name is flying on his seven numbers right now. Only three values are quoted &mdash; his string, his array, and the 0.35 in his expression &mdash; and the chart and both flights are re-derived from those at load rather than typed in, so they cannot drift from his file: <code>window.__hand.table()</code> prints every letter&rsquo;s two figures. The facsimile is a facsimile: his typeface, his tracking, his vertical stretch and his 0.04s stagger at a fraction of the size, not clickable, and without the scale and the bounce, so it shows the sideways convergence rather than the whole entry. The control at the foot of the section calls <code>window.setBootText</code> itself &mdash; his function, in his file, driving the live hero at the top of this page &mdash; and if that function is ever absent the control stays hidden rather than pretending to work; <code>window.__hand.call()</code> is the same handle. Three things about it are mine and not his: it uppercases what you type, because his hero is <code>text-transform:uppercase</code> and the readout should agree with the screen; it collapses runs of spaces, because his builder gives every space a span of its own; and the twenty-two-character limit on the field is a courtesy to the layout, not a rule of his. His comment on the function is quoted exactly, ampersand and all. What is mine is the reading &mdash; that seven typed figures and eight computed ones mean he fussed over his first name and stopped, and that a public function with nothing calling it is a door rather than an oversight. Both are observations about a file, not claims about how he feels about his surname.</p>
       </details>
     </div>
   </section>

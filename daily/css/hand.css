@@ -201,3 +201,108 @@
   to  { opacity:1; transform:translateX(0) }
 }
 
+
+/* ---------- the handle, opened ----------
+   Added 2026-10-29. His setBootText() is the only thing js/intro.js
+   hangs off window, and he never built a control for it. This is that
+   control. No dark console here either: same reasoning as the rest of
+   this file, so it follows light and dark off the theme variables. */
+
+#hand .hd-call{
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  background:var(--bg-alt);
+  padding:clamp(14px, 3vw, 22px);
+  margin:0 0 var(--space-s);
+}
+
+#hand .hd-call-head{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 10px;
+}
+
+#hand .hd-call-form{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+}
+
+/* The two halves of his call signature, printed either side of the
+   field so the control reads as the line you would have typed into a
+   console. Decoration: the screen-reader label is on the input. */
+#hand .hd-call-fn{
+  font-family:var(--mono);
+  font-size:var(--fs-base);
+  color:var(--muted);
+}
+
+#hand .hd-call-in{
+  font:inherit;
+  font-family:var(--mono);
+  font-size:var(--fs-base);
+  text-transform:uppercase;
+  flex:1 1 170px;
+  min-width:0;
+  padding:8px 10px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+}
+#hand .hd-call-in:focus-visible{ outline:2px solid var(--accent); outline-offset:1px; }
+
+#hand .hd-call-go{ flex:none; }
+
+#hand .hd-call-presets{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px;
+  margin:12px 0 0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+#hand .hd-chip{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  padding:5px 11px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  background:var(--bg);
+  color:var(--text);
+  cursor:pointer;
+}
+#hand .hd-chip:hover{ border-color:var(--accent); }
+#hand .hd-chip:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+#hand .hd-call-say{
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--muted);
+  margin:12px 0 0;
+}
+
+#hand .hd-call-foot{ margin:12px 0 0; }
+
+#hand .hd-call-notes{
+  list-style:none;
+  padding:0;
+  margin:0 0 var(--space-m);
+  display:grid;
+  gap:10px;
+}
+
+#hand .hd-call-notes li{
+  font-size:var(--fs-md);
+  line-height:1.65;
+  color:var(--muted);
+  padding-left:14px;
+  border-left:2px solid var(--border);
+}
+
+#hand .hd-call-notes strong{ color:var(--text); }

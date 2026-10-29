@@ -294,3 +294,123 @@
     }
   };
 })();
+
+/* The handle, opened — a control for his own setBootText()
+   ----------------------------------------------------------------------
+   Added 2026-10-29. Also scoped to #hand.
+
+   js/intro.js ends by hanging exactly one function off window:
+
+       // Public API to change text & keep single-line fit
+       window.setBootText = (title) => { ... }
+
+   That comment is his. It is the only thing his program exposes to the
+   outside, and nothing in his repository ever calls it — the section
+   above has said so in prose since 19 October. The hero at the top of
+   this page is his, running this directory's copy of that file with no
+   agent edits to any line the letters touch, so the function is live
+   here. This is a control for it and nothing else: it reads a string,
+   hands it to his function, and reports what his function did. No part
+   of the hero is written by this file.
+
+   The three consequences printed beside the control are all his code's:
+   he rebuilds the letters without the offsets array, so the seven
+   figures plotted above are discarded; he leaves the anchor and its
+   aria-label alone, so anything reading the page aloud still says his
+   name; and he re-runs fitToViewport, so any string is scaled onto one
+   line. Each is a property of his file, not a claim about him.
+
+   Remove this file and the section loses the control and keeps the
+   finding. If his function is ever not there, the control stays hidden
+   rather than printing a promise it cannot keep. */
+(function () {
+  'use strict';
+
+  var root = document.getElementById('hand');
+  var hero = document.getElementById('hero');
+  if (!root || !hero) return;
+
+  var rig = root.querySelector('[data-hd-call]');
+  if (!rig) return;
+
+  /* His function, or no control at all. Nothing here imitates the hero. */
+  if (typeof window.setBootText !== 'function') return;
+
+  var nojs = root.querySelector('.hd-call-nojs');
+  if (nojs) nojs.hidden = true;
+  rig.hidden = false;
+
+  var form   = rig.querySelector('[data-hd-form]');
+  var input  = rig.querySelector('[data-hd-in]');
+  var say    = rig.querySelector('[data-hd-say]');
+  var reload = rig.querySelector('[data-hd-reload]');
+
+  /* His string, read off his own hero before anything here changes it,
+     with the quoted copy at the top of this file as the fallback. TEXT
+     itself is private to the block above and stays that way. */
+  var gb = document.getElementById('gb');
+  var HIS = ((gb && gb.getAttribute('data-text')) || '').trim()
+    || (window.__hand && window.__hand.text) || 'RUSLAN MANOHARAN';
+  var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  function tell(msg) { if (say) say.textContent = msg; }
+
+  function run(raw) {
+    /* Two liberties, both mine and neither his: uppercase, because his
+       hero is text-transform:uppercase in css/intro.css and the readout
+       should agree with the screen; and collapsing runs of whitespace,
+       because his builder gives every space its own span and a double
+       space would open a gap his centring does not expect. */
+    var text = String(raw == null ? '' : raw).toUpperCase().replace(/\s+/g, ' ').trim();
+    if (!text) text = HIS;
+
+    if (input) input.value = text;
+
+    window.setBootText(text);
+
+    hero.scrollIntoView({
+      behavior: (still && still.matches) ? 'auto' : 'smooth',
+      block: 'start'
+    });
+
+    if (reload) reload.hidden = false;
+
+    tell(text === HIS
+      ? 'setBootText(‘' + text + '’) ran, so his name is back — but his '
+        + 'seven figures are not. Those letters were just evenly spaced by the '
+        + 'formula, because his function rebuilds them without his array. Only a '
+        + 'reload puts the hand back.'
+      : 'setBootText(‘' + text + '’) ran. His hero now reads ' + text + ' in '
+        + 'his typeface, scaled onto one line by his own fit routine, with every '
+        + 'letter launched from the formula rather than his seven figures. The '
+        + 'heading and the link label up there still say his name; his function '
+        + 'does not reach them.');
+  }
+
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      run(input ? input.value : '');
+    });
+  }
+
+  rig.addEventListener('click', function (e) {
+    var chip = e.target.closest ? e.target.closest('[data-hd-set]') : null;
+    if (!chip) return;
+    run(chip.getAttribute('data-hd-set'));
+  });
+
+  if (reload) {
+    reload.addEventListener('click', function () { window.location.reload(); });
+  }
+
+  tell(still && still.matches
+    ? 'You have asked for reduced motion, so his letters will not fly — his '
+      + 'stylesheet turns that off, not this page. They will still be replaced.'
+    : 'Whatever you send goes to the hero at the top of this page, and the view '
+      + 'follows it up there.');
+
+  /* Audit: the same handle this control uses, on the same object as the
+     rest of this section's figures. */
+  if (window.__hand) window.__hand.call = run;
+})();
