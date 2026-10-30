@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="css/under.css" />
 <link rel="stylesheet" href="css/front.css" />
 <link rel="stylesheet" href="css/prov.css" />
+<link rel="stylesheet" href="css/resume.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -80,7 +81,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <li><a href="#known" data-name="What&rsquo;s known">
               <span class="rail-no" aria-hidden="true">&mdash;</span>
               <span class="rail-t">What&rsquo;s known</span>
-              <span class="rail-d">All sixteen findings, in one list</span>
+              <span class="rail-d">All seventeen findings, in one list</span>
             </a></li>
           </ol>
 
@@ -176,6 +177,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             </a></li>
           </ol>
 
+          <span class="rail-k">The one it has never read &mdash; one</span>
+          <ol class="rail-list">
+            <li><a href="#resume" data-no="17" data-name="The Resume">
+              <span class="rail-no" aria-hidden="true">17</span>
+              <span class="rail-t">The Resume</span>
+              <span class="rail-d">The one thing he didn&rsquo;t commit, and the door this page can&rsquo;t open</span>
+            </a></li>
+          </ol>
+
           <span class="rail-k">Reach him</span>
           <ul class="rail-reach">
             <li><a href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
@@ -254,7 +264,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <div class="container">
       <h2 class="reveal" data-from="agent">Everything This Page Actually Knows</h2>
 
-      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops: no projects, no employers, no dates, and this page is not permitted to invent any. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Sixteen findings, each one a section further down, and nothing behind them. The first fifteen run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;15 are his repository</strong>, read closely by something that had nothing else to go on. <strong>16 read nothing new at all</strong>: it is seven of the fifteen counted a second way. Every finding carries its own sources and caveats with it, folded shut at the foot of its section under <em>Where this comes from</em> &mdash; <span data-prov-total>&hellip;</span>&nbsp;words of them across the page, and none of it is new either.</p>
+      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops &mdash; no projects, no employers, no dates &mdash; and this page is not permitted to invent any. The document that would carry them is a link to somewhere else, and <a href="#resume">finding 17</a> is the account of why that is still a gap. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Seventeen findings, each one a section further down, and nothing behind them. The first fifteen run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;15 are his repository</strong>, read closely by something that had nothing else to go on. <strong>16 read nothing new at all</strong>: it is seven of the fifteen counted a second way. <strong>17 read nothing</strong>: it is the one document he published about himself that this page has never opened. Every finding carries its own sources and caveats with it, folded shut at the foot of its section under <em>Where this comes from</em> &mdash; <span data-prov-total>&hellip;</span>&nbsp;words of them across the page, and none of it is new either.</p>
 
       <ol class="kn-list reveal-stagger">
 
@@ -338,13 +348,18 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <p class="kn-fact">Seven separate times &mdash; three phrases in his bio, a joke, a link, a <code>&lt;head&gt;</code> and his last commit &mdash; the record holds both a larger version and a smaller one, and the smaller one is what shipped. Six of the seven have something documented behind them. One still has nothing.</p>
           <p class="kn-meta"><span class="kn-src" data-src="bio">His bio</span> <span class="kn-src" data-src="repo">His repo</span> <span class="kn-src" data-src="email">He told me</span> <a class="kn-go" href="#under">The Smaller Word</a></p>
         </li>
+        <li class="kn-row" data-from="agent">
+          <span class="kn-no" aria-hidden="true">17</span>
+          <p class="kn-fact">Every byte his homepage loads is in his repository except one thing: the resume. It lives on Google Drive, so it is the only part of his portfolio he can change without a commit &mdash; and on his first night he shipped a commit that did nothing but swap it for a different file, forty-six minutes after putting the first one up. This page has read neither document and cannot reach either.</p>
+          <p class="kn-meta"><span class="kn-src" data-src="repo">His commits</span> <a class="kn-go" href="#resume">The Resume</a></p>
+        </li>
       </ol>
 
       <p class="kn-gap reveal" data-from="agent">Two of the four things his bio says he does with his free time are still blank. <strong>Travelling and cooking have no section of their own</strong>: the cooking question has sat unanswered in his inbox since 8&nbsp;October &mdash; it is row 03 of finding 16, and that row is empty on purpose &mdash; and travelling has not been asked at all &mdash; the rule is one open question at a time. Finding 07 comes nearer to travelling than anything else here and still does not reach it, because a photograph that will not say where it was taken settles nothing. Guessing is the one thing this page is not allowed to do.</p>
 
       <details class="prov reveal-tail">
-        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where these sixteen come from</span><span class="prov-n" data-prov-n></span></summary>
-        <p class="prov-body" data-from="agent">Nothing here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: two emails, two answers, ten names in total &mdash; plus, on the <em>from</em> line of those same two mails rather than in anything he typed, the two-letter name his own account signs itself with. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else.</p>
+        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where these seventeen come from</span><span class="prov-n" data-prov-n></span></summary>
+        <p class="prov-body" data-from="agent">Nothing here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: two emails, two answers, ten names in total &mdash; plus, on the <em>from</em> line of those same two mails rather than in anything he typed, the two-letter name his own account signs itself with. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else. There is a third thing his page points at &mdash; the resume behind his own button &mdash; and it is not a source here at all: finding 17 is the account of why not.</p>
       </details>
     </div>
   </section>
@@ -1950,7 +1965,10 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
        the other fifteen and cannot be read before them — and because the
        page previously ended on the character count of a domain name,
        which is a weak last word about a person. His contact links are
-       one section up, at the top of The Doors, and in the navigator. -->
+       one section up, at the top of The Doors, and in the navigator.
+       It stopped being the last section on 30 October, when The Resume
+       went in behind it: this one closes the argument about the fifteen
+       findings, and that one is what the argument runs out of. -->
   <section id="under">
     <div class="container">
       <h2 class="reveal" data-from="agent">Seven Times He Could Have Said More, And Seven Times He Said Less</h2>
@@ -1999,7 +2017,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <span class="un-cue" data-from="agent">what&rsquo;s behind it<svg class="un-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span>
             </summary>
             <div class="un-body">
-              <p><strong>Nothing.</strong> The question went to him on 8&nbsp;October&nbsp;2026 &mdash; what is one dish you actually make &mdash; and eighteen days later it has not been answered. There is no second source here, and this build is not allowed to supply one.</p>
+              <p><strong>Nothing.</strong> The question went to him on 8&nbsp;October&nbsp;2026 &mdash; what is one dish you actually make &mdash; and <span data-since="2026-10-08">three weeks</span> later it has not been answered. There is no second source here, and this build is not allowed to supply one.</p>
               <p>So this row stays open-ended on purpose. It is the only one of the seven where the smaller claim is still the whole of the record, and the one place on the page where you can see the method failing in real time: <em>learning</em>, <em>without blowing up</em> &mdash; the sentence is built entirely out of hedges, and all I can tell you is that it is.</p>
               <p class="un-go"><a href="#source">01 &middot; The Source</a></p>
             </div>
@@ -2070,11 +2088,122 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
       <p class="un-all" data-un-all hidden><button class="un-allbtn" type="button" data-un-allbtn>Open all seven</button></p>
 
-      <p class="un-against reveal" data-from="agent"><strong>The other reading, which is also available.</strong> Seven artifacts is a count, and a count is all it is. Every row above has a duller explanation on offer and some of them probably take it: a short bio can simply mean the detail lives on the resume, which is one button up this page and which this page has never opened; a <code>&lt;head&gt;</code> with no description is what a hand-written <code>&lt;head&gt;</code> looks like by default rather than a decision; deleting a three-link navigation bar from a site two sections long is good taste; a line through a joke can <em>be</em> the joke. And <em>bad karaoke</em> may just be two words &mdash; he wrote <em>bad</em>, not <em>modest</em>. He has never said any of this about himself, nobody has asked him, and reading seven small choices as one habit is exactly the sort of claim this page is least equipped to make and most tempted by. It is mine, it is offered as a reading, and the seven facts under it stand whether or not the reading does.</p>
+      <p class="un-against reveal" data-from="agent"><strong>The other reading, which is also available.</strong> Seven artifacts is a count, and a count is all it is. Every row above has a duller explanation on offer and some of them probably take it: a short bio can simply mean the detail lives on the resume, which is one button up this page and which this page has never opened &mdash; <a href="#resume">17 &middot; The Resume</a> is now the account of that, and it does not close it; a <code>&lt;head&gt;</code> with no description is what a hand-written <code>&lt;head&gt;</code> looks like by default rather than a decision; deleting a three-link navigation bar from a site two sections long is good taste; a line through a joke can <em>be</em> the joke. And <em>bad karaoke</em> may just be two words &mdash; he wrote <em>bad</em>, not <em>modest</em>. He has never said any of this about himself, nobody has asked him, and reading seven small choices as one habit is exactly the sort of claim this page is least equipped to make and most tempted by. It is mine, it is offered as a reading, and the seven facts under it stand whether or not the reading does.</p>
 
       <details class="prov reveal-tail">
         <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
         <p class="prov-body" data-from="agent">Nothing new. The seven rows are findings 01, 03, 04, 08, 09, 13 and 14 restated, each linked back to the section where it is shown with its working &mdash; his bio for the first three, his commits and his markup for the last four, and the two emails he answered for what sits behind rows 01 and 02. Quoted phrases are his, character for character, including the lowercase and the missing apostrophes; his commit subject is quoted as he wrote it. Row 03 is deliberately empty rather than filled with something plausible, and will stay empty until he answers. The rows are in the order a reader meets the underlying findings, not ranked, and the seven <code>&lt;details&gt;</code> elements need no JavaScript to open &mdash; <code>js/under.js</code> adds the open-all button and nothing else. <code>window.__under.audit()</code> reports any row whose citation points at a section that is no longer on this page, because sections here get deleted and a closing argument that cites a missing one is worse than none. Grouping the seven, and the word <em>understatement</em>, are mine.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- 17 / The Resume. Not a close reading of the record like 07-15, and
+       not an argument about them like 16: it is the account of the one
+       thing his page points at that this build has never read, and
+       cannot. It sits after The Smaller Word because that section ends
+       by conceding exactly this in one clause, and because a page that
+       closes on what it does not know should put that last rather than
+       halfway up. His live resume link is in .rs-door below, in the
+       markup, outside the rig, and js/resume.js never touches it. -->
+  <section id="resume">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">The One Document He Wrote About Himself Is The One Thing He Didn&rsquo;t Commit</h2>
+
+      <p class="rs-intro reveal" data-from="agent">Every byte his homepage loads is in his repository: eight files, 312,407 bytes, thirteen commits, fixed. The photograph, both fonts, every line of his stylesheet, his name in the <code>&lt;title&gt;</code> &mdash; all of it is in there and none of it can change without a commit saying so. One thing his page points at is not. The document about his career lives on Google Drive, and what the repository holds of it is a link: thirty-three characters of identifier, in the About section, under a button reading <em>View Resume</em>.</p>
+
+      <p class="rs-intro reveal" data-from="agent">That makes it the only part of his portfolio he can change without touching the repository, and the only part that can disappear without him touching it either. He has already moved it once &mdash; and that move needed a commit, because the pointer is in the file. Replacing the document at the far end of the pointer would not, and nothing on this page would know.</p>
+
+      <p class="rs-intro reveal" data-from="agent">The move is the part worth reading, and it happened on the night he built the site. His portfolio is a hundred and seven minutes old when he decides the resume behind that button is the wrong one, and he says so in a commit that does nothing else:</p>
+
+      <p class="rs-quote rs-intro reveal" data-from="site">Update index.html new resume link</p>
+
+      <p class="rs-intro reveal" data-from="agent">One line out, one line in, one file, 22:15:24. Of the seven commits he made to his homepage that July, it is the only subject line that names a file, and the only one that is not a composed phrase &mdash; the others read <em>Simplify page chrome</em>, <em>Fill in real content</em>, <em>Replace hero scroll cue text</em>. This one reads like a note to himself at a quarter past ten at night. That is a reading of a commit message and nothing more; the facts under it are the timestamp, the diff and the two identifiers.</p>
+
+      <p class="rs-nojs placeholder" data-from="agent" data-rs-nojs>The first night needs JavaScript to scrub. The three figures it arrives at &mdash; an hour pointing at nothing, forty-six minutes on the first resume, and every day since on the second &mdash; are in the paragraphs and the bars below either way, and his resume link at the foot of this section is a plain link that has never needed script.</p>
+
+      <div class="rs-rig panel" data-rs-rig hidden>
+        <div class="rs-clock" data-chrome>
+          <span class="rs-time" data-rs-time>20:28:36</span>
+          <span class="rs-date" data-rs-date></span>
+        </div>
+
+        <div class="rs-stage">
+          <p class="rs-stage-k" data-chrome>His resume button, as it stood at that second</p>
+          <span class="rs-btn" data-rs-btn data-state="dead">View Resume</span>
+          <p class="rs-points" data-rs-points data-chrome></p>
+        </div>
+
+        <div class="rs-controls" data-chrome>
+          <label class="rs-label" for="rs-slider">Scrub his first night &mdash; 20:28:36 to 22:28:47</label>
+          <input class="rs-slider" id="rs-slider" type="range" min="0" max="7211" step="60" value="0"
+                 aria-describedby="rs-readout" data-rs-slider />
+          <div class="rs-scale" data-rs-scale>
+            <div class="rs-ends"><span>First commit</span><span>Last commit of the night</span></div>
+          </div>
+        </div>
+
+        <div class="rs-jumps" data-chrome>
+          <button class="panel-btn" type="button" aria-pressed="false" data-rs-jump="dead"><span class="panel-dot" aria-hidden="true"></span>Button, no resume</button>
+          <button class="panel-btn" type="button" aria-pressed="false" data-rs-jump="one"><span class="panel-dot" aria-hidden="true"></span>First resume</button>
+          <button class="panel-btn" type="button" aria-pressed="false" data-rs-jump="two"><span class="panel-dot" aria-hidden="true"></span>The swap</button>
+        </div>
+
+        <dl class="rs-readout" id="rs-readout" data-chrome>
+          <div><dt>Commit in force</dt><dd data-rs-commit></dd></div>
+          <div><dt>Button points at</dt><dd data-rs-target></dd></div>
+          <div><dt>Held that destination</dt><dd data-rs-held></dd></div>
+          <div><dt>A resume behind it</dt><dd data-rs-behind></dd></div>
+        </dl>
+
+        <p class="rs-status" role="status" data-chrome data-rs-status></p>
+      </div>
+
+      <div class="rs-spans reveal">
+        <h3 class="rs-spans-head" data-from="agent">Three spans, on one scale</h3>
+        <p class="rs-spans-sub" data-from="agent">The button has had three destinations. Two of them lasted minutes. Measured against each other, the night he spent getting it right is not visible at all &mdash; which is the only honest way to draw it, so the first two bars are held at a floor width and say so.</p>
+        <dl class="rs-bars">
+          <div class="rs-bar" data-span="dead">
+            <dt><strong>Nothing</strong> &mdash; <code>href="#"</code>, the top of its own page. From the first commit until he had a file to point at.</dt>
+            <dd><span class="rs-track"><span class="rs-fill" data-rs-fill></span></span><span class="rs-fig" data-rs-fig></span></dd>
+          </div>
+          <div class="rs-bar" data-span="one">
+            <dt><strong>The first resume</strong> &mdash; a Google Drive file, added at 21:29:00 in the same commit as the words of his bio.</dt>
+            <dd><span class="rs-track"><span class="rs-fill" data-rs-fill></span></span><span class="rs-fig" data-rs-fig></span></dd>
+          </div>
+          <div class="rs-bar" data-span="two">
+            <dt><strong>The resume that is live now</strong> &mdash; a different Drive file, swapped in at 22:15:24 and untouched since.</dt>
+            <dd><span class="rs-track"><span class="rs-fill" data-rs-fill></span></span><span class="rs-fig" data-rs-fig></span></dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="rs-ids reveal">
+        <h3 class="rs-ids-head" data-from="agent">The two identifiers, character by character</h3>
+        <p class="rs-ids-sub" data-from="agent">A one-line diff that swaps one long opaque string for another is usually a typo being fixed. This one is not, and the two strings say so themselves.</p>
+        <div class="rs-id">
+          <p class="rs-id-k">21:29:00 &mdash; taken down forty-six minutes later</p>
+          <div class="rs-chars" data-rs-chars="one" aria-hidden="true"></div>
+          <p class="sr-only">1P4Ve9u1j2RIx--SmgGF2003jzNQ8CaOD</p>
+        </div>
+        <div class="rs-id">
+          <p class="rs-id-k">22:15:24 &mdash; still live</p>
+          <div class="rs-chars" data-rs-chars="two" aria-hidden="true"></div>
+          <p class="sr-only">1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV</p>
+        </div>
+        <p class="rs-id-note" data-rs-idnote data-from="agent">Both are thirty-three characters, and two of those thirty-three positions hold the same character in both &mdash; position 1, which every Drive identifier starts with, and position 15, a hyphen. The other thirty-one differ. He did not correct a link; he pointed the button at another document.</p>
+      </div>
+
+      <div class="rs-door reveal">
+        <h3 data-from="agent">What is behind it</h3>
+        <p data-from="agent">Nothing on this page can tell you. Both documents are off this domain, and <code>drive.google.com</code> is not reachable from where this page is built &mdash; the request does not resolve. So on what his resume actually says, this build has read not one word of either file: not an employer, not a date, not a degree, not a project. <a href="#known">Everything this page knows</a> opens by saying his portfolio stops after fifty-three words with no projects, no employers and no dates on it. That is true of the page. It is not true of the domain. The rest is one click away and has been the whole time, in the section this page reads most closely, behind a button it renders itself.</p>
+        <p data-from="agent">Which also means the two documents are not comparable here, and this section makes no claim about what changed between them. It knows that something did, that he thought it was worth its own commit, and that whatever he replaced it with has stood ever since.</p>
+        <p data-from="agent">The one in his About section is the one you should use. It is his, it is current, and it is the only door on this page that leads somewhere this page has not been:</p>
+        <p><a class="btn" href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">View Ruslan&rsquo;s resume</a></p>
+      </div>
+
+      <details class="prov reveal-tail">
+        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
+        <p class="prov-body" data-from="agent">All of it is his repository, read with <code>git</code>: six commits on Thursday 23&nbsp;July&nbsp;2026 between 20:28:36 and 22:28:47 Pacific, their subject lines quoted as he typed them, and the two Drive identifiers taken out of the diff of <code>aeb5751</code> &mdash; the older one appears nowhere on this page except in that history. It is printed here as text and is deliberately not a link: he took it down the same night, and sending a visitor to a file he unlinked is not this page's business. The 312,407 bytes are the eight files his homepage loads, measured; the thirteen commits are <a href="#log">finding 08</a>. Every figure in the rig is derived from those timestamps at load rather than typed beside them, and <code>window.__resume.audit()</code> reports them along with the eight assertions that have to hold before the rig renders at all &mdash; including that his live resume link is present on the page and that the identifier he removed is not linked anywhere on it. The first two bars are drawn at a floor width because at true scale they are thousandths of a per cent of the third and would not render; the figure beside each is the real one, and a floored bar labels itself. <strong>Reading his commit message as a note typed in a hurry is mine, and he has never said anything about it</strong> &mdash; the plainer reading is that a one-line fix gets a one-line message. The timestamps, the diff and the character comparison stand either way. What is in either document is unknown here and is not guessed at.</p>
       </details>
     </div>
   </section>
@@ -2105,6 +2234,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/cross.js"></script>
 <script src="js/doors.js"></script>
 <script src="js/under.js"></script>
+<script src="js/resume.js"></script>
 <script src="js/front.js"></script>
 <script src="js/rail.js"></script>
 <script src="js/prov.js"></script>

@@ -1,0 +1,420 @@
+/* The Resume Is The One Thing He Didn't Commit — the first night
+   ----------------------------------------------------------------------
+   Added 2026-10-30. Scoped entirely to #resume.
+
+   The section has two pictures in it and they are deliberately different
+   kinds of picture.
+
+   The scrubber is a reconstruction: a range input over the hundred and
+   twenty minutes of 23 July 2026 during which his site came into
+   existence, with a replica of his resume button showing what it pointed
+   at at that second. Nothing in it animates on its own — the only motion
+   is the motion a person is making with the slider or the arrow keys, so
+   there is nothing here for prefers-reduced-motion to switch off except
+   the two colour transitions at the foot of this file, which are dropped
+   under it anyway.
+
+   The bars underneath are a measurement, on one shared linear scale, and
+   the scale is the argument: the first two spans are minutes and the
+   third is months, so at true scale the first two do not render at all.
+   They are therefore floored at a visible width — stated in the caption
+   and in the provenance note, because a bar drawn wider than its figure
+   is a lie unless the page says so.
+
+   The replica button is a <span>, never an <a>. The destination he took
+   down in 2026 is printed as text and is not linkable, and the live
+   resume link sits outside the rig where it cannot be swapped by script
+   and survives this file being deleted. */
+
+#resume{
+  background:var(--bg-alt);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+
+#resume .rs-intro{ max-width:62ch; }
+
+/* His commit subject, quoted. Same pull-quote treatment his bio gets in
+   The Drive, for the same reason: the words are his. */
+.rs-quote{
+  display:block;
+  margin:var(--space-s) 0;
+  padding-left:14px;
+  border-left:3px solid var(--accent);
+  font-family:var(--mono);
+  font-size:clamp(14px, 2.2vw, 17px);
+  line-height:1.5;
+}
+
+/* ---------- the rig ---------- */
+
+.rs-rig{
+  --panel-accent:#f0b44a;        /* a manila folder, against the blue panels */
+  --panel-accent-soft:rgba(240,180,74,.7);
+  margin-top:var(--space-m);
+}
+
+.rs-clock{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:4px 14px;
+}
+
+.rs-time{
+  font-family:var(--mono);
+  font-size:clamp(22px, 5.4vw, 34px);
+  line-height:1.1;
+  color:var(--panel-ink);
+  font-variant-numeric:tabular-nums;
+}
+
+.rs-date{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+/* The replica. A dashed rule around it, so it never reads as a control
+   you can press — it is a drawing of a button that existed in July. */
+.rs-stage{
+  margin-top:clamp(16px, 3vw, 22px);
+  padding:clamp(14px, 3vw, 20px);
+  border:1px dashed var(--panel-line);
+  border-radius:var(--radius-md);
+  background:rgba(255,255,255,.03);
+}
+
+.rs-stage-k{
+  margin:0 0 10px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+/* Shaped like his real .btn — same pill, same weight — but it is a
+   <span>, so no cursor and no focus ring. */
+.rs-btn{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:var(--radius-pill);
+  font-weight:600;
+  font-size:var(--fs-base);
+  border:1px solid transparent;
+}
+
+.rs-btn[data-state="dead"]{
+  background:transparent;
+  border-color:var(--panel-line);
+  color:var(--panel-dim);
+  text-decoration:line-through;
+  text-decoration-thickness:1px;
+}
+
+.rs-btn[data-state="one"]{
+  background:rgba(240,180,74,.14);
+  border-color:var(--panel-accent-soft);
+  color:var(--panel-ink);
+}
+
+.rs-btn[data-state="two"]{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#fff;
+}
+
+.rs-points{
+  margin:12px 0 0;
+  font-size:var(--fs-base);
+  line-height:1.5;
+  color:var(--panel-dim);
+}
+
+.rs-points code{
+  font-family:var(--mono);
+  font-size:.94em;
+  color:var(--panel-ink);
+  overflow-wrap:anywhere;
+}
+
+/* ---------- the slider ---------- */
+
+.rs-controls{ margin-top:clamp(16px, 3vw, 22px); }
+
+.rs-label{
+  display:block;
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin-bottom:8px;
+}
+
+.rs-slider{
+  width:100%;
+  margin:0;
+  display:block;
+}
+
+/* The commit ticks. Positions are written by the script as percentages
+   of the night, because they are facts about timestamps and not a layout
+   choice — see js/resume.js. */
+.rs-scale{
+  position:relative;
+  margin-top:4px;
+  padding-top:13px;
+}
+
+.rs-tick{
+  position:absolute;
+  top:0;
+  width:2px;
+  height:9px;
+  border-radius:1px;
+  background:var(--panel-line);
+  transform:translateX(-1px);
+}
+
+.rs-tick[data-resume]{ background:var(--panel-accent); height:13px; }
+
+.rs-ends{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.06em;
+  color:var(--panel-dim);
+}
+
+.rs-ends span{ white-space:nowrap; }
+
+/* ---------- the jumps ---------- */
+
+.rs-jumps{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:clamp(14px, 2.5vw, 18px);
+}
+
+.rs-jumps .panel-btn{ min-width:0; flex:1 1 auto; }
+
+/* ---------- the readout ---------- */
+
+.rs-readout{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+  gap:clamp(10px, 2vw, 18px);
+  margin:clamp(16px, 3vw, 24px) 0 0;
+  padding-top:clamp(14px, 2.5vw, 18px);
+  border-top:1px solid var(--panel-line);
+}
+
+.rs-readout > div{ min-width:0; }
+
+.rs-readout dt{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.rs-readout dd{
+  margin:3px 0 0;
+  font-size:var(--fs-base);
+  line-height:1.45;
+  color:var(--panel-ink);
+  overflow-wrap:break-word;
+}
+
+.rs-readout dd code{
+  font-family:var(--mono);
+  font-size:.92em;
+  overflow-wrap:anywhere;
+}
+
+.rs-status{
+  margin:12px 0 0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  line-height:1.5;
+  color:var(--panel-dim);
+  min-height:3em;
+}
+
+/* ---------- the three spans, to scale ---------- */
+
+.rs-spans{ margin-top:var(--space-m); }
+
+.rs-spans-head{
+  margin:0 0 4px;
+  font-size:clamp(15px, 2.2vw, 18px);
+  font-weight:600;
+}
+
+.rs-spans-sub{
+  margin:0 0 clamp(14px, 2.5vw, 18px);
+  max-width:62ch;
+  font-size:var(--fs-base);
+  color:var(--muted);
+}
+
+.rs-bars{
+  margin:0;
+  display:grid;
+  gap:clamp(12px, 2.4vw, 16px);
+}
+
+.rs-bar dt{
+  font-size:var(--fs-base);
+  line-height:1.4;
+}
+
+.rs-bar dd{
+  margin:6px 0 0;
+  display:grid;
+  grid-template-columns:1fr;
+  gap:5px;
+}
+
+.rs-track{
+  position:relative;
+  height:12px;
+  border-radius:var(--radius-pill);
+  background:var(--bg);
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+
+.rs-fill{
+  display:block;
+  height:100%;
+  width:0;
+  border-radius:var(--radius-pill);
+  background:var(--muted);
+}
+
+.rs-bar[data-span="two"] .rs-fill{ background:var(--accent); }
+
+.rs-fig{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+.rs-floored .rs-fig::after{
+  content:" · bar at floor width";
+  color:var(--muted);
+  opacity:.75;
+}
+
+/* ---------- the two identifiers ---------- */
+
+.rs-ids{ margin-top:var(--space-m); }
+
+.rs-ids-head{
+  margin:0 0 4px;
+  font-size:clamp(15px, 2.2vw, 18px);
+  font-weight:600;
+}
+
+.rs-ids-sub{
+  margin:0 0 clamp(14px, 2.5vw, 18px);
+  max-width:62ch;
+  font-size:var(--fs-base);
+  color:var(--muted);
+}
+
+.rs-id{
+  margin:0 0 12px;
+  padding:clamp(12px, 2.4vw, 16px);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  background:var(--bg);
+}
+
+.rs-id-k{
+  margin:0 0 8px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+/* The identifier, one character per cell, so the two rows line up
+   vertically and a matching position is visible rather than asserted.
+   It wraps on a phone; both rows wrap identically because both are the
+   same length, which is itself one of the figures below. */
+.rs-chars{
+  display:flex;
+  flex-wrap:wrap;
+  gap:2px;
+  font-family:var(--mono);
+  font-size:clamp(11px, 2.5vw, 14px);
+  line-height:1;
+}
+
+.rs-ch{
+  flex:0 0 auto;
+  min-width:1.15em;
+  padding:5px 0;
+  text-align:center;
+  border-radius:3px;
+  border:1px solid transparent;
+  color:var(--text);
+  background:var(--bg-alt);
+}
+
+.rs-ch[data-match]{
+  border-color:var(--accent);
+  color:var(--accent);
+  font-weight:700;
+}
+
+.rs-id-note{
+  margin:10px 0 0;
+  font-size:var(--fs-sm);
+  line-height:1.5;
+  color:var(--muted);
+}
+
+/* ---------- the live link, outside the rig ---------- */
+
+.rs-door{
+  margin-top:var(--space-m);
+  padding:clamp(16px, 2.8vw, 24px);
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius-md);
+  background:var(--bg);
+}
+
+.rs-door h3{
+  margin:0 0 8px;
+  font-size:clamp(15px, 2.2vw, 18px);
+}
+
+.rs-door p{
+  margin:0 0 14px;
+  max-width:62ch;
+  font-size:var(--fs-base);
+  line-height:1.6;
+}
+
+.rs-door p:last-of-type{ margin-bottom:0; }
+
+.rs-door .btn{ margin-top:4px; }
+
+@media (prefers-reduced-motion: no-preference){
+  .rs-btn{ transition:background-color 160ms linear, color 160ms linear, border-color 160ms linear; }
+  .rs-fill{ transition:width 220ms ease-out; }
+}
