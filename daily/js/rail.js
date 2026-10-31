@@ -2,8 +2,8 @@
    ----------------------------------------------------------------------
    Added 2026-10-16. Everything load-bearing about the bar is in the HTML
    and the CSS: it is a position:sticky element containing a <details>,
-   so with this file removed it still names Ruslan, still links all
-   seventeen parts of the page, and still carries his three contact links,
+   so with this file removed it still names Ruslan, still links every
+   part of the page, and still carries his three contact links,
    with the browser doing the disclosure and the keyboard handling.
 
    What this adds is the part that cannot be done declaratively:
@@ -17,8 +17,8 @@
         anchor you just jumped to is not sitting underneath it
 
    Section tops are cached rather than read per frame. The page animates
-   on scroll (animation-timeline: view()) and reading seventeen bounding
-   boxes on every rAF while that runs is a measurable amount of layout
+   on scroll (animation-timeline: view()) and reading a bounding box per
+   section on every rAF while that runs is a measurable amount of layout
    for no benefit — the tops only move when the viewport does, or when
    the document's height changes, and both are watched below. */
 (function () {
@@ -69,7 +69,7 @@
   function paint() {
     frame = 0;
 
-    /* One layout read, not seventeen. If the page has grown or shrunk —
+    /* One layout read, not one per section. If the page has grown or shrunk —
        a font landing, an exhibit opening a panel — the cache is stale. */
     if (document.documentElement.scrollHeight !== docH) measure();
 

@@ -261,6 +261,14 @@
   }
 
   controls.hidden = false;
+
+  /* The scrubber's "needs JavaScript" notice was never being taken down,
+     so every visitor who had JavaScript was reading it directly above a
+     working scrubber. Every other section on the page hides its own;
+     this one was missed when the notices went in. Found 2026-10-31. */
+  var nojs = section.querySelector('.pl-nojs');
+  if (nojs) nojs.hidden = true;
+
   paint();
 
   /* ---------- audit ----------

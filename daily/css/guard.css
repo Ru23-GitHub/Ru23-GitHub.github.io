@@ -1,0 +1,354 @@
+/* The Guard — #guard, finding 18
+   ----------------------------------------------------------------------
+   Added 2026-10-31.
+
+   Every other reading of his repository on this page is a reading of
+   something he left out, hid, cut or understated. This one reads the
+   opposite thing and needed a different shape for it, because the
+   finding is not a fact you can print in a table — it is a proportion.
+   One hundred and thirty-four lines, and which of them are there for a
+   visitor rather than for the effect.
+
+   So the rig is two parts:
+
+     1. The strip. His program drawn once, left to right, one hairline
+        per line in file order, coloured by what that line is for. It is
+        a shape rather than a figure: the long solid run in the middle is
+        the letters being built, and everything stippled around it is the
+        edge cases. Bands are flex children with flex:1 1 0, so the strip
+        fits any column width down to a phone without a media query and
+        without any line being dropped.
+
+     2. The seven guards. Each is a static block in the HTML — his code,
+        quoted, with the commit it arrived in. All seven are visible with
+        this file and js/guard.js both removed; the script turns them
+        into a selector and lights the matching bands in the strip, which
+        is the only thing here that needs script at all.
+
+   The panel's lit colour is #6fe3a0, which is the green stop in his own
+   gb-color keyframes (#07f905) lightened until it passes AA on the
+   panel surface. Nothing else here invents a colour. */
+
+#guard .gu-rig{
+  --panel-accent:#6fe3a0;
+  --panel-accent-soft:rgba(111,227,160,.65);
+  margin-block:var(--space-m);
+}
+
+/* ---------- his quoted code, outside the rig ---------- */
+
+.gu-quote{
+  margin:var(--space-s) 0 var(--space-m);
+  padding:var(--space-s);
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius-sm);
+  background:var(--bg-alt);
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  line-height:1.6;
+  overflow-x:auto;
+  white-space:pre;
+}
+
+.gu-placeholder-quote{
+  color:var(--muted);
+  font-style:italic;
+  overflow-wrap:anywhere;
+}
+
+/* ---------- the strip ---------- */
+
+.gu-strip-head{
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px var(--space-s);
+  align-items:baseline;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin:0 0 10px;
+}
+
+.gu-strip-head b{ color:var(--panel-ink); font-weight:600; }
+
+.gu-strip-head.is-second{ margin-top:14px; }
+
+.gu-strip{
+  display:flex;
+  gap:1px;
+  height:52px;
+  align-items:stretch;
+  padding:5px;
+  border-radius:var(--radius-sm);
+  background:rgba(0,0,0,.22);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05);
+  overflow:hidden;
+}
+
+.gu-band{
+  flex:1 1 0;
+  min-width:0;
+  border-radius:1px;
+  background:#565e71;
+  transition:opacity 160ms ease, background-color 160ms ease;
+}
+
+/* The five readings. Blank lines are drawn, not skipped, so the strip is
+   his file at true length rather than a compacted version of it. */
+.gu-band[data-k="show"]{  background:#7f93c4; }
+.gu-band[data-k="guard"]{ background:var(--panel-accent); }
+.gu-band[data-k="note"]{  background:#d9ad66; }
+.gu-band[data-k="frame"]{ background:#565e71; }
+.gu-band[data-k="blank"]{ background:rgba(255,255,255,.06); }
+
+/* A guard is picked: everything that is not it steps back. */
+.gu-rig[data-lit] .gu-band{ opacity:.18; }
+.gu-rig[data-lit] .gu-band[data-on]{
+  opacity:1;
+  box-shadow:0 0 7px 1px var(--panel-accent-soft);
+}
+
+/* ---------- the legend ---------- */
+
+.gu-legend{
+  list-style:none;
+  margin:var(--space-s) 0 0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px var(--space-m);
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+.gu-legend li{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  min-width:0;
+}
+
+.gu-swatch{
+  width:10px; height:10px;
+  flex:none;
+  border-radius:2px;
+  transform:translateY(-1px);
+}
+.gu-swatch[data-k="show"]{  background:#7f93c4; }
+.gu-swatch[data-k="guard"]{ background:var(--panel-accent); }
+.gu-swatch[data-k="note"]{  background:#d9ad66; }
+.gu-swatch[data-k="frame"]{ background:#565e71; }
+.gu-swatch[data-k="blank"]{ background:rgba(255,255,255,.14); }
+
+.gu-n{
+  font-family:var(--mono);
+  font-variant-numeric:tabular-nums;
+  color:var(--panel-ink);
+}
+
+.gu-legend-note{
+  margin:var(--space-s) 0 0;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+  max-width:68ch;
+}
+
+/* ---------- the selector ---------- */
+
+.gu-picks-head{
+  margin:var(--space-m) 0 8px;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.gu-picks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+/* Deliberately not .panel-btn: that has a 116px floor meant for two or
+   three controls, and seven of them at that width is four rows on a
+   phone. Same surface, same lit state, no minimum. */
+.gu-pick{
+  font:inherit;
+  font-size:var(--fs-base);
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:7px 13px;
+  border-radius:var(--radius-pill);
+  border:1px solid rgba(255,255,255,.16);
+  background:linear-gradient(var(--panel-btn-top), var(--panel-btn-bottom));
+  color:var(--panel-ink);
+  cursor:pointer;
+}
+
+.gu-pick:hover{ border-color:rgba(255,255,255,.34); }
+
+.gu-pick-no{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--panel-dim);
+}
+
+.gu-pick[aria-pressed="true"]{
+  background:linear-gradient(var(--panel-btn-on-top), var(--panel-btn-on-bottom));
+  border-color:var(--panel-accent);
+}
+.gu-pick[aria-pressed="true"] .gu-pick-no{ color:var(--panel-accent); }
+
+.gu-foot{
+  margin:var(--space-s) 0 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px var(--space-s);
+  align-items:center;
+}
+
+.gu-say{
+  margin:0;
+  flex:1 1 16rem;
+  min-width:0;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+/* ---------- the seven guards ---------- */
+
+.gu-exes{
+  margin-top:var(--space-m);
+  display:grid;
+  gap:var(--space-m);
+}
+
+.gu-ex{
+  border-top:1px solid var(--panel-line);
+  padding-top:var(--space-s);
+  min-width:0;
+}
+
+.gu-ex-k{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin-bottom:4px;
+}
+
+.gu-ex-no{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--panel-accent);
+  flex:none;
+}
+
+.gu-ex-who{
+  font-family:inherit;
+  font-size:clamp(16px, 2.4vw, 19px);
+  font-weight:600;
+  letter-spacing:0;
+  line-height:1.3;
+  color:var(--panel-ink);
+  margin:0;
+}
+
+.gu-pre{
+  margin:var(--space-s) 0;
+  padding:var(--space-s);
+  border:1px solid var(--panel-line);
+  border-radius:var(--radius-sm);
+  background:rgba(0,0,0,.26);
+  color:var(--panel-ink);
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  line-height:1.6;
+  /* His lines are longer than a phone column and wrapping code changes
+     what it looks like, so this scrolls sideways inside its own box
+     rather than reflowing or pushing the page wide. */
+  overflow-x:auto;
+  white-space:pre;
+  -webkit-overflow-scrolling:touch;
+}
+
+.gu-where{
+  margin:0 0 var(--space-s);
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--panel-dim);
+  overflow-wrap:anywhere;
+}
+
+.gu-where b{ color:var(--panel-ink); font-weight:600; }
+
+.gu-ex-body{
+  margin:0;
+  font-size:var(--fs-md);
+  line-height:1.65;
+  color:#c3cad8;
+  max-width:70ch;
+}
+
+.gu-ex-body + .gu-ex-body{ margin-top:var(--space-s); }
+
+.gu-pre + .gu-pre{ margin-top:calc(-1 * var(--space-s) + 6px); }
+
+.gu-ex-body strong{ color:var(--panel-ink); }
+
+/* With the script running, the seven become one at a time. Without it
+   this rule never applies and all seven stand. */
+.gu-rig[data-js] .gu-ex{ display:none; }
+.gu-rig[data-js] .gu-ex[data-cur]{ display:block; }
+.gu-rig[data-js][data-all] .gu-ex{ display:block; }
+
+/* The first block has no rule above it when it is the only one showing;
+   the heading of the group does that job instead. */
+.gu-rig[data-js]:not([data-all]) .gu-ex[data-cur]{
+  border-top:0;
+  padding-top:0;
+}
+
+/* ---------- the closing count ---------- */
+
+.gu-tally{
+  margin:var(--space-m) 0;
+  padding:var(--space-s) 0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  flex-wrap:wrap;
+  gap:var(--space-s) var(--space-l);
+}
+
+.gu-tally div{ min-width:0; }
+
+.gu-tally dt{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.gu-tally dd{
+  margin:2px 0 0;
+  font-family:var(--display);
+  font-size:clamp(26px, 5vw, 40px);
+  line-height:1.1;
+  color:var(--accent);
+}
+
+.gu-tally dd small{
+  display:block;
+  font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  font-size:var(--fs-md);
+  color:var(--muted);
+  line-height:1.5;
+  margin-top:2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .gu-band{ transition:none; }
+}
