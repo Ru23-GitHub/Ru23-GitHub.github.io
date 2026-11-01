@@ -1,0 +1,295 @@
+/* The Handover — what is left of him in the file he gave away
+   ----------------------------------------------------------------------
+   Added 2026-11-01, in the place The Log held until today.
+
+   The Log was a bar chart of his thirteen commits with a sixty-word
+   gloss under each: seven phone-screens, 5,902px, the largest section on
+   the page, and six of its thirteen rows were about the /daily routine
+   itself rather than about him. Its two durable findings — the whole site
+   in one July evening, and a last commit that deleted — are three
+   sentences at the top of this file now. The chart is in the history.
+
+   Two things carry the argument here:
+
+     .ho-ribbon   daily/index.html drawn end to end, one tick per line
+                  still in his own hand. Positions come from data-lines
+                  rather than from anything typed into a path, so the
+                  drawing cannot disagree with the list beside it.
+
+     .ho-lines    those same lines as text. This is the evidence and it
+                  is in the markup unconditionally: the ribbon is
+                  [data-chrome] and aria-hidden, the list is not.
+
+   The ribbon is a picture of the list. Remove js/handover.js and the
+   ribbon does not draw, the slider never appears, and the section is
+   still the whole finding. */
+
+#handover{ background:var(--bg); }
+
+.ho-stat{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 26px;
+  margin:0 0 var(--space-s);
+  padding:0;
+  list-style:none;
+}
+
+.ho-stat div{ min-width:0; }
+
+.ho-stat dt{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.ho-stat dd{
+  margin:2px 0 0;
+  font-family:var(--mono);
+  font-size:1.15rem;
+  font-variant-numeric:tabular-nums;
+  color:var(--text);
+}
+
+.ho-stat dd small{
+  font-family:inherit;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+/* ---------- his six commits ---------- */
+
+.ho-six{
+  margin:0 0 var(--space-m);
+  padding:0;
+  list-style:none;
+  border-top:1px solid var(--border);
+}
+
+.ho-six > li{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2px 14px;
+  padding:11px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.ho-when{
+  margin:0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.ho-when code{ font-size:inherit; }
+
+.ho-subj{
+  margin:0;
+  font-size:1rem;
+}
+
+.ho-num{
+  margin:0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--muted);
+  font-variant-numeric:tabular-nums;
+}
+
+.ho-num .is-add{ color:var(--ho-add,#1a7f4b); }
+.ho-num .is-del{ color:var(--ho-del,#b3261e); }
+
+/* The two diff colours sit on the page itself rather than inside a panel,
+   so they need the same lift every other page-level colour gets in dark
+   mode. Written twice for the reason theme.css gives: a media query and
+   an attribute selector cannot share a block. Keep the two in step. */
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ho-add:#5fd39b;
+    --ho-del:#ff8b80;
+  }
+}
+
+:root[data-theme="dark"]{
+  --ho-add:#5fd39b;
+  --ho-del:#ff8b80;
+}
+
+.ho-gloss{
+  margin:4px 0 0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+@media (min-width:720px){
+  .ho-six > li{
+    grid-template-columns:200px 1fr 136px;
+    align-items:baseline;
+  }
+  .ho-when{ grid-row:1; }
+  .ho-subj{ grid-row:1; }
+  .ho-num{ grid-row:1; text-align:right; }
+  .ho-gloss{ grid-column:2 / -1; }
+}
+
+/* ---------- the file, drawn and listed ---------- */
+
+.ho-rig{
+  --panel-top:#1b2030;
+  --panel-bottom:#10131c;
+  --panel-accent:#ffb454;
+  --panel-accent-soft:rgba(255,180,84,.7);
+  margin:0 0 var(--space-s);
+}
+
+.ho-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:var(--space-s);
+}
+
+@media (min-width:720px){
+  .ho-grid{ grid-template-columns:72px 1fr; gap:var(--space-m); }
+}
+
+.ho-ribwrap{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  min-width:0;
+}
+
+/* The caption is the only thing that says what the column is. It is
+   [data-chrome] and the ribbon is aria-hidden, so neither is load-bearing:
+   the list beside them carries the same sixteen numbers as text. */
+.ho-ribcap{ margin:0 0 6px; }
+
+@media (min-width:720px){
+  .ho-ribcap{
+    /* Upright beside the list, the caption would be four words wrapped
+       into a 72px column. Keep it, turned. */
+    writing-mode:vertical-rl;
+    transform:rotate(180deg);
+    margin:0 6px 0 0;
+    align-self:center;
+  }
+  .ho-ribwrap{ flex-direction:row; }
+}
+
+/* On a phone the ribbon lies down: a 1,000-unit-tall column next to a
+   list of sixteen rows is taller than the list it describes. */
+.ho-ribbon{
+  width:100%;
+  height:54px;
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.05);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+  overflow:hidden;
+}
+
+@media (min-width:720px){
+  .ho-ribbon{
+    width:72px;
+    height:100%;
+    min-height:420px;
+  }
+}
+
+.ho-ribbon .ho-tick{ fill:var(--panel-accent); }
+
+.ho-ribbon .ho-tick[data-on="true"]{
+  fill:#fff;
+}
+
+.ho-cap{
+  margin:0 0 10px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.ho-lines{
+  margin:0;
+  padding:0;
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+
+.ho-lines > li{
+  display:grid;
+  grid-template-columns:3.6em 1fr;
+  gap:10px;
+  align-items:start;
+  padding:5px 8px;
+  border-radius:var(--radius-sm);
+  border:1px solid transparent;
+}
+
+.ho-lines > li[data-on="true"]{
+  background:rgba(255,180,84,.13);
+  border-color:var(--panel-accent);
+}
+
+.ho-n{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+
+.ho-code{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+  /* His one long line is 88 characters. Wrapping it is ugly; letting it
+     push the page sideways on a 390px phone is worse. */
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  min-width:0;
+}
+
+.ho-blank{
+  font-family:var(--sans, inherit);
+  font-style:italic;
+  color:var(--panel-dim);
+}
+
+/* ---------- the picker ---------- */
+
+.ho-pick{ margin:var(--space-s) 0 0; }
+
+.ho-slider{
+  width:100%;
+  max-width:460px;
+  margin:0;
+}
+
+.ho-read{
+  margin:8px 0 0;
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+  min-height:2.6em;
+}
+
+.ho-read b{ color:var(--panel-accent); }
+
+.ho-nojs{ margin:0 0 var(--space-s); }
+
+/* ---------- the reading ---------- */
+
+.ho-read-out{
+  margin:var(--space-s) 0 0;
+  padding:var(--space-s) 0 0;
+  border-top:1px solid var(--border);
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .ho-lines > li,
+  .ho-ribbon .ho-tick{ transition:background-color 140ms ease, border-color 140ms ease, fill 140ms ease; }
+}
