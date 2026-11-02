@@ -31,6 +31,7 @@
 <link rel="stylesheet" href="css/prov.css" />
 <link rel="stylesheet" href="css/resume.css" />
 <link rel="stylesheet" href="css/guard.css" />
+<link rel="stylesheet" href="css/proxy.css" />
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -82,7 +83,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <li><a href="#known" data-name="What&rsquo;s known">
               <span class="rail-no" aria-hidden="true">&mdash;</span>
               <span class="rail-t">What&rsquo;s known</span>
-              <span class="rail-d">All eighteen findings, in one list</span>
+              <span class="rail-d">All nineteen findings, in one list</span>
             </a></li>
           </ol>
 
@@ -196,6 +197,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             </a></li>
           </ol>
 
+          <span class="rail-k">His one stated interest, a second time &mdash; one</span>
+          <ol class="rail-list">
+            <li><a href="#proxy" data-no="19" data-name="The Proxy">
+              <span class="rail-no" aria-hidden="true">19</span>
+              <span class="rail-t">The Proxy</span>
+              <span class="rail-d">Delete the protected attribute and the gap does not move</span>
+            </a></li>
+          </ol>
+
           <span class="rail-k">Reach him</span>
           <ul class="rail-reach">
             <li><a href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
@@ -274,7 +284,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <div class="container">
       <h2 class="reveal" data-from="agent">Everything This Page Actually Knows</h2>
 
-      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops &mdash; no projects, no employers, no dates &mdash; and this page is not permitted to invent any. The document that would carry them is a link to somewhere else, and <a href="#resume">finding 17</a> is the account of why that is still a gap. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Eighteen findings, each one a section further down, and nothing behind them. The first fifteen run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;15 are his repository</strong>, read closely by something that had nothing else to go on. <strong>16 read nothing new at all</strong>: it is seven of the fifteen counted a second way. <strong>17 read nothing</strong>: it is the one document he published about himself that this page has never opened. <strong>18 went back to the beginning</strong>: the two files everything in the second half was read out of, counted a line at a time for who each line is for. Every finding carries its own sources and caveats with it, folded shut at the foot of its section under <em>Where this comes from</em> &mdash; <span data-prov-total>&hellip;</span>&nbsp;words of them across the page, and none of it is new either.</p>
+      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops &mdash; no projects, no employers, no dates &mdash; and this page is not permitted to invent any. The document that would carry them is a link to somewhere else, and <a href="#resume">finding 17</a> is the account of why that is still a gap. Everything below had to be found instead &mdash; by reading what he wrote, by reading what he committed, by reading the one program he wrote, by reading the one picture of him, and by asking him two questions he answered. Nineteen findings, each one a section further down, and nothing behind them. The first fifteen run in two halves: <strong>01&ndash;06 are him</strong> &mdash; what he wrote about himself and what he answered when asked &mdash; and <strong>07&ndash;15 are his repository</strong>, read closely by something that had nothing else to go on. <strong>16 read nothing new at all</strong>: it is seven of the fifteen counted a second way. <strong>17 read nothing</strong>: it is the one document he published about himself that this page has never opened. <strong>18 went back to the beginning</strong>: the two files everything in the second half was read out of, counted a line at a time for who each line is for. <strong>19 read nothing of his either</strong>: it is the second of two things built on the one clause of his bio he calls an interest, and the only part of it that is his is the clause. Every finding carries its own sources and caveats with it, folded shut at the foot of its section under <em>Where this comes from</em> &mdash; <span data-prov-total>&hellip;</span>&nbsp;words of them across the page, and none of it is new either.</p>
 
       <ol class="kn-list reveal-stagger">
 
@@ -368,12 +378,17 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <p class="kn-fact">His hero is two files and 287 lines, and fifty-one of those lines are there only so that it does not go wrong for somebody else &mdash; a font that has not loaded, a phone turned sideways, a visitor who has asked for less motion. He wrote 370 words of comments about them and 53 about himself. Six of the seven guards were in the commit that created the site, when his bio still read <em>[Add your bio here]</em>.</p>
           <p class="kn-meta"><span class="kn-src" data-src="repo">His code</span> <a class="kn-go" href="#guard">The Guard</a></p>
         </li>
+        <li class="kn-row" data-from="agent">
+          <span class="kn-no" aria-hidden="true">19</span>
+          <p class="kn-fact">The one thing his bio calls an interest rather than something he enjoys is the societal impact of AI tools. Blinding a model to a protected attribute &mdash; the first fix almost everyone reaches for &mdash; moves an approval gap between two identically-repaying groups by nothing at all, because the ordinary columns carry the attribute anyway.</p>
+          <p class="kn-meta"><span class="kn-src" data-src="bio">His bio</span> <a class="kn-go" href="#proxy">The Proxy</a></p>
+        </li>
       </ol>
 
       <p class="kn-gap reveal" data-from="agent">Two of the four things his bio says he does with his free time are still blank. <strong>Travelling and cooking have no section of their own</strong>: the cooking question has sat unanswered in his inbox since 8&nbsp;October &mdash; it is row 03 of finding 16, and that row is empty on purpose &mdash; and travelling has not been asked at all &mdash; the rule is one open question at a time. Finding 07 comes nearer to travelling than anything else here and still does not reach it, because a photograph that will not say where it was taken settles nothing. Guessing is the one thing this page is not allowed to do.</p>
 
       <details class="prov reveal-tail">
-        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where these eighteen come from</span><span class="prov-n" data-prov-n></span></summary>
+        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where these nineteen come from</span><span class="prov-n" data-prov-n></span></summary>
         <p class="prov-body" data-from="agent">Nothing here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: two emails, two answers, ten names in total &mdash; plus, on the <em>from</em> line of those same two mails rather than in anything he typed, the two-letter name his own account signs itself with. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else. There is a third thing his page points at &mdash; the resume behind his own button &mdash; and it is not a source here at all: finding 17 is the account of why not.</p>
       </details>
     </div>
@@ -1008,6 +1023,8 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <p class="th-status" role="status" data-th-status></p>
         </div>
       </div>
+
+      <p class="th-intro reveal" data-from="agent">There is a companion to this one at the foot of the page: <a href="#proxy">19&nbsp;&middot;&nbsp;The Proxy</a>, built on the same clause of his bio. This section is about three definitions of fair that cannot hold at once. That one is about the fix most people try before they get here &mdash; taking the protected attribute away from the model &mdash; and how little it does.</p>
 
       <details class="prov reveal-tail">
         <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">What this demo is, and isn't</span><span class="prov-n" data-prov-n></span></summary>
@@ -2189,7 +2206,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
       <div class="rs-door reveal">
         <h3 data-from="agent">What is behind it</h3>
-        <p data-from="agent">Nothing on this page can tell you. Both documents are off this domain, and <code>drive.google.com</code> is not reachable from where this page is built &mdash; the request does not resolve. So on what his resume actually says, this build has read not one word of either file: not an employer, not a date, not a degree, not a project. <a href="#known">Everything this page knows</a> opens by saying his portfolio stops after fifty-three words with no projects, no employers and no dates on it. That is true of the page. It is not true of the domain. The rest is one click away and has been the whole time, in the section this page reads most closely, behind a button it renders itself.</p>
+        <p data-from="agent">Nothing on this page can tell you. Both documents are off this domain, and <code>drive.google.com</code> is not reachable from where this page is built &mdash; the name resolves, and the egress proxy this build runs behind then refuses the connection with a 403, which was checked again on 2&nbsp;November&nbsp;2026 and still does. So on what his resume actually says, this build has read not one word of either file: not an employer, not a date, not a degree, not a project. <a href="#known">Everything this page knows</a> opens by saying his portfolio stops after fifty-three words with no projects, no employers and no dates on it. That is true of the page. It is not true of the domain. The rest is one click away and has been the whole time, in the section this page reads most closely, behind a button it renders itself.</p>
         <p data-from="agent">Which also means the two documents are not comparable here, and this section makes no claim about what changed between them. It knows that something did, that he thought it was worth its own commit, and that whatever he replaced it with has stood ever since.</p>
         <p data-from="agent">The one in his About section is the one you should use. It is his, it is current, and it is the only door on this page that leads somewhere this page has not been:</p>
         <p><a class="btn" href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">View Ruslan&rsquo;s resume</a></p>
@@ -2211,6 +2228,10 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
        and it is read out of the two files this page has quoted more
        often than anything else, so it goes after it. That comment has
        been amended rather than left standing as if it were still true.
+       On 2 November 19 was added below this one, so this is no longer
+       the last section either; the argument for closing on him rather
+       than on my limits survives, since 19 is built on his one stated
+       interest.
 
        Numbered 18 and nothing above it is renumbered. Its natural home
        is the 07-15 group of repository readings, but inserting it at 16
@@ -2422,6 +2443,171 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <!-- 19 / The Proxy. The second demonstration built on the one thing
+       his bio calls an interest, and the companion to 06: that one shows
+       three definitions of fair pulling apart, this one shows the fix
+       most people reach for first doing nothing at all.
+
+       Numbered 19 and placed last, for the same reason 18 was: nothing
+       above it is renumbered, because moving 07-18 would move every
+       reference to all of them. Its natural home on the page is directly
+       after 06, with which it is a pair, and 06 links down to it twice.
+       Last is also defensible on its own terms - 18 took this position
+       on the argument that the page should close on him rather than on
+       my limits, and the thing he says he is interested in is at least
+       as much him as his hero's fallbacks are. -->
+  <section id="proxy">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">Take The Label Away And The Form Puts It Back</h2>
+
+      <p class="px-intro reveal" data-from="agent">Of the four things his bio says he does with his free time, three now have a section on this page. Of the one thing it calls an <em>interest</em> &mdash; <span data-from="site">exploring the societal impacts of AI tools, for better or worse</span> &mdash; there was one, <a href="#threshold">06&nbsp;&middot;&nbsp;The Line</a>, and it makes the harder of the two points: three reasonable definitions of a fair decision cannot all hold at once. This is the easier point, and the one a visitor is far likelier to have arrived with the wrong answer to.</p>
+
+      <p class="px-intro reveal" data-from="agent">The wrong answer is: <strong>don&rsquo;t give the model the protected attribute.</strong> It is the first fix almost everyone reaches for, it is often written into policy, and it does close to nothing. Below is why, in <span data-px-says="total">1,600</span> applicants &mdash; <span data-px-says="na">1,000</span> in Group&nbsp;A, <span data-px-says="nb">600</span> in Group&nbsp;B &mdash; built so that <strong>both groups repay at exactly the same rate</strong>: <span data-px-says="repayA">51.50%</span> and <span data-px-says="repayB">51.50%</span>. There is no real difference between these groups in the only thing the model is trying to predict. Whatever gap appears is the model&rsquo;s.</p>
+
+      <p class="px-intro reveal" data-from="agent">Switch the group column off. Then start switching off the ordinary-looking ones.</p>
+
+      <p class="px-nojs placeholder" data-from="agent">This one needs JavaScript: it is 1,600 applicants, seven columns and two models recomputed on every click, and the numbers are the argument. The result it reaches is in the paragraph under the rig either way &mdash; the approval gap does not move at all when the group column is removed, because five of the remaining six columns carry the group anyway, and a crude classifier reads it back out of them four times in five.</p>
+
+      <div class="px-rig panel" data-px-rig hidden>
+
+        <p class="px-rig-head" id="px-inputs-head">What the model is allowed to see</p>
+
+        <ul class="px-inputs" role="group" aria-labelledby="px-inputs-head">
+
+          <li class="px-input px-input-label">
+            <label class="px-row">
+              <input type="checkbox" data-px-label checked />
+              <span class="px-names">
+                <span class="px-iname">Which group they are in</span>
+                <span class="px-imeta">the protected attribute itself</span>
+              </span>
+              <span class="px-measures"></span>
+            </label>
+          </li>
+
+          <li class="px-input" data-px-feat="history">
+            <label class="px-row">
+              <input type="checkbox" checked />
+              <span class="px-names">
+                <span class="px-iname">Length of credit history</span>
+                <span class="px-imeta">years of record</span>
+              </span>
+              <span class="px-measures">
+                <span class="px-measure" data-px-bar="predicts"><span>Predicts repaying</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+                <span class="px-measure" data-px-bar="reveals"><span>Reveals the group</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+              </span>
+            </label>
+          </li>
+
+          <li class="px-input" data-px-feat="income">
+            <label class="px-row">
+              <input type="checkbox" checked />
+              <span class="px-names">
+                <span class="px-iname">Declared income</span>
+                <span class="px-imeta">as entered on the form</span>
+              </span>
+              <span class="px-measures">
+                <span class="px-measure" data-px-bar="predicts"><span>Predicts repaying</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+                <span class="px-measure" data-px-bar="reveals"><span>Reveals the group</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+              </span>
+            </label>
+          </li>
+
+          <li class="px-input" data-px-feat="tenure">
+            <label class="px-row">
+              <input type="checkbox" checked />
+              <span class="px-names">
+                <span class="px-iname">Years at this address</span>
+                <span class="px-imeta">how settled they are</span>
+              </span>
+              <span class="px-measures">
+                <span class="px-measure" data-px-bar="predicts"><span>Predicts repaying</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+                <span class="px-measure" data-px-bar="reveals"><span>Reveals the group</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+              </span>
+            </label>
+          </li>
+
+          <li class="px-input" data-px-feat="device">
+            <label class="px-row">
+              <input type="checkbox" checked />
+              <span class="px-names">
+                <span class="px-iname">Device the form came from</span>
+                <span class="px-imeta">phone, laptop, something older</span>
+              </span>
+              <span class="px-measures">
+                <span class="px-measure" data-px-bar="predicts"><span>Predicts repaying</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+                <span class="px-measure" data-px-bar="reveals"><span>Reveals the group</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+              </span>
+            </label>
+          </li>
+
+          <li class="px-input" data-px-feat="referral">
+            <label class="px-row">
+              <input type="checkbox" checked />
+              <span class="px-names">
+                <span class="px-iname">How they heard about it</span>
+                <span class="px-imeta">referral channel</span>
+              </span>
+              <span class="px-measures">
+                <span class="px-measure" data-px-bar="predicts"><span>Predicts repaying</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+                <span class="px-measure" data-px-bar="reveals"><span>Reveals the group</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+              </span>
+            </label>
+          </li>
+
+          <li class="px-input" data-px-feat="district">
+            <label class="px-row">
+              <input type="checkbox" checked />
+              <span class="px-names">
+                <span class="px-iname">Postal district</span>
+                <span class="px-imeta">where they live</span>
+              </span>
+              <span class="px-measures">
+                <span class="px-measure" data-px-bar="predicts"><span>Predicts repaying</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+                <span class="px-measure" data-px-bar="reveals"><span>Reveals the group</span><span class="px-track"><span class="px-fill" data-px-fill></span></span><span class="px-fig" data-px-fig>&mdash;</span></span>
+              </span>
+            </label>
+          </li>
+
+        </ul>
+
+        <div class="px-presets">
+          <p class="px-presets-head" id="px-presets-head">Or jump to the four settings worth comparing</p>
+          <div class="px-preset-row" role="group" aria-labelledby="px-presets-head">
+            <button class="panel-btn" type="button" aria-pressed="false" data-px-preset="all"><span class="panel-dot" aria-hidden="true"></span>Everything, group included</button>
+            <button class="panel-btn" type="button" aria-pressed="false" data-px-preset="blind"><span class="panel-dot" aria-hidden="true"></span>Blind to the group</button>
+            <button class="panel-btn" type="button" aria-pressed="false" data-px-preset="obvious"><span class="panel-dot" aria-hidden="true"></span>Drop the two obvious proxies</button>
+            <button class="panel-btn" type="button" aria-pressed="false" data-px-preset="clean"><span class="panel-dot" aria-hidden="true"></span>Keep only the clean column</button>
+          </div>
+        </div>
+
+        <dl class="px-readout">
+          <div><dt>Inputs in use</dt><dd data-px-out="inputs">&mdash;</dd></div>
+          <div><dt>Approved, Group A</dt><dd data-px-out="rateA">&mdash;</dd></div>
+          <div><dt>Approved, Group B</dt><dd data-px-out="rateB">&mdash;</dd></div>
+          <div class="px-key">
+            <dt>Approval gap</dt>
+            <dd data-px-out="gap">&mdash;</dd>
+            <span class="px-gaptrack" aria-hidden="true"><span class="px-gapfill" data-px-gapbar></span></span>
+          </div>
+          <div><dt>Decisions correct</dt><dd data-px-out="accuracy">&mdash;</dd></div>
+          <div class="px-key"><dt>Group recoverable from the inputs</dt><dd data-px-out="recover">&mdash;</dd></div>
+        </dl>
+
+        <p class="px-status" role="status" data-px-status></p>
+      </div>
+
+      <p class="px-cost reveal-tail" data-from="agent"><strong>What the rig does when you blind it.</strong> With the group column switched on, Group&nbsp;A is approved at <span data-px-says="rateABlind">40.9%</span> and Group&nbsp;B at <span data-px-says="rateBBlind">65.2%</span> &mdash; a gap of <span data-px-says="gapAll">24.3</span>&nbsp;points between two groups that repay identically. Switch the group column off and the gap is <span data-px-says="gapBlind">24.3</span>&nbsp;points. Not smaller. The same. The protected attribute was never doing the work: it is worth <span data-px-says="labelW">0.000</span> to the model, because both groups repay at the same rate, so removing it removes nothing. Meanwhile a crude classifier reads the group back out of the six remaining columns <span data-px-says="recBlind">81.1%</span> of the time, against <span data-px-says="chance">62.5%</span> for always guessing the larger group. Drop the two columns that leak most and the gap only falls to <span data-px-says="gapObvious">14.1</span>&nbsp;points. <strong>The gap closes once &mdash; at <span data-px-says="gapClean">0.0</span>&nbsp;points &mdash; and only when the model is left with the single column that carries no group signal at all, which costs <span data-px-says="costClean">5.8</span>&nbsp;points of accuracy</strong>, from <span data-px-says="accBlind">79.9%</span> correct to <span data-px-says="accClean">74.1%</span>. That is the actual shape of the thing. You do not get there by looking away; you get there by giving something up, on purpose, and saying what.</p>
+
+      <p class="px-against reveal-tail" data-from="agent"><strong>What this is not.</strong> It is not a measurement. The applicants are synthetic and every number above is arithmetic on a population I built, so it demonstrates a mechanism rather than telling you anything about any real lender, any real postcode or any real person. In particular I chose how much each column leaks &mdash; the result follows from that choice, and a column that leaks nothing exists here because I put one there. Real data rarely offers one. It is also not Ruslan&rsquo;s argument: he has never written a word about proxy variables or fairness through unawareness anywhere in this repository. What is his is the clause this is built on and the sixth line of his skills list. The reading, the cohort, the two models and every word of this section are mine.</p>
+
+      <details class="prov reveal-tail">
+        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from, and what is stipulated</span><span class="prov-n" data-prov-n></span></summary>
+        <p class="prov-body" data-from="agent">The only thing of his in this section is one clause of his bio &mdash; <span data-from="site">exploring the societal impacts of AI tools, for better or worse</span> &mdash; and the last of his six skills, <span data-from="site">fair &amp; ethical ML/AI research</span>. Everything else is built. <strong>Each applicant gets a repayment propensity drawn from the same distribution whichever group they are in</strong>, which is what makes the two measured repayment rates equal and is the opposite of how <a href="#threshold">06&nbsp;&middot;&nbsp;The Line</a> is built, where the gap comes from a genuine base-rate difference. Every column is then that propensity, times a loading I chose, plus a shift that depends only on the group, plus noise: the loading is what the column honestly tells you about repaying, the shift is the leak. <strong>Those loadings and shifts are mine and are stipulated, not measured</strong>, and they are listed in the header comment of <code>js/proxy.js</code> with the reasoning. What follows from them is arithmetic. Both models are closed-form, so nothing is fitted and no load lands anywhere different: the decision is a diagonal linear discriminant whose per-column weights are computed off the cohort rather than typed in, and the group-recovery figure is a diagonal Gaussian naive Bayes. <strong>Naive Bayes is deliberately not the best classifier available here</strong> &mdash; the columns are correlated within a group, so its independence assumption is false and it understates recoverability; the figure is a floor. The cut is at the median score, so exactly half the cohort is approved under every setting and two readings are always comparable. The seed is 42 and <strong>it was chosen</strong>: at 42 the two groups&rsquo; repayment rates come out equal to two decimal places, which is the condition the section rests on. Five other seeds were tried. Across all six the gap runs 19.7 to 25.6 points and recoverability 81.1 to 83.7%, and blinding never closes any of it &mdash; but at three of the five the two groups&rsquo; repayment rates come apart by up to 6.2 points, and at those seeds part of the gap is a real base-rate difference rather than pure leakage, which is precisely the confound 42 was picked to remove. <code>window.__proxy.sweep()</code> re-runs all six in the browser and prints that repayment-rate difference beside each, and <code>window.__proxy.audit()</code> checks the six claims this section makes against the live cohort, including that dropping the group column does not move the gap and that dropping the proxies does cost accuracy. On the result itself: fairness through unawareness is a named and long-documented failure, not something found here. See <a href="https://dl.acm.org/doi/10.1145/2090236.2090255" target="_blank" rel="noopener">Dwork, Hardt, Pitassi, Reingold &amp; Zemel, <em>Fairness Through Awareness</em> (2012)</a> and <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2477899" target="_blank" rel="noopener">Barocas &amp; Selbst, <em>Big Data&rsquo;s Disparate Impact</em> (2016)</a>. The amber on the panel marks this as the second demo of the same clause; <a href="#threshold">06</a> is blue.</p>
+      </details>
+    </div>
+  </section>
+
   <footer>
     &copy; <span id="year"></span> Ruslan Manoharan
     <span class="footer-sep" aria-hidden="true">&middot;</span>
@@ -2450,6 +2636,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 <script src="js/under.js"></script>
 <script src="js/resume.js"></script>
 <script src="js/guard.js"></script>
+<script src="js/proxy.js"></script>
 <script src="js/front.js"></script>
 <script src="js/rail.js"></script>
 <script src="js/prov.js"></script>

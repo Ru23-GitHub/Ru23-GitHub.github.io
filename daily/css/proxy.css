@@ -1,0 +1,229 @@
+/* The Proxy — finding 19
+   ----------------------------------------------------------------------
+   Added 2026-11-02. Layout only; all the console chrome comes from
+   panel.css, which this section sets four custom properties on and
+   otherwise leaves alone.
+
+   The rig is one list of inputs. Each row is a checkbox, a name, and two
+   small bars — what the column tells you about repayment, and what it
+   tells you about the group. At 390px the bars drop under the name
+   rather than shrinking into nothing. */
+
+#proxy .px-intro{ max-width:66ch; }
+
+#proxy .px-rig{
+  --panel-accent:#ffb44d;          /* amber: the second of his interest's two demos */
+  --panel-accent-soft:rgba(255,180,77,.65);
+  --panel-btn-on-top:#4a3415;
+  --panel-btn-on-bottom:#35250f;
+  margin:var(--space-m) 0;
+}
+
+#proxy .px-rig-head{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin:0 0 12px;
+}
+
+/* ---------- the input list ---------- */
+
+#proxy .px-inputs{
+  list-style:none;
+  margin:0 0 var(--space-s);
+  padding:0;
+  display:grid;
+  gap:2px;
+}
+
+#proxy .px-input{
+  border-radius:var(--radius-sm);
+  background:rgba(255,255,255,.03);
+}
+
+#proxy .px-input-label{
+  background:rgba(255,180,77,.09);
+  margin-bottom:10px;
+}
+
+#proxy .px-row{
+  display:grid;
+  grid-template-columns:auto minmax(0,1fr) minmax(0,1.1fr);
+  align-items:center;
+  gap:10px 14px;
+  padding:10px 12px;
+  margin:0;
+  cursor:pointer;
+}
+
+#proxy .px-row input[type="checkbox"]{
+  width:17px; height:17px;
+  flex:none;
+  cursor:pointer;
+}
+
+#proxy .px-names{ min-width:0; }
+
+#proxy .px-iname{
+  display:block;
+  font-weight:600;
+  line-height:1.3;
+}
+
+#proxy .px-imeta{
+  display:block;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+/* ---------- the two bars ---------- */
+
+#proxy .px-measures{
+  display:grid;
+  gap:5px;
+  min-width:0;
+}
+
+#proxy .px-measure{
+  display:grid;
+  grid-template-columns:7.5em minmax(40px,1fr) 2.6em;
+  align-items:center;
+  gap:8px;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+#proxy .px-track{
+  display:block;
+  height:7px;
+  border-radius:var(--radius-pill);
+  background:rgba(255,255,255,.08);
+  overflow:hidden;
+}
+
+#proxy .px-fill{
+  display:block;
+  height:100%;
+  width:0;
+  border-radius:var(--radius-pill);
+  background:#6ea8ff;
+}
+
+#proxy [data-px-bar="reveals"] .px-fill{ background:var(--panel-accent); }
+
+#proxy .px-fig{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:0;
+  text-align:right;
+  color:var(--panel-ink);
+}
+
+/* ---------- presets ---------- */
+
+#proxy .px-presets{ margin:var(--space-s) 0; }
+
+#proxy .px-presets-head{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin:0 0 9px;
+}
+
+#proxy .px-preset-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+#proxy .px-preset-row .panel-btn{ min-width:0; }
+
+/* ---------- readout ---------- */
+
+#proxy .px-readout{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+  gap:12px 18px;
+  margin:var(--space-s) 0 0;
+  padding-top:var(--space-s);
+  border-top:1px solid var(--panel-line);
+}
+
+#proxy .px-readout div{ margin:0; min-width:0; }
+
+#proxy .px-readout dt{
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+#proxy .px-readout dd{
+  margin:3px 0 0;
+  font-family:var(--mono);
+  font-size:16px;
+  color:var(--panel-ink);
+  overflow-wrap:anywhere;
+}
+
+#proxy .px-readout .px-key dd{ color:var(--panel-accent); font-size:19px; }
+
+#proxy .px-gaptrack{
+  display:block;
+  height:6px;
+  margin-top:7px;
+  border-radius:var(--radius-pill);
+  background:rgba(255,255,255,.08);
+  overflow:hidden;
+}
+
+#proxy .px-gapfill{
+  display:block;
+  height:100%;
+  width:0;
+  border-radius:var(--radius-pill);
+  background:var(--panel-accent);
+  transition:width .18s ease;
+}
+
+#proxy .px-status{
+  margin:var(--space-s) 0 0;
+  font-size:var(--fs-md);
+  line-height:1.55;
+  color:var(--panel-dim);
+  min-height:3.2em;
+}
+
+/* ---------- the closing note ---------- */
+
+#proxy .px-cost{
+  max-width:66ch;
+  margin:var(--space-m) 0 0;
+  padding-left:14px;
+  border-left:3px solid var(--accent);
+}
+
+#proxy .px-against{
+  max-width:66ch;
+  margin:var(--space-m) 0 0;
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--muted);
+}
+
+@media (prefers-reduced-motion: reduce){
+  #proxy .px-gapfill{ transition:none; }
+}
+
+@media (max-width: 720px){
+  #proxy .px-row{
+    grid-template-columns:auto minmax(0,1fr);
+    align-items:start;
+  }
+  #proxy .px-measures{ grid-column:2; }
+  #proxy .px-measure{ grid-template-columns:6.8em minmax(30px,1fr) 2.6em; }
+}
