@@ -1,0 +1,268 @@
+/* 20 / The Correspondence — the page's only two-way channel to him
+   ----------------------------------------------------------------------
+   Added 2026-11-03.
+
+   Four of this page's findings did not come out of the repository. They
+   came out of three emails, two of which were answered. This section is
+   that correspondence, laid out as what it is: letters.
+
+   The layout is deliberately not a .panel. Every instrument on this page
+   is a dark console because every instrument is a machine you operate;
+   three letters are not a machine, and dressing them as one would have
+   been the fourth copy of a look that already carries five sections.
+   They are paper: a card on the page background, a rule down the left
+   edge, and a different edge colour depending on which direction the
+   letter went.
+
+   Nothing here needs script to be read. js/post.js writes in the three
+   figures that are arithmetic on the timestamps and the quoted words —
+   turnaround, days open, word counts — and does nothing else. */
+
+#post{ background:var(--bg); }
+
+.po-intro{ max-width:66ch; }
+
+/* ---------- the thread ---------- */
+
+.po-thread{
+  list-style:none;
+  /* Capped to a reading measure. The container is up to 960px wide, which
+     is right for a figure and much too wide for a quoted sentence: the
+     ask in exchange 01 ran to about 105 characters a line before this. */
+  max-width:76ch;
+  margin:var(--space-m) 0 0;
+  padding:0;
+  display:grid;
+  gap:var(--space-m);
+}
+
+.po-ex{
+  display:grid;
+  gap:10px;
+}
+
+.po-head{
+  display:flex;
+  align-items:baseline;
+  gap:10px;
+  margin:0;
+  padding-bottom:8px;
+  border-bottom:1px solid var(--border);
+  flex-wrap:wrap;
+}
+
+.po-no{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--muted);
+  flex:none;
+}
+
+.po-subj{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--text);
+  overflow-wrap:anywhere;
+}
+
+/* ---------- a letter ---------- */
+
+.po-let{
+  position:relative;
+  border:1px solid var(--border);
+  border-left-width:3px;
+  border-radius:var(--radius-md);
+  padding:clamp(12px, 2.4vw, 18px);
+  background:var(--bg);
+}
+
+/* Outbound is the agent's; inbound is his. The two are told apart by the
+   left edge and by indent, not by colour alone — the indent survives a
+   forced-colours mode and a monochrome screen. */
+.po-out{ border-left-color:var(--border); }
+.po-in { border-left-color:var(--accent); background:var(--bg-alt); }
+.po-wait{ border-left-color:var(--muted); border-left-style:dashed; }
+
+@media (min-width:720px){
+  .po-in,
+  .po-wait{ margin-left:clamp(16px, 4vw, 48px); }
+}
+
+.po-when{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:0 0 8px;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.po-dir{
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  font-weight:600;
+}
+
+.po-in .po-dir{ color:var(--accent); }
+
+.po-turn{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  padding:2px 8px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  color:var(--text);
+  white-space:nowrap;
+}
+
+.po-turn[data-po-open]{
+  border-style:dashed;
+  color:var(--muted);
+}
+
+/* ---------- the words themselves ---------- */
+
+.po-ask,
+.po-said{
+  margin:0;
+  font-size:clamp(15px, 2.1vw, 17px);
+  line-height:1.5;
+}
+
+.po-said{
+  font-weight:600;
+  overflow-wrap:anywhere;
+}
+
+.po-q{ color:var(--muted); }
+
+.po-got{
+  margin:10px 0 0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.po-got strong{ color:var(--text); }
+
+.po-none{
+  margin:0;
+  font-size:clamp(15px, 2.1vw, 17px);
+  color:var(--muted);
+  font-style:italic;
+}
+
+/* ---------- the full letter, folded ---------- */
+
+.po-full{ margin-top:10px; }
+
+.po-full > summary{
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  list-style:none;
+}
+
+.po-full > summary::-webkit-details-marker{ display:none; }
+
+.po-full > summary:hover{ color:var(--text); }
+
+.po-full > summary::before{
+  content:"";
+  width:0; height:0;
+  border-left:5px solid currentColor;
+  border-top:4px solid transparent;
+  border-bottom:4px solid transparent;
+  transition:transform 160ms ease;
+}
+
+.po-full[open] > summary::before{ transform:rotate(90deg); }
+
+@media (prefers-reduced-motion: reduce){
+  .po-full > summary::before{ transition:none; }
+}
+
+.po-body{
+  margin-top:10px;
+  padding-left:12px;
+  border-left:1px solid var(--border);
+  font-size:var(--fs-base);
+  color:var(--muted);
+}
+
+.po-body p{ margin:0 0 .7em; color:inherit; }
+.po-body p:last-child{ margin-bottom:0; }
+
+/* ---------- the tally ---------- */
+
+.po-tally{
+  max-width:76ch;
+  margin:var(--space-m) 0 0;
+  padding:clamp(14px, 2.6vw, 22px);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  background:var(--bg-alt);
+}
+
+.po-bars{
+  display:grid;
+  gap:12px;
+  margin:0 0 12px;
+}
+
+.po-bar{
+  display:grid;
+  grid-template-columns:minmax(0,1fr);
+  gap:4px;
+}
+
+.po-bar-lab{
+  display:flex;
+  justify-content:space-between;
+  gap:10px;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.po-bar-lab b{
+  font-family:var(--mono);
+  color:var(--text);
+  font-weight:600;
+  /* "53 words" broke across two lines at 390px, which left a bar
+     labelled just "words". It is two words; it keeps them. */
+  white-space:nowrap;
+  flex:none;
+}
+
+.po-bar-track{
+  height:12px;
+  border-radius:var(--radius-pill);
+  background:var(--border);
+  overflow:hidden;
+}
+
+.po-bar-fill{
+  display:block;
+  height:100%;
+  width:0;
+  border-radius:var(--radius-pill);
+  background:var(--muted);
+}
+
+.po-bar[data-po-bar="letters"] .po-bar-fill{ background:var(--accent); }
+
+.po-tally figcaption{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.po-tally figcaption strong{ color:var(--text); }
+
+.po-close{ max-width:66ch; }
