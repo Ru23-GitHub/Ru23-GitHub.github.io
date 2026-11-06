@@ -352,3 +352,20 @@
 @media (prefers-reduced-motion: reduce){
   .gu-band{ transition:none; }
 }
+
+/* The closing paragraph, where this section stops being about his files
+   and turns on the page it is printed in. Marked rather than merely
+   written, so it cannot be mistaken for another finding about him: the
+   rule down its left is the same one the provenance disclosures use. */
+#guard .gu-ours{
+  margin:1.6rem 0 0;
+  padding:1rem 0 1rem 1.1rem;
+  border-left:2px solid var(--rule, rgba(128,128,128,.32));
+  color:var(--muted, inherit);
+  font-size:.97rem;
+}
+#guard .gu-ours strong{ color:var(--text, inherit); }
+
+@media (max-width:480px){
+  #guard .gu-ours{ padding-left:.85rem; }
+}
