@@ -140,6 +140,24 @@
   }
   window.addEventListener('load', function () { measure(); schedule(); });
 
+  /* The header comment above says the tops move when the viewport does
+     or when the document's height changes, and that both are watched.
+     Only the first was. The second has mattered since js/load.js began
+     fetching each section's script on approach: a rig swapping in for
+     its static fallback changes the height of the page under the cached
+     figures, and the bar then names the section you have just left.
+     Also covers a <details> opening and a late image. */
+  if (window.ResizeObserver) {
+    var seenH = 0;
+    new ResizeObserver(function () {
+      var h = document.documentElement.scrollHeight;
+      if (h === seenH) return;
+      seenH = h;
+      measure();
+      schedule();
+    }).observe(document.body);
+  }
+
   /* ---------- the sheet ---------- */
 
   if (!menu) return;

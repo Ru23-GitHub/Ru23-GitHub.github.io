@@ -2758,29 +2758,18 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </button>
   </footer>
 
+<!-- Five files that are not scoped to a section you have to scroll to:
+     the hero, the About control, the navigator, the provenance counts,
+     the theme toggle. The other eighteen each furnish exactly one
+     section and are fetched as you approach it, by js/load.js — which
+     explains itself at length, including what it gives up. Each of those
+     sections renders its designed static fallback until its file lands. -->
 <script src="js/intro.js"></script>
-<script src="js/source.js"></script>
-<script src="js/handover.js"></script>
-<script src="js/north.js"></script>
-<script src="js/frame.js"></script>
-<script src="js/shelf.js"></script>
-<script src="js/egg.js"></script>
-<script src="js/hand.js"></script>
-<script src="js/palette.js"></script>
-<script src="js/booth.js"></script>
-<script src="js/stack.js"></script>
-<script src="js/threshold.js"></script>
-<script src="js/cross.js"></script>
-<script src="js/doors.js"></script>
-<script src="js/under.js"></script>
-<script src="js/resume.js"></script>
-<script src="js/guard.js"></script>
-<script src="js/proxy.js"></script>
-<script src="js/post.js"></script>
 <script src="js/front.js"></script>
 <script src="js/rail.js"></script>
 <script src="js/prov.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/load.js"></script>
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
