@@ -16,6 +16,10 @@
 
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --display: 'GameBoy', system-ui, sans-serif;
+  /* The reading face. It was a literal on body and nowhere else, so
+     anything inside a heading that wanted prose had to retype the
+     stack or inherit the display face by accident. */
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --fs-xs: 11px;      /* the smallest labels and kbd keys */
   --fs-sm: 12px;      /* small-caps section labels */
@@ -45,7 +49,7 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  font-family:var(--sans);
   line-height:1.55;
 }
 

@@ -1,10 +1,18 @@
 /* Everything This Page Actually Knows
    ----------------------------------------------------------------------
-   A front door. The sixteen sections below are titled "The Source", "The
+   A front door. The twenty sections below are titled "The Source", "The
    Egg", "The Font" — codenames that tell an arriving visitor nothing about
-   the person. This restates the same sixteen as flat sentences about
+   the person. This restates the same twenty as flat sentences about
    Ruslan, so the page has a fifteen-second version of him before the long
    one.
+
+   Restructured 2026-11-07. The index had grown an introduction that
+   described its own shape in prose — 315 words, one paragraph, ten lines
+   on a laptop and a full screen on a phone, standing between the heading
+   and the first finding. It was the agent explaining the agent's
+   filing system, which is the thing the 28 October pass cut everywhere
+   else. The prose is now three headings over three lists, so the shape is
+   visible instead of asserted, and the lead is 97 words.
 
    Deliberately the only section here with no JavaScript: it is the part
    that has to work when everything else doesn't, so there is nothing in
@@ -21,7 +29,66 @@
   color:var(--muted);
 }
 
+/* ---------- group headings ---------- */
+
+/* Three of them, over three <ol>s that carry start="1", "7" and "16". A
+   heading rather than a row inside the list, so that a screen reader gets
+   three lists of six, nine and five rather than one run of twenty with
+   captions wedged into it. */
+
+.kn-group{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  grid-template-areas:
+    "no   name"
+    "sub  sub";
+  align-items:baseline;
+  column-gap:clamp(12px, 2vw, 18px);
+  row-gap:4px;
+  margin:var(--space-m) 0 10px;
+  font-size:var(--fs-base);
+  font-weight:400;
+}
+.kn-group:first-of-type{ margin-top:var(--space-m); }
+
+.kn-group-no{
+  grid-area:no;
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  font-variant-numeric:tabular-nums;
+  color:var(--accent);
+  white-space:nowrap;
+}
+
+.kn-group-name{
+  grid-area:name;
+  font-size:var(--fs-md);
+  font-weight:600;
+  color:var(--text);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+}
+
+.kn-group-sub{
+  grid-area:sub;
+  /* h1,h2,h3 set the display face; this line is prose. */
+  font-family:var(--sans);
+  font-size:var(--fs-sm);
+  line-height:1.5;
+  color:var(--muted);
+  max-width:68ch;
+}
+
+@media (max-width: 560px){
+  .kn-group{
+    grid-template-columns:1fr;
+    grid-template-areas:"no" "name" "sub";
+  }
+}
+
 /* ---------- the list ---------- */
+
+.kn-group + .kn-list{ margin-top:0; }
 
 .kn-list{
   list-style:none;
@@ -161,10 +228,22 @@
   .kn-row{
     grid-template-columns:1fr;
     grid-template-areas:
+      "no"
       "fact"
       "meta";
-    row-gap:8px;
+    row-gap:6px;
   }
-  .kn-no{ display:none; }
+
+  /* This was display:none from 16 October to 7 November. The reasoning
+     above is sound — the number column plus a row of nowrap chips is what
+     overflowed at 390px — but the fix overshot: it deleted the numbering
+     from the phone entirely, and the number is the page's whole system of
+     cross-reference. Every "finding 17" in the prose, every rail entry and
+     all three group headings point at a figure a phone could not see. It
+     gets its own line here instead of a column, which costs no width. */
+  .kn-no{
+    font-size:var(--fs-xs);
+    letter-spacing:.06em;
+  }
   .kn-go{ margin-inline-start:0; }
 }
