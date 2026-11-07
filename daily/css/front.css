@@ -123,8 +123,8 @@
 
 .fd-say{
   margin:12px 0 0;
-  /* min-height is set by front.js, to the tallest of the three captions,
-     so switching view does not move the resume button under a thumb. */
+  /* Nothing reserves this any more: it is the last thing in the column,
+     so it grows downward into the column's own slack. See js/front.js. */
   font-size:var(--fs-md);
   line-height:1.6;
   color:var(--muted);

@@ -108,22 +108,28 @@
     });
   });
 
-  /* Reserve the tallest of the three so switching view does not shunt
-     the page under the reader's thumb. Measured, because the tallest
-     one depends on the viewport and on which font actually loaded. */
+  /* Reserve the tallest of the three views of the paragraph, so that the
+     three buttons immediately under it do not move out from under a
+     thumb mid-press. Measured, because the tallest one depends on the
+     viewport and on which font actually loaded.
+
+     The caption below the buttons used to be reserved the same way, to
+     the tallest of the three captions. That cost 100px of blank column
+     on load at 1280px — the written caption is two lines and the words
+     caption is seven — and it bought protection for exactly one thing:
+     the resume button, which until 2026-11-07 sat underneath it. The
+     button is now above this whole control, with his paragraph, so
+     nothing of his is below the caption any more and the caption is
+     free to grow downward like any other disclosure. */
   function reserve() {
     bio.style.minHeight = '';
-    say.style.minHeight = '';
     var tallBio = 0;
-    var tallSay = 0;
     ['written', 'words', 'pictures'].forEach(function (v) {
       bio.setAttribute('data-view', v);
       say.innerHTML = says[v];
       tallBio = Math.max(tallBio, bio.offsetHeight);
-      tallSay = Math.max(tallSay, say.offsetHeight);
     });
     bio.style.minHeight = tallBio + 'px';
-    say.style.minHeight = tallSay + 'px';
   }
 
   var pending;
