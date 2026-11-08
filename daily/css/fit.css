@@ -28,6 +28,7 @@
 #fit .ft-claim strong{ color:var(--accent); }
 
 #fit .ft-nojs{ max-width:68ch; }
+#fit .ft-nojs[hidden]{ display:none; }
 #fit .ft-rig[hidden]{ display:none; }
 
 #fit .ft-rig{

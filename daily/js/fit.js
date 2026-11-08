@@ -394,6 +394,12 @@
 
   buttons[0].setAttribute('aria-pressed', 'true');
   show(current);
+
+  /* The last act, as in every other section here: the designed static
+     fallback goes and the rig takes its place, so the two are never both
+     on the page saying contradictory things about whether it works. */
+  var nojs = sec.querySelector('[data-ft-nojs]');
+  if (nojs) nojs.hidden = true;
   rig.hidden = false;
   size();
 
