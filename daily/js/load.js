@@ -1,4 +1,4 @@
-/* The loader — eighteen section scripts, fetched when you get near them
+/* The loader — nineteen section scripts, fetched when you get near them
    ----------------------------------------------------------------------
    Added 2026-11-06. No section of its own; this file is plumbing.
 
@@ -19,7 +19,7 @@
 
    Why this is safe, rather than clever:
 
-     - Every one of the eighteen is an IIFE that looks its own section up
+     - Every one of the nineteen is an IIFE that looks its own section up
        by id and returns if it is absent. None of them reads another's
        globals — every window.__x in js/ is a self-reference — so they
        can arrive in any order, late, or never.
@@ -32,13 +32,21 @@
      - Five files stay in the markup, because they are not scoped to
        something you have to scroll to: the hero, the About control, the
        navigator, the provenance word counts and the theme toggle.
-       23,834 bytes, and 32,456 with this file counted too.
+       24,296 bytes, and 33,623 with this file counted too. (Those two
+       figures were written here as 23,834 and 32,456 on 6 November and
+       were already wrong by the 7th, when js/front.js grew: a byte count
+       typed into a comment is exactly the kind of claim the rest of this
+       page refuses to type into its markup. They are corrected rather
+       than dropped, because the paragraph above needs them to mean
+       anything — and they will go stale again.)
 
    What it does NOT do is make the page smaller. Read to the bottom and
-   you have fetched every byte you used to fetch. It takes 172,742 of
-   them — 84% — off the critical path, and declines to spend them on
-   somebody who came for the bio. That is a different claim from making
-   the page lighter, and it is the honest one.
+   you have fetched every byte you used to fetch. It took 172,742 of
+   them — 84% — off the critical path on the day it was written, and
+   declines to spend them on somebody who came for the bio. That is a
+   different claim from making the page lighter, and it is the honest
+   one. The deferred set has grown since: nineteen files and 188,187
+   bytes as of 8 November, when The Fit was added.
 
    Two limitations, stated rather than hidden. Text a section's script
    draws — the charts, the readouts, the generated captions — is not in
@@ -69,7 +77,8 @@
     resume: 'resume.js',
     guard: 'guard.js',
     proxy: 'proxy.js',
-    post: 'post.js'
+    post: 'post.js',
+    fit: 'fit.js'
   };
 
   /* Resolved against this file's own URL rather than the document's, so

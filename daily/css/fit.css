@@ -1,0 +1,252 @@
+/* The Fit — his paragraph on the screens he owns
+   ----------------------------------------------------------------------
+   Added 2026-11-08. Finding 21.
+
+   The whole section is one object: a screen of a known pixel size, drawn
+   as the grid of 8x8 tiles the machine would have divided it into, with
+   one character of his bio in each tile. Everything that varies between
+   the six machines is two custom properties and a skin:
+
+     --c / --r      the tile grid, columns and rows (160x144 -> 20x18)
+     [data-skin]    the surface and ink of that particular screen
+
+   The cells themselves carry no borders. 768 of them on the DS, each
+   with an inset shadow, is a paint cost for something a single
+   background on the parent draws more crisply: the tile grid is two
+   repeating gradients, stepped off the same --c and --r the cells are.
+
+   Cell size is set in px by the script, off the measured width, because
+   a tile grid has to stay square and the glyph inside it has to scale
+   with the tile. The stylesheet only supplies a floor so that nothing
+   collapses to nothing if that measurement never happens. */
+
+#fit .ft-intro,
+#fit .ft-close,
+#fit .ft-claim{ max-width:68ch; }
+
+#fit .ft-claim{ font-size:clamp(16px, 2.2vw, 19px); }
+#fit .ft-claim strong{ color:var(--accent); }
+
+#fit .ft-nojs{ max-width:68ch; }
+#fit .ft-rig[hidden]{ display:none; }
+
+#fit .ft-rig{
+  --panel-accent:#9bbc0f;
+  --panel-accent-soft:rgba(155,188,15,.55);
+  margin-top:var(--space-m);
+}
+
+/* ---------- the six machines ---------- */
+
+#fit .ft-pick-head{
+  margin:0 0 12px;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+#fit .ft-picks{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+#fit .ft-picks .panel-btn{
+  min-width:0;
+  padding:8px 14px;
+  font-size:var(--fs-base);
+}
+
+#fit .ft-year{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--panel-dim);
+}
+
+#fit .panel-btn[aria-pressed="true"] .ft-year{ color:var(--panel-ink); }
+
+/* ---------- stage ---------- */
+
+#fit .ft-stage{
+  display:grid;
+  gap:var(--space-s);
+  grid-template-columns:1fr;
+  margin-top:var(--space-m);
+  align-items:start;
+}
+
+/* The screen is capped rather than allowed to fill the column: these are
+   handhelds, and a Game Boy screen two feet wide stops reading as one. */
+@media (min-width: 760px){
+  #fit .ft-stage{ grid-template-columns:minmax(0, 520px) 230px; }
+}
+
+#fit .ft-screens{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  min-width:0;
+}
+
+/* The bezel: the dark surround every one of these machines has, so the
+   lit area reads as a screen rather than a block of colour. */
+#fit .ft-bezel{
+  padding:clamp(6px, 1.4vw, 12px);
+  border-radius:var(--radius-sm);
+  background:#191c22;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07);
+}
+
+#fit .ft-screen{
+  --c:20;
+  --r:18;
+  --ft-paper:#9bbc0f;
+  --ft-ink:#0f380f;
+  --ft-grid:rgba(15,56,15,.12);
+
+  aspect-ratio: var(--c) / var(--r);
+  display:grid;
+  grid-template-columns:repeat(var(--c), 1fr);
+  grid-template-rows:repeat(var(--r), 1fr);
+  background-color:var(--ft-paper);
+  background-image:
+    repeating-linear-gradient(to right,  var(--ft-grid) 0 1px, transparent 1px calc(100% / var(--c))),
+    repeating-linear-gradient(to bottom, var(--ft-grid) 0 1px, transparent 1px calc(100% / var(--r)));
+  color:var(--ft-ink);
+  font-family:var(--mono);
+  font-size:9px;          /* a floor; the script measures the real one */
+  line-height:1;
+  overflow:hidden;
+}
+
+#fit .ft-cell{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* A tile the machine has no glyph for. An empty box is what a missing
+   glyph has looked like on every system since, so it is what it gets. */
+#fit .ft-cell[data-blank]{
+  position:relative;
+}
+
+#fit .ft-cell[data-blank]::after{
+  content:"";
+  position:absolute;
+  inset:14%;
+  border:1px solid currentColor;
+  opacity:.5;
+}
+
+/* ---------- the skins ---------- */
+
+/* The four-shade green is the palette emulators settled on for the DMG;
+   the others are my readings of a reflective screen, a front-lit one and
+   a backlit one, which is the whole arc of this case: fourteen years
+   before one of his machines could light its own words. */
+#fit .ft-screen[data-skin="gb"]{  --ft-paper:#9bbc0f; --ft-ink:#0f380f; --ft-grid:rgba(15,56,15,.13); }
+#fit .ft-screen[data-skin="gbc"]{ --ft-paper:#d4ddbe; --ft-ink:#26304a; --ft-grid:rgba(38,48,74,.11); }
+#fit .ft-screen[data-skin="gba"]{ --ft-paper:#c4c8b6; --ft-ink:#22242e; --ft-grid:rgba(34,36,46,.11); }
+#fit .ft-screen[data-skin="sp"]{  --ft-paper:#e8f1e0; --ft-ink:#1b2230; --ft-grid:rgba(27,34,48,.10); }
+#fit .ft-screen[data-skin="ds"]{  --ft-paper:#eef2f5; --ft-ink:#1a2030; --ft-grid:rgba(26,32,48,.10); }
+
+#fit .ft-screen[data-lit="yes"]{
+  box-shadow:0 0 22px rgba(232,241,224,.22);
+}
+
+#fit .ft-sub{
+  margin:0;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+/* ---------- the Walkman, which has no screen at all ---------- */
+
+#fit .ft-none{
+  aspect-ratio: 5 / 3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:var(--space-s);
+  border-radius:2px;
+  background:#15171b;
+  color:#e2762b;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  text-align:center;
+}
+
+/* ---------- the readout ---------- */
+
+#fit .ft-read{
+  margin:0;
+  display:grid;
+  gap:0;
+  align-content:start;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+}
+
+#fit .ft-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  padding:7px 11px;
+}
+
+#fit .ft-row + .ft-row{ border-top:1px solid rgba(255,255,255,.08); }
+
+#fit .ft-row dt{
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+#fit .ft-row dd{
+  margin:0;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+  text-align:right;
+  white-space:nowrap;
+}
+
+#fit .ft-row[data-key="spare"] dd{ color:var(--panel-accent); }
+
+#fit .ft-verdict{
+  margin:var(--space-s) 0 0;
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+  min-height:2.6em;
+}
+
+#fit .ft-verdict strong{ color:var(--panel-accent); }
+
+#fit .ft-glyphs{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin-top:12px;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+  cursor:pointer;
+}
+
+#fit .ft-glyphs input{ width:15px; height:15px; cursor:pointer; }
+#fit .ft-glyphs:hover{ color:var(--panel-ink); }
+
+/* The screen comes up the way these machines do. One transition, and
+   only if the visitor has not asked for less of them. */
+@media (prefers-reduced-motion: no-preference){
+  #fit .ft-screen,
+  #fit .ft-none{ transition:background-color 180ms ease, box-shadow 220ms ease; }
+}
