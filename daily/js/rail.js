@@ -88,8 +88,8 @@
        viewport, so the page runs out of scroll first and the bar would
        name the section above to someone plainly reading the last one.
        (Measured when that section was #contact: ~320px below its top
-       against a 68px probe. #under took the last place on 2026-10-26
-       and the arithmetic is the same.) At the bottom of the page, the
+       against a 68px probe. #fit has held the last place since
+       2026-11-08 and the arithmetic is the same.) At the bottom of the page, the
        bottom section is the one you are in. */
     if (runway > 0 && y >= runway - 2) found = rows[rows.length - 1];
 

@@ -25,7 +25,7 @@
    the bars themselves and the reducer's controls.
 
    The reducer withholds characters rather than rewriting the string, the
-   way The Crossing-Out withholds his joke: there is ONE copy of
+   way his own struck-through joke above withholds nothing: there is ONE copy of
    "ru|slan|.|manoharan" in the markup and the state attribute decides
    which spans are struck. So this file cannot spell his address wrong
    even by accident — the three forms are one string with pieces taken out,

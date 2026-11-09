@@ -1,25 +1,29 @@
-/* The loader — nineteen section scripts, fetched when you get near them
+/* The loader — twelve section scripts, fetched when you get near them
    ----------------------------------------------------------------------
    Added 2026-11-06. No section of its own; this file is plumbing.
 
-   Finding 18 on this page, The Guard, is that fifty-one of the 287 lines
-   of Ruslan's hero exist for somebody else's device — a font that has
-   not arrived yet, a phone turned sideways, a window too short to divide
-   by, a visitor who has asked their computer for less motion — and that
-   six of the seven guards were in the commit that created the site, when
-   his bio still read "[Add your bio here]". He wrote the guards before
-   he wrote a true word about himself.
+   Ruslan wrote fifty-one of the 287 lines of his hero for somebody
+   else's device — a font that has not arrived yet, a phone turned
+   sideways, a window too short to divide by, a visitor who has asked
+   their computer for less motion — and six of those seven guards were
+   in the commit that created the site, when his bio still read "[Add
+   your bio here]". He wrote them before he wrote a true word about
+   himself. That was finding 18 on this page until 9 November 2026, when
+   the section making it was deleted along with eight others, all of
+   them close readings of his files rather than of him; the observation
+   stands in the git history, and it is the reason this file exists.
 
-   The page making that observation was loading 196,576 bytes of
-   JavaScript over 23 blocking <script> tags before the hero could move,
-   on every visit, whether or not you scrolled. Eighteen of those files
-   do nothing whatsoever except furnish one section apiece, and most
-   visitors never reach most sections. So they are no longer in the
-   markup.
+   Because the page making it was loading 196,576 bytes of JavaScript
+   over 23 blocking <script> tags before the hero could move, on every
+   visit, whether or not you scrolled. Eighteen of those files did
+   nothing whatsoever except furnish one section apiece, and most
+   visitors never reach most sections. So they left the markup — and
+   nine of them left the repository entirely on 9 November, with
+   the sections they served.
 
    Why this is safe, rather than clever:
 
-     - Every one of the nineteen is an IIFE that looks its own section up
+     - Every one of the twelve is an IIFE that looks its own section up
        by id and returns if it is absent. None of them reads another's
        globals — every window.__x in js/ is a self-reference — so they
        can arrive in any order, late, or never.
@@ -32,7 +36,7 @@
      - Five files stay in the markup, because they are not scoped to
        something you have to scroll to: the hero, the About control, the
        navigator, the provenance word counts and the theme toggle.
-       24,296 bytes, and 33,623 with this file counted too. (Those two
+       24,301 bytes, and 33,766 with this file counted too. (Those two
        figures were written here as 23,834 and 32,456 on 6 November and
        were already wrong by the 7th, when js/front.js grew: a byte count
        typed into a comment is exactly the kind of claim the rest of this
@@ -45,8 +49,10 @@
    them — 84% — off the critical path on the day it was written, and
    declines to spend them on somebody who came for the bio. That is a
    different claim from making the page lighter, and it is the honest
-   one. The deferred set has grown since: nineteen files and 188,187
-   bytes as of 8 November, when The Fit was added.
+   one. The deferred set grew to nineteen files and 188,187 bytes by
+   8 November, and then shrank: twelve files and 127,539 bytes as of
+   9 November, when seven of the nineteen were deleted outright with
+   the sections they furnished.
 
    Two limitations, stated rather than hidden. Text a section's script
    draws — the charts, the readouts, the generated captions — is not in
@@ -66,16 +72,9 @@
     booth: 'booth.js',
     stack: 'stack.js',
     threshold: 'threshold.js',
-    frame: 'frame.js',
     handover: 'handover.js',
-    egg: 'egg.js',
-    hand: 'hand.js',
-    palette: 'palette.js',
-    cross: 'cross.js',
     contact: 'doors.js',
-    under: 'under.js',
     resume: 'resume.js',
-    guard: 'guard.js',
     proxy: 'proxy.js',
     post: 'post.js',
     fit: 'fit.js'

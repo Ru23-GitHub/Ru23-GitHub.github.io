@@ -157,9 +157,9 @@
 
   function shortId(id) { return id.slice(0, 8) + '…' + id.slice(-4); }
 
-  /* Spelled out, because the prose around these figures is. Same reason
-     js/under.js carries a table: "2 of 33" in a page that writes "two of
-     thirty-three" everywhere else reads as a different author. Falls
+  /* Spelled out, because the prose around these figures is: "2 of 33"
+     in a page that writes "two of thirty-three" everywhere else reads
+     as a different author. Falls
      back to digits above the range this section can reach. */
   var WORDS = ['nought', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',
                'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen',

@@ -1,20 +1,23 @@
 /* The navigator — the bar that rides above the page
    ----------------------------------------------------------------------
    Added 2026-10-16, and it exists because the page was measured first.
-   Rendered at 1440x900 it is 28,252px tall; on a 390px phone, 39,394px —
-   thirty-one screens and forty-seven. The Log alone is nine screens on a
-   phone and the Font is another nine.
+   On that day, rendered at 1440x900, it was 28,252px tall; on a 390x844
+   phone, 39,394px — thirty-one screens and forty-seven. It kept growing,
+   to 47,885 and 65,071 by 8 November; the prune of 9 November took it
+   back to 24,130 and 31,613, twenty-seven screens and thirty-eight, the
+   shortest it has been since this bar was added. Still long enough to
+   need the bar.
 
    Across all of that the page had navigation in exactly one place: a row
    of ten codename pills at the bottom of the hero, inside the first 774
    pixels. Scroll past them and there was no way to tell where you were,
    no way to jump, and no way to reach Ruslan — his email, LinkedIn and
    Instagram sit at 39,085px, at the very end. Anyone arriving on a deep
-   link (/daily/#type is a real URL that a real section links to) landed
+   link (/daily/#fit is a real URL that a real section links to) landed
    mid-page with no name, no nav and no contact anywhere on screen.
 
-   So: three things, kept visible for all forty-seven screens instead of
-   the first one. Whose page this is. Which of the thirteen parts you are
+   So: three things, kept visible for the whole page instead of its first
+   screen. Whose page this is. Which of the fourteen parts you are
    standing in. How to reach him.
 
    Mechanics worth knowing:
