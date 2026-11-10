@@ -5,26 +5,46 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Ruslan Manoharan — Daily Build</title>
 <meta name="robots" content="noindex" />
+<!-- Eight stylesheets block the first paint, and they are the eight a
+     visitor who came for Ruslan actually uses: the page itself, the
+     animation of his name, the reveal rule every section shares, the
+     shared panel chrome, the navigator carrying his contact links, the
+     control under his bio, the provenance disclosures, and the theme.
+     40,364 bytes. -->
 <link rel="stylesheet" href="css/intro.css" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/reveal.css" />
 <link rel="stylesheet" href="css/panel.css" />
-<link rel="stylesheet" href="css/known.css" />
-<link rel="stylesheet" href="css/source.css" />
-<link rel="stylesheet" href="css/handover.css" />
-<link rel="stylesheet" href="css/north.css" />
-<link rel="stylesheet" href="css/shelf.css" />
-<link rel="stylesheet" href="css/booth.css" />
-<link rel="stylesheet" href="css/stack.css" />
-<link rel="stylesheet" href="css/threshold.css" />
 <link rel="stylesheet" href="css/rail.css" />
-<link rel="stylesheet" href="css/doors.css" />
 <link rel="stylesheet" href="css/front.css" />
 <link rel="stylesheet" href="css/prov.css" />
-<link rel="stylesheet" href="css/resume.css" />
-<link rel="stylesheet" href="css/proxy.css" />
-<link rel="stylesheet" href="css/post.css" />
-<link rel="stylesheet" href="css/fit.css" />
+
+<!-- The other thirteen furnish one section apiece, 90,700 bytes of them,
+     and js/load.js inserts each one immediately before this <noscript>
+     when you come within 1200px of the section it dresses — the same
+     approach that already fetches that section's script, and in front of
+     it, so the rig is dressed before it is shown. The position is kept
+     because the cascade is: everything inserted here still lands after
+     the seven above and before the theme below, exactly where it was
+     written. With JavaScript off, the browser applies the thirteen from
+     inside the <noscript> itself and the page is dressed as it always
+     was. -->
+<noscript data-css-slot>
+  <link rel="stylesheet" href="css/known.css" />
+  <link rel="stylesheet" href="css/source.css" />
+  <link rel="stylesheet" href="css/handover.css" />
+  <link rel="stylesheet" href="css/north.css" />
+  <link rel="stylesheet" href="css/shelf.css" />
+  <link rel="stylesheet" href="css/booth.css" />
+  <link rel="stylesheet" href="css/stack.css" />
+  <link rel="stylesheet" href="css/threshold.css" />
+  <link rel="stylesheet" href="css/doors.css" />
+  <link rel="stylesheet" href="css/resume.css" />
+  <link rel="stylesheet" href="css/proxy.css" />
+  <link rel="stylesheet" href="css/post.css" />
+  <link rel="stylesheet" href="css/fit.css" />
+</noscript>
+
 <link rel="stylesheet" href="css/theme.css" />
 <script>
 /* Inline on purpose: this must run before the first paint, or the page
@@ -1666,12 +1686,14 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </button>
   </footer>
 
-<!-- Five files that are not scoped to a section you have to scroll to:
-     the hero, the About control, the navigator, the provenance counts,
-     the theme toggle. The other twelve each furnish exactly one
+<!-- Five scripts that are not scoped to a section you have to scroll
+     to: the hero, the About control, the navigator, the provenance
+     counts, the theme toggle. The other twelve each furnish exactly one
      section and are fetched as you approach it, by js/load.js — which
-     explains itself at length, including what it gives up. Each of those
-     sections renders its designed static fallback until its file lands. -->
+     also fetches that section's stylesheet, in front of its script, and
+     explains itself at length, including what it gives up. Each of
+     those sections renders its designed static fallback, dressed by
+     css/style.css, until its own two files land. -->
 <script src="js/intro.js"></script>
 <script src="js/front.js"></script>
 <script src="js/rail.js"></script>

@@ -59,6 +59,26 @@ body{
 
 img, svg{ max-width:100%; display:block; }
 
+/* A page-wide floor, added 2026-11-10 with the deferred stylesheets.
+   Thirteen sections are now dressed a moment after they are parsed
+   rather than before, and in that moment nothing in them may push the
+   whole document sideways — one unbroken 88-character line in The
+   Handover did exactly that on a 390px phone, because the rule stopping
+   it had moved into a file that had not arrived yet.
+
+   For the two rules that already say this it is a floor and nothing
+   else: .prov-body code in css/prov.css, which carries the source paths
+   and git invocations in the provenance notes, and .ho-code in
+   css/handover.css, which carries his source lines. What it does change
+   is the other 24 code elements on the page — the commit hashes and
+   short paths inside The Handover's list of his six commits — which go
+   from overflow-wrap:normal to anywhere. Not one of them is long enough
+   to wrap differently today: measured against the page without this
+   rule, the document is the same height to the pixel at 1280px and at
+   390px. If one ever is long enough, breaking it is what both rules
+   above already chose for exactly this kind of string. */
+code{ overflow-wrap:anywhere; }
+
 .sr-only{
   position:absolute;
   width:1px; height:1px;

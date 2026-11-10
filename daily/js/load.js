@@ -1,6 +1,8 @@
-/* The loader — twelve section scripts, fetched when you get near them
+/* The loader — thirteen sections' stylesheets and twelve sections'
+   scripts, fetched when you get near them
    ----------------------------------------------------------------------
-   Added 2026-11-06. No section of its own; this file is plumbing.
+   Added 2026-11-06 for the scripts. Extended 2026-11-10 to own the
+   stylesheets too. No section of its own; this file is plumbing.
 
    Ruslan wrote fifty-one of the 287 lines of his hero for somebody
    else's device — a font that has not arrived yet, a phone turned
@@ -21,94 +23,170 @@
    nine of them left the repository entirely on 9 November, with
    the sections they served.
 
+   The stylesheets were left behind by that work, and for four days this
+   file sat under a <head> that still opened twenty-one of them, 129,860
+   bytes, every one of them blocking the first paint. Thirteen of the
+   twenty-one dressed exactly one section apiece and came to 90,700 of
+   those bytes — just under 70% of the page's stylesheet weight, held in
+   front of a visitor who came for his name, his face, his bio and his
+   three contact links, none of which any of the thirteen touches. Those
+   thirteen now arrive the same way their scripts do.
+
+   What stays in the <head>, and why: style, intro, reveal, panel, rail,
+   front, prov, theme. 40,364 bytes. Those are the page, the animation
+   of his name, the reveal rule every section shares, the shared panel
+   chrome, the navigator that carries his contact links, the control
+   under his bio, the provenance disclosures, and the theme — which is
+   to say, everything a visitor sees before scrolling, plus the three
+   small shared files a deferred section would otherwise have to wait
+   for twice. (panel.css is 3,651 bytes and is used by eight of the
+   thirteen; it is cheaper to hold it than to work out who needs it.)
+
    Why this is safe, rather than clever:
 
-     - Every one of the twelve is an IIFE that looks its own section up
-       by id and returns if it is absent. None of them reads another's
-       globals — every window.__x in js/ is a self-reference — so they
-       can arrive in any order, late, or never.
+     - Every one of the twelve scripts is an IIFE that looks its own
+       section up by id and returns if it is absent. None of them reads
+       another's globals — every window.__x in js/ is a self-reference —
+       so they can arrive in any order, late, or never.
+     - Every one of the thirteen stylesheets is scoped to its own
+       section: an id selector, or a class prefix no other file uses.
+       The only rules any of them puts on :root are three private custom
+       properties read nowhere outside the section that declares them.
+       So none of the thirteen can change the look of anything that is
+       already on screen, which is the property that makes deferring
+       them safe at all. If that ever stops being true of a new file,
+       this is the paragraph it breaks.
+     - Each link is inserted immediately before the <noscript> in the
+       <head> that lists all thirteen, not appended to the body. The
+       cascade therefore holds exactly: after the seven that block, and
+       before theme.css, which is where they were written.
+     - A section's stylesheet is requested first and its script follows
+       when the stylesheet has landed — or failed. That costs a round
+       trip, which the 1200px of lead pays for, and it buys the
+       guarantee that no rig is ever shown before it is dressed: the
+       script's last act is to un-hide the rig, so the script must not
+       win that race.
      - Every section they furnish was already built to stand without
        them: the interactive rig carries a `hidden` attribute in the
        markup with a visible static fallback beside it, and the script's
        last act is to swap the two. Until it runs, the section is its own
        no-JavaScript version, and that version was designed rather than
-       left over.
-     - Five files stay in the markup, because they are not scoped to
-       something you have to scroll to: the hero, the About control, the
-       navigator, the provenance word counts and the theme toggle.
-       24,301 bytes, and 33,766 with this file counted too. (Those two
-       figures were written here as 23,834 and 32,456 on 6 November and
-       were already wrong by the 7th, when js/front.js grew: a byte count
-       typed into a comment is exactly the kind of claim the rest of this
-       page refuses to type into its markup. They are corrected rather
-       than dropped, because the paragraph above needs them to mean
-       anything — and they will go stale again.)
+       left over. Its prose is dressed by style.css either way.
+     - With JavaScript off, nothing here runs and the browser applies
+       all thirteen out of the <noscript> itself. The page is then
+       exactly what it was before 2026-11-06: every byte, up front.
 
    What it does NOT do is make the page smaller. Read to the bottom and
-   you have fetched every byte you used to fetch. It took 172,742 of
-   them — 84% — off the critical path on the day it was written, and
-   declines to spend them on somebody who came for the bio. That is a
-   different claim from making the page lighter, and it is the honest
-   one. The deferred set grew to nineteen files and 188,187 bytes by
-   8 November, and then shrank: twelve files and 127,539 bytes as of
-   9 November, when seven of the nineteen were deleted outright with
-   the sections they furnished.
+   you have fetched every byte you used to fetch. What it does is
+   decline to spend them on somebody who came for the bio. Of the
+   297,543 bytes of stylesheet and script this page can ask for, an
+   arrival that reads his name, his photo, his paragraph and his contact
+   links and then leaves now takes 86,478 — 40,364 of blocking
+   stylesheet, 7,174 more because #known sits inside the 1200px lead,
+   and 38,940 of script. Before 6 November the same arrival took all
+   297,543. (Every figure in this comment is a byte count typed into a
+   comment, which is exactly the kind of claim the rest of this page
+   refuses to type into its markup, and two of them were already wrong a
+   day after they were written: the script totals here read 23,834 and
+   32,456 on 6 November and were stale by the 7th, when js/front.js
+   grew. They are corrected rather than dropped, because the paragraphs
+   above need them to mean anything — and they will go stale again.)
 
-   Two limitations, stated rather than hidden. Text a section's script
+   Three limitations, stated rather than hidden. Text a section's script
    draws — the charts, the readouts, the generated captions — is not in
    the document until that script has run, so find-in-page cannot see it
    before you get there; the prose carrying each finding is in the HTML
-   and always was. And laziness is given up the moment you jump rather
-   than scroll: see the last block of this file for why, and for what
-   the jump had to be taught instead. Printing pulls everything in. */
+   and always was. Laziness is given up the moment you jump rather than
+   scroll: see the last block of this file for why, and for what the
+   jump had to be taught instead. And printing pulls everything in on
+   beforeprint, which for a script is merely late but for a stylesheet
+   is a race the dialog can win — a first print from a cold load may set
+   some sections in the browser's own default. A second print gets
+   everything. That is the honest cost of the thirteen, and it is worth
+   it. */
 (function () {
   'use strict';
 
-  /* The id of the section -> the one file scoped to it. */
+  /* The id of the section -> the two files scoped to it. A section may
+     have a stylesheet and no script; none currently has a script and no
+     stylesheet, but the loader does not mind either way. */
   var SECTIONS = {
-    source: 'source.js',
-    north: 'north.js',
-    shelf: 'shelf.js',
-    booth: 'booth.js',
-    stack: 'stack.js',
-    threshold: 'threshold.js',
-    handover: 'handover.js',
-    contact: 'doors.js',
-    resume: 'resume.js',
-    proxy: 'proxy.js',
-    post: 'post.js',
-    fit: 'fit.js'
+    known: { css: 'known.css' },
+    source: { css: 'source.css', js: 'source.js' },
+    north: { css: 'north.css', js: 'north.js' },
+    shelf: { css: 'shelf.css', js: 'shelf.js' },
+    booth: { css: 'booth.css', js: 'booth.js' },
+    stack: { css: 'stack.css', js: 'stack.js' },
+    threshold: { css: 'threshold.css', js: 'threshold.js' },
+    handover: { css: 'handover.css', js: 'handover.js' },
+    contact: { css: 'doors.css', js: 'doors.js' },
+    resume: { css: 'resume.css', js: 'resume.js' },
+    proxy: { css: 'proxy.css', js: 'proxy.js' },
+    post: { css: 'post.css', js: 'post.js' },
+    fit: { css: 'fit.css', js: 'fit.js' }
   };
 
   /* Resolved against this file's own URL rather than the document's, so
-     the paths hold wherever the page is served from. */
+     the paths hold wherever the page is served from. js/ -> the sibling
+     css/ directory. */
   var self = document.currentScript && document.currentScript.src;
-  var base = self ? self.replace(/[^/]*$/, '') : 'js/';
+  var jsBase = self ? self.replace(/[^/]*$/, '') : 'js/';
+  var cssBase = jsBase.replace(/js\/$/, 'css/');
+
+  /* Where a stylesheet goes: immediately before the <noscript> that
+     lists all thirteen, which is the position they were written in. If
+     that element is ever removed, fall back to the end of <head>, which
+     puts them after theme.css — a cascade this page does not currently
+     depend on either way, and the <noscript> is there to keep it that
+     way. */
+  var slot = document.querySelector('head [data-css-slot]');
 
   var done = {};
 
-  function load(id) {
-    var file = SECTIONS[id];
-    if (!file || done[id]) return;
-    done[id] = true;
+  function addScript(file) {
     var s = document.createElement('script');
-    s.src = base + file;
+    s.src = jsBase + file;
     s.async = true;
     document.body.appendChild(s);
+  }
+
+  function load(id) {
+    var files = SECTIONS[id];
+    if (!files || done[id]) return;
+    done[id] = true;
+
+    if (!files.css) {
+      if (files.js) addScript(files.js);
+      return;
+    }
+
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = cssBase + files.css;
+
+    /* The script waits for the stylesheet either way. On success because
+       the rig must be dressed before it is shown; on failure because a
+       missing stylesheet is no reason to withhold a working control —
+       the rig would be plain, not broken, and its section's prose is
+       dressed by style.css regardless. */
+    if (files.js) {
+      var go = function () { addScript(files.js); };
+      link.addEventListener('load', go);
+      link.addEventListener('error', go);
+    }
+
+    if (slot && slot.parentNode) slot.parentNode.insertBefore(link, slot);
+    else document.head.appendChild(link);
   }
 
   function loadAll() {
     Object.keys(SECTIONS).forEach(load);
   }
 
-  function loadFromHash() {
-    var h = (location.hash || '').slice(1);
-    if (h) load(h);
-  }
-
   /* Drop any section that is not in this document. A script with nothing
-     to attach to would return on its first line; not requesting it at
-     all is the same outcome without the round trip. */
+     to attach to would return on its first line, and a stylesheet with
+     nothing to dress matches nothing; not requesting either is the same
+     outcome without the round trip. */
   Object.keys(SECTIONS).forEach(function (id) {
     if (!document.getElementById(id)) delete SECTIONS[id];
   });
@@ -120,19 +198,23 @@
       return Object.keys(SECTIONS).filter(function (id) { return !done[id]; });
     },
     loaded: function () { return Object.keys(done); },
+    files: function (id) { return SECTIONS[id] || null; },
     load: load,
     all: loadAll
   };
 
   /* No IntersectionObserver: behave exactly as the markup used to, all
-     eighteen at once. Nothing below this line is load-bearing. */
+     of them at once. Nothing below this line is load-bearing. */
   if (!('IntersectionObserver' in window)) {
     loadAll();
     return;
   }
 
   /* 1200px of lead — on a phone, two screens of warning, which is more
-     than one flick of a thumb covers before a 5-19 KB file has landed. */
+     than one flick of a thumb covers before a stylesheet of 5-11 KB and
+     a script of 5-19 KB have landed one after the other. Outrun it and
+     you see the section's own prose in style.css's hands for a moment,
+     and then the rest arrives. */
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       if (!e.isIntersecting) return;
@@ -163,7 +245,11 @@
      correction gives up after three seconds, and any sign of the
      visitor scrolling for themselves abandons it at once. If this block
      did nothing at all, the jump would still happen; it would just be
-     imprecise. */
+     imprecise.
+
+     Stylesheets made this block matter more rather than less: a
+     stylesheet landing changes a section's height as surely as a rig
+     does, and the three-second window now has to cover both. */
 
   var mark = null;        /* the element we are trying to land on */
   var until = 0;          /* after this, stop trying */
