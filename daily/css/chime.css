@@ -1,0 +1,385 @@
+/* The Chime — what is under his name
+   ----------------------------------------------------------------------
+   Added 2026-11-11. Finding 13.
+
+   The hero at the top of this page, and of his real homepage, is one
+   link, and the link is his name. Nothing on this domain has ever said
+   where it goes. It goes to the Game Boy Advance startup chime — a
+   machine he owns, and told me he owns.
+
+   The rig below boots his name on a screen of its own. It is deliberately
+   not a second copy of his hero: it reuses his hero's own @keyframes by
+   name — `char-entry` and `gb-color`, both declared in css/intro.css,
+   which this page loads in the <head> and which are global — so the
+   choreography here cannot drift from the choreography up there. Seeking
+   is done with a negative animation-delay on a paused animation, which
+   means the scrubber reads his keyframes at an exact millisecond rather
+   than reimplementing them.
+
+   Two things in here are mine rather than his, and the provenance note
+   says so: the gleam's travel (his is measured in viewport widths and
+   would not cross a 460px screen) and the screen's bezel. His gleam's
+   timing — 2.2s in, 1.8s long — is read out of his own custom
+   properties at load.
+
+   The screen is white because his hero is white: --hero-bg in
+   css/intro.css is #fff, and his letters land on #1733ff against it.
+   That is his boot screen, not a Game Boy's, and it is the one being
+   reconstructed. */
+
+#chime{
+  background:var(--bg-alt);
+  border-top:1px solid var(--border);
+}
+
+.ch-intro,
+.ch-claim{ max-width:74ch; }
+
+.ch-claim strong{ color:var(--text); }
+
+/* ---------- the rig ---------- */
+
+.ch-rig{
+  --panel-accent:#1733ff;
+  --panel-accent-soft:rgba(23,51,255,.65);
+  margin:var(--space-m) 0 0;
+}
+
+.ch-rig-head{
+  margin:0 0 var(--space-s);
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+  max-width:70ch;
+}
+
+/* ---------- the screen ---------- */
+
+/* 3:2 — a Game Boy Advance panel is 240x160. The proportion is the only
+   thing borrowed from the hardware; everything drawn inside it is his. */
+.ch-screen{
+  position:relative;
+  width:100%;
+  max-width:460px;
+  margin:0 auto;
+  aspect-ratio:3/2;
+  overflow:hidden;
+  border-radius:var(--radius-md);
+  background:#fff;
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.18),
+    inset 0 2px 14px rgba(0,0,0,.12);
+  isolation:isolate;
+  /* contain:paint would clip the gleam's blend mode oddly in some
+     WebKit builds; overflow:hidden is enough and is already set. */
+}
+
+.ch-word{
+  position:absolute;
+  top:46%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  display:inline-flex;
+  flex-wrap:nowrap;
+  white-space:nowrap;
+  align-items:flex-end;
+  justify-content:center;
+  gap:0;
+  line-height:.9;
+
+  /* Mirrors #hero .word.gb, so the letters are set the way he sets them.
+     The size is the one thing that differs: his is clamped against the
+     viewport and scaled to fit by js/intro.js, and this box is 460px at
+     the widest. */
+  font-family:var(--display);
+  font-weight:900;
+  font-style:italic;
+  text-transform:uppercase;
+  letter-spacing:-.04em;
+  font-size:clamp(14px, 7.4cqw, 36px);
+  color:#1733ff;
+}
+
+/* cqw above needs the screen to be a container. */
+.ch-screen{ container-type:inline-size; }
+
+.ch-char{
+  display:inline-block;
+  transform-origin:50% 100%;
+  opacity:0;
+  position:relative;
+  /* The same ink-overhang padding his hero gives each character, for the
+     same reason: this face's bold italic glyphs overhang their advance
+     width, and each character is its own animated layer. */
+  padding-right:.28em;
+  margin-right:-.28em;
+  padding-top:.3em;
+
+  /* His keyframes, by name, out of css/intro.css. Not copied. */
+  animation-name:char-entry, gb-color;
+  animation-timing-function:linear;
+  animation-fill-mode:both;
+  animation-iteration-count:1;
+  /* duration and delay are set per character by js/chime.js, off his own
+     --char-dur and --char-stagger. */
+}
+
+.ch-space{ display:inline-block; width:.4em; }
+
+/* The gleam. Timing is his (--shine-delay, --shine-width read at load);
+   the travel is mine, because his crosses a viewport and this crosses a
+   screen 460px wide. */
+.ch-gleam{
+  position:absolute;
+  pointer-events:none;
+  z-index:5;
+  top:-20%;
+  bottom:-20%;
+  left:-34%;
+  width:30%;
+  background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.95) 50%, transparent 100%);
+  mix-blend-mode:screen;
+  transform:translateX(0);
+  /* Paused and seeked by js/chime.js, the same way the characters are, so
+     the scrubber moves the gleam and the boot together. Its duration and
+     delay are overwritten at load with his own --shine-delay. At rest it
+     sits at its 0% state, which is off the left edge of the screen. */
+  animation:ch-gleam-move 1.8s ease-in-out 2.2s both paused;
+}
+
+@keyframes ch-gleam-move{
+  to{ transform:translateX(420%) }
+}
+
+/* The chime marker. No audio is played anywhere on this page; this is
+   the moment his link's sound would land, and it is a link to his link. */
+.ch-chime{
+  position:absolute;
+  z-index:6;
+  left:50%;
+  bottom:9%;
+  transform:translateX(-50%);
+  margin:0;
+  padding:5px 11px;
+  border-radius:var(--radius-pill);
+  background:rgba(23,51,255,.08);
+  border:1px solid rgba(23,51,255,.3);
+  color:#1733ff;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  text-align:center;
+  line-height:1.45;
+  max-width:90%;
+  opacity:0;
+  transition:opacity 220ms ease;
+}
+
+.ch-chime[data-on]{ opacity:1; }
+.ch-chime a{ color:inherit; text-decoration:underline; }
+
+/* ---------- controls ---------- */
+
+.ch-ctl{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:12px 16px;
+  margin:var(--space-s) 0 0;
+}
+
+.ch-scrub{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex:1 1 220px;
+  min-width:0;
+}
+
+.ch-scrub > span{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  flex:none;
+}
+
+.ch-scrub input[type="range"]{
+  flex:1 1 auto;
+  min-width:0;
+}
+
+.ch-t{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--panel-ink);
+  font-variant-numeric:tabular-nums;
+  flex:none;
+  min-width:5.5ch;
+  text-align:right;
+}
+
+.ch-read{
+  margin:var(--space-s) 0 0;
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--panel-dim);
+  min-height:3.2em;
+}
+
+.ch-read strong{ color:var(--panel-ink); font-weight:600; }
+
+/* ---------- the seven colours ---------- */
+
+.ch-swatches{
+  list-style:none;
+  margin:var(--space-s) 0 0;
+  padding:var(--space-s) 0 0;
+  border-top:1px solid var(--panel-line);
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.ch-sw{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:5px 10px 5px 7px;
+  border:1px solid var(--panel-line);
+  border-radius:var(--radius-pill);
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--panel-dim);
+}
+
+.ch-sw b{
+  width:11px;
+  height:11px;
+  border-radius:50%;
+  flex:none;
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.35);
+}
+
+.ch-sw i{ font-style:normal; opacity:.65; }
+
+.ch-sw[data-now]{
+  border-color:var(--panel-accent);
+  color:var(--panel-ink);
+}
+
+/* ---------- the two machines ---------- */
+
+/* This was an SVG until the afternoon it was written: a 620-unit viewBox
+   scaled to 330px on a phone, which put its labels at about six pixels.
+   A grid reflows instead of shrinking. */
+
+.ch-two{
+  margin:var(--space-m) 0 0;
+  padding:0;
+  max-width:74ch;
+}
+
+.ch-two-grid{
+  display:grid;
+  gap:12px;
+  grid-template-columns:1fr;
+  align-items:stretch;
+}
+
+@media (min-width:620px){
+  .ch-two-grid{ grid-template-columns:1fr auto 1fr; gap:0; }
+}
+
+.ch-two-card{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  padding:14px 16px;
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius-sm);
+  background:var(--bg);
+}
+
+.ch-two-card-b{ border-left-color:var(--accent-2); }
+
+.ch-two-y{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  color:var(--muted);
+}
+
+.ch-two-m{
+  font-family:var(--display);
+  font-size:clamp(16px, 2.6vw, 21px);
+  line-height:1.2;
+  color:var(--text);
+}
+
+.ch-two-r{
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+/* The span between them. A dashed rule on a wide screen, running across;
+   the same rule running down when the two cards stack. */
+.ch-two-gap{
+  position:relative;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 14px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  text-align:center;
+}
+
+.ch-two-gap::before,
+.ch-two-gap::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  width:0;
+  height:12px;
+  border-left:1px dashed var(--border);
+}
+.ch-two-gap::before{ top:-12px; }
+.ch-two-gap::after{ bottom:-12px; }
+
+@media (min-width:620px){
+  .ch-two-gap{ padding:4px 18px; }
+  .ch-two-gap::before,
+  .ch-two-gap::after{
+    top:50%;
+    bottom:auto;
+    left:auto;
+    width:14px;
+    height:0;
+    border-left:0;
+    border-top:1px dashed var(--border);
+  }
+  .ch-two-gap::before{ right:100%; }
+  .ch-two-gap::after{ left:100%; }
+}
+
+.ch-two figcaption{
+  margin:var(--space-s) 0 0;
+  font-size:var(--fs-md);
+  line-height:1.65;
+  color:var(--muted);
+}
+
+/* ---------- motion ---------- */
+
+@media (prefers-reduced-motion: reduce){
+  /* The boot does not play itself. The scrubber still seeks his
+     keyframes, which is the part that carries the finding, and every
+     character is left in its finished state until it is asked for. */
+  .ch-char{ animation-play-state:paused !important; }
+  .ch-gleam{ animation-play-state:paused !important; }
+  .ch-chime{ transition:none; }
+}

@@ -1,4 +1,4 @@
-/* The loader — thirteen sections' stylesheets and twelve sections'
+/* The loader — fourteen sections' stylesheets and thirteen sections'
    scripts, fetched when you get near them
    ----------------------------------------------------------------------
    Added 2026-11-06 for the scripts. Extended 2026-11-10 to own the
@@ -29,8 +29,9 @@
    twenty-one dressed exactly one section apiece and came to 90,700 of
    those bytes — just under 70% of the page's stylesheet weight, held in
    front of a visitor who came for his name, his face, his bio and his
-   three contact links, none of which any of the thirteen touches. Those
-   thirteen now arrive the same way their scripts do.
+   three contact links, none of which any of the fourteen touches. Those
+   fourteen now arrive the same way their scripts do. (Thirteen on the day
+   this was written; #chime made it fourteen on 11 November.)
 
    What stays in the <head>, and why: style, intro, reveal, panel, rail,
    front, prov, theme. 40,364 bytes. Those are the page, the animation
@@ -39,25 +40,25 @@
    under his bio, the provenance disclosures, and the theme — which is
    to say, everything a visitor sees before scrolling, plus the three
    small shared files a deferred section would otherwise have to wait
-   for twice. (panel.css is 3,651 bytes and is used by eight of the
-   thirteen; it is cheaper to hold it than to work out who needs it.)
+   for twice. (panel.css is 3,651 bytes and is used by nine of the
+   fourteen; it is cheaper to hold it than to work out who needs it.)
 
    Why this is safe, rather than clever:
 
-     - Every one of the twelve scripts is an IIFE that looks its own
+     - Every one of the thirteen scripts is an IIFE that looks its own
        section up by id and returns if it is absent. None of them reads
        another's globals — every window.__x in js/ is a self-reference —
        so they can arrive in any order, late, or never.
-     - Every one of the thirteen stylesheets is scoped to its own
+     - Every one of the fourteen stylesheets is scoped to its own
        section: an id selector, or a class prefix no other file uses.
        The only rules any of them puts on :root are three private custom
        properties read nowhere outside the section that declares them.
-       So none of the thirteen can change the look of anything that is
+       So none of the fourteen can change the look of anything that is
        already on screen, which is the property that makes deferring
        them safe at all. If that ever stops being true of a new file,
        this is the paragraph it breaks.
      - Each link is inserted immediately before the <noscript> in the
-       <head> that lists all thirteen, not appended to the body. The
+       <head> that lists all fourteen, not appended to the body. The
        cascade therefore holds exactly: after the seven that block, and
        before theme.css, which is where they were written.
      - A section's stylesheet is requested first and its script follows
@@ -73,24 +74,28 @@
        no-JavaScript version, and that version was designed rather than
        left over. Its prose is dressed by style.css either way.
      - With JavaScript off, nothing here runs and the browser applies
-       all thirteen out of the <noscript> itself. The page is then
+       all fourteen out of the <noscript> itself. The page is then
        exactly what it was before 2026-11-06: every byte, up front.
 
    What it does NOT do is make the page smaller. Read to the bottom and
    you have fetched every byte you used to fetch. What it does is
    decline to spend them on somebody who came for the bio. Of the
-   297,543 bytes of stylesheet and script this page can ask for, an
+   319,775 bytes of stylesheet and script this page can ask for, an
    arrival that reads his name, his photo, his paragraph and his contact
-   links and then leaves now takes 86,478 — 40,364 of blocking
+   links and then leaves now takes 86,874 — 40,364 of blocking
    stylesheet, 7,174 more because #known sits inside the 1200px lead,
-   and 38,940 of script. Before 6 November the same arrival took all
-   297,543. (Every figure in this comment is a byte count typed into a
+   and 39,336 of script. Before 6 November the same arrival took all
+   319,775. (Every figure in this comment is a byte count typed into a
    comment, which is exactly the kind of claim the rest of this page
    refuses to type into its markup, and two of them were already wrong a
    day after they were written: the script totals here read 23,834 and
    32,456 on 6 November and were stale by the 7th, when js/front.js
    grew. They are corrected rather than dropped, because the paragraphs
-   above need them to mean anything — and they will go stale again.)
+   above need them to mean anything — and they will go stale again.
+   They went stale again on 11 November, when #chime arrived with a
+   fourteenth stylesheet and a thirteenth script, and again on the same
+   day when correcting this paragraph grew the file the paragraph is
+   counting. Every figure in it is the settled one.)
 
    Three limitations, stated rather than hidden. Text a section's script
    draws — the charts, the readouts, the generated captions — is not in
@@ -102,7 +107,7 @@
    beforeprint, which for a script is merely late but for a stylesheet
    is a race the dialog can win — a first print from a cold load may set
    some sections in the browser's own default. A second print gets
-   everything. That is the honest cost of the thirteen, and it is worth
+   everything. That is the honest cost of the fourteen, and it is worth
    it. */
 (function () {
   'use strict';
@@ -123,7 +128,8 @@
     resume: { css: 'resume.css', js: 'resume.js' },
     proxy: { css: 'proxy.css', js: 'proxy.js' },
     post: { css: 'post.css', js: 'post.js' },
-    fit: { css: 'fit.css', js: 'fit.js' }
+    fit: { css: 'fit.css', js: 'fit.js' },
+    chime: { css: 'chime.css', js: 'chime.js' }
   };
 
   /* Resolved against this file's own URL rather than the document's, so
@@ -134,7 +140,7 @@
   var cssBase = jsBase.replace(/js\/$/, 'css/');
 
   /* Where a stylesheet goes: immediately before the <noscript> that
-     lists all thirteen, which is the position they were written in. If
+     lists all fourteen, which is the position they were written in. If
      that element is ever removed, fall back to the end of <head>, which
      puts them after theme.css — a cascade this page does not currently
      depend on either way, and the <noscript> is there to keep it that
