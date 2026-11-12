@@ -203,6 +203,44 @@
   fill:#fff;
 }
 
+/* The rig states, on its own face, whether the numbers beside it were
+   measured out of the file or merely typed. Before 12 November 2026 it
+   could not have told you, and for three days it was typed and wrong. */
+.ho-how{
+  margin:12px 0 0;
+  font-size:var(--fs-sm);
+  line-height:1.5;
+  color:var(--panel-dim);
+}
+
+.ho-how:empty{ display:none; }
+
+.ho-how::before{
+  content:"";
+  display:inline-block;
+  width:7px;
+  height:7px;
+  margin-right:8px;
+  border-radius:50%;
+  vertical-align:middle;
+  background:var(--panel-dim);
+}
+
+.ho-how[data-ho-how="measured"]::before{ background:var(--panel-accent); }
+
+/* The repair note. Set apart from the running prose because it is the
+   section correcting itself rather than reporting on him. */
+.ho-fix{
+  margin:var(--space-s) 0;
+  padding:12px 0 12px 16px;
+  border-left:3px solid var(--accent);
+  font-size:var(--fs-sm);
+  line-height:1.65;
+  color:var(--muted);
+}
+
+.ho-fix strong{ color:var(--text); }
+
 .ho-cap{
   margin:0 0 10px;
   font-size:var(--fs-sm);

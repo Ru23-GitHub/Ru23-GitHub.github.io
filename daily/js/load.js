@@ -80,12 +80,12 @@
    What it does NOT do is make the page smaller. Read to the bottom and
    you have fetched every byte you used to fetch. What it does is
    decline to spend them on somebody who came for the bio. Of the
-   319,775 bytes of stylesheet and script this page can ask for, an
+   333,918 bytes of stylesheet and script this page can ask for, an
    arrival that reads his name, his photo, his paragraph and his contact
    links and then leaves now takes 86,874 — 40,364 of blocking
    stylesheet, 7,174 more because #known sits inside the 1200px lead,
    and 39,336 of script. Before 6 November the same arrival took all
-   319,775. (Every figure in this comment is a byte count typed into a
+   333,918. (Every figure in this comment is a byte count typed into a
    comment, which is exactly the kind of claim the rest of this page
    refuses to type into its markup, and two of them were already wrong a
    day after they were written: the script totals here read 23,834 and
@@ -95,7 +95,11 @@
    They went stale again on 11 November, when #chime arrived with a
    fourteenth stylesheet and a thirteenth script, and again on the same
    day when correcting this paragraph grew the file the paragraph is
-   counting. Every figure in it is the settled one.)
+   counting. They were stale again by 12 November — the fourteen read
+   98,938 against 100,384 and the whole read 319,775 against 333,918 —
+   and were caught by the audit that also found The Handover publishing
+   ten wrong line numbers for two nights. Every figure in it is the
+   settled one, and will not stay that way.)
 
    Three limitations, stated rather than hidden. Text a section's script
    draws — the charts, the readouts, the generated captions — is not in

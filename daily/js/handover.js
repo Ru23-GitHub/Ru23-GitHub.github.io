@@ -2,16 +2,36 @@
    ----------------------------------------------------------------------
    Added 2026-11-01. Scoped entirely to #handover.
 
-   Two numbers cannot be measured in a browser, so they are typed into the
-   markup and this file does nothing but read them:
+   Until 12 November this file did nothing but read two typed attributes:
 
      data-total   lines in daily/index.html as committed
      data-lines   the line numbers still attributed to Ruslan Manoharan
 
-   Both come from `git blame`, which needs the repository. The provenance
-   note at the foot of the section gives the exact command, because a
-   figure that cannot be checked from the page has to be checkable from
-   somewhere.
+   Both come from `git blame`, which needs the repository, so the figures
+   were retyped by hand on the nights somebody remembered. Nothing checked
+   them, and on 12 November they were found to have been wrong for two
+   nights: the file had grown from 1,683 lines to 1,788, and ten of the
+   sixteen numbers on screen pointed at lines that were no longer his.
+
+   So the numbers are no longer trusted. This file now fetches
+   daily/index.html — the same bytes the browser has already parsed — and
+   finds his lines in it:
+
+     * eleven of the sixteen are lines whose text occurs exactly once in
+       the whole file (the doctype, the three metas, the year script,
+       and so on). Those are located by that text and cannot go stale.
+     * three more are located relative to the one before them: the blank
+       after <body>, the hero's closing tag, the blank after that.
+     * two cannot be. A mid-file `  </section>` and a blank line near the
+       bottom are his by git history and are textually identical to
+       fifteen and two hundred and thirty-five others. Those two stay
+       pinned in data-lines — and are checked against the fetched file
+       before anything is printed.
+
+   If the fetch fails, or any one of the sixteen does not resolve, the rig
+   falls back to the typed attributes and says on screen that the numbers
+   were typed rather than measured. It never silently prints a figure it
+   has not been able to verify, which is the failure this replaced.
 
    What this file adds:
 
@@ -19,8 +39,9 @@
         position in the file. The ticks are drawn from the same attribute
         the list is checked against, so the picture cannot drift from the
         evidence beside it.
-     2. the line numbers in the list, written in from data-lines rather
-        than typed sixteen times beside the sixteen lines they number.
+     2. the line numbers in the list, written in from the fetched file
+        rather than typed sixteen times beside the sixteen lines they
+        number.
      3. a slider that walks the sixteen, lighting the row and its tick
         and naming what that line does.
 
@@ -47,21 +68,74 @@
 
   var rows = [].slice.call(list.children);
 
-  /* ---------- the two typed figures ---------- */
+  /* ---------- the typed figures, which are now only a fallback ---------- */
 
-  var total = parseInt(rig.getAttribute('data-total'), 10);
-  var nums = (rig.getAttribute('data-lines') || '')
+  var typedTotal = parseInt(rig.getAttribute('data-total'), 10);
+  var typedNums = (rig.getAttribute('data-lines') || '')
     .split(/[\s,]+/)
     .filter(function (s) { return s !== ''; })
     .map(function (s) { return parseInt(s, 10); });
 
-  /* If the markup and the attribute disagree about how many lines there
-     are, every number this file would write is suspect. Say nothing
-     rather than label the rows wrongly: the rows themselves are already
-     correct and already on the page. */
-  var sane = !!total && total > 0 &&
-    nums.length === rows.length &&
-    nums.every(function (n) { return !isNaN(n) && n >= 1 && n <= total; });
+  var total = typedTotal;
+  var nums = typedNums;
+  var source = 'typed';      /* 'measured' once the file has been read */
+  var trouble = '';          /* why it is still 'typed', if it is */
+  var sane = false;
+
+  /* ---------- finding his sixteen in the file itself ----------
+
+     In file order, and each with the rule that finds it. 'unique' means
+     the line's text occurs exactly once in daily/index.html, so the text
+     is the address. 'after' means it is the line immediately following
+     the one before it, and must read as given. 'next' means the first
+     line at or below the previous one that reads as given. 'pin' means
+     the file cannot tell it from its identical twins and the number has
+     to come out of data-lines — checked against the file before use. */
+  var SPEC = [
+    { how: 'unique', text: '<!doctype html>' },
+    { how: 'unique', text: '<html lang="en">' },
+    { how: 'unique', text: '<head>' },
+    { how: 'unique', text: '<meta charset="utf-8" />' },
+    { how: 'unique', text: '<meta name="viewport" content="width=device-width,initial-scale=1" />' },
+    { how: 'unique', text: '<meta name="robots" content="noindex" />' },
+    { how: 'unique', text: '</head>' },
+    { how: 'unique', text: '<body>' },
+    { how: 'after',  text: '' },
+    { how: 'next',   text: '  </section>' },
+    { how: 'after',  text: '' },
+    { how: 'pin',    text: '  </section>' },
+    { how: 'pin',    text: '' },
+    { how: 'unique', text: "<script>document.getElementById('year').textContent = new Date().getFullYear();</script>" },
+    { how: 'unique', text: '</body>' },
+    { how: 'unique', text: '</html>' }
+  ];
+
+  function resolve(lines) {
+    var out = [], prev = 0, i, j, n, hits;
+    if (SPEC.length !== rows.length) return { fail: 'the rig lists ' + rows.length + ' lines and the resolver knows ' + SPEC.length + '.' };
+    for (i = 0; i < SPEC.length; i++) {
+      n = -1;
+      if (SPEC[i].how === 'unique') {
+        hits = [];
+        for (j = 0; j < lines.length; j++) if (lines[j] === SPEC[i].text) hits.push(j + 1);
+        if (hits.length !== 1) return { fail: 'line ' + (i + 1) + ' of the sixteen was meant to be unique in the file and occurs ' + hits.length + ' times.' };
+        n = hits[0];
+      } else if (SPEC[i].how === 'after') {
+        n = prev + 1;
+        if (lines[n - 1] !== SPEC[i].text) return { fail: 'the line after ' + prev + ' is no longer what it was.' };
+      } else if (SPEC[i].how === 'next') {
+        for (j = prev; j < lines.length; j++) if (lines[j] === SPEC[i].text) { n = j + 1; break; }
+        if (n < 0) return { fail: 'no ' + SPEC[i].text.trim() + ' found below line ' + prev + '.' };
+      } else {
+        n = typedNums[i];
+        if (!n || lines[n - 1] !== SPEC[i].text) return { fail: 'pinned line ' + n + ' is not the one it was pinned to; it has moved and data-lines has not.' };
+      }
+      if (n <= prev) return { fail: 'the sixteen came out of order at index ' + i + '.' };
+      out.push(n);
+      prev = n;
+    }
+    return { nums: out, total: lines.length };
+  }
 
   /* ---------- what each of his lines is for ---------- */
 
@@ -166,7 +240,15 @@
 
   /* ---------- wiring ---------- */
 
-  if (sane) {
+  function start() {
+    /* If the rows and the numbers disagree, every number this file would
+       write is suspect. Say nothing rather than label the rows wrongly:
+       the rows themselves are already correct and already on the page. */
+    sane = !!total && total > 0 &&
+      nums.length === rows.length &&
+      nums.every(function (n) { return !isNaN(n) && n >= 1 && n <= total; });
+    if (!sane) return;
+
     rows.forEach(function (li, i) {
       var slot = li.querySelector('[data-ho-n]');
       if (slot) slot.textContent = nums[i].toLocaleString('en-US');
@@ -177,6 +259,17 @@
        the file's length and not two that can drift apart. */
     var last = section.querySelector('[data-ho-last]');
     if (last) last.textContent = total.toLocaleString('en-US');
+
+    /* Say which of the two it is. A figure nobody can check is the thing
+       this rig got wrong, so the rig states its own provenance on the
+       face of it rather than in the note at the foot. */
+    var how = section.querySelector('[data-ho-how]');
+    if (how) {
+      how.textContent = source === 'measured'
+        ? 'Measured from this file as your browser loaded it.'
+        : 'Typed by hand, and not verified this load' + (trouble ? ' — ' + trouble : '.');
+      how.setAttribute('data-ho-how', source);
+    }
 
     draw();
 
@@ -209,6 +302,47 @@
     }, { passive: true });
   }
 
+  /* ---------- read the file, then wire ----------
+
+     The document is already in the browser's cache, so this is normally
+     a cache hit and costs nothing on the wire. It is started when this
+     file runs, which js/load.js only does when the section is within
+     1200px — so a visitor who never reaches The Handover never asks for
+     it. Whichever settles first, the fetch or the four-second timeout,
+     wires the rig exactly once. */
+  var booted = false;
+
+  function boot(got, why) {
+    if (booted) return;
+    booted = true;
+    if (got) { nums = got.nums; total = got.total; source = 'measured'; }
+    else { trouble = why || ''; }
+    start();
+  }
+
+  window.setTimeout(function () { boot(null, 'the file did not come back in time.'); }, 4000);
+
+  if (typeof window.fetch === 'function') {
+    window.fetch('index.html', { credentials: 'same-origin' })
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function (text) {
+        var lines = text.split('\n');
+        /* A trailing newline is the end of the last line, not a line. */
+        if (lines.length && lines[lines.length - 1] === '') lines.pop();
+        var got = resolve(lines);
+        if (got.fail) boot(null, got.fail);
+        else boot(got, '');
+      })
+      .catch(function (e) {
+        boot(null, 'the file could not be read back (' + (e && e.message ? e.message : 'fetch failed') + ').');
+      });
+  } else {
+    boot(null, 'this browser has no fetch.');
+  }
+
   /* ---------- audit ---------- */
 
   window.__handover = {
@@ -218,9 +352,17 @@
         marked: nums.length,
         rows: rows.length,
         consistent: sane,
+        source: source,
+        typedTotal: typedTotal,
+        typedNums: typedNums.join(' '),
+        shown: nums.join(' '),
         problems: []
       };
-      if (!sane) out.problems.push('data-lines and the list disagree, or data-total is missing: no numbers were written and the ribbon was not drawn.');
+      if (!sane) out.problems.push('the numbers and the list disagree: no numbers were written and the ribbon was not drawn.');
+      if (source !== 'measured') out.problems.push('the figures on screen are the typed ones, unverified against the file — ' + (trouble || 'reason not recorded.'));
+      if (source === 'measured' && (total !== typedTotal || nums.join(' ') !== typedNums.join(' '))) {
+        out.problems.push('data-total/data-lines in the markup have gone stale against the file: typed ' + typedTotal + ' / ' + typedNums.join(' ') + ', measured ' + total + ' / ' + nums.join(' ') + '. The screen shows the measured figures; the attributes want retyping.');
+      }
       if (nums.length !== 16) out.problems.push('this section’s prose says sixteen; data-lines carries ' + nums.length + '.');
       for (var i = 1; i < nums.length; i++) {
         if (nums[i] <= nums[i - 1]) out.problems.push('line numbers are not ascending at index ' + i + ' — the list is meant to be in file order.');
