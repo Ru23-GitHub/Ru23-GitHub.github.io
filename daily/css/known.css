@@ -14,9 +14,14 @@
    else. The prose is now three headings over three lists, so the shape is
    visible instead of asserted, and the lead is 97 words.
 
-   Deliberately the only section here with no JavaScript: it is the part
-   that has to work when everything else doesn't, so there is nothing in
-   it that can fail to load. */
+   It was deliberately the only section here with no JavaScript until
+   2026-11-13 — it is the part that has to work when everything else
+   doesn't. That still holds for the findings themselves: the thirteen
+   rows are static HTML and nothing can stop them arriving. The question
+   box added that day is the one thing in here that needs a script, and
+   it is an alternative way into those same thirteen rows rather than a
+   gate in front of them. If it never loads, its no-JavaScript line says
+   so and the index below is untouched. */
 
 #known{
   background:var(--bg-alt);
@@ -246,4 +251,167 @@
     letter-spacing:.06em;
   }
   .kn-go{ margin-inline-start:0; }
+}
+
+/* ---------- the question box ----------
+   Added 2026-11-13, at the head of this section rather than in one of
+   its own, because it makes no new claim: every answer it can give is
+   one of the thirteen findings below, restated. It is the index with a
+   different way in — type instead of scan.
+
+   It is a panel, like every other rig on this page, so the one piece of
+   chrome a visitor can type into reads as machinery rather than as the
+   page speaking. Everything inside it is scoped under .ask-. */
+
+.ask-rig{
+  --panel-accent:#8ad7a0;
+  --panel-accent-soft:rgba(138,215,160,.6);
+  --panel-btn-on-top:#1e4a30;
+  --panel-btn-on-bottom:#163a26;
+  margin:var(--space-m) 0 0;
+  display:grid;
+  gap:12px;
+}
+
+.ask-label{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.ask-bar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+
+.ask-input{
+  font:inherit;
+  font-size:clamp(15px, 1.9vw, 17px);
+  flex:1 1 240px;
+  min-width:0;
+  padding:11px 14px;
+  border-radius:var(--radius-sm);
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.05);
+  color:var(--panel-ink);
+}
+
+.ask-input::placeholder{ color:#6c748a; }
+.ask-input:hover{ border-color:rgba(255,255,255,.34); }
+
+.ask-go{ flex:0 0 auto; min-width:0; }
+
+.ask-chips-head{
+  margin:0;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.ask-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.ask-chip{
+  font:inherit;
+  font-size:var(--fs-base);
+  padding:7px 13px;
+  border-radius:var(--radius-pill);
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.04);
+  color:var(--panel-ink);
+  cursor:pointer;
+}
+
+.ask-chip:hover{ border-color:var(--panel-accent); }
+
+/* ---------- the answer ---------- */
+
+.ask-out{
+  border-top:1px solid var(--panel-line);
+  padding-top:14px;
+  display:grid;
+  gap:8px;
+}
+
+.ask-out.is-in .ask-a,
+.ask-out.is-in .ask-meta{ animation:ask-in .16s ease-out both; }
+
+@keyframes ask-in{
+  from{ opacity:0; transform:translateY(3px); }
+  to{ opacity:1; transform:none; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ask-out.is-in .ask-a,
+  .ask-out.is-in .ask-meta{ animation:none; }
+}
+
+.ask-a{
+  margin:0;
+  font-size:clamp(15px, 1.9vw, 17px);
+  line-height:1.5;
+  color:var(--panel-ink);
+  text-wrap:pretty;
+}
+
+.ask-a a{ color:var(--panel-accent); }
+.ask-a code{ font-family:var(--mono); font-size:.92em; }
+.ask-idle{ color:var(--panel-dim); }
+.ask-q{ color:var(--panel-dim); }
+
+.ask-meta{
+  margin:0;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px 10px;
+}
+
+/* The same three-flavour chip the findings list uses, in the panel's
+   colours: his bio, he told me, his repo — and the fourth, which is the
+   honest answer to a good half of what anyone would ask. */
+
+.ask-src{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  padding:2px 8px;
+  border-radius:var(--radius-pill);
+  border:1px solid rgba(255,255,255,.16);
+  color:var(--panel-dim);
+  background:rgba(255,255,255,.04);
+  white-space:nowrap;
+}
+
+.ask-src[data-src="email"]{
+  color:var(--panel-accent);
+  border-color:color-mix(in srgb, var(--panel-accent) 45%, rgba(255,255,255,.16));
+}
+
+.ask-src[data-src="none"]{
+  color:#f0b46a;
+  border-color:rgba(240,180,106,.4);
+}
+
+.ask-link{
+  margin-inline-start:auto;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  color:var(--panel-accent);
+  white-space:nowrap;
+}
+
+.ask-link::after{ content:" \2193"; }
+
+@media (max-width: 560px){
+  .ask-link{ margin-inline-start:0; }
+  .ask-go{ flex:1 1 auto; }
 }

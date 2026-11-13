@@ -1,8 +1,12 @@
-/* The loader — fourteen sections' stylesheets and thirteen sections'
+/* The loader — fourteen sections' stylesheets and fourteen sections'
    scripts, fetched when you get near them
    ----------------------------------------------------------------------
    Added 2026-11-06 for the scripts. Extended 2026-11-10 to own the
    stylesheets too. No section of its own; this file is plumbing.
+   #known took a script of its own on 2026-11-13 — js/ask.js, the
+   question box at its head — which is the fourteenth, and the only one
+   of the fourteen whose stylesheet was already being fetched for the
+   prose around it.
 
    Ruslan wrote fifty-one of the 287 lines of his hero for somebody
    else's device — a font that has not arrived yet, a phone turned
@@ -120,7 +124,7 @@
      have a stylesheet and no script; none currently has a script and no
      stylesheet, but the loader does not mind either way. */
   var SECTIONS = {
-    known: { css: 'known.css' },
+    known: { css: 'known.css', js: 'ask.js' },
     source: { css: 'source.css', js: 'source.js' },
     north: { css: 'north.css', js: 'north.js' },
     shelf: { css: 'shelf.css', js: 'shelf.js' },
