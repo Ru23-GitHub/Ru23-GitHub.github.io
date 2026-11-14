@@ -1,0 +1,239 @@
+/* The Sieve — the other half of "for better or worse"
+   ----------------------------------------------------------------------
+   Added 2026-11-14.
+
+   His bio names one thing an interest rather than something he enjoys:
+   the societal impacts of AI tools, for better or worse. Two sections
+   were built on that clause before this one, and both of them are the
+   worse half. This is the other, and it is deliberately the same
+   furniture as those two — a dark panel, sliders, a readout — because
+   the argument is that nothing about the model changes between the
+   three wirings. Different chrome would have implied otherwise.
+
+   The accent is violet. Blue belongs to #threshold and #proxy, the two
+   sections this one is answering, and teal to #stack; a fourth section
+   lighting up blue would read as a fourth of the same thing. #c3a0ff is
+   7.6:1 on --panel-top (#1c1f27) and 6.3:1 on the lightest surface it
+   lands on. The amber (#f0b454, 8.9:1) marks the one outcome that is
+   nobody being looked at, and appears in exactly one of the three
+   modes.
+
+   Nothing here is carried by colour alone. Every bar segment is
+   restated as a number and a word in the legend directly under it, the
+   four-cell readout is plain text, and the mode buttons carry
+   aria-pressed and a filled dot as well as a lit border. */
+
+#sieve{
+  background:var(--bg);
+  border-top:1px solid var(--border);
+}
+
+.sv-intro{ max-width:66ch; }
+
+.sv-nojs{ max-width:66ch; }
+
+/* ---------- the rig ---------- */
+
+.sv-rig{
+  --panel-accent:#c3a0ff;
+  --panel-accent-soft:rgba(195,160,255,.65);
+  --panel-btn-on-top:#3b2c63;
+  --panel-btn-on-bottom:#2b2049;
+  --sv-found:#c3a0ff;
+  --sv-wrong:#f0b454;
+  --sv-dim:rgba(255,255,255,.16);
+  margin:var(--space-m) 0 var(--space-s);
+}
+
+/* ---------- the two dials ---------- */
+
+.sv-dials{
+  display:grid;
+  gap:14px 24px;
+  grid-template-columns:repeat(auto-fit, minmax(230px, 1fr));
+  margin-bottom:18px;
+}
+
+.sv-dial{ display:block; min-width:0; }
+
+.sv-dial-k{
+  display:block;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  margin-bottom:7px;
+}
+
+.sv-dial input[type="range"]{
+  width:100%;
+  margin:0;
+  display:block;
+}
+
+.sv-dial output{
+  display:block;
+  margin-top:4px;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--panel-accent);
+}
+
+/* ---------- the three wirings ---------- */
+
+.sv-modes-head{
+  margin:0 0 8px;
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+}
+
+.sv-modes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.sv-modes .panel-btn{
+  flex:1 1 auto;
+  min-width:0;
+  justify-content:flex-start;
+  text-align:left;
+  font-size:var(--fs-base);
+}
+
+/* ---------- the headline ---------- */
+
+.sv-head{
+  margin:0 0 18px;
+  padding:14px 16px;
+  border-radius:var(--radius-sm);
+  border:1px solid var(--panel-line);
+  background:rgba(255,255,255,.03);
+  font-size:var(--fs-base);
+  line-height:1.55;
+  color:var(--panel-ink);
+  min-height:4.6em;
+}
+
+/* ---------- the two bars ---------- */
+
+.sv-bars{
+  display:grid;
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.sv-bar-k{
+  margin:0 0 6px;
+  font-size:var(--fs-md);
+  color:var(--panel-dim);
+}
+
+.sv-bar{
+  display:flex;
+  height:18px;
+  border-radius:var(--radius-pill);
+  overflow:hidden;
+  background:rgba(255,255,255,.05);
+  box-shadow:inset 0 0 0 1px var(--panel-line);
+}
+
+.sv-seg{ display:block; height:100%; min-width:0; }
+
+.sv-seg[data-kind="found"]{ background:var(--sv-found); }
+.sv-seg[data-kind="wrong"]{ background:var(--sv-wrong); }
+
+/* Opened-and-cleared and missed are both "nothing happened here", and
+   they never share a bar, so they share a fill. */
+.sv-seg[data-kind="cleared"],
+.sv-seg[data-kind="missed"]{ background:var(--sv-dim); }
+
+@media (prefers-reduced-motion: no-preference){
+  .sv-seg{ transition:width 180ms ease; }
+}
+
+.sv-bar-legend{
+  margin:6px 0 0;
+  font-size:var(--fs-md);
+  color:var(--panel-ink);
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px 18px;
+}
+
+.sv-key{ display:inline-flex; align-items:center; gap:7px; }
+
+.sv-key-dot{
+  width:10px; height:10px;
+  border-radius:3px;
+  flex:none;
+  background:var(--sv-dim);
+}
+
+.sv-key-dot[data-kind="found"]{ background:var(--sv-found); }
+.sv-key-dot[data-kind="wrong"]{ background:var(--sv-wrong); }
+
+/* ---------- the four figures ---------- */
+
+.sv-readout{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(128px, 1fr));
+  gap:12px;
+  margin:0;
+  padding-top:16px;
+  border-top:1px solid var(--panel-line);
+}
+
+.sv-readout > div{ min-width:0; }
+
+.sv-readout dt{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  line-height:1.35;
+}
+
+.sv-readout dd{
+  margin:4px 0 0;
+  font-family:var(--mono);
+  font-size:21px;
+  color:var(--panel-ink);
+}
+
+.sv-readout dd[data-sv-cell="found"]{ color:var(--sv-found); }
+.sv-readout dd[data-sv-cell="wrong"]{ color:var(--sv-wrong); }
+
+/* ---------- the note under the rig ---------- */
+
+.sv-note{ max-width:66ch; }
+
+/* ---------- phone ---------- */
+
+@media (max-width:520px){
+  .sv-modes .panel-btn{ flex:1 1 100%; }
+  .sv-head{ font-size:var(--fs-md); padding:12px 13px; }
+  .sv-readout{ grid-template-columns:repeat(2, minmax(0, 1fr)); }
+  .sv-readout dd{ font-size:18px; }
+}
+
+/* ---------- the three wirings, as prose ---------- */
+
+.sv-wirings{
+  max-width:66ch;
+  margin:0 0 var(--space-s);
+  padding-left:1.25em;
+}
+
+.sv-wirings li{
+  margin-bottom:11px;
+  line-height:1.65;
+}
+
+.sv-wirings li:last-child{ margin-bottom:0; }
+
+/* A figure that is zero is not news, whichever column it is in. */
+.sv-readout dd[data-zero="true"]{ color:var(--panel-dim); }

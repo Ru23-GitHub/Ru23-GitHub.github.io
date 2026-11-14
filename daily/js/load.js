@@ -1,12 +1,12 @@
-/* The loader — fourteen sections' stylesheets and fourteen sections'
+/* The loader — fifteen sections' stylesheets and fifteen sections'
    scripts, fetched when you get near them
    ----------------------------------------------------------------------
    Added 2026-11-06 for the scripts. Extended 2026-11-10 to own the
    stylesheets too. No section of its own; this file is plumbing.
    #known took a script of its own on 2026-11-13 — js/ask.js, the
-   question box at its head — which is the fourteenth, and the only one
-   of the fourteen whose stylesheet was already being fetched for the
-   prose around it.
+   question box at its head — which was the fourteenth, and the only one
+   whose stylesheet was already being fetched for the
+   prose around it. #sieve made it fifteen on 2026-11-14.
 
    Ruslan wrote fifty-one of the 287 lines of his hero for somebody
    else's device — a font that has not arrived yet, a phone turned
@@ -33,9 +33,10 @@
    twenty-one dressed exactly one section apiece and came to 90,700 of
    those bytes — just under 70% of the page's stylesheet weight, held in
    front of a visitor who came for his name, his face, his bio and his
-   three contact links, none of which any of the fourteen touches. Those
-   fourteen now arrive the same way their scripts do. (Thirteen on the day
-   this was written; #chime made it fourteen on 11 November.)
+   three contact links, none of which any of the fifteen touches. Those
+   fifteen now arrive the same way their scripts do. (Thirteen on the day
+   this was written; #chime made it fourteen on 11 November, and #sieve
+   fifteen on the 14th.)
 
    What stays in the <head>, and why: style, intro, reveal, panel, rail,
    front, prov, theme. 40,364 bytes. Those are the page, the animation
@@ -45,24 +46,24 @@
    to say, everything a visitor sees before scrolling, plus the three
    small shared files a deferred section would otherwise have to wait
    for twice. (panel.css is 3,651 bytes and is used by nine of the
-   fourteen; it is cheaper to hold it than to work out who needs it.)
+   fifteen; it is cheaper to hold it than to work out who needs it.)
 
    Why this is safe, rather than clever:
 
-     - Every one of the thirteen scripts is an IIFE that looks its own
+     - Every one of the fifteen scripts is an IIFE that looks its own
        section up by id and returns if it is absent. None of them reads
        another's globals — every window.__x in js/ is a self-reference —
        so they can arrive in any order, late, or never.
-     - Every one of the fourteen stylesheets is scoped to its own
+     - Every one of the fifteen stylesheets is scoped to its own
        section: an id selector, or a class prefix no other file uses.
        The only rules any of them puts on :root are three private custom
        properties read nowhere outside the section that declares them.
-       So none of the fourteen can change the look of anything that is
+       So none of the fifteen can change the look of anything that is
        already on screen, which is the property that makes deferring
        them safe at all. If that ever stops being true of a new file,
        this is the paragraph it breaks.
      - Each link is inserted immediately before the <noscript> in the
-       <head> that lists all fourteen, not appended to the body. The
+       <head> that lists all fifteen, not appended to the body. The
        cascade therefore holds exactly: after the seven that block, and
        before theme.css, which is where they were written.
      - A section's stylesheet is requested first and its script follows
@@ -78,18 +79,19 @@
        no-JavaScript version, and that version was designed rather than
        left over. Its prose is dressed by style.css either way.
      - With JavaScript off, nothing here runs and the browser applies
-       all fourteen out of the <noscript> itself. The page is then
+       all fifteen out of the <noscript> itself. The page is then
        exactly what it was before 2026-11-06: every byte, up front.
 
    What it does NOT do is make the page smaller. Read to the bottom and
    you have fetched every byte you used to fetch. What it does is
    decline to spend them on somebody who came for the bio. Of the
-   333,918 bytes of stylesheet and script this page can ask for, an
+   374,309 bytes of stylesheet and script this page can ask for, an
    arrival that reads his name, his photo, his paragraph and his contact
-   links and then leaves now takes 86,874 — 40,364 of blocking
-   stylesheet, 7,174 more because #known sits inside the 1200px lead,
-   and 39,336 of script. Before 6 November the same arrival took all
-   333,918. (Every figure in this comment is a byte count typed into a
+   links and then leaves now takes 110,673 — 40,364 of blocking
+   stylesheet, 11,221 more because #known sits inside the 1200px lead,
+   39,859 of script in the <head>, and ask.js at 19,229 because it
+   belongs to #known and comes in behind it. Before 6 November the same
+   arrival took the lot. (Every figure in this comment is a byte count typed into a
    comment, which is exactly the kind of claim the rest of this page
    refuses to type into its markup, and two of them were already wrong a
    day after they were written: the script totals here read 23,834 and
@@ -102,8 +104,13 @@
    counting. They were stale again by 12 November — the fourteen read
    98,938 against 100,384 and the whole read 319,775 against 333,918 —
    and were caught by the audit that also found The Handover publishing
-   ten wrong line numbers for two nights. Every figure in it is the
-   settled one, and will not stay that way.)
+   ten wrong line numbers for two nights. They were stale again on
+   13 November, when ask.js arrived inside the lead and this paragraph
+   went on quoting an arrival cost that no longer included it; that is
+   the error this paragraph is most prone to, because a new file inside
+   the 1200px lead costs every visitor and a new file outside it costs
+   almost none. Recounted on 14 November, with #sieve. Every figure in
+   it is the settled one, and will not stay that way.)
 
    Three limitations, stated rather than hidden. Text a section's script
    draws — the charts, the readouts, the generated captions — is not in
@@ -115,7 +122,7 @@
    beforeprint, which for a script is merely late but for a stylesheet
    is a race the dialog can win — a first print from a cold load may set
    some sections in the browser's own default. A second print gets
-   everything. That is the honest cost of the fourteen, and it is worth
+   everything. That is the honest cost of the fifteen, and it is worth
    it. */
 (function () {
   'use strict';
@@ -137,7 +144,8 @@
     proxy: { css: 'proxy.css', js: 'proxy.js' },
     post: { css: 'post.css', js: 'post.js' },
     fit: { css: 'fit.css', js: 'fit.js' },
-    chime: { css: 'chime.css', js: 'chime.js' }
+    chime: { css: 'chime.css', js: 'chime.js' },
+    sieve: { css: 'sieve.css', js: 'sieve.js' }
   };
 
   /* Resolved against this file's own URL rather than the document's, so
@@ -148,7 +156,7 @@
   var cssBase = jsBase.replace(/js\/$/, 'css/');
 
   /* Where a stylesheet goes: immediately before the <noscript> that
-     lists all fourteen, which is the position they were written in. If
+     lists all fifteen, which is the position they were written in. If
      that element is ever removed, fall back to the end of <head>, which
      puts them after theme.css — a cascade this page does not currently
      depend on either way, and the <noscript> is there to keep it that

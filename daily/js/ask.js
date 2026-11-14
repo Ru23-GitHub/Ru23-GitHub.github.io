@@ -113,7 +113,7 @@
       id: 'interest',
       keys: [[6,'what is he interested in'],[5,'interested in'],[5,'societal impact'],[5,'societal impacts'],[4,'interests'],[4,'interest'],[4,'ethics'],[4,'ethical'],[4,'fairness'],[4,'bias'],[3,'research'],[3,'cares about'],[3,'care about'],[3,'passionate']],
       src: 'bio',
-      a: 'The societal impacts of AI tools, for better or worse. Those are his words, and it is the only thing in his bio he calls an <em>interest</em> rather than something he enjoys &mdash; which is why two sections of this page are built on that one clause.',
+      a: 'The societal impacts of AI tools, for better or worse. Those are his words, and it is the only thing in his bio he calls an <em>interest</em> rather than something he enjoys &mdash; which is why three sections of this page are built on that one clause — two on the <em>worse</em> half, and one on the other.',
       go: ['#threshold', 'The Line']
     },
     {
@@ -196,7 +196,7 @@
       keys: [[6,'how old is he'],[5,'is he single'],[4,'girlfriend'],[4,'boyfriend'],[4,'married'],[4,'partner'],[4,'wife'],[4,'husband'],[4,'birthday'],[4,'religion'],[4,'politics'],[3,'family'],[3,'kids'],[3,'children'],[3,'dating'],[3,'age'],[3,'born'],[2,'old']],
       src: 'none',
       a: 'Nothing on this page says, and nothing on this page is going to guess. Everything here traces to one paragraph he wrote, the repository he published, or two emails he answered &mdash; and none of the three mentions any of that.',
-      go: ['#known', 'the thirteen']
+      go: ['#known', 'the fourteen']
     },
     {
       id: 'pets',
@@ -271,7 +271,7 @@
       em.textContent = '“' + String(asked).trim() + '”';
       p.appendChild(em);
       p.appendChild(document.createTextNode(
-        ' matches nothing in the thirteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the thirteen below.'
+        ' matches nothing in the fourteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the fourteen below.'
       ));
       chip.setAttribute('data-src', 'none');
       chip.textContent = SRC.none;
