@@ -286,7 +286,7 @@
         ' tiles are written on, and ' + nm(m.blanks) + ' of those it cannot draw.';
     }
     if (d.k === 'gbc') {
-      return '<strong>The same screen, nine years later, in colour.</strong> Still ' + m.cols +
+      return '<strong>The same screen, nine years later, in color.</strong> Still ' + m.cols +
         ' by ' + m.rows + ', so still ' + nm(m.used) + ' rows with nothing over. The Color changed ' +
         'what his words could be painted; it did not change how many of them fit.';
     }

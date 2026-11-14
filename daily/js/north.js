@@ -301,7 +301,7 @@
         '. The forest of Douglas-firs and the sky are the same at every mile. ' +
         'The single volcano on the skyline is drawn ' +
         (t < 0.5 ? 'nearer to Mount Hood' : 'nearer to Mount Rainier') +
-        ', cross-faded between the two by distance travelled.';
+        ', cross-faded between the two by distance traveled.';
     }
 
     /* Announced only when the side actually flips, so holding an arrow

@@ -61,7 +61,7 @@
     var s = SONGS[key];
     if (!s) return;
 
-    elState.textContent = s.fav ? 'Cued — his favourite' : 'Cued';
+    elState.textContent = s.fav ? 'Cued — his favorite' : 'Cued';
     elTitle.textContent = s.title;
     elWipe.textContent = s.title;
     elMeta.textContent = s.by + '  ·  ' + s.year;
@@ -87,7 +87,7 @@
     rig.setAttribute('data-playing', '');
 
     elStatus.textContent = 'Cued: ' + s.title + ' — ' + s.by + ', ' + s.year + '.' +
-      (s.fav ? ' The one he called his most favourite song ever.' : '');
+      (s.fav ? ' The one he called his most favorite song ever.' : '');
   }
 
   for (var i = 0; i < rows.length; i++) {

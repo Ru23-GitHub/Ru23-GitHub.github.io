@@ -99,7 +99,7 @@
       id: 'karaoke',
       keys: [[6,'what does he sing'],[5,'favourite song'],[5,'favorite song'],[4,'karaoke'],[4,'sings'],[4,'sing'],[4,'singing'],[4,'keshi'],[4,'setlist'],[3,'songs'],[3,'song'],[3,'music'],[3,'band'],[2,'favourite'],[2,'favorite']],
       src: 'email',
-      a: 'He calls his own karaoke bad &mdash; his word, in his bio. Asked which songs, he gave four: <em>Sugar</em> by BROCKHAMPTON, <em>Lowkey</em> by NIKI, <em>Dial Drunk</em> by Noah Kahan with Post Malone, and <em>Soft Spot</em> by keshi, which he calls his most favourite song ever.',
+      a: 'He calls his own karaoke bad &mdash; his word, in his bio. Asked which songs, he gave four: <em>Sugar</em> by BROCKHAMPTON, <em>Lowkey</em> by NIKI, <em>Dial Drunk</em> by Noah Kahan with Post Malone, and <em>Soft Spot</em> by keshi, which he calls his most favorite song ever.',
       go: ['#booth', 'The Booth']
     },
     {
@@ -167,7 +167,7 @@
       id: 'travel',
       keys: [[6,'where has he travelled'],[6,'where has he traveled'],[5,'does he travel'],[4,'travel'],[4,'travels'],[4,'travelling'],[4,'traveling'],[4,'vacation'],[4,'holiday'],[3,'countries'],[3,'country'],[3,'abroad'],[3,'trip'],[3,'trips'],[3,'flights'],[2,'been to']],
       src: 'none',
-      a: 'His bio says he enjoys travelling. Nothing more &mdash; no country, no trip, no photograph. He has not been asked either: the rule here is one open question at a time, and the cooking one has been out since 8&nbsp;October.',
+      a: 'His bio says he enjoys traveling. Nothing more &mdash; no country, no trip, no photograph. He has not been asked either: the rule here is one open question at a time, and the cooking one has been out since 8&nbsp;October.',
       go: ['#post', 'The Correspondence']
     },
     {
@@ -202,7 +202,7 @@
       id: 'pets',
       keys: [[5,'does he have a dog'],[5,'does he have a cat'],[4,'pets'],[4,'pet'],[3,'dog'],[3,'cat']],
       src: 'none',
-      a: 'No idea. His bio names four things he does with his free time &mdash; travelling, cooking, karaoke and collecting retro tech &mdash; and an animal is not one of them. That is not evidence of absence, and this page will not treat it as any.',
+      a: 'No idea. His bio names four things he does with his free time &mdash; traveling, cooking, karaoke and collecting retro tech &mdash; and an animal is not one of them. That is not evidence of absence, and this page will not treat it as any.',
       go: ['#source', 'The Source']
     }
   ];
