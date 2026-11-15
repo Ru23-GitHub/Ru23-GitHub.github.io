@@ -16,12 +16,23 @@
 
    It was deliberately the only section here with no JavaScript until
    2026-11-13 — it is the part that has to work when everything else
-   doesn't. That still holds for the findings themselves: the thirteen
+   doesn't. That still holds for the findings themselves: the fourteen
    rows are static HTML and nothing can stop them arriving. The question
    box added that day is the one thing in here that needs a script, and
-   it is an alternative way into those same thirteen rows rather than a
+   it is an alternative way into those same fourteen rows rather than a
    gate in front of them. If it never loads, its no-JavaScript line says
-   so and the index below is untouched. */
+   so and the index below is untouched.
+
+   Regrouped 2026-11-15. The five headings used to sort the findings by
+   how the agent came by them — what he supplied, what his files gave
+   up, second passes, off-domain, the other half. That is a filing
+   system about the reading rather than about Ruslan. They now sort by
+   what each finding is about in his life, so the numbers under a
+   heading are no longer contiguous: a number is the section's place
+   down the page, and none of those moved. The lists are <ul> for the
+   same reason — within a group the order carries nothing, and the
+   numbers that do are written into each row. The rail stays in page
+   order, because that is what a navigator is for. */
 
 #known{
   background:var(--bg-alt);
@@ -36,10 +47,11 @@
 
 /* ---------- group headings ---------- */
 
-/* Three of them, over three <ol>s that carry start="1", "7" and "16". A
-   heading rather than a row inside the list, so that a screen reader gets
-   three lists of six, nine and five rather than one run of twenty with
-   captions wedged into it. */
+/* Five of them, over five lists of 2, 4, 4, 3 and 1. A heading rather
+   than a row inside the list, so that a screen reader gets five short
+   lists with names on them rather than one run of fourteen with captions
+   wedged into it. The number cell holds the findings in that group,
+   space-separated, rather than a range — the groups are not runs. */
 
 .kn-group{
   display:grid;
@@ -215,14 +227,96 @@
   .kn-row:hover .kn-go{ text-decoration:underline; }
 }
 
-/* ---------- tail ---------- */
+/* ---------- the four he named ----------
+   Sits inside the free-time group rather than at the foot of the section,
+   where the same point used to live as a paragraph nobody reaches. Two of
+   his four have sections and two have nothing, and the blanks are the
+   part worth showing: a portal that only renders what it happens to know
+   reads as a complete picture, which this is not. His order, not mine. */
 
-.kn-gap{
+.kn-four{
   margin-top:var(--space-m);
-  max-width:68ch;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  background:var(--bg);
+  padding:clamp(14px, 2.6vw, 22px);
+  max-width:72ch;
 }
 
-.kn-gap strong{ color:var(--text); }
+.kn-four-head{
+  margin:0 0 12px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.kn-four-list{ margin:0; }
+
+.kn-four-row{
+  display:grid;
+  grid-template-columns:minmax(0, 15em) 1fr;
+  column-gap:clamp(12px, 2.4vw, 20px);
+  row-gap:2px;
+  padding:10px 0;
+  border-top:1px solid var(--border);
+}
+.kn-four-row:first-child{ border-top:0; padding-top:0; }
+.kn-four-row:last-child{ padding-bottom:0; }
+
+.kn-four-row dt{ margin:0; min-width:0; }
+.kn-four-row dd{
+  margin:0;
+  min-width:0;
+  font-size:var(--fs-sm);
+  line-height:1.55;
+  color:var(--muted);
+}
+
+/* His words, so they are quoted rather than restyled into a label. */
+.kn-four-word{
+  font-size:var(--fs-sm);
+  line-height:1.55;
+  color:var(--text);
+}
+.kn-four-word::before{ content:"\201C"; }
+.kn-four-word::after{ content:"\201D"; }
+
+/* The count reads first, because the two zeroes are the point. */
+.kn-four-n{
+  display:inline-block;
+  margin-inline-end:.5em;
+  padding:1px 7px;
+  border-radius:999px;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  border:1px solid var(--border);
+  color:var(--muted);
+  white-space:nowrap;
+}
+[data-kn-have="yes"] .kn-four-n{
+  border-color:color-mix(in srgb, var(--accent) 45%, var(--border));
+  color:var(--accent);
+}
+[data-kn-have="no"] .kn-four-n{
+  border-style:dashed;
+}
+
+.kn-four-foot{
+  margin:14px 0 0;
+  font-size:var(--fs-sm);
+  line-height:1.55;
+  color:var(--muted);
+}
+
+@media (max-width: 560px){
+  .kn-four-row{
+    grid-template-columns:1fr;
+    row-gap:6px;
+  }
+}
 
 /* ---------- phone ----------
    At 390px the number column plus a nowrap chip row is what pushes this
