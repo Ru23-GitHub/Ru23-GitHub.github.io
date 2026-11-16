@@ -90,9 +90,9 @@
     },
     {
       id: 'retro',
-      keys: [[6,'what does he collect'],[5,'retro tech'],[4,'collect'],[4,'collects'],[4,'collecting'],[4,'game boy'],[4,'gameboy'],[4,'nintendo'],[4,'walkman'],[4,'handheld'],[4,'handhelds'],[3,'console'],[3,'consoles'],[3,'shelf'],[3,'gadgets'],[2,'retro'],[2,'old tech']],
+      keys: [[6,'what does he collect'],[5,'retro tech'],[4,'collect'],[4,'collects'],[4,'collecting'],[4,'game boy'],[4,'gameboy'],[4,'nintendo'],[4,'walkman'],[4,'handheld'],[4,'handhelds'],[4,'batteries'],[4,'battery'],[4,'charger'],[4,'portable'],[3,'console'],[3,'consoles'],[3,'shelf'],[3,'gadgets'],[3,'power'],[2,'retro'],[2,'old tech']],
       src: 'email',
-      a: 'A Walkman and five Nintendo handhelds: the Game&nbsp;Boy, the Game&nbsp;Boy Color, the Game&nbsp;Boy Advance, the Advance&nbsp;SP and the DS. He named them by email on 5&nbsp;October 2026, when he was asked what was actually on the shelf &mdash; the page had been guessing at famous machines he does not own.',
+      a: 'A Walkman and five Nintendo handhelds: the Game&nbsp;Boy, the Game&nbsp;Boy Color, the Game&nbsp;Boy Advance, the Advance&nbsp;SP and the DS. He named them by email on 5&nbsp;October 2026, when he was asked what was actually on the shelf &mdash; the page had been guessing at famous machines he does not own. Six machines, no home console among them: every one of the six is something you carry. Four of them run on shop-bought AA cells, ten between them; the two from 2003 on have sealed lithium packs and share one charger.',
       go: ['#shelf', 'The Shelf']
     },
     {
@@ -167,7 +167,7 @@
       id: 'travel',
       keys: [[6,'where has he travelled'],[6,'where has he traveled'],[5,'does he travel'],[4,'travel'],[4,'travels'],[4,'travelling'],[4,'traveling'],[4,'vacation'],[4,'holiday'],[3,'countries'],[3,'country'],[3,'abroad'],[3,'trip'],[3,'trips'],[3,'flights'],[2,'been to']],
       src: 'none',
-      a: 'His bio says he enjoys traveling. Nothing more &mdash; no country, no trip, no photograph. He has not been asked either: the rule here is one open question at a time, and the cooking one has been out since 8&nbsp;October.',
+      a: 'His bio says he enjoys traveling. Nothing more &mdash; no country, no trip, no photograph. He has not been asked either: the rule here is one open question at a time, and the cooking one has been out since 8&nbsp;October. The nearest this page gets is an observation about something else he listed: all six machines on his shelf are portable. That is a fact about six objects, not about where he has been.',
       go: ['#post', 'The Correspondence']
     },
     {

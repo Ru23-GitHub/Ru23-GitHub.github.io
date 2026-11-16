@@ -366,3 +366,251 @@
   .cart{ padding:10px 6px; }
   .cart-ico{ height:28px; }
 }
+
+/* ---------- the bag: what each machine runs on ----------
+   Added 2026-11-16. A second axis over the same six objects the case
+   already holds: not what they play, but what you have to carry to keep
+   them running. The six .bag-row elements are the only copy of that data
+   in the file — shelf.js builds the bench's toggles out of them and sums
+   its figures off them — so the rows are styled to read as a table on
+   their own, with no script at all.
+
+   The one visual argument this block makes is the rule above the fifth
+   row: 1979–2001 above it, sealed cells below. It is a border, not an
+   animation, so it is there for everyone. */
+
+.bag{
+  margin:var(--space-m) 0 0;
+  padding:var(--space-m) 0 0;
+  border-top:1px solid var(--border);
+}
+
+.bag-h{
+  margin:0;
+  font-family:var(--display);
+  font-size:clamp(17px, 3.4vw, 26px);
+  font-weight:400;
+  line-height:1.25;
+  letter-spacing:.01em;
+}
+
+.bag-intro{
+  margin:.9em 0 0;
+  max-width:62ch;
+  color:var(--muted);
+}
+
+/* ---------- the six rows ---------- */
+
+.bag-line{
+  list-style:none;
+  margin:var(--space-m) 0 0;
+  padding:0;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+
+.bag-row{
+  display:grid;
+  grid-template-columns:4.5rem minmax(0,1fr);
+  grid-template-areas:
+    "yr   name"
+    "yr   feed";
+  gap:2px 14px;
+  padding:14px clamp(12px, 2.5vw, 20px);
+  background:var(--bg);
+}
+
+.bag-row + .bag-row{ border-top:1px solid var(--border); }
+
+/* The 2003 line. Two pixels of accent is the whole of the claim: above it
+   you can buy what the machine eats, below it you cannot. */
+.bag-row-break{
+  border-top:2px solid var(--accent) !important;
+  background:var(--bg-alt);
+}
+.bag-row-break ~ .bag-row{ background:var(--bg-alt); }
+
+.bag-yr{
+  grid-area:yr;
+  align-self:start;
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--muted);
+  padding-top:.15em;
+}
+
+.bag-name{
+  grid-area:name;
+  font-weight:600;
+  line-height:1.3;
+}
+
+.bag-feed{
+  grid-area:feed;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  min-width:0;
+}
+
+.bag-cells{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  font-weight:400;
+  color:var(--accent);
+  letter-spacing:.01em;
+}
+
+.bag-cells[data-sealed]{ color:var(--bag-sealed); }
+
+/* --accent-2 is a border colour everywhere else on this page, and at
+   #ff3dee it only reaches about 3.3:1 against a white page — fine for a
+   2px rule, not for 13px type. The sealed rows get a darkened sibling of
+   it in light mode and the real one back on dark, where it is already
+   well clear of the background. */
+.bag{ --bag-sealed:#b1009f; }
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .bag{ --bag-sealed:var(--accent-2); }
+}
+:root[data-theme="dark"] .bag{ --bag-sealed:var(--accent-2); }
+
+.bag-feed-note{
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--muted);
+}
+
+/* ---------- the bench ---------- */
+
+.bag-nojs{
+  margin:var(--space-s) 0 0;
+  max-width:66ch;
+}
+.bag-nojs[hidden]{ display:none; }
+
+.bag-rig{
+  --panel-top:#1c1f27;
+  --panel-bottom:#13151b;
+  --panel-accent:#8ab4ff;
+  margin:var(--space-s) 0 0;
+}
+
+.bag-prompt{
+  margin:0;
+  max-width:62ch;
+  font-size:var(--fs-md);
+  line-height:1.6;
+  color:var(--panel-dim);
+}
+
+.bag-pick{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:8px;
+  margin:var(--space-s) 0 0;
+}
+
+/* The toggles are .panel-btn, minus the pill's fixed min-width — six of
+   them in two columns on a phone, and a pill that will not shrink pushes
+   the page sideways. */
+.bag-add{
+  min-width:0;
+  justify-content:flex-start;
+  padding:10px 14px;
+  font-size:var(--fs-base);
+  text-align:left;
+  line-height:1.25;
+}
+
+.bag-add .bag-add-yr{
+  font-family:var(--mono);
+  font-size:var(--fs-sm);
+  color:var(--panel-dim);
+  flex:none;
+}
+
+.bag-add[aria-pressed="true"] .bag-add-yr{ color:var(--panel-ink); }
+
+.bag-add-name{ min-width:0; }
+
+.bag-out{
+  display:grid;
+  grid-template-columns:repeat(3, minmax(0,1fr));
+  gap:10px;
+  margin:var(--space-m) 0 0;
+  padding:14px 0 0;
+  border-top:1px solid var(--panel-line);
+}
+
+.bag-fig dt{
+  margin:0;
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--panel-dim);
+  line-height:1.4;
+}
+
+.bag-fig dd{
+  margin:6px 0 0;
+  display:flex;
+  align-items:baseline;
+  gap:6px;
+  flex-wrap:wrap;
+}
+
+.bag-fig dd b{
+  font-family:var(--mono);
+  font-size:clamp(20px, 4.5vw, 28px);
+  font-weight:400;
+  color:var(--panel-ink);
+  font-variant-numeric:tabular-nums;
+}
+
+.bag-fig dd span{
+  font-size:var(--fs-sm);
+  color:var(--panel-dim);
+}
+
+.bag-say{
+  margin:var(--space-s) 0 0;
+  max-width:62ch;
+  font-size:var(--fs-md);
+  line-height:1.6;
+  min-height:3.2em;   /* holds its height so the bench does not jump as the sentence changes */
+  color:var(--panel-ink);
+}
+
+.bag-close{
+  margin:var(--space-m) 0 0;
+  max-width:68ch;
+  font-size:var(--fs-md);
+  line-height:1.75;
+  color:var(--muted);
+}
+.bag-close + .bag-close{ margin-top:.9em; }
+.bag-close strong{ color:var(--text); }
+
+@media (prefers-reduced-motion: no-preference){
+  .bag-add{ transition:border-color .2s ease, background .2s ease; }
+}
+
+@media (min-width:620px){
+  .bag-row{
+    grid-template-columns:5rem 15rem minmax(0,1fr);
+    grid-template-areas:"yr name feed";
+    align-items:start;
+    gap:0 18px;
+  }
+  .bag-pick{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+}
+
+@media (max-width:420px){
+  .bag-row{ grid-template-columns:3.6rem minmax(0,1fr); }
+  .bag-pick{ grid-template-columns:1fr; }
+  .bag-out{ grid-template-columns:1fr; gap:14px; }
+  .bag-fig dd{ margin-top:2px; }
+}

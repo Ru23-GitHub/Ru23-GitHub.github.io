@@ -296,7 +296,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
         <li class="kn-row" data-from="agent">
           <span class="kn-no"><span class="sr-only">Finding </span>03</span>
-          <p class="kn-fact">He owns a Walkman and five Nintendo handhelds: the Game&nbsp;Boy, the Color, the Advance, the Advance&nbsp;SP and the DS.</p>
+          <p class="kn-fact">He owns a Walkman and five Nintendo handhelds: the Game&nbsp;Boy, the Color, the Advance, the Advance&nbsp;SP and the DS. Six machines and no home console among them &mdash; every one of the six is something built to be carried.</p>
           <p class="kn-meta"><span class="kn-src" data-src="email">He told me</span> <a class="kn-go" href="#shelf">The Shelf</a></p>
         </li>
         <li class="kn-row" data-from="agent">
@@ -771,9 +771,85 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <p class="compat-status" role="status" data-compat-status>Nothing selected. All six are just sitting there.</p>
       </div>
 
+      <div class="bag">
+        <h3 class="bag-h reveal" data-from="agent">Ten AA Cells And One Charger</h3>
+
+        <p class="bag-intro reveal" data-from="agent">His bio lists four things he does with his free time, and two of them sit two items apart in the same sentence: <span data-from="site">traveling</span> and <span data-from="site">collecting retro tech</span>. Read the case above as a list of objects rather than a list of names, and the two stop being separate. There is no home console in there. No desktop machine, no television set, nothing that waits in a room for you &mdash; six things, and every one of them was built to be carried. He wrote <span data-from="email">stuff like that</span>, so the shelf may well hold more than six; of the six he named, six go in a bag.</p>
+
+        <p class="bag-intro reveal" data-from="agent">What changes across those twenty-five years is not the size of the thing. It is what you have to bring to keep it alive.</p>
+
+        <ol class="bag-line reveal-stagger">
+
+          <li class="bag-row" data-aa="2" data-plug="" data-short="Walkman">
+            <span class="bag-yr" data-from="agent">1979</span>
+            <span class="bag-name" data-from="email">Walkman</span>
+            <span class="bag-feed" data-from="agent"><b class="bag-cells" data-cells>2 &times; AA</b><span class="bag-feed-note">Cells you can still buy in any shop today, four decades on.</span></span>
+          </li>
+
+          <li class="bag-row" data-aa="4" data-plug="" data-short="Game Boy">
+            <span class="bag-yr" data-from="agent">1989</span>
+            <span class="bag-name" data-from="email">Game Boy</span>
+            <span class="bag-feed" data-from="agent"><b class="bag-cells" data-cells>4 &times; AA</b><span class="bag-feed-note">The hungriest thing in the case, and the one that beat brighter rivals on endurance.</span></span>
+          </li>
+
+          <li class="bag-row" data-aa="2" data-plug="" data-short="Game Boy Color">
+            <span class="bag-yr" data-from="agent">1998</span>
+            <span class="bag-name" data-from="email">Game Boy Color</span>
+            <span class="bag-feed" data-from="agent"><b class="bag-cells" data-cells>2 &times; AA</b><span class="bag-feed-note">Half the cells of the machine it replaced, and a colour screen.</span></span>
+          </li>
+
+          <li class="bag-row" data-aa="2" data-plug="" data-short="Game Boy Advance">
+            <span class="bag-yr" data-from="agent">2001</span>
+            <span class="bag-name" data-from="email">Game Boy Advance</span>
+            <span class="bag-feed" data-from="agent"><b class="bag-cells" data-cells>2 &times; AA</b><span class="bag-feed-note">The last machine on this shelf you can feed at a corner shop.</span></span>
+          </li>
+
+          <li class="bag-row bag-row-break" data-aa="0" data-plug="ntr" data-short="Game Boy Advance SP">
+            <span class="bag-yr" data-from="agent">2003</span>
+            <span class="bag-name" data-from="email">Game Boy Advance SP</span>
+            <span class="bag-feed" data-from="agent"><b class="bag-cells" data-cells data-sealed>Sealed lithium pack</b><span class="bag-feed-note">The machine that finally lit its own screen is the machine that stopped taking shop batteries. Same model, same year.</span></span>
+          </li>
+
+          <li class="bag-row" data-aa="0" data-plug="ntr" data-short="Nintendo DS">
+            <span class="bag-yr" data-from="agent">2004</span>
+            <span class="bag-name" data-from="email">Nintendo DS</span>
+            <span class="bag-feed" data-from="agent"><b class="bag-cells" data-cells data-sealed>Sealed lithium pack</b><span class="bag-feed-note">And it takes the SP&rsquo;s charger &mdash; the original DS shipped with the same adapter. The DS Lite changed the plug.</span></span>
+          </li>
+
+        </ol>
+
+        <p class="bag-nojs placeholder" data-from="agent">The bench below needs JavaScript to total a bag up, and the six rows above are the whole of its data either way. The answer for all six is the heading of this block: ten AA cells, which is 2&nbsp;+&nbsp;4&nbsp;+&nbsp;2&nbsp;+&nbsp;2 for the four oldest, and one charger between the two newest, because both of them take the same one.</p>
+
+        <div class="bag-rig panel" data-bag-rig hidden>
+          <p class="bag-prompt" id="bag-prompt" data-chrome>Pack it. Each machine you add says what the bag now needs.</p>
+          <div class="bag-pick" role="group" aria-labelledby="bag-prompt" data-bag-pick></div>
+
+          <dl class="bag-out" data-chrome>
+            <div class="bag-fig">
+              <dt>In the bag</dt>
+              <dd><b data-bag-n>0</b><span data-bag-n-unit>of six</span></dd>
+            </div>
+            <div class="bag-fig">
+              <dt>AA cells to buy</dt>
+              <dd><b data-bag-aa>0</b><span data-bag-aa-unit>cells</span></dd>
+            </div>
+            <div class="bag-fig">
+              <dt>Chargers to remember</dt>
+              <dd><b data-bag-plug>0</b><span data-bag-plug-unit>chargers</span></dd>
+            </div>
+          </dl>
+
+          <p class="bag-say" role="status" data-bag-say></p>
+        </div>
+
+        <p class="bag-close reveal" data-from="agent"><strong>The break is at the fifth of six.</strong> From 1979 to 2001 &mdash; twenty-two years, four machines, ten cells &mdash; everything in that case runs on something a stranger could hand you. From 2003 it runs on a sealed pack and a plug. He owns the last machine on the near side of that line and the first one on the far side, and they are consecutive items on his own shelf. The oldest thing he owns is the one you can still keep alive anywhere; the newest two are the ones that need a wall, and when their packs die they need packs, not batteries.</p>
+
+        <p class="bag-close reveal" data-from="agent"><strong>What this does not claim.</strong> He has never said he takes any of these anywhere, and nothing here says he does. The bag is mine. What is his is the list, and the fact that the list is six portable machines &mdash; which is an observation about six objects, not a claim about how he spends a holiday.</p>
+      </div>
+
       <details class="prov reveal-tail">
         <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
-        <p class="prov-body"><span data-from="agent">Every device above is hand-drawn SVG &mdash; no images, no libraries. The collection is Ruslan&rsquo;s, given by email on 5&nbsp;October&nbsp;2026 &mdash; the letter and the reply are <a href="#post">finding 11</a>:</span> <span data-from="email">&ldquo;a Walkman, game boy, game boy color, game boy advance, game boy advance sp, ds.&rdquo;</span> <span data-from="agent">He did not say which revisions, so the drawings are a guess &mdash; the original 1979 Walkman, the original 2004 DS &mdash; and the years and specs below each one describe that hardware, not his particular unit.</span></p>
+        <p class="prov-body"><span data-from="agent">Every device above is hand-drawn SVG &mdash; no images, no libraries. The collection is Ruslan&rsquo;s, given by email on 5&nbsp;October&nbsp;2026 &mdash; the letter and the reply are <a href="#post">finding 11</a>:</span> <span data-from="email">&ldquo;a Walkman, game boy, game boy color, game boy advance, game boy advance sp, ds.&rdquo;</span> <span data-from="agent">He did not say which revisions, so the drawings are a guess &mdash; the original 1979 Walkman, the original 2004 DS &mdash; and the years and specs below each one describe that hardware, not his particular unit. Added 16&nbsp;November&nbsp;2026, the block about what feeds them: the cell counts are the hardware&rsquo;s, looked up rather than remembered &mdash; two AA for the 1979 Walkman, four for the 1989 Game&nbsp;Boy, two apiece for the Color and the Advance, a sealed lithium pack in the SP and in the DS. Battery <em>life</em> is deliberately absent: the published figures for the original Game&nbsp;Boy alone run from about ten hours to about thirty-five depending on who measured it and on which cells, so there is no one honest number to print and this block counts cells and plugs instead. That the original DS takes the SP&rsquo;s adapter is from the retail record &mdash; the same part is still sold for the two of them together &mdash; rather than from a Nintendo document I could reach; the DS&nbsp;Lite took a different plug. Every figure the bench shows is summed in the browser off the six rows above it, which are the only copy of the data, and <code>window.__shelf.bag.audit()</code> prints them; the bench does not appear at all if the rows do not come to ten cells and one plug. The reading laid on top of it is mine, and it is about six objects rather than about him.</span></p>
       </details>
     </div>
   </section>
