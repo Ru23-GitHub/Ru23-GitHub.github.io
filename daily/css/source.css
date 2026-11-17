@@ -26,7 +26,7 @@
 
 :root{
   --src-tint:rgba(23,51,255,.09);
-  --src-gap:#b3391f;        /* the two clauses nothing was built on */
+  --src-gap:#b3391f;        /* the two pastimes nothing was built on */
   --src-gap-bg:rgba(179,57,31,.07);
 }
 
@@ -45,7 +45,7 @@
 
 .src-intro{ max-width:62ch; }
 
-/* ---------- the three measured facts ---------- */
+/* ---------- the four measured facts ---------- */
 
 .src-stats{
   margin:var(--space-m) 0 0;
@@ -152,9 +152,20 @@
   padding:13px 16px;
 }
 
-.src-map > div[data-row="travel"],
-.src-map > div[data-row="cook"]{
+.src-map > div[data-kind="gap"]{
   border-left-color:var(--src-gap);
+}
+
+/* The two rows that are not clauses of his paragraph — the one section
+   that rests on the whole of it, and the five that rest on none of it.
+   Neither is a gap and neither is one of the seven, so they get the
+   muted edge rather than the accent or the warning colour. */
+.src-map > div[data-kind="extra"]{
+  border-left-color:var(--muted);
+}
+
+.src-map > div[data-kind="subject"]{
+  border-left-style:dashed;
 }
 
 /* The dimming is opacity on purpose: a deliberate, reversible drop below
@@ -166,8 +177,7 @@
   background:var(--src-tint);
   box-shadow:0 0 0 2px var(--accent);
 }
-.src-map > div[data-row="travel"].src-on,
-.src-map > div[data-row="cook"].src-on{
+.src-map > div[data-kind="gap"].src-on{
   background:var(--src-gap-bg);
   box-shadow:0 0 0 2px var(--src-gap);
 }
@@ -177,10 +187,26 @@
   font-size:var(--fs-base);
   letter-spacing:.02em;
   margin-bottom:5px;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:2px 10px;
 }
 
-.src-map > div[data-row="travel"] dt,
-.src-map > div[data-row="cook"] dt{ color:var(--src-gap); }
+/* The clause a row is for, and how many sections it carries. The count
+   is written by js/source.js off the page's own table of contents; the
+   markup carries one too, for the no-JavaScript page. */
+.src-row-n{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+}
+
+.src-map > div[data-kind="gap"] .src-row-n{ color:var(--src-gap); }
+
+.src-map > div[data-kind="gap"] dt{ color:var(--src-gap); }
 
 .src-map dd{
   margin:0;
@@ -189,6 +215,62 @@
 }
 
 .src-map dd a{ white-space:nowrap; }
+
+/* ---------- the sections a clause carries ----------
+
+   One pill per section, number and codename, in page order. js/source.js
+   rebuilds these lists out of the navigator at the top of the page on
+   every load, so the number beside a codename here cannot drift from the
+   number beside it there. They are written into the markup as well,
+   because with JavaScript off they are all a visitor gets. */
+
+.src-hits{
+  list-style:none;
+  margin:0 0 9px;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.src-hits a{
+  display:inline-flex;
+  align-items:baseline;
+  gap:7px;
+  padding:4px 10px 4px 7px;
+  border:1px solid var(--border);
+  border-radius:999px;
+  text-decoration:none;
+  color:var(--text);
+  font-size:var(--fs-md);
+  white-space:nowrap;
+  max-width:100%;
+}
+
+.src-hits a:hover{
+  background:var(--src-tint);
+  border-color:var(--accent);
+}
+
+.src-hits a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+.src-hit-no{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  color:var(--muted);
+}
+
+.src-hit-n{
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .src-hits a{ transition:background-color .18s ease, border-color .18s ease; }
+}
 
 #source code{
   font-family:var(--mono);
