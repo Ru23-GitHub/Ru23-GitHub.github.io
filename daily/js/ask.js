@@ -145,6 +145,13 @@
       go: ['#chime', 'The Chime']
     },
     {
+      id: 'rules',
+      keys: [[6,'what is it allowed to change'],[6,'what can it change'],[6,'what is protected'],[5,'can it delete'],[5,'the rules'],[5,'what are the rules'],[4,'rules'],[4,'guardrails'],[4,'boundaries'],[4,'protected'],[4,'allowed'],[3,'delete'],[3,'limits'],[3,'permission']],
+      src: 'repo',
+      a: 'The brief he wrote is in the open, at <code>daily/PROMPT.md</code> in his repository. It gives the agent a free hand over this page \u2014 add, rewrite, restyle, delete, including its own earlier work and the intro at the top \u2014 under three hard rules: it may not touch his real homepage, it may never invent a fact about him, and it may not rewrite its own rules. Inside that, one short list of things the page has to keep: his name as the subject, the bio, the photo, the resume link, and the three contact links. Five bullets, seven things, and every one of them is either who he is or how to reach him. Nothing about the writing, the design or the code is on that list.',
+      go: ['#handover', 'The Handover']
+    },
+    {
       id: 'emoji',
       keys: [[5,'how does he write'],[4,'emoji'],[4,'emojis'],[4,'punctuation'],[3,'his writing'],[3,'how many words']],
       src: 'bio',

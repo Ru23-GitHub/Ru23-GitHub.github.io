@@ -7,6 +7,9 @@
      data-total   lines in daily/index.html as committed
      data-lines   the line numbers still attributed to Ruslan Manoharan
 
+     Both are a fallback only, for a browser that cannot fetch. Nothing
+     drawn on screen comes out of them when the fetch succeeds.
+
    Both come from `git blame`, which needs the repository, so the figures
    were retyped by hand on the nights somebody remembered. Nothing checked
    them, and on 12 November they were found to have been wrong for two
@@ -22,11 +25,16 @@
        and so on). Those are located by that text and cannot go stale.
      * three more are located relative to the one before them: the blank
        after <body>, the hero's closing tag, the blank after that.
-     * two cannot be. A mid-file `  </section>` and a blank line near the
-       bottom are his by git history and are textually identical to
-       fifteen and two hundred and thirty-five others. Those two stay
-       pinned in data-lines — and are checked against the fetched file
-       before anything is printed.
+     * two have no unique text of their own. A mid-file `  </section>`
+       is identical to sixteen others and a blank line near the bottom
+       to two hundred and eighty others. Each is found below an anchor
+       that does occur exactly once — `  <section id="shelf">` and
+       `  </footer>` — so neither needs a line number either. Until
+       2026-11-18 those two were pinned to typed numbers, and both went
+       wrong on 14 November, the first night a build inserted lines
+       above them: the rig fell back to the typed figures and declared
+       them unverified, correctly, for four days, because the thing
+       that notices is a function nobody was calling.
 
    If the fetch fails, or any one of the sixteen does not resolve, the rig
    falls back to the typed attributes and says on screen that the numbers
@@ -88,9 +96,10 @@
      the line's text occurs exactly once in daily/index.html, so the text
      is the address. 'after' means it is the line immediately following
      the one before it, and must read as given. 'next' means the first
-     line at or below the previous one that reads as given. 'pin' means
-     the file cannot tell it from its identical twins and the number has
-     to come out of data-lines — checked against the file before use. */
+     line at or below the previous one that reads as given. 'below' is
+     for the two whose own text is not unique: each is the first line
+     reading as given at or below an anchor that does occur exactly
+     once, so neither needs a line number. No rule here uses one. */
   var SPEC = [
     { how: 'unique', text: '<!doctype html>' },
     { how: 'unique', text: '<html lang="en">' },
@@ -103,8 +112,8 @@
     { how: 'after',  text: '' },
     { how: 'next',   text: '  </section>' },
     { how: 'after',  text: '' },
-    { how: 'pin',    text: '  </section>' },
-    { how: 'pin',    text: '' },
+    { how: 'below',  anchor: '  <section id="shelf">', text: '  </section>' },
+    { how: 'below',  anchor: '  </footer>',              text: '' },
     { how: 'unique', text: "<script>document.getElementById('year').textContent = new Date().getFullYear();</script>" },
     { how: 'unique', text: '</body>' },
     { how: 'unique', text: '</html>' }
@@ -126,9 +135,16 @@
       } else if (SPEC[i].how === 'next') {
         for (j = prev; j < lines.length; j++) if (lines[j] === SPEC[i].text) { n = j + 1; break; }
         if (n < 0) return { fail: 'no ' + SPEC[i].text.trim() + ' found below line ' + prev + '.' };
+      } else if (SPEC[i].how === 'below') {
+        var anchors = [];
+        for (j = 0; j < lines.length; j++) if (lines[j] === SPEC[i].anchor) anchors.push(j + 1);
+        if (anchors.length !== 1) {
+          return { fail: 'the anchor ' + SPEC[i].anchor.trim() + ', which line ' + (i + 1) + ' of the sixteen sits below, occurs ' + anchors.length + ' times in the file and has to occur exactly once.' };
+        }
+        for (j = anchors[0] - 1; j < lines.length; j++) if (lines[j] === SPEC[i].text) { n = j + 1; break; }
+        if (n < 0) return { fail: 'nothing reading as line ' + (i + 1) + ' of the sixteen was found at or below ' + SPEC[i].anchor.trim() + '.' };
       } else {
-        n = typedNums[i];
-        if (!n || lines[n - 1] !== SPEC[i].text) return { fail: 'pinned line ' + n + ' is not the one it was pinned to; it has moved and data-lines has not.' };
+        return { fail: 'line ' + (i + 1) + ' of the sixteen carries a rule this resolver does not know: ' + SPEC[i].how + '.' };
       }
       if (n <= prev) return { fail: 'the sixteen came out of order at index ' + i + '.' };
       out.push(n);
@@ -260,6 +276,11 @@
     var last = section.querySelector('[data-ho-last]');
     if (last) last.textContent = total.toLocaleString('en-US');
 
+    /* Same figure in the stat row above, for the same reason: one
+       measurement, written everywhere it is quoted. */
+    var fl = section.querySelector('[data-ho-filelines]');
+    if (fl) fl.textContent = total.toLocaleString('en-US');
+
     /* Say which of the two it is. A figure nobody can check is the thing
        this rig got wrong, so the rig states its own provenance on the
        face of it rather than in the note at the foot. */
@@ -343,6 +364,167 @@
     boot(null, 'this browser has no fetch.');
   }
 
+
+  /* ---------- the floor: his rule, performed instead of asserted ----------
+
+     Rule two of daily/PROMPT.md lists five bullets the page must keep in
+     some visible, reachable form. The last bullet is three links, so the
+     list protects seven things. This section claimed six of them from
+     1 November to 18 November 2026, directly above a sentence asserting
+     that all of them were still present, and nothing checked either
+     claim. So: seven selectors, run against the document the visitor
+     already has, reported with the number of places each one is found in.
+
+     What this is not: proof that the rule is met. It shows the elements
+     are in the markup — not that they are visible, legible, or findable
+     by a stranger, and a selector cannot tell the difference. Nor is it
+     the real guard: an agent free to drop the seven is free to drop this
+     too. The guard is the pre-commit check in the brief and a git
+     history nobody rewrites. What it is good for is that the claim is
+     now made in front of you, and that it found the miscount. */
+
+  var floorBox  = section.querySelector('[data-ho-floor]');
+  var floorList = section.querySelector('[data-ho-floor-list]');
+  var floorSum  = section.querySelector('[data-ho-floor-sum]');
+  var floorNojs = section.querySelector('.ho-floor-nojs');
+
+  function all(sel) {
+    try { return [].slice.call(document.querySelectorAll(sel)); }
+    catch (e) { return []; }
+  }
+
+  /* Normalised so a line break or a run of spaces in the markup cannot
+     hide a phrase that is plainly there on screen. */
+  function flat(el) {
+    return (el.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+
+  function byText(sel, parts) {
+    return all(sel).filter(function (el) {
+      var t = flat(el);
+      return parts.every(function (fragment) { return t.indexOf(fragment) !== -1; });
+    });
+  }
+
+  var FLOOR = [
+    { what: 'His name, as the page\u2019s subject',
+      how: 'a heading or a label reading \u201cRuslan Manoharan\u201d',
+      go: ['#about', 'About'],
+      find: function () { return byText('h1, h2, .rail-home, footer', ['Ruslan Manoharan']); } },
+
+    { what: 'The About bio text',
+      how: 'his whole paragraph, matched on two phrases from either end of it',
+      go: ['#about', 'About'],
+      find: function () { return byText('p', ['the PNW has my heart', 'collecting retro tech']); } },
+
+    { what: 'The profile photo',
+      how: 'an image whose source is images/profile.jpg',
+      go: ['#about', 'About'],
+      find: function () { return all('img[src*="images/profile.jpg"]'); } },
+
+    { what: 'The resume link',
+      how: 'a link to the Drive document behind his resume button',
+      go: ['#resume', 'The Resume'],
+      find: function () { return all('a[href*="drive.google.com/file"]'); } },
+
+    { what: 'His email',
+      how: 'a mailto: link to his address',
+      go: ['#contact', 'The Doors'],
+      find: function () { return all('a[href^="mailto:ruslan.manoharan@"]'); } },
+
+    { what: 'His LinkedIn',
+      how: 'a link to linkedin.com/in/ruslanmanoharan',
+      go: ['#contact', 'The Doors'],
+      find: function () { return all('a[href*="linkedin.com/in/ruslanmanoharan"]'); } },
+
+    { what: 'His Instagram',
+      how: 'a link to instagram.com/rumanoharan',
+      go: ['#contact', 'The Doors'],
+      find: function () { return all('a[href*="instagram.com/rumanoharan"]'); } }
+  ];
+
+  var floorResult = [];
+
+  function checkFloor() {
+    if (!floorBox || !floorList) return;
+
+    floorResult = FLOOR.map(function (item) {
+      var hits;
+      try { hits = item.find(); } catch (e) { hits = []; }
+      return { what: item.what, how: item.how, go: item.go, count: hits.length, ok: hits.length > 0 };
+    });
+
+    while (floorList.firstChild) floorList.removeChild(floorList.firstChild);
+
+    floorResult.forEach(function (r) {
+      var li = document.createElement('li');
+      li.className = 'ho-fl';
+      li.setAttribute('data-ok', r.ok ? 'true' : 'false');
+
+      var mark = document.createElement('span');
+      mark.className = 'ho-fl-mark';
+      mark.setAttribute('aria-hidden', 'true');
+      mark.textContent = r.ok ? '\u2713' : '\u2717';
+      li.appendChild(mark);
+
+      var body = document.createElement('span');
+      body.className = 'ho-fl-body';
+
+      var what = document.createElement('span');
+      what.className = 'ho-fl-what';
+      what.textContent = r.what;
+      /* The tick is decorative, so the verdict is also said in words. */
+      var sr = document.createElement('span');
+      sr.className = 'sr-only';
+      sr.textContent = r.ok ? ' \u2014 present. ' : ' \u2014 MISSING. ';
+      what.appendChild(sr);
+      body.appendChild(what);
+
+      var how = document.createElement('span');
+      how.className = 'ho-fl-how';
+      how.textContent = r.how;
+      body.appendChild(how);
+
+      li.appendChild(body);
+
+      var found = document.createElement('span');
+      found.className = 'ho-fl-found';
+      found.textContent = r.ok
+        ? (r.count === 1 ? 'in 1 place' : 'in ' + r.count + ' places')
+        : 'not found';
+      li.appendChild(found);
+
+      var go = document.createElement('a');
+      go.className = 'ho-fl-go';
+      go.href = r.go[0];
+      go.textContent = r.go[1];
+      li.appendChild(go);
+
+      floorList.appendChild(li);
+    });
+
+    var kept = floorResult.filter(function (r) { return r.ok; });
+    var places = floorResult.reduce(function (n, r) { return n + r.count; }, 0);
+
+    if (floorSum) {
+      if (kept.length === floorResult.length) {
+        floorSum.textContent = 'All seven are here, in ' + places + ' places between them. '
+          + 'Checked against this document as it loaded, not against a list written earlier.';
+      } else {
+        floorSum.textContent = kept.length + ' of ' + floorResult.length + '. Missing: '
+          + floorResult.filter(function (r) { return !r.ok; })
+              .map(function (r) { return r.what; }).join('; ')
+          + '. That is a broken rule, not a bug in this list \u2014 the git history is one revert deep.';
+      }
+    }
+
+    floorBox.setAttribute('data-ok', kept.length === floorResult.length ? 'true' : 'false');
+    floorBox.hidden = false;
+    if (floorNojs) floorNojs.hidden = true;
+  }
+
+  checkFloor();
+
   /* ---------- audit ---------- */
 
   window.__handover = {
@@ -356,8 +538,13 @@
         typedTotal: typedTotal,
         typedNums: typedNums.join(' '),
         shown: nums.join(' '),
+        floor: floorResult.map(function (r) { return r.what + ': ' + (r.ok ? r.count + ' place(s)' : 'MISSING'); }),
         problems: []
       };
+      if (floorResult.length !== 7) out.problems.push('the floor check knows ' + floorResult.length + ' protected things; his rule lists seven.');
+      floorResult.forEach(function (r) {
+        if (!r.ok) out.problems.push('his rule protects \u201c' + r.what + '\u201d and it is not in this document.');
+      });
       if (!sane) out.problems.push('the numbers and the list disagree: no numbers were written and the ribbon was not drawn.');
       if (source !== 'measured') out.problems.push('the figures on screen are the typed ones, unverified against the file — ' + (trouble || 'reason not recorded.'));
       if (source === 'measured' && (total !== typedTotal || nums.join(' ') !== typedNums.join(' '))) {
