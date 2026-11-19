@@ -203,7 +203,14 @@
       keys: [[6,'how old is he'],[5,'is he single'],[4,'girlfriend'],[4,'boyfriend'],[4,'married'],[4,'partner'],[4,'wife'],[4,'husband'],[4,'birthday'],[4,'religion'],[4,'politics'],[3,'family'],[3,'kids'],[3,'children'],[3,'dating'],[3,'age'],[3,'born'],[2,'old']],
       src: 'none',
       a: 'Nothing on this page says, and nothing on this page is going to guess. Everything here traces to one paragraph he wrote, the repository he published, or two emails he answered &mdash; and none of the three mentions any of that.',
-      go: ['#known', 'the fourteen']
+      go: ['#known', 'the fifteen']
+    },
+    {
+      id: 'loves',
+      keys: [[6,'what does he love'],[6,'what does he like'],[5,'is he modest'],[5,'has my heart'],[4,'loves'],[4,'love'],[4,'modest'],[4,'humble'],[4,'self deprecating'],[4,'confident'],[3,'his voice'],[3,'his tone'],[3,'hedge'],[3,'hedges'],[3,'proud'],[3,'brag'],[2,'writing style']],
+      src: 'email',
+      a: 'In the hundred and seven words he has written about himself here &mdash; fifty-three on his homepage, fifty-four in two emails &mdash; he never once says he is good at anything, and six times he softens something about himself: <em>interested in exploring</em>, <em>for better or worse</em>, <em>learning to</em> cook, <em>without blowing up the kitchen</em>, <em>bad</em> karaoke, and <em>stuff like that</em>. Twice he does not soften it at all: the Pacific Northwest has his heart, and <em>Soft Spot</em> by keshi is his most favorite song ever. Which six count as softening is a judgement, and the section says so.',
+      go: ['#heart', 'The Heart']
     },
     {
       id: 'pets',
@@ -278,7 +285,7 @@
       em.textContent = '“' + String(asked).trim() + '”';
       p.appendChild(em);
       p.appendChild(document.createTextNode(
-        ' matches nothing in the fourteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the fourteen below.'
+        ' matches nothing in the fifteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the fifteen below.'
       ));
       chip.setAttribute('data-src', 'none');
       chip.textContent = SRC.none;

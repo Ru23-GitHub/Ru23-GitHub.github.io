@@ -1,0 +1,324 @@
+/* The Heart — 15 · six places he softens, two where he does not
+   ----------------------------------------------------------------------
+   Added 2026-11-19. Scoped entirely to #heart.
+
+   This section is a text rig rather than an instrument, so it is
+   deliberately NOT built on .panel. The dark console is for things with
+   dials; this one has a hundred and seven of his words in it, and those
+   want to be read in the page's own colours, at the page's own reading
+   size, in either theme. The only control is a three-way view picker,
+   and it is styled to look like what it is — a filter over a passage —
+   rather than like the rigs further up.
+
+   Every colour here is a token from style.css or theme.css, so dark mode
+   needs no second copy of this file. The two highlights are the page's
+   two accents and nothing new: --accent for the places he softens,
+   --accent-2 for the two he does not. */
+
+#heart .container{ display:block; }
+
+.ht-intro{
+  max-width:68ch;
+  margin:0 0 var(--space-s);
+}
+
+/* ---------- the measured row ---------- */
+
+.ht-nums{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(128px, 1fr));
+  gap:1px;
+  margin:var(--space-m) 0;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+
+.ht-nums > div{
+  background:var(--bg);
+  padding:12px 14px;
+}
+
+.ht-nums dt{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 4px;
+}
+
+.ht-nums dd{
+  font-family:var(--mono);
+  font-size:1.35rem;
+  line-height:1.1;
+  margin:0;
+}
+
+.ht-nums dd small{
+  display:block;
+  font-family:var(--sans);
+  font-size:var(--fs-md);
+  color:var(--muted);
+  margin-top:3px;
+}
+
+/* ---------- the rig ---------- */
+
+.ht-rig{
+  margin:var(--space-m) 0;
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  background:var(--bg);
+  padding:clamp(14px, 3vw, 26px);
+}
+
+.ht-views-head{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 9px;
+}
+
+.ht-views{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.ht-pick{
+  font:inherit;
+  font-size:var(--fs-base);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 15px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  background:var(--bg-alt);
+  color:var(--text);
+  cursor:pointer;
+}
+
+.ht-pick:hover{ border-color:var(--muted); }
+
+.ht-dot{
+  width:9px; height:9px;
+  border-radius:50%;
+  background:var(--border);
+  flex:none;
+}
+
+.ht-pick[aria-pressed="true"]{
+  border-color:currentColor;
+  background:var(--bg);
+}
+
+.ht-pick[data-ht-view="down"][aria-pressed="true"]{ color:var(--accent); }
+.ht-pick[data-ht-view="up"][aria-pressed="true"]{ color:var(--accent-2); }
+
+.ht-pick[aria-pressed="true"] .ht-dot{ background:currentColor; }
+
+.ht-say{
+  font-size:var(--fs-md);
+  color:var(--muted);
+  margin:12px 0 0;
+  min-height:2.6em;
+}
+
+/* ---------- his words ---------- */
+
+.ht-block{
+  margin:var(--space-s) 0 0;
+  padding-top:14px;
+  border-top:1px solid var(--border);
+}
+
+.ht-block-k{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 6px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:4px 10px;
+}
+
+.ht-block-k b{
+  font-family:var(--mono);
+  font-weight:400;
+  letter-spacing:0;
+  text-transform:none;
+}
+
+.ht-text{
+  font-size:1.05rem;
+  line-height:1.65;
+  margin:0;
+  /* His own apostrophes and emoji, at a size meant for reading. */
+  transition:color 180ms ease;
+}
+
+/* A marked phrase is inert until a view asks for it. */
+.ht-text [data-ht-m]{
+  border-radius:4px;
+  padding:0 1px;
+  transition:color 180ms ease, background-color 180ms ease, text-decoration-color 180ms ease;
+}
+
+/* ---- view: where he softens ---- */
+
+.ht-rig[data-view="down"] .ht-text{ color:var(--muted); }
+
+.ht-rig[data-view="down"] .ht-text [data-ht-m="down"]{
+  color:var(--text);
+  text-decoration:line-through;
+  text-decoration-color:var(--accent);
+  text-decoration-thickness:2px;
+  background:color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+/* ---- view: where he does not ---- */
+
+.ht-rig[data-view="up"] .ht-text{ color:var(--muted); }
+
+.ht-rig[data-view="up"] .ht-text [data-ht-m="up"]{
+  color:var(--text);
+  font-weight:600;
+  background:color-mix(in srgb, var(--accent-2) 13%, transparent);
+  box-shadow:0 0 0 1px color-mix(in srgb, var(--accent-2) 36%, transparent);
+}
+
+/* color-mix is widely supported, but a browser without it would paint
+   nothing at all for the two highlights above — so the fallback is a
+   flat tint applied first and overridden where the function parses. */
+@supports not (background: color-mix(in srgb, red 10%, transparent)){
+  .ht-rig[data-view="down"] .ht-text [data-ht-m="down"]{ background:var(--bg-alt); }
+  .ht-rig[data-view="up"] .ht-text [data-ht-m="up"]{ background:var(--bg-alt); }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .ht-text,
+  .ht-text [data-ht-m]{ transition:none; }
+}
+
+/* ---------- the six, listed ---------- */
+
+.ht-six{
+  list-style:none;
+  padding:0;
+  margin:var(--space-m) 0;
+  display:grid;
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+
+.ht-six > li{
+  background:var(--bg);
+  padding:13px 15px;
+  display:grid;
+  grid-template-columns:1.6em 1fr;
+  gap:2px 10px;
+}
+
+.ht-six .ht-n{
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  color:var(--muted);
+  grid-row:1 / span 2;
+}
+
+.ht-six .ht-q{
+  margin:0;
+  font-weight:600;
+}
+
+.ht-six .ht-q i{
+  font-style:normal;
+  text-decoration:line-through;
+  text-decoration-color:var(--accent);
+  text-decoration-thickness:2px;
+}
+
+.ht-six .ht-g{
+  margin:0;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.ht-six .ht-where{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:0;
+}
+
+/* ---------- the two ---------- */
+
+.ht-two{
+  margin:var(--space-m) 0;
+  display:grid;
+  gap:var(--space-s);
+}
+
+.ht-two figure{
+  margin:0;
+  padding:clamp(16px, 3.4vw, 30px);
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent-2);
+  border-radius:var(--radius-md);
+  background:var(--bg-alt);
+}
+
+.ht-two blockquote{
+  margin:0;
+  font-size:clamp(1.15rem, 3.6vw, 1.6rem);
+  line-height:1.4;
+  font-weight:600;
+  /* His words, so they stay in the page's reading face rather than the
+     Game Boy display face used for his name. */
+}
+
+.ht-two figcaption{
+  margin-top:10px;
+  font-size:var(--fs-md);
+  color:var(--muted);
+}
+
+.ht-two figcaption a{ white-space:nowrap; }
+
+/* ---------- the question that did not ask ---------- */
+
+.ht-ask{
+  margin:var(--space-m) 0;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+
+.ht-ask > div{
+  padding:14px 16px;
+}
+
+.ht-ask > div + div{ border-top:1px solid var(--border); }
+
+.ht-ask-k{
+  font-size:var(--fs-sm);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  margin:0 0 5px;
+}
+
+.ht-ask p:last-child{ margin:0; }
+
+.ht-ask-out{ background:var(--bg-alt); }
+
+@media (max-width: 560px){
+  .ht-nums dd{ font-size:1.2rem; }
+  .ht-six > li{ grid-template-columns:1.4em 1fr; }
+}

@@ -89,7 +89,8 @@
     post: '__other',
     fit: 'retro',
     chime: 'retro',
-    sieve: 'ai'
+    sieve: 'ai',
+    heart: '__whole'
   };
 
   /* The page's own table of contents, which is the navigator at the top:
@@ -223,7 +224,7 @@
      it that does not. */
   var WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',
                'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen',
-               'fourteen'];
+               'fourteen', 'fifteen'];
 
   function count(n) {
     return (n < WORDS.length ? WORDS[n] : String(n)) +
