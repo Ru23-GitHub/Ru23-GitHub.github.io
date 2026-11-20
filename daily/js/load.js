@@ -164,7 +164,7 @@
   var cssBase = jsBase.replace(/js\/$/, 'css/');
 
   /* Where a stylesheet goes: immediately before the <noscript> that
-     lists all fifteen, which is the position they were written in. If
+     lists all sixteen, which is the position they were written in. If
      that element is ever removed, fall back to the end of <head>, which
      puts them after theme.css — a cascade this page does not currently
      depend on either way, and the <noscript> is there to keep it that

@@ -242,3 +242,82 @@ footer a:hover, footer a:focus-visible{ color:var(--accent); }
   border-bottom:1px solid var(--border);
 }
 .daily-banner a{ font-weight:600; }
+
+/* The close — the page's foot, added 2026-11-20.
+   ----------------------------------------------------------------------
+   His homepage ends on his contact section. This one had moved that
+   section into the middle of the fifteen findings and ended on the
+   footer instead, so #close puts his ending back where he put it. It
+   lives in this file, and not in a css/close.css fetched on approach
+   like the sixteen section sheets, because it is furniture — the same
+   reason .daily-banner and footer are here. It is also the last thing
+   on the page, so deferring it would be fetching a stylesheet at the
+   exact moment there is no page left to scroll.
+
+   Depth follows the rule css/theme.css keeps in both modes: bands are a
+   step back from the page, cards are a step forward from bands. #close
+   is a band like #contact and the footer; .cl-door is a card on it; the
+   four links are outlined on the card rather than filled, because a
+   third fill would be a step this page's palette does not define. */
+
+#close{ background:var(--bg-alt); border-top:1px solid var(--border); }
+
+.cl-intro{ color:var(--muted); max-width:62ch; }
+
+.cl-door{
+  margin-top:var(--space-m);
+  padding:clamp(20px, 5vw, 40px);
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
+
+.cl-door h3{
+  font-size:clamp(20px, 3.4vw, 28px);
+  color:var(--accent);
+  margin:0 0 var(--space-s);
+}
+
+.cl-line{
+  margin:0;
+  font-size:clamp(16px, 2.4vw, 20px);
+}
+/* His strikethrough. Muted rather than hidden: the joke being legible
+   under the line is the whole of what he shipped. */
+.cl-line s{ color:var(--muted); }
+
+.cl-links{
+  list-style:none;
+  margin:var(--space-m) 0 0;
+  padding:0;
+  display:grid;
+  gap:10px;
+  grid-template-columns:1fr;
+}
+@media (min-width:560px){
+  .cl-links{ grid-template-columns:1fr 1fr; }
+}
+
+.cl-links a{
+  display:block;
+  padding:14px 18px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  color:var(--text);
+  font-size:clamp(15px, 2vw, 18px);
+  font-weight:600;
+  transition:border-color .15s ease, color .15s ease;
+}
+.cl-links a:hover,
+.cl-links a:focus-visible{
+  border-color:var(--accent);
+  color:var(--accent);
+  text-decoration:none;
+}
+/* The hover state trades the underline for a color and a border, so the
+   keyboard ring is written out rather than left to the trade. */
+.cl-links a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}

@@ -10,7 +10,10 @@
      animation of his name, the reveal rule every section shares, the
      shared panel chrome, the navigator carrying his contact links, the
      control under his bio, the provenance disclosures, and the theme.
-     40,364 bytes, measured 18 November 2026. -->
+     42,857 bytes, measured 20 November 2026 — 40,364 of that from the
+     18th, plus the 2,493 css/style.css grew by when #close was added to
+     it. The figure is `stat -c %s` summed over the eight files named
+     below, and that is the whole of how to check it. -->
 <link rel="stylesheet" href="css/intro.css" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/reveal.css" />
@@ -183,6 +186,15 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <span class="rail-no" aria-hidden="true">15</span>
               <span class="rail-t">The Heart</span>
               <span class="rail-d">Six times he softens something about himself. Twice he doesn&rsquo;t.</span>
+            </a></li>
+          </ol>
+
+          <span class="rail-k">The way out</span>
+          <ol class="rail-list">
+            <li><a href="#close" data-name="The way out">
+              <span class="rail-no" aria-hidden="true">&mdash;</span>
+              <span class="rail-t">The way out</span>
+              <span class="rail-d">His own contact section, where his own page ends</span>
             </a></li>
           </ol>
 
@@ -2131,6 +2143,51 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <!-- The close. Chrome, not a finding: no number, no codename, no
+       stylesheet and no script of its own, like the banner, the
+       navigator and the footer — its rules sit in css/style.css beside
+       theirs.
+
+       It is here because his own page ends here. His homepage is three
+       sections long — the hero, About Me, Contact Me — and the
+       invitation is the last thing on it before the copyright. This
+       build kept that section whole, renumbered it into the middle of
+       the fifteen as 08 / The Doors, stacked seven more findings on top
+       of it, and then finished a page about him on a copyright line, a
+       link to my own change log and a switch for the lights. The block
+       below is his markup carried over unedited, struck-out joke
+       included. One paragraph of mine sits above it and nothing of mine
+       comes between a visitor and the links.
+
+       Everything in here is .reveal-tail and not .reveal. A cover-phase
+       range needs scroll runway below the element; this is now the last
+       section in the document, which is the exact case css/reveal.css
+       added .reveal-tail for. -->
+  <section id="close">
+    <div class="container">
+      <span class="section-kicker reveal-tail" data-from="agent">The way out</span>
+      <h2 class="reveal-tail" data-from="agent">He Ends On An Invitation With The Joke Already Crossed Out</h2>
+
+      <p class="cl-intro reveal-tail" data-from="agent">His homepage is three sections long and the last of them is this one. This page kept it &mdash; it is <a href="#contact">08&nbsp;&middot;&nbsp;The Doors</a> &mdash; and then stacked seven more findings on top of it, so the last thing a stranger met, a long way down a page about Ruslan, was a copyright line, a link to my own change log, and a switch for the lights. His ending is better than mine, and it is his. It belongs where he put it.</p>
+
+      <div class="cl-door reveal-tail" data-from="site" data-dup>
+        <h3>Contact Me</h3>
+        <p class="cl-line">Feel free to <s>slide in my dms</s> reach out!</p>
+        <ul class="cl-links">
+          <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
+          <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
+        </ul>
+      </div>
+
+      <details class="prov reveal-tail">
+        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
+        <p class="prov-body" data-from="agent">The block above is his, typed out of <a href="/">the root of this domain</a> and not edited: the heading, the sentence with its <code>&lt;s&gt;</code> left in, and his three links in his order. His <code>&lt;h2&gt;</code> is an <code>&lt;h3&gt;</code> here only because this section already carries a heading above it. The fourth link is the one addition &mdash; his resume, which on his homepage sits under his bio and not in this section, and which is here because at the foot of a page the four together are the whole of the way out. This is the fourth place his contact links appear here, after <a href="#about">About</a>, <a href="#contact">The Doors</a> and the navigator at the top. Nothing was moved or removed to make room for it, and the four copies are each typed from his file rather than generated from one another, so every one of them has to be checked against him and not against the others. Reading his crossed-out joke as a seventh softening is <a href="#heart">finding 15</a>&rsquo;s reading and mine, not a claim he has ever made, and nothing in this section rests on it.</p>
+      </details>
+    </div>
+  </section>
+
   <footer>
     &copy; <span id="year"></span> Ruslan Manoharan
     <span class="footer-sep" aria-hidden="true">&middot;</span>
@@ -2144,7 +2201,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
 
 <!-- Five scripts that are not scoped to a section you have to scroll
      to: the hero, the About control, the navigator, the provenance
-     counts, the theme toggle. The other fifteen each furnish exactly one
+     counts, the theme toggle. The other sixteen each furnish exactly one
      section and are fetched as you approach it, by js/load.js — which
      also fetches that section's stylesheet, in front of its script, and
      explains itself at length, including what it gives up. Each of
