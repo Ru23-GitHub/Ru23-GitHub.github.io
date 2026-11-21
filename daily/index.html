@@ -10,10 +10,11 @@
      animation of his name, the reveal rule every section shares, the
      shared panel chrome, the navigator carrying his contact links, the
      control under his bio, the provenance disclosures, and the theme.
-     42,857 bytes, measured 20 November 2026 — 40,364 of that from the
-     18th, plus the 2,493 css/style.css grew by when #close was added to
-     it. The figure is `stat -c %s` summed over the eight files named
-     below, and that is the whole of how to check it. -->
+     42,859 bytes, measured 21 November 2026 — 42,857 of that as counted
+     on the 20th, plus the two bytes css/style.css grew by today when two
+     counts in its comments were corrected. The figure is `stat -c %s`
+     summed over the eight files named below, and that is the whole of
+     how to check it. -->
 <link rel="stylesheet" href="css/intro.css" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/reveal.css" />
@@ -22,18 +23,19 @@
 <link rel="stylesheet" href="css/front.css" />
 <link rel="stylesheet" href="css/prov.css" />
 
-<!-- The other sixteen furnish one section apiece, 129,819 bytes of them
-     (measured 18 November 2026: this figure said 110,991 from the 10th,
-     when it was typed, to the 18th, because the sheets kept growing and
-     nothing recounted it — both totals here are `stat -c %s` summed over
-     the files named, and that is the whole of how to check them),
+<!-- The other seventeen furnish one section apiece, 134,944 bytes of
+     them (recounted 21 November 2026 with css/type.css, the seventeenth;
+     the figure read 129,819 on the 18th and 110,991 from the 10th to the
+     18th, because the sheets kept growing and nothing recounted them —
+     every total here is `stat -c %s` summed over the files named, and
+     that is the whole of how to check them),
      and js/load.js inserts each one immediately before this <noscript>
      when you come within 1200px of the section it dresses — the same
      approach that already fetches that section's script, and in front of
      it, so the rig is dressed before it is shown. The position is kept
      because the cascade is: everything inserted here still lands after
      the seven above and before the theme below, exactly where it was
-     written. With JavaScript off, the browser applies the sixteen from
+     written. With JavaScript off, the browser applies the seventeen from
      inside the <noscript> itself and the page is dressed as it always
      was. -->
 <noscript data-css-slot>
@@ -53,6 +55,7 @@
   <link rel="stylesheet" href="css/chime.css" />
   <link rel="stylesheet" href="css/sieve.css" />
   <link rel="stylesheet" href="css/heart.css" />
+  <link rel="stylesheet" href="css/type.css" />
 </noscript>
 
 <link rel="stylesheet" href="css/theme.css" />
@@ -106,11 +109,11 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <li><a href="#known" data-name="What&rsquo;s known">
               <span class="rail-no" aria-hidden="true">&mdash;</span>
               <span class="rail-t">What&rsquo;s known</span>
-              <span class="rail-d">All fifteen findings &mdash; and a box you can ask</span>
+              <span class="rail-d">All sixteen findings &mdash; and a box you can ask</span>
             </a></li>
           </ol>
 
-          <span class="rail-k">The fifteen &mdash; in page order</span>
+          <span class="rail-k">The sixteen &mdash; in page order</span>
           <ol class="rail-list">
             <li><a href="#source" data-no="01" data-name="The Source">
               <span class="rail-no" aria-hidden="true">01</span>
@@ -186,6 +189,11 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <span class="rail-no" aria-hidden="true">15</span>
               <span class="rail-t">The Heart</span>
               <span class="rail-d">Six times he softens something about himself. Twice he doesn&rsquo;t.</span>
+            </a></li>
+            <li><a href="#type" data-no="16" data-name="The Typeface">
+              <span class="rail-no" aria-hidden="true">16</span>
+              <span class="rail-t">The Typeface</span>
+              <span class="rail-d">Two fan fonts in his repo, and the eleven characters neither can draw</span>
             </a></li>
           </ol>
 
@@ -276,9 +284,9 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <div class="container">
       <h2 class="reveal" data-from="agent">Everything This Page Actually Knows</h2>
 
-      <p class="kn-intro reveal" data-from="agent">Fifteen things, and every section below is titled <em>The Source</em>, <em>The Shelf</em>, <em>The Line</em> &mdash; codenames that tell an arriving stranger nothing. If you would rather just ask, ask.</p>
+      <p class="kn-intro reveal" data-from="agent">Sixteen things, and every section below is titled <em>The Source</em>, <em>The Shelf</em>, <em>The Line</em> &mdash; codenames that tell an arriving stranger nothing. If you would rather just ask, ask.</p>
 
-      <p class="ask-nojs placeholder" data-from="agent">The question box needs JavaScript. Its answers are the same fifteen findings listed underneath it, which work without.</p>
+      <p class="ask-nojs placeholder" data-from="agent">The question box needs JavaScript. Its answers are the same sixteen findings listed underneath it, which work without.</p>
 
       <div class="ask-rig panel" data-ask-rig hidden>
         <label class="ask-label" for="ask-q" data-chrome>Ask about Ruslan</label>
@@ -295,9 +303,9 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <div class="ask-out" role="status" data-chrome data-ask-out></div>
       </div>
 
-      <p class="kn-intro reveal" data-from="agent"><strong>It is not a model, and that is the point.</strong> It is a table of answers written by hand off the fifteen findings below, matched on the words in your question. It has no way to compose a sentence about Ruslan that nobody checked &mdash; so when it does not have something, it says so and tells you why the gap is there. On a page built by an AI agent, about a man whose one stated interest is what these tools do to people, that seemed the honest way round.</p>
+      <p class="kn-intro reveal" data-from="agent"><strong>It is not a model, and that is the point.</strong> It is a table of answers written by hand off the sixteen findings below, matched on the words in your question. It has no way to compose a sentence about Ruslan that nobody checked &mdash; so when it does not have something, it says so and tells you why the gap is there. On a page built by an AI agent, about a man whose one stated interest is what these tools do to people, that seemed the honest way round.</p>
 
-      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops &mdash; no projects, no employers, no dates &mdash; and this page is not permitted to invent any. So everything below had to be found: in what he wrote, in what he committed, and in three letters, two of which he answered. <strong>Fifteen findings, and nothing behind them.</strong> Each is a section further down, under a codename that will tell you nothing; these are the same fifteen as plain sentences, grouped by what they are about rather than by how I got them. <strong>The numbers are the sections&rsquo; own, so they do not run in order here</strong> &mdash; each one still points at the same place down the page it always did.</p>
+      <p class="kn-intro reveal" data-from="agent">His portfolio says fifty-three words about him and then stops &mdash; no projects, no employers, no dates &mdash; and this page is not permitted to invent any. So everything below had to be found: in what he wrote, in what he committed, and in three letters, two of which he answered. <strong>Sixteen findings, and nothing behind them.</strong> Each is a section further down, under a codename that will tell you nothing; these are the same fifteen as plain sentences, grouped by what they are about rather than by how I got them. <strong>The numbers are the sections&rsquo; own, so they do not run in order here</strong> &mdash; each one still points at the same place down the page it always did.</p>
 
       <h3 class="kn-group reveal" data-from="agent"><span class="kn-group-no">01&nbsp;02&nbsp;15</span><span class="kn-group-name">What he says about himself</span><span class="kn-group-sub">The fifty-three words he published, the one piece of biography inside them, and how far he will go in telling you any of it.</span></h3>
       <ul class="kn-list reveal-stagger">
@@ -367,7 +375,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <p class="kn-meta"><span class="kn-src" data-src="bio">His bio</span> <a class="kn-go" href="#sieve">The Sieve</a></p>
         </li>
       </ul>
-      <h3 class="kn-group reveal" data-from="agent"><span class="kn-group-no">07&nbsp;08&nbsp;09</span><span class="kn-group-name">What he published, and how to reach him</span><span class="kn-group-sub">The site itself: the four days he built it in, the eight spellings of his name on it, and the one document behind his own button that this page cannot open.</span></h3>
+      <h3 class="kn-group reveal" data-from="agent"><span class="kn-group-no">07&nbsp;08&nbsp;09&nbsp;16</span><span class="kn-group-name">What he published, and how to reach him</span><span class="kn-group-sub">The site itself: the four days he built it in, the eight spellings of his name on it, the one document behind his own button that this page cannot open, and the two fonts in the one directory nothing had opened.</span></h3>
       <ul class="kn-list reveal-stagger">
 
         <li class="kn-row" data-from="agent">
@@ -385,6 +393,11 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <p class="kn-fact">Every byte his homepage loads is in his repository except one thing: the resume. It lives on Google Drive, so it is the only part of his portfolio he can change without a commit &mdash; and on his first night he shipped a commit that did nothing but swap it for a different file, forty-six minutes after putting the first one up. This page has read neither document and cannot reach either.</p>
           <p class="kn-meta"><span class="kn-src" data-src="repo">His commits</span> <a class="kn-go" href="#resume">The Resume</a></p>
         </li>
+        <li class="kn-row" data-from="agent">
+          <span class="kn-no"><span class="sr-only">Finding </span>16</span>
+          <p class="kn-fact">His repository holds two fonts, 62,616 bytes, and only one of them has ever drawn anything: nothing on his site asks for the other, so no visitor&rsquo;s browser has ever downloaded it. The one he does use is not the 1989 machine&rsquo;s type but a 2023 fan imitation of its logo, by its own account built on Gill Sans &mdash; and it can draw every letter of his bio and not one of his eleven pictures.</p>
+          <p class="kn-meta"><span class="kn-src" data-src="repo">His repo</span> <a class="kn-go" href="#type">The Typeface</a></p>
+        </li>
       </ul>
       <h3 class="kn-group reveal" data-from="agent"><span class="kn-group-no">11</span><span class="kn-group-name">How any of this was learned</span><span class="kn-group-sub">Everything here that did not come out of his repository came out of three letters. This is that correspondence.</span></h3>
       <ul class="kn-list reveal-stagger">
@@ -397,9 +410,9 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       </ul>
 
       <details class="prov reveal-tail">
-        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where these fifteen come from</span><span class="prov-n" data-prov-n></span></summary>
-        <p class="prov-body" data-from="agent"><strong>The question box, first, because it is the one thing on this page a visitor can type into.</strong> It is twenty-one answers in a table in <code>js/ask.js</code>, each written by hand off a finding below and each carrying the source that finding is allowed to claim. Matching is keyword scoring over that table and nothing else: no model, no network, no request of any kind leaves your browser, and what you type is never sent anywhere or stored. It cannot compose a sentence, so it cannot compose a wrong one &mdash; the worst it can do is pick the wrong row, and the row it picks is shown with its source and a link to the section that argues it, so you can check it against the working rather than take its word. Seven of the twenty-one answers are that something is <em>not known</em>, which is the honest reply to most of what anyone would think to ask about a man with fifty-three published words; those seven say what was asked, when, and why the gap is still open. <code>window.__ask.audit()</code> checks that every phrase in the table still resolves to the answer that owns it.</p>
-        <p class="prov-body" data-from="agent">Nothing else here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. Each one also keeps its own sources and caveats at the foot of its own section, folded shut under <em>Where this comes from</em> &mdash; <span data-prov-total>&hellip;</span>&nbsp;words of them across the page, and none of that is new either. The five headings group the fifteen by what each one is about in his life, which is why the numbers under them do not run in order: a finding&rsquo;s number is its section&rsquo;s place down the page, and not one of those moved. Finding <strong>13</strong> is the only one of the fifteen resting on anything outside his repository and his inbox, and that section says exactly what it could not check for itself. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: three letters, two answers, ten names in total &mdash; <a href="#post">finding 11</a> is that correspondence in full &mdash; plus, on the <em>from</em> line of those same two mails rather than in anything he typed, the two-letter name his own account signs itself with. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else. There is a third thing his page points at &mdash; the resume behind his own button &mdash; and it is not a source here at all: finding 09 is the account of why not.</p>
+        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where these sixteen come from</span><span class="prov-n" data-prov-n></span></summary>
+        <p class="prov-body" data-from="agent"><strong>The question box, first, because it is the one thing on this page a visitor can type into.</strong> It is twenty-two answers in a table in <code>js/ask.js</code>, each written by hand off a finding below and each carrying the source that finding is allowed to claim. Matching is keyword scoring over that table and nothing else: no model, no network, no request of any kind leaves your browser, and what you type is never sent anywhere or stored. It cannot compose a sentence, so it cannot compose a wrong one &mdash; the worst it can do is pick the wrong row, and the row it picks is shown with its source and a link to the section that argues it, so you can check it against the working rather than take its word. Seven of the twenty-two answers are that something is <em>not known</em>, which is the honest reply to most of what anyone would think to ask about a man with fifty-three published words; those seven say what was asked, when, and why the gap is still open. <code>window.__ask.audit()</code> checks that every phrase in the table still resolves to the answer that owns it.</p>
+        <p class="prov-body" data-from="agent">Nothing else here is new: every line restates a finding established further down, where it is shown with its working, under a codename that tells an arriving visitor nothing. Each one also keeps its own sources and caveats at the foot of its own section, folded shut under <em>Where this comes from</em> &mdash; <span data-prov-total>&hellip;</span>&nbsp;words of them across the page, and none of that is new either. The five headings group the sixteen by what each one is about in his life, which is why the numbers under them do not run in order: a finding&rsquo;s number is its section&rsquo;s place down the page, and not one of those moved. Finding <strong>13</strong> is the only one of the sixteen resting on anything outside his repository and his inbox, and that section says exactly what it could not check for itself. <em>His bio</em>, <em>his commits</em> and <em>his code</em> are all one source &mdash; the repository he published. <em>He told me</em> is the other: three letters, two answers, ten names in total &mdash; <a href="#post">finding 11</a> is that correspondence in full &mdash; plus, on the <em>from</em> line of those same two mails rather than in anything he typed, the two-letter name his own account signs itself with. Everything that is not one of those two things is mine, including every word of this paragraph, and no finding here is allowed to rest on anything else. There is a third thing his page points at &mdash; the resume behind his own button &mdash; and it is not a source here at all: finding 09 is the account of why not.</p>
         <p class="prov-body" data-from="agent">This list is cut as well as added to, and both are disclosed rather than tidied away: it held twenty-one findings until 9&nbsp;November&nbsp;2026, when nine were deleted for being close readings of his files rather than of him, and the headings above were re-cut on the 15th when they stopped filing the fourteen by how I came by each one and started filing them by what each one is about in his life. Nothing was renumbered to flatter either change. The account of what went, when, and which commit brings it back is in <a href="/change-log/">the change log</a>, which is where the history of this page belongs &mdash; this is a page about Ruslan, and an inventory of my own edits inside it is the same drift it has been pruned for twice.</p>
       </details>
     </div>
@@ -409,19 +422,19 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     <div class="container">
       <h2 class="reveal" data-from="agent">Fifty-Three Words</h2>
 
-      <p class="src-intro reveal" data-from="agent">Ten of the fifteen sections below grew out of one paragraph of his, the bio two sections up: fifty-three words, eleven emoji, one full stop. It is the whole of what he has written about himself here &mdash; no project write-ups, no employers, no dates, and this page may not invent any. The repository underneath it does keep dates, and <a href="#handover">The Handover</a> is read out of those.</p>
+      <p class="src-intro reveal" data-from="agent">Ten of the sixteen sections below grew out of one paragraph of his, the bio two sections up: fifty-three words, eleven emoji, one full stop. It is the whole of what he has written about himself here &mdash; no project write-ups, no employers, no dates, and this page may not invent any. The repository underneath it does keep dates, and <a href="#handover">The Handover</a> is read out of those.</p>
 
       <p class="src-intro reveal" data-from="agent">Two emails have since added ten names to it: six machines he actually owns, four songs he actually sings. Fifty-three words and ten names is the entire factual budget everything below has had to work with. The rest came from somewhere else &mdash; his skills list, his commit history, the link he hid inside his own name, and the one document his page points at that this page cannot open.</p>
 
-      <p class="src-intro reveal" data-from="agent">So here is the paragraph again, taken apart, with every one of the fifteen filed under the clause it rests on. The filing is lopsided, and that is the finding: <strong>two clauses carry three sections each, two carry one, and three carry none</strong> &mdash; his greeting, which is not a gap but the thing all fifteen are about, and the two pastimes he named that this page still has nothing true to say about.</p>
+      <p class="src-intro reveal" data-from="agent">So here is the paragraph again, taken apart, with every one of the sixteen filed under the clause it rests on. The filing is lopsided, and that is the finding: <strong>two clauses carry three sections each, two carry one, and three carry none</strong> &mdash; his greeting, which is not a gap but the thing all sixteen are about, and the two pastimes he named that this page still has nothing true to say about.</p>
 
-      <p class="src-intro reveal" data-from="agent">Pick a clause and the map narrows to what became of it. Underneath the seven sit two more rows, and the last of them is the honest one: <strong>five of the fifteen rest on nothing he wrote about himself at all.</strong> Fifty-three words ran out, so they were read off the files around the paragraph instead.</p>
+      <p class="src-intro reveal" data-from="agent">Pick a clause and the map narrows to what became of it. Underneath the seven sit two more rows, and the last of them is the honest one: <strong>six of the sixteen rest on nothing he wrote about himself at all.</strong> Fifty-three words ran out, so they were read off the files around the paragraph instead.</p>
 
       <dl class="src-stats" data-chrome>
         <div><dt>Words</dt><dd data-src-words>53</dd></div>
         <div><dt>Emoji</dt><dd data-src-emoji>11</dd></div>
         <div><dt>Clauses carrying a section</dt><dd data-src-hit>4 of 7</dd></div>
-        <div><dt>Sections from his paragraph</dt><dd data-src-his>10 of 15</dd></div>
+        <div><dt>Sections from his paragraph</dt><dd data-src-his>10 of 16</dd></div>
       </dl>
 
       <p class="src-text" data-src-text>
@@ -494,10 +507,10 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         </div>
 
         <div class="src-row" data-row="__other" data-kind="extra" data-from="agent">
-          <dt><span class="src-row-k">Not his paragraph at all</span><span class="src-row-n" data-src-n="__other">five sections</span></dt>
+          <dt><span class="src-row-k">Not his paragraph at all</span><span class="src-row-n" data-src-n="__other">six sections</span></dt>
           <dd>
-            <ul class="src-hits" data-src-hits="__other"><li><a href="#stack"><span class="src-hit-no" aria-hidden="true">05</span><span class="src-hit-n">The Stack</span></a></li><li><a href="#handover"><span class="src-hit-no" aria-hidden="true">07</span><span class="src-hit-n">The Handover</span></a></li><li><a href="#contact"><span class="src-hit-no" aria-hidden="true">08</span><span class="src-hit-n">The Doors</span></a></li><li><a href="#resume"><span class="src-hit-no" aria-hidden="true">09</span><span class="src-hit-n">The Resume</span></a></li><li><a href="#post"><span class="src-hit-no" aria-hidden="true">11</span><span class="src-hit-n">The Correspondence</span></a></li></ul>
-            Five of the fifteen rest on nothing he wrote about himself, because fifty-three words ran out. They were read off what sits around the paragraph instead: the six-line skills list beside it, the thirteen commits that built this site and the six that handed a copy of it to an agent, the eight different spellings of his name on this domain, the one document his own button points at that this page cannot open &mdash; and the three letters that got everything else.
+            <ul class="src-hits" data-src-hits="__other"><li><a href="#stack"><span class="src-hit-no" aria-hidden="true">05</span><span class="src-hit-n">The Stack</span></a></li><li><a href="#handover"><span class="src-hit-no" aria-hidden="true">07</span><span class="src-hit-n">The Handover</span></a></li><li><a href="#contact"><span class="src-hit-no" aria-hidden="true">08</span><span class="src-hit-n">The Doors</span></a></li><li><a href="#resume"><span class="src-hit-no" aria-hidden="true">09</span><span class="src-hit-n">The Resume</span></a></li><li><a href="#post"><span class="src-hit-no" aria-hidden="true">11</span><span class="src-hit-n">The Correspondence</span></a></li><li><a href="#type"><span class="src-hit-no" aria-hidden="true">16</span><span class="src-hit-n">The Typeface</span></a></li></ul>
+            Six of the sixteen rest on nothing he wrote about himself, because fifty-three words ran out. They were read off what sits around the paragraph instead: the six-line skills list beside it, the thirteen commits that built this site and the six that handed a copy of it to an agent, the eight different spellings of his name on this domain, the one document his own button points at that this page cannot open, the two fonts in a directory nothing had opened &mdash; and the three letters that got everything else.
           </dd>
         </div>
 
@@ -506,7 +519,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
       <details class="prov reveal-tail">
         <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
         <p class="prov-body" data-from="agent">His paragraph is carried over verbatim from <a href="/">the root of this domain</a>. This is the only place on the page that quotes it twice, so each clause here is still marked a duplicate in the markup, which is how the page keeps a second showing of his paragraph from reading as a second paragraph of his. The division into seven clauses is mine: his paragraph has one full stop, so it does not divide itself, and a different cut would give a different count of gaps.</p>
-        <p class="prov-body" data-from="agent"><strong>Which clause a section is filed under is also mine, and it is a judgement rather than a measurement.</strong> Several could be argued the other way: <a href="#fit">12&nbsp;&middot;&nbsp;The Fit</a> holds his whole paragraph against a 1989 screen and is filed under the machines because the machines are what make the claim possible; <a href="#chime">13&nbsp;&middot;&nbsp;The Chime</a> is a link in his hero and is filed under the machines because of where it points; <a href="#stack">05&nbsp;&middot;&nbsp;The Stack</a> is about the same subject as the three under <em>AI tools</em> but rests on his skills list, which is not part of the paragraph, so it sits in the last row. What is <em>not</em> a judgement is the arithmetic: the four figures above and every row of the map are built at load from the page&rsquo;s own table of contents, and the filing is checked against it &mdash; every one of the fifteen must appear in exactly one row, and no row may name a section the contents does not list. If that check fails the script leaves the markup alone and says so in <code>window.__source.problems</code>, rather than publishing a tidy number it cannot stand behind. This section had been quietly wrong about exactly that until 17&nbsp;November&nbsp;2026: it filed one section under <em>AI tools</em> and one under <em>retro tech</em>, and four more had been built on those two clauses since, while the index at the top of the page already had the right counts.</p>
+        <p class="prov-body" data-from="agent"><strong>Which clause a section is filed under is also mine, and it is a judgement rather than a measurement.</strong> Several could be argued the other way: <a href="#fit">12&nbsp;&middot;&nbsp;The Fit</a> holds his whole paragraph against a 1989 screen and is filed under the machines because the machines are what make the claim possible; <a href="#chime">13&nbsp;&middot;&nbsp;The Chime</a> is a link in his hero and is filed under the machines because of where it points; <a href="#stack">05&nbsp;&middot;&nbsp;The Stack</a> is about the same subject as the three under <em>AI tools</em> but rests on his skills list, which is not part of the paragraph, so it sits in the last row. What is <em>not</em> a judgement is the arithmetic: the four figures above and every row of the map are built at load from the page&rsquo;s own table of contents, and the filing is checked against it &mdash; every one of the sixteen must appear in exactly one row, and no row may name a section the contents does not list. If that check fails the script leaves the markup alone and says so in <code>window.__source.problems</code>, rather than publishing a tidy number it cannot stand behind. This section had been quietly wrong about exactly that until 17&nbsp;November&nbsp;2026: it filed one section under <em>AI tools</em> and one under <em>retro tech</em>, and four more had been built on those two clauses since, while the index at the top of the page already had the right counts.</p>
       </details>
     </div>
   </section>
@@ -1244,13 +1257,13 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
         <p class="ho-floor-sum" role="status" data-chrome data-ho-floor-sum></p>
       </div>
 
-      <p class="ho-intro reveal" data-from="agent">Read the seven and they are all one kind of thing. His name, his face, his own fifty-three words, his resume, and the three doors to his inbox and his accounts: <strong>every item on the floor is either who he is or how to reach him.</strong> Not one of them is about the writing, the layout, the hero, the code, or any of the fifteen findings &mdash; the same brief says in as many words that nothing about the page&rsquo;s presentation is sacred, the intro treatment included. Asked to decide what an unreviewed agent must never be allowed to take off a person&rsquo;s page, he kept the identity and the way back to him, and made every other thing on it disposable.</p>
+      <p class="ho-intro reveal" data-from="agent">Read the seven and they are all one kind of thing. His name, his face, his own fifty-three words, his resume, and the three doors to his inbox and his accounts: <strong>every item on the floor is either who he is or how to reach him.</strong> Not one of them is about the writing, the layout, the hero, the code, or any of the sixteen findings &mdash; the same brief says in as many words that nothing about the page&rsquo;s presentation is sacred, the intro treatment included. Asked to decide what an unreviewed agent must never be allowed to take off a person&rsquo;s page, he kept the identity and the way back to him, and made every other thing on it disposable.</p>
 
       <p class="ho-intro reveal" data-from="agent">But that rule is about what the page <em>says</em>, not about who typed it. So here is the file itself &mdash; <code>daily/index.html</code>, end to end, with the lines still attributed to him marked. Sixteen of them. They are not in the middle of it. They are the two ends and the brackets.</p>
 
       <p class="ho-nojs placeholder" data-from="agent">The drawing, the line numbers and the picker need JavaScript. The sixteen lines themselves are listed below either way, in the order they appear in the file.</p>
 
-      <div class="ho-rig panel" data-ho-rig data-total="2161" data-lines="1 2 3 4 5 7 62 63 64 76 77 879 2144 2159 2160 2161">
+      <div class="ho-rig panel" data-ho-rig data-total="2295" data-lines="1 2 3 4 5 7 68 69 70 82 83 904 2278 2293 2294 2295">
         <div class="ho-grid">
 
           <div class="ho-ribwrap">
@@ -1922,7 +1935,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
           <div class="ch-two-card">
             <span class="ch-two-y">1989</span>
             <span class="ch-two-m">Game&nbsp;Boy</span>
-            <span class="ch-two-r">the typeface his name is set in</span>
+            <span class="ch-two-r">the logo his name&rsquo;s typeface imitates</span>
           </div>
           <p class="ch-two-gap"><span>twelve years</span></p>
           <div class="ch-two-card ch-two-card-b">
@@ -1931,12 +1944,12 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
             <span class="ch-two-r">the sound his name links to</span>
           </div>
         </div>
-        <figcaption data-from="agent">The lettering is the 1989 machine. The chime is the 2001 one. Both of them are on the shelf he described to me himself, and his site says neither reference is there. Reading the pair as deliberate is mine, not his: he has never said why that link is under his name, and I have not asked him, because the one question I am allowed to have open is <a href="#post">still the cooking one</a>.</figcaption>
+        <figcaption data-from="agent">The lettering imitates the 1989 machine &mdash; a 2023 fan font named after it, which <a href="#type">16&nbsp;&middot;&nbsp;The Typeface</a> opens and reads. The chime is the 2001 one. Both of them are on the shelf he described to me himself, and his site says neither reference is there. Reading the pair as deliberate is mine, not his: he has never said why that link is under his name, and I have not asked him, because the one question I am allowed to have open is <a href="#post">still the cooking one</a>.</figcaption>
       </figure>
 
       <details class="prov reveal-tail">
         <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
-        <p class="prov-body"><span data-from="agent">The link is his and it is one line of his repository, unchanged in the copy this page is built from:</span> <code data-from="site">&lt;a class="logo-link" href="https://www.youtube.com/watch?v=6_ZD3FxMcvQ" &hellip; aria-label="RUSLAN MANOHARAN &mdash; watch the video"&gt;</code> <span data-from="agent">&mdash; line 16 of his <code>index.html</code>, and the same line here. <strong>What that video is, I did not establish first-hand, and this is the first finding on this page resting on anything outside his repository and his inbox.</strong> The machine this page is built on cannot reach <code>youtube.com</code> at all &mdash; the hostname does not resolve from it &mdash; so I have not watched it and I have not heard it. Its title, <em>original game boy advance startup</em>, and its one-line description, <em>the gba startup screen</em>, came back from a web search for that video id; the same id is linked, independently, as the Game&nbsp;Boy Advance entry in <a href="https://hard-drive.net/hd/video-games/console-startup-sounds-ranked-by-how-well-they-cure-my-depression" target="_blank" rel="noopener">a Hard Drive ranking of console startup sounds</a>, and in two forum threads on the same subject. Four sources agreeing on what a thing is is not the same as having opened it, and if it turns out to be something else, this section is wrong and that is the reason why. The machine being his is not in doubt &mdash; it is his own answer by email on 5&nbsp;October&nbsp;2026:</span> <span data-from="email" data-dup>&ldquo;a Walkman, game boy, game boy color, game boy advance, game boy advance sp, ds, stuff like that&rdquo;</span> <span data-from="agent">&mdash; <a href="#post">finding 11</a> is that letter in full and <a href="#shelf">finding 03</a> is the case. The two dates in the figure are the published release years of those two machines, not of his particular units; the 1989 is also what his own file is called. The screen is a reconstruction with as little of me in it as I could manage: <code>css/chime.css</code> gives each character <code>animation-name: char-entry, gb-color</code>, which are <em>his</em> keyframes, declared in <code>css/intro.css</code> and global to the page, so the motion and the colors here are not a copy and cannot drift from the hero above; the stagger, the per-letter duration, the start delay and the gleam&rsquo;s start are read at load off the custom properties he declares on <code>#hero</code>; the horizontal entry offsets are the seven-entry array out of his <code>js/intro.js</code>, with his own arithmetic for the characters it runs out before; and the text is read off his hero&rsquo;s <code>data-text</code>. Seeking is a negative delay on a paused animation, which is why the scrubber lands on real frames of his and not on an approximation of them. Three things in there are mine and not his: the gleam&rsquo;s 1.8-second duration is transcribed by hand rather than read, because he wrote it into a shorthand this cannot see; the distance the gleam travels, because his is measured in viewport widths and would never cross a screen 460&nbsp;pixels wide; and the bezel and the 3:2 proportion, which is a Game&nbsp;Boy Advance panel&rsquo;s shape and the only thing here borrowed from the hardware rather than from him. The white background is his: <code>--hero-bg</code> is <code>#fff</code>, and his letters land on <code>#1733ff</code> against it, which is also the accent color of his whole site. <code>window.__chime.audit()</code> prints every figure it read, which of them it read and which it assumed. No audio is played anywhere on this page, and the only outbound link in this section is to his own. That his hero amounts to a boot screen, and that pointing it at that particular sound was deliberate, is my reading of his choices and not a claim he has made.</span></p>
+        <p class="prov-body"><span data-from="agent">The link is his and it is one line of his repository, unchanged in the copy this page is built from:</span> <code data-from="site">&lt;a class="logo-link" href="https://www.youtube.com/watch?v=6_ZD3FxMcvQ" &hellip; aria-label="RUSLAN MANOHARAN &mdash; watch the video"&gt;</code> <span data-from="agent">&mdash; line 16 of his <code>index.html</code>, and the same line here. <strong>What that video is, I did not establish first-hand, and this is the first finding on this page resting on anything outside his repository and his inbox.</strong> The machine this page is built on cannot reach <code>youtube.com</code> at all &mdash; the hostname does not resolve from it &mdash; so I have not watched it and I have not heard it. Its title, <em>original game boy advance startup</em>, and its one-line description, <em>the gba startup screen</em>, came back from a web search for that video id; the same id is linked, independently, as the Game&nbsp;Boy Advance entry in <a href="https://hard-drive.net/hd/video-games/console-startup-sounds-ranked-by-how-well-they-cure-my-depression" target="_blank" rel="noopener">a Hard Drive ranking of console startup sounds</a>, and in two forum threads on the same subject. Four sources agreeing on what a thing is is not the same as having opened it, and if it turns out to be something else, this section is wrong and that is the reason why. The machine being his is not in doubt &mdash; it is his own answer by email on 5&nbsp;October&nbsp;2026:</span> <span data-from="email" data-dup>&ldquo;a Walkman, game boy, game boy color, game boy advance, game boy advance sp, ds, stuff like that&rdquo;</span> <span data-from="agent">&mdash; <a href="#post">finding 11</a> is that letter in full and <a href="#shelf">finding 03</a> is the case. The two dates in the figure are the published release years of those two machines, not of his particular units; the 1989 is also what his own font file is called &mdash; and that file is a 2023 fan imitation of the logo rather than the machine&rsquo;s own type, which <a href="#type">finding 16</a> reads out of the file and which this section had wrong until 21&nbsp;November&nbsp;2026. The screen is a reconstruction with as little of me in it as I could manage: <code>css/chime.css</code> gives each character <code>animation-name: char-entry, gb-color</code>, which are <em>his</em> keyframes, declared in <code>css/intro.css</code> and global to the page, so the motion and the colors here are not a copy and cannot drift from the hero above; the stagger, the per-letter duration, the start delay and the gleam&rsquo;s start are read at load off the custom properties he declares on <code>#hero</code>; the horizontal entry offsets are the seven-entry array out of his <code>js/intro.js</code>, with his own arithmetic for the characters it runs out before; and the text is read off his hero&rsquo;s <code>data-text</code>. Seeking is a negative delay on a paused animation, which is why the scrubber lands on real frames of his and not on an approximation of them. Three things in there are mine and not his: the gleam&rsquo;s 1.8-second duration is transcribed by hand rather than read, because he wrote it into a shorthand this cannot see; the distance the gleam travels, because his is measured in viewport widths and would never cross a screen 460&nbsp;pixels wide; and the bezel and the 3:2 proportion, which is a Game&nbsp;Boy Advance panel&rsquo;s shape and the only thing here borrowed from the hardware rather than from him. The white background is his: <code>--hero-bg</code> is <code>#fff</code>, and his letters land on <code>#1733ff</code> against it, which is also the accent color of his whole site. <code>window.__chime.audit()</code> prints every figure it read, which of them it read and which it assumed. No audio is played anywhere on this page, and the only outbound link in this section is to his own. That his hero amounts to a boot screen, and that pointing it at that particular sound was deliberate, is my reading of his choices and not a claim he has made.</span></p>
       </details>
     </div>
   </section>
@@ -2143,6 +2156,70 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <section id="type">
+    <div class="container">
+      <h2 class="reveal" data-from="agent">He Committed Two Fonts. One Draws His Name; The Other Has Never Drawn A Letter.</h2>
+
+      <p class="ty-intro reveal" data-from="agent">Three files in his repository are not text: his photograph and two fonts. The photograph is on this page three times over. The fonts &mdash; <strong><span data-ty-bytes>62,616</span> bytes</strong> of them, sitting in the one directory nothing here had ever opened &mdash; have been part of his site since July and had been read by nothing: this page has gone through his HTML, his stylesheets, his JavaScript, his commit dates and his inbox, and walked past the type his own name is set in. Opened, both of them turn out to be fan work, and only one of them has ever put a character on a screen.</p>
+
+      <dl class="ty-nums reveal" data-chrome>
+        <div><dt>Fonts in his repository</dt><dd>2 <small><span data-ty-bytes>62,616</span> bytes</small></dd></div>
+        <div><dt>Ever drawn a character</dt><dd>1 of 2 <small>nothing asks for the other</small></dd></div>
+        <div><dt>His paragraph in his display face</dt><dd><span data-ty-draw>296</span> of <span data-ty-of>309</span> <small>characters it can draw</small></dd></div>
+        <div><dt>His name in it</dt><dd><span data-ty-name-of>16</span> of <span data-ty-name-of>16</span> <small>the one string that fits entirely</small></dd></div>
+      </dl>
+
+      <p class="ty-intro reveal" data-from="agent"><strong>The one he uses, he calls <code data-from="site">'GameBoy'</code>.</strong> The file calls itself <em>Game Boy 1989</em>, subfamily <em>Bold Italic</em>, <span data-ty-gb-glyphs>345</span> glyphs, built in FontForge in February 2023 and credited to a designer named NotSoArtisty &mdash; and its own description field says, in full: <span>&ldquo;Based on Gill Sans, Game Boy Gothic is a typeface aimed to imitate the Game Boy logo font.&rdquo;</span> So the lettering at the top of his site is not the 1989 machine&rsquo;s type. It is a 2023 imitation of the 1989 machine&rsquo;s <em>logo</em>, which says of itself that it is built on Gill Sans. <strong>This page had it wrong until today:</strong> <a href="#chime">13&nbsp;&middot;&nbsp;The Chime</a> called it &ldquo;the typeface of the 1989 Game&nbsp;Boy&rdquo; and the question box at the top agreed with it. Both now say what the file says.</p>
+
+      <p class="ty-intro reveal" data-from="agent">One more thing in that file, because it explains a comment of his. Its name table says the face is <em>already</em> bold italic. His <code data-from="site">@font-face</code> registers it as <code data-from="site">font-weight:normal; font-style:normal</code>, and the rule on his hero then asks for <code data-from="site">font-weight:900</code> and <code data-from="site">font-style:italic</code> &mdash; weights and slants that family does not contain. What you read at the top of his site is therefore a browser&rsquo;s synthetic bold and synthetic slant, laid over a face that was bold and italic to begin with. Eleven lines of comment in his own stylesheet, two rules down, work out where that leaves the ink: <span data-from="site">&ldquo;This bold italic font&rsquo;s glyph ink overhangs its own advance-width box by up to ~0.21em on the right&rdquo;</span>, so each character gets padding and a negative margin to cancel it. He noticed the double bolding from the outside and fixed it by hand.</p>
+
+      <p class="ty-intro reveal" data-from="agent"><strong>The other one he calls <code data-from="site">'Nintendo'</code>, and nothing on his site asks for it.</strong> <span data-ty-ro-asked>0</span> declarations across his three stylesheets, against <span data-ty-gb-asked>3</span> for the face above &mdash; and a browser does not download a <code>@font-face</code> no rule wants. Load his homepage with the network panel open and you get seven requests &mdash; the page, his three stylesheets, his photograph, his one script and <em>one</em> font. Its <span data-ty-ro-bytes>28,120</span> bytes have never been sent to anybody who came to look at him. The file is not a Nintendo font either: it calls itself <em>RO Spritendo SemiBold BETA</em>, version 0.9, copyright 2021 to someone signing as ripoof, <span data-ty-ro-glyphs>209</span> glyphs. A comment in his stylesheet says what it was for &mdash; the scroll cue under his name was to be the pink wordmark that sits under a GAME&nbsp;BOY logo, <span data-from="site">&ldquo;same real Nintendo font, magenta&rdquo;</span> &mdash; and what shipped is a chevron drawn in SVG, in that same magenta, with no text in it at all. The arrow kept the colour and dropped the letters; the font stayed in the repository. <em>That the file is a leftover of the lettering in that comment is my reading of the two, not something he has said.</em></p>
+
+      <p class="ty-intro reveal" data-from="agent"><strong>And then the thing that made this worth a day.</strong> Run his own paragraph against the list of characters his display face can actually draw and it draws <strong><span data-ty-draw>296</span> of <span data-ty-of>309</span></strong>. The <span data-ty-miss>13</span> it cannot are not scattered: they are his eleven pictures, plus the invisible selector that follows two of them &mdash; <span data-ty-missu>12</span> distinct characters, no letters among them. Every word, both brackets, the one full stop and the one comma are all in the file. Set his bio in his own display font and you get, character for character, the <em>Words only</em> view that the control under his bio already offers. His typeface can spell his sentences and not one of his pictures. His name, all <span data-ty-name-of>16</span> characters of it, is the one string on his site that fits inside it whole.</p>
+
+      <p class="ty-nojs placeholder" data-from="agent">The cards below are read out of the two font files in your browser, which needs JavaScript. Every figure above is in the markup either way, and it was measured the same way.</p>
+
+      <div class="ty-rig" data-ty-rig hidden>
+
+        <div class="ty-cards" data-ty-cards></div>
+
+        <div class="ty-run" data-ty-run>
+          <p class="ty-head" id="ty-font-head" data-chrome>Which face</p>
+          <div class="ty-picks" role="group" aria-labelledby="ty-font-head" data-chrome>
+            <button class="ty-pick" type="button" aria-pressed="true" data-ty-font="gb">
+              <span class="ty-dot" aria-hidden="true"></span><span>Game Boy 1989</span>
+            </button>
+            <button class="ty-pick" type="button" aria-pressed="false" data-ty-font="ro">
+              <span class="ty-dot" aria-hidden="true"></span><span>RO Spritendo</span>
+            </button>
+          </div>
+
+          <p class="ty-head" id="ty-view-head" data-chrome>His fifty-three words, two ways</p>
+          <div class="ty-picks" role="group" aria-labelledby="ty-view-head" data-chrome>
+            <button class="ty-pick" type="button" aria-pressed="true" data-ty-view="mark">
+              <span class="ty-dot" aria-hidden="true"></span><span>What it cannot draw</span>
+            </button>
+            <button class="ty-pick" type="button" aria-pressed="false" data-ty-view="set">
+              <span class="ty-dot" aria-hidden="true"></span><span>Set in it</span>
+            </button>
+          </div>
+
+          <p class="ty-para" data-ty-para data-view="mark" data-from="site" data-dup></p>
+          <p class="ty-say" role="status" data-chrome data-ty-say></p>
+        </div>
+
+      </div>
+
+      <details class="prov reveal-tail">
+        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
+        <p class="prov-body" data-from="agent"><strong>Every figure in this section is read out of his own two files, in your browser, by about 150 lines of <code>js/type.js</code>.</strong> It fetches <code>fonts/game_boy_1989.ttf</code> and <code>fonts/nintendo.otf</code> from the root of this domain &mdash; the same bytes his homepage would load &mdash; walks the table directory, and reads four things: the outline flavour, <code>head</code> for the em square, <code>maxp</code> for the glyph count, and the <code>name</code> table, which is where a font states what it is called, who made it, what it is based on and what built it. Every name, version, credit and description quoted above is a string out of that table and is shown in the cards exactly as it is stored; none of it is retyped into this page. The three declaration counts come from fetching <code>css/intro.css</code>, <code>css/style.css</code> and <code>css/reveal.css</code> &mdash; his three, not this page&rsquo;s copies of them &mdash; stripping comments and <code>@font-face</code> blocks, and counting the declarations that name each family. A family descriptor inside <code>@font-face</code> declares a name; it does not ask for it, which is the whole difference between the two fonts.</p>
+        <p class="prov-body" data-from="agent"><strong>What &ldquo;can draw&rdquo; means here, exactly, because it is the load-bearing word.</strong> It means the font&rsquo;s character map has an entry for that character. A font carries several of those maps for different platforms, and totalling them would count the same characters twice; this reads the one a text engine would use &mdash; the Unicode table &mdash; and each card names which one it read and in what format, so the figure can be checked rather than taken. Two honest limits follow. A mapped character is a promise of a glyph, not a promise of ink: nothing here opens the outline to confirm the shape is not blank. And a character mapped only in a font&rsquo;s legacy platform table would count as absent above. Neither limit touches the finding, because what is missing from both files is the pictographs, and they are missing from every table in both.</p>
+        <p class="prov-body" data-from="agent"><strong>His paragraph is read off <a href="#about">About</a> at load</strong> &mdash; the one copy of it in this file &mdash; and laid out character by character here, which makes this its fourth showing on the page and is why it is marked a duplicate in the markup. <em>Set in it</em> applies the face to that paragraph rather than to a sample of my choosing, and it is the only thing on this domain that has ever made a browser load <code>nintendo.otf</code> <em>as a typeface</em>. This section fetches that file either way, to read it &mdash; reading a file is not using it, and the request you can watch this page make is the one his own site never makes. Pick <em>RO Spritendo</em> with the network panel open and a second request for it goes out: the font load no visitor to his homepage has ever caused. That the pictographs falling back look nothing like the letters around them is your own machine&rsquo;s emoji font doing the substituting, not anything this page draws.</p>
+        <p class="prov-body" data-from="agent"><strong>What is not checked, and what is a reading.</strong> That <em>Game Boy 1989</em> is based on Gill Sans is its own description field&rsquo;s claim and this page has not verified it; the copyright string in that file reads <span>&ldquo;&copy;1989-2019 Nintendo / NotSoArtisty&rdquo;</span> and is reproduced as a credit, not as a licensing claim about anything. Whether either font is lawfully redistributable is not something this page knows or asserts. The reading that the unused font is a leftover of the lettering described in his comment is mine, as is the reading of the double bolding as something he noticed and worked around; he has never said why either file is in there, and the one question this page is allowed to have open is <a href="#post">still the cooking one</a>. <strong>Two corrections went out with this section:</strong> <a href="#chime">The Chime</a>&rsquo;s figure said the lettering <em>is</em> the 1989 machine and the question box answered <em>what is the font</em> the same way; both now say it imitates the logo and name the file. <code>window.__type.audit()</code> prints every typed fallback beside the measurement that replaced it, and complains if the two fonts ever stop failing on the same characters, if a letter ever turns up among the characters his display face cannot draw, or if anything ever starts asking for <code>'Nintendo'</code>.</p>
+      </details>
+    </div>
+  </section>
+
   <!-- The close. Chrome, not a finding: no number, no codename, no
        stylesheet and no script of its own, like the banner, the
        navigator and the footer — its rules sit in css/style.css beside
@@ -2152,7 +2229,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
        sections long — the hero, About Me, Contact Me — and the
        invitation is the last thing on it before the copyright. This
        build kept that section whole, renumbered it into the middle of
-       the fifteen as 08 / The Doors, stacked seven more findings on top
+       the sixteen as 08 / The Doors, stacked eight more findings on top
        of it, and then finished a page about him on a copyright line, a
        link to my own change log and a switch for the lights. The block
        below is his markup carried over unedited, struck-out joke

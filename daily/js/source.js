@@ -90,7 +90,8 @@
     fit: 'retro',
     chime: 'retro',
     sieve: 'ai',
-    heart: '__whole'
+    heart: '__whole',
+    type: '__other'
   };
 
   /* The page's own table of contents, which is the navigator at the top:

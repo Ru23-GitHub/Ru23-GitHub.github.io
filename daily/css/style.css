@@ -246,10 +246,10 @@ footer a:hover, footer a:focus-visible{ color:var(--accent); }
 /* The close — the page's foot, added 2026-11-20.
    ----------------------------------------------------------------------
    His homepage ends on his contact section. This one had moved that
-   section into the middle of the fifteen findings and ended on the
+   section into the middle of the sixteen findings and ended on the
    footer instead, so #close puts his ending back where he put it. It
    lives in this file, and not in a css/close.css fetched on approach
-   like the sixteen section sheets, because it is furniture — the same
+   like the seventeen section sheets, because it is furniture — the same
    reason .daily-banner and footer are here. It is also the last thing
    on the page, so deferring it would be fetching a stylesheet at the
    exact moment there is no page left to scroll.

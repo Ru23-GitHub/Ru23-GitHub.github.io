@@ -139,10 +139,17 @@
     },
     {
       id: 'hero',
-      keys: [[6,'what is the font'],[5,'name at the top'],[5,'the link at the top'],[4,'font'],[4,'typeface'],[4,'the hero'],[4,'the sound'],[3,'animation'],[3,'chime'],[3,'video'],[3,'youtube']],
+      keys: [[6,'name at the top'],[6,'the link at the top'],[5,'what is the chime'],[4,'the hero'],[4,'the sound'],[3,'animation'],[3,'chime'],[3,'video'],[3,'youtube'],[3,'startup']],
       src: 'repo',
-      a: 'His name at the top is set in the typeface of the 1989 Game&nbsp;Boy, and it is a link. It goes to the startup chime of the 2001 Game&nbsp;Boy Advance. Two machines he owns, twelve years apart, in one heading &mdash; and the only hint of it on his real site is an <code>aria-label</code> that says &ldquo;watch the video&rdquo;.',
+      a: 'His name at the top is set in a 2023 fan font that imitates the 1989 Game&nbsp;Boy&rsquo;s logo &mdash; not the machine&rsquo;s own lettering &mdash; and it is a link. It goes to the startup chime of the 2001 Game&nbsp;Boy Advance. Two machines he owns, twelve years apart, in one heading &mdash; and the only hint of it on his real site is an <code>aria-label</code> that says &ldquo;watch the video&rdquo;.',
       go: ['#chime', 'The Chime']
+    },
+    {
+      id: 'fonts',
+      keys: [[6,'what is the font'],[6,'which font'],[6,'what font'],[5,'the typeface'],[5,'gill sans'],[5,'font files'],[5,'nintendo font'],[4,'font'],[4,'fonts'],[4,'typeface'],[4,'typography'],[4,'glyph'],[4,'glyphs'],[3,'lettering'],[3,'emoji font'],[3,'ttf'],[3,'otf']],
+      src: 'repo',
+      a: 'Two, both in <code>fonts/</code> in his repository, 62,616 bytes between them, and neither is what his stylesheet calls it. The one his hero and his headings use calls itself <em>Game Boy 1989</em> &mdash; a 2023 fan build credited to NotSoArtisty, whose own description field says it is &ldquo;based on Gill Sans&rdquo; and aimed at imitating the Game&nbsp;Boy logo. The other his CSS calls <code>\'Nintendo\'</code>; the file calls itself <em>RO Spritendo SemiBold BETA</em>, version 0.9, and nothing anywhere on his site asks for it, so no visitor&rsquo;s browser has ever downloaded it. Neither font can draw a single one of the eleven pictures in his bio, and both can draw every letter.',
+      go: ['#type', 'The Typeface']
     },
     {
       id: 'rules',
@@ -203,7 +210,7 @@
       keys: [[6,'how old is he'],[5,'is he single'],[4,'girlfriend'],[4,'boyfriend'],[4,'married'],[4,'partner'],[4,'wife'],[4,'husband'],[4,'birthday'],[4,'religion'],[4,'politics'],[3,'family'],[3,'kids'],[3,'children'],[3,'dating'],[3,'age'],[3,'born'],[2,'old']],
       src: 'none',
       a: 'Nothing on this page says, and nothing on this page is going to guess. Everything here traces to one paragraph he wrote, the repository he published, or two emails he answered &mdash; and none of the three mentions any of that.',
-      go: ['#known', 'the fifteen']
+      go: ['#known', 'the sixteen']
     },
     {
       id: 'loves',
@@ -285,7 +292,7 @@
       em.textContent = '“' + String(asked).trim() + '”';
       p.appendChild(em);
       p.appendChild(document.createTextNode(
-        ' matches nothing in the fifteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the fifteen below.'
+        ' matches nothing in the sixteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the sixteen below.'
       ));
       chip.setAttribute('data-src', 'none');
       chip.textContent = SRC.none;
