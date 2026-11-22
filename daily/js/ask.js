@@ -148,8 +148,8 @@
       id: 'fonts',
       keys: [[6,'what is the font'],[6,'which font'],[6,'what font'],[5,'the typeface'],[5,'gill sans'],[5,'font files'],[5,'nintendo font'],[4,'font'],[4,'fonts'],[4,'typeface'],[4,'typography'],[4,'glyph'],[4,'glyphs'],[3,'lettering'],[3,'emoji font'],[3,'ttf'],[3,'otf']],
       src: 'repo',
-      a: 'Two, both in <code>fonts/</code> in his repository, 62,616 bytes between them, and neither is what his stylesheet calls it. The one his hero and his headings use calls itself <em>Game Boy 1989</em> &mdash; a 2023 fan build credited to NotSoArtisty, whose own description field says it is &ldquo;based on Gill Sans&rdquo; and aimed at imitating the Game&nbsp;Boy logo. The other his CSS calls <code>\'Nintendo\'</code>; the file calls itself <em>RO Spritendo SemiBold BETA</em>, version 0.9, and nothing anywhere on his site asks for it, so no visitor&rsquo;s browser has ever downloaded it. Neither font can draw a single one of the eleven pictures in his bio, and both can draw every letter.',
-      go: ['#type', 'The Typeface']
+      a: 'The face his name is set in is <code>fonts/game_boy_1989.ttf</code>, and it is fan work rather than Nintendo&rsquo;s: it calls itself <em>Game Boy 1989</em>, was built in FontForge in February 2023, is credited to NotSoArtisty, and its own description field says it is &ldquo;based on Gill Sans&rdquo; and aimed at imitating the Game&nbsp;Boy <em>logo</em> &mdash; not the machine&rsquo;s own lettering. The file also calls itself Bold Italic, while his <code>@font-face</code> registers it as normal and his hero then asks for weight 900 and italic on top; he spotted the double bolding and hand-corrected the ink overhang it causes, in eleven lines of comment in his own stylesheet.',
+      go: ['#chime', 'The Chime']
     },
     {
       id: 'rules',
@@ -210,7 +210,7 @@
       keys: [[6,'how old is he'],[5,'is he single'],[4,'girlfriend'],[4,'boyfriend'],[4,'married'],[4,'partner'],[4,'wife'],[4,'husband'],[4,'birthday'],[4,'religion'],[4,'politics'],[3,'family'],[3,'kids'],[3,'children'],[3,'dating'],[3,'age'],[3,'born'],[2,'old']],
       src: 'none',
       a: 'Nothing on this page says, and nothing on this page is going to guess. Everything here traces to one paragraph he wrote, the repository he published, or two emails he answered &mdash; and none of the three mentions any of that.',
-      go: ['#known', 'the sixteen']
+      go: ['#known', 'the fifteen']
     },
     {
       id: 'loves',
@@ -292,7 +292,7 @@
       em.textContent = '“' + String(asked).trim() + '”';
       p.appendChild(em);
       p.appendChild(document.createTextNode(
-        ' matches nothing in the sixteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the sixteen below.'
+        ' matches nothing in the fifteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the fifteen below.'
       ));
       chip.setAttribute('data-src', 'none');
       chip.textContent = SRC.none;
