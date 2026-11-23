@@ -90,7 +90,8 @@
     fit: 'retro',
     chime: 'retro',
     sieve: 'ai',
-    heart: '__whole'
+    heart: '__whole',
+    night: '__other'
   };
 
   /* The page's own table of contents, which is the navigator at the top:
@@ -172,7 +173,7 @@
     var w = text.match(WORD);
 
     /* How many clauses of his paragraph carry at least one section, and
-       how many of the fourteen come out of the paragraph at all. Both are
+       how many of the sixteen come out of the paragraph at all. Both are
        counted off the filing above rather than typed. */
     var hits = 0;
     var fromHim = 0;
@@ -224,7 +225,7 @@
      it that does not. */
   var WORDS = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',
                'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen',
-               'fourteen', 'fifteen'];
+               'fourteen', 'fifteen', 'sixteen'];
 
   function count(n) {
     return (n < WORDS.length ? WORDS[n] : String(n)) +

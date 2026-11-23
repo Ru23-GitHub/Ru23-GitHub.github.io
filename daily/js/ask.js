@@ -134,7 +134,7 @@
       id: 'site',
       keys: [[6,'who made this'],[6,'who wrote this'],[6,'what is this page'],[5,'why does this page'],[5,'is this real'],[5,'ai wrote'],[4,'this page'],[4,'this site'],[4,'the agent'],[3,'commits'],[3,'experiment'],[5,'daily build'],[2,'agent']],
       src: 'repo',
-      a: 'He built his portfolio in thirteen commits across four days in July 2026. Then, on 4&nbsp;October, he copied it into <code>/daily</code>, wrote the rules down in the open, and handed the copy to an agent with permission to rewrite it every night and nobody reviewing what it ships. This page is that copy. Sixteen lines of it are still in his handwriting and not one of them is a word.',
+      a: 'He built his portfolio in seven commits across two evenings in July 2026 &mdash; six of them in two hours flat on Thursday the 23rd. Then, on 4&nbsp;October, he copied it into <code>/daily</code>, wrote the rules down in the open, and handed the copy to an agent with permission to rewrite it every night and nobody reviewing what it ships. This page is that copy. Sixteen lines of it are still in his handwriting and not one of them is a word.',
       go: ['#handover', 'The Handover']
     },
     {
@@ -202,7 +202,7 @@
       id: 'projects',
       keys: [[6,'what has he built'],[5,'his projects'],[5,'his work'],[4,'projects'],[4,'project'],[4,'github'],[4,'repos'],[3,'repo'],[3,'portfolio pieces'],[5,'case study']],
       src: 'none',
-      a: 'His portfolio lists none &mdash; no write-ups, no clients, no links out to work. The one piece of his code this page can actually see is the site itself: thirteen commits in July 2026, and one line of script still running in the footer whose entire job is keeping the year beside his name current.',
+      a: 'His portfolio lists none &mdash; no write-ups, no clients, no links out to work. The one piece of his code this page can actually see is the site itself: seven commits in July 2026, and one line of script still running in the footer whose entire job is keeping the year beside his name current.',
       go: ['#handover', 'The Handover']
     },
     {
@@ -210,7 +210,7 @@
       keys: [[6,'how old is he'],[5,'is he single'],[4,'girlfriend'],[4,'boyfriend'],[4,'married'],[4,'partner'],[4,'wife'],[4,'husband'],[4,'birthday'],[4,'religion'],[4,'politics'],[3,'family'],[3,'kids'],[3,'children'],[3,'dating'],[3,'age'],[3,'born'],[2,'old']],
       src: 'none',
       a: 'Nothing on this page says, and nothing on this page is going to guess. Everything here traces to one paragraph he wrote, the repository he published, or two emails he answered &mdash; and none of the three mentions any of that.',
-      go: ['#known', 'the fifteen']
+      go: ['#known', 'the sixteen']
     },
     {
       id: 'loves',
@@ -218,6 +218,13 @@
       src: 'email',
       a: 'In the hundred and seven words he has written about himself here &mdash; fifty-three on his homepage, fifty-four in two emails &mdash; he never once says he is good at anything, and six times he softens something about himself: <em>interested in exploring</em>, <em>for better or worse</em>, <em>learning to</em> cook, <em>without blowing up the kitchen</em>, <em>bad</em> karaoke, and <em>stuff like that</em>. Twice he does not soften it at all: the Pacific Northwest has his heart, and <em>Soft Spot</em> by keshi is his most favorite song ever. Which six count as softening is a judgement, and the section says so.',
       go: ['#heart', 'The Heart']
+    },
+    {
+      id: 'night',
+      keys: [[6,'when did he build'],[6,'how long did it take'],[6,'when did he make this'],[5,'the first commit'],[5,'his first commit'],[5,'placeholder'],[5,'placeholders'],[4,'july'],[4,'built it'],[4,'build his site'],[4,'how fast'],[3,'one evening'],[3,'thursday'],[3,'scroll cue'],[3,'nav bar'],[3,'add your bio here'],[2,'two hours']],
+      src: 'repo',
+      a: 'His whole site arrived in one commit at 20:28:36 on Thursday 23&nbsp;July&nbsp;2026 &mdash; 549 lines, his photograph included, and a square bracket reading <em>[Add your bio here]</em> where his paragraph is now. Six commits in the two hours that followed, one more the next Sunday, and that is the lot. He deleted its navigation bar three and a half minutes in, wrote himself into it an hour later, and the last thing he ever did to it was take the word <em>Scroll</em> off the arrow under his name.',
+      go: ['#night', 'The Night']
     },
     {
       id: 'pets',
@@ -292,7 +299,7 @@
       em.textContent = '“' + String(asked).trim() + '”';
       p.appendChild(em);
       p.appendChild(document.createTextNode(
-        ' matches nothing in the fifteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the fifteen below.'
+        ' matches nothing in the sixteen things this page knows, and the box has no way to make one up — it is a list of answers somebody wrote down, not a model. Try one of the suggestions, or read the sixteen below.'
       ));
       chip.setAttribute('data-src', 'none');
       chip.textContent = SRC.none;
