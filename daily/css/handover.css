@@ -1,28 +1,28 @@
-/* The Handover — what is left of him in the file he gave away
+/* The Handover — what he protected, and what is left of him in the file
    ----------------------------------------------------------------------
-   Added 2026-11-01, in the place The Log held until today.
+   Added 2026-11-01. Cut back 2026-11-24 with the section it dresses.
 
-   The Log was a bar chart of his thirteen commits with a sixty-word
-   gloss under each: seven phone-screens, 5,902px, the largest section on
-   the page, and six of its thirteen rows were about the /daily routine
-   itself rather than about him. Its two durable findings — the whole site
-   in one July evening, and a last commit that deleted — are three
-   sentences at the top of this file now. The chart is in the history.
+   Removed that day, with the markup and script for them: .ho-six, the
+   commit-by-commit table of his six commits with diffstats, which is a
+   change log; .ho-ribbon and .ho-tick, a drawing of daily/index.html
+   with his sixteen lines ticked on it, plus .ho-ribwrap, .ho-ribcap and
+   .ho-grid that placed it; .ho-pick, .ho-slider and .ho-read, the
+   control for stepping through those lines one at a time; and .ho-fix,
+   the box the section corrected its own arithmetic in. The section was
+   the tallest on the page at both widths — 4,383px of a 44,698px
+   document at 1280x900, and 7,843px of 60,960 on a 390px phone — and
+   most of that was the agent drawing and auditing its own document. It
+   is 3,137px and 5,127px now.
 
-   Two things carry the argument here:
+   What is left dresses three things, and all three are about Ruslan:
 
-     .ho-ribbon   daily/index.html drawn end to end, one tick per line
-                  still in his own hand. Positions come from data-lines
-                  rather than from anything typed into a path, so the
-                  drawing cannot disagree with the list beside it.
-
-     .ho-lines    those same lines as text. This is the evidence and it
-                  is in the markup unconditionally: the ribbon is
-                  [data-chrome] and aria-hidden, the list is not.
-
-   The ribbon is a picture of the list. Remove js/handover.js and the
-   ribbon does not draw, the slider never appears, and the section is
-   still the whole finding. */
+     .ho-floor-quote  the five bullets of his rule, in his words.
+     .ho-floor        what a selector for each of the seven protected
+                      things finds in this document, now.
+     .ho-lines        the sixteen lines of this file still in his hand,
+                      as text. This is the evidence, and it is in the
+                      markup unconditionally — js/handover.js only
+                      writes the line numbers into it. */
 
 #handover{ background:var(--bg); }
 
@@ -58,83 +58,7 @@
   color:var(--muted);
 }
 
-/* ---------- his six commits ---------- */
-
-.ho-six{
-  margin:0 0 var(--space-m);
-  padding:0;
-  list-style:none;
-  border-top:1px solid var(--border);
-}
-
-.ho-six > li{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:2px 14px;
-  padding:11px 0;
-  border-bottom:1px solid var(--border);
-}
-
-.ho-when{
-  margin:0;
-  font-family:var(--mono);
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
-.ho-when code{ font-size:inherit; }
-
-.ho-subj{
-  margin:0;
-  font-size:1rem;
-}
-
-.ho-num{
-  margin:0;
-  font-family:var(--mono);
-  font-size:var(--fs-md);
-  color:var(--muted);
-  font-variant-numeric:tabular-nums;
-}
-
-.ho-num .is-add{ color:var(--ho-add,#1a7f4b); }
-.ho-num .is-del{ color:var(--ho-del,#b3261e); }
-
-/* The two diff colours sit on the page itself rather than inside a panel,
-   so they need the same lift every other page-level colour gets in dark
-   mode. Written twice for the reason theme.css gives: a media query and
-   an attribute selector cannot share a block. Keep the two in step. */
-
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --ho-add:#5fd39b;
-    --ho-del:#ff8b80;
-  }
-}
-
-:root[data-theme="dark"]{
-  --ho-add:#5fd39b;
-  --ho-del:#ff8b80;
-}
-
-.ho-gloss{
-  margin:4px 0 0;
-  font-size:var(--fs-md);
-  color:var(--muted);
-}
-
-@media (min-width:720px){
-  .ho-six > li{
-    grid-template-columns:200px 1fr 136px;
-    align-items:baseline;
-  }
-  .ho-when{ grid-row:1; }
-  .ho-subj{ grid-row:1; }
-  .ho-num{ grid-row:1; text-align:right; }
-  .ho-gloss{ grid-column:2 / -1; }
-}
-
-/* ---------- the file, drawn and listed ---------- */
+/* ---------- his sixteen lines, listed ---------- */
 
 .ho-rig{
   --panel-top:#1b2030;
@@ -142,65 +66,6 @@
   --panel-accent:#ffb454;
   --panel-accent-soft:rgba(255,180,84,.7);
   margin:0 0 var(--space-s);
-}
-
-.ho-grid{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:var(--space-s);
-}
-
-@media (min-width:720px){
-  .ho-grid{ grid-template-columns:72px 1fr; gap:var(--space-m); }
-}
-
-.ho-ribwrap{
-  display:flex;
-  flex-direction:column;
-  align-items:stretch;
-  min-width:0;
-}
-
-/* The caption is the only thing that says what the column is. It is
-   [data-chrome] and the ribbon is aria-hidden, so neither is load-bearing:
-   the list beside them carries the same sixteen numbers as text. */
-.ho-ribcap{ margin:0 0 6px; }
-
-@media (min-width:720px){
-  .ho-ribcap{
-    /* Upright beside the list, the caption would be four words wrapped
-       into a 72px column. Keep it, turned. */
-    writing-mode:vertical-rl;
-    transform:rotate(180deg);
-    margin:0 6px 0 0;
-    align-self:center;
-  }
-  .ho-ribwrap{ flex-direction:row; }
-}
-
-/* On a phone the ribbon lies down: a 1,000-unit-tall column next to a
-   list of sixteen rows is taller than the list it describes. */
-.ho-ribbon{
-  width:100%;
-  height:54px;
-  border-radius:var(--radius-sm);
-  background:rgba(255,255,255,.05);
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
-  overflow:hidden;
-}
-
-@media (min-width:720px){
-  .ho-ribbon{
-    width:72px;
-    height:100%;
-    min-height:420px;
-  }
-}
-
-.ho-ribbon .ho-tick{ fill:var(--panel-accent); }
-
-.ho-ribbon .ho-tick[data-on="true"]{
-  fill:#fff;
 }
 
 /* The rig states, on its own face, whether the numbers beside it were
@@ -227,19 +92,6 @@
 }
 
 .ho-how[data-ho-how="measured"]::before{ background:var(--panel-accent); }
-
-/* The repair note. Set apart from the running prose because it is the
-   section correcting itself rather than reporting on him. */
-.ho-fix{
-  margin:var(--space-s) 0;
-  padding:12px 0 12px 16px;
-  border-left:3px solid var(--accent);
-  font-size:var(--fs-sm);
-  line-height:1.65;
-  color:var(--muted);
-}
-
-.ho-fix strong{ color:var(--text); }
 
 .ho-cap{
   margin:0 0 10px;
@@ -268,11 +120,6 @@
   border:1px solid transparent;
 }
 
-.ho-lines > li[data-on="true"]{
-  background:rgba(255,180,84,.13);
-  border-color:var(--panel-accent);
-}
-
 .ho-n{
   font-family:var(--mono);
   font-size:var(--fs-md);
@@ -298,25 +145,6 @@
   color:var(--panel-dim);
 }
 
-/* ---------- the picker ---------- */
-
-.ho-pick{ margin:var(--space-s) 0 0; }
-
-.ho-slider{
-  width:100%;
-  max-width:460px;
-  margin:0;
-}
-
-.ho-read{
-  margin:8px 0 0;
-  font-size:var(--fs-md);
-  color:var(--panel-ink);
-  min-height:2.6em;
-}
-
-.ho-read b{ color:var(--panel-accent); }
-
 .ho-nojs{ margin:0 0 var(--space-s); }
 
 /* ---------- the reading ---------- */
@@ -325,11 +153,6 @@
   margin:var(--space-s) 0 0;
   padding:var(--space-s) 0 0;
   border-top:1px solid var(--border);
-}
-
-@media (prefers-reduced-motion: no-preference){
-  .ho-lines > li,
-  .ho-ribbon .ho-tick{ transition:background-color 140ms ease, border-color 140ms ease, fill 140ms ease; }
 }
 
 /* ---------- the floor: his five bullets, and the check under them ----------
