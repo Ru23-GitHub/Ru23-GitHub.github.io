@@ -60,15 +60,15 @@
 
    Why this is safe, rather than clever:
 
-     - Every one of the sixteen scripts is an IIFE that looks its own
+     - Every one of the seventeen scripts is an IIFE that looks its own
        section up by id and returns if it is absent. None of them reads
        another's globals — every window.__x in js/ is a self-reference —
        so they can arrive in any order, late, or never.
-     - Every one of the sixteen stylesheets is scoped to its own
+     - Every one of the seventeen stylesheets is scoped to its own
        section: an id selector, or a class prefix no other file uses.
        The only rules any of them puts on :root are three private custom
        properties read nowhere outside the section that declares them.
-       So none of the sixteen can change the look of anything that is
+       So none of the seventeen can change the look of anything that is
        already on screen, which is the property that makes deferring
        them safe at all. If that ever stops being true of a new file,
        this is the paragraph it breaks.
@@ -95,55 +95,34 @@
    What it does NOT do is make the page smaller. Read to the bottom and
    you have fetched every byte you used to fetch. What it does is
    decline to spend them on somebody who came for the bio. Of the
-   465,456 bytes of stylesheet and script this page can ask for, an
+   453,326 bytes of stylesheet and script this page can ask for, an
    arrival that reads his name, his photo, his paragraph and his contact
-   links and then leaves now takes 121,556 — 42,859 of blocking
+   links and then leaves now takes 119,937 — 42,859 of blocking
    stylesheet, 11,873 more because #known sits inside the 1200px lead,
-   42,880 of script in the <head>, and ask.js at 23,944 because it
+   41,261 of script in the <head>, and ask.js at 23,944 because it
    belongs to #known and comes in behind it. Before 6 November the same
-   arrival took the lot. (Every figure in this comment is a byte count typed into a
-   comment, which is exactly the kind of claim the rest of this page
-   refuses to type into its markup, and two of them were already wrong a
-   day after they were written: the script totals here read 23,834 and
-   32,456 on 6 November and were stale by the 7th, when js/front.js
-   grew. They are corrected rather than dropped, because the paragraphs
-   above need them to mean anything — and they will go stale again.
-   They went stale again on 11 November, when #chime arrived with a
-   fourteenth stylesheet and a thirteenth script, and again on the same
-   day when correcting this paragraph grew the file the paragraph is
-   counting. They were stale again by 12 November — the fourteen read
-   98,938 against 100,384 and the whole read 319,775 against 333,918 —
-   and were caught by the audit that also found The Handover publishing
-   ten wrong line numbers for two nights. They were stale again on
-   13 November, when ask.js arrived inside the lead and this paragraph
-   went on quoting an arrival cost that no longer included it; that is
-   the error this paragraph is most prone to, because a new file inside
-   the 1200px lead costs every visitor and a new file outside it costs
-   almost none. Recounted on 14 November, with #sieve. And stale again by
-   19 November, worse than ever and in a way worth naming: the whole read
-   374,309 against 410,209 — nearly 36 KB adrift, because three nights of
-   edits to files this paragraph counts went by without anybody recounting
-   them, and nothing in the build checks a number that lives in a comment.
-   Recounted on 19 November, with #heart. Recounted on 21 November with
-   #type, which was a seventeenth stylesheet and a seventeenth script.
-   And recounted again today, 22 November, with #type deleted: back to
-   sixteen of each, and every figure above moved again because of it.
-   The grand total read 456,929 on the 21st; css/type.css and js/type.js
-   were 26,710 bytes between them, and the arrival cost moved as well,
-   because editing this file and js/ask.js changed the size of both.
-   Recounted again on 23 November with #night, which is an eighth
-   straight night of these figures moving. The grand total read 430,516
-   yesterday; css/night.css and js/night.js are most of the difference,
-   and the arrival cost moved too, because editing this file and
-   js/ask.js changed the size of both.
-   Recounted on 25 November with #edit, a ninth night of movement: the
-   grand total read 452,324 on the 23rd, and css/edit.css and js/edit.js
-   are 12,575 bytes of the 13,132 difference. The arrival cost moved by
-   523 bytes and not by 12,575, which is the whole point of the loader —
-   both new files hang off a section at the very bottom of the page, so
-   nobody who came for the bio pays for either; the 46 is this file
-   getting longer, including by this sentence.
-   Every figure in it is the settled one, and will not stay that way.)
+   arrival took the lot.
+
+   (Every figure in this comment is a byte count typed into a comment,
+   which is exactly the kind of claim the rest of this page refuses to
+   type into its markup. It has gone stale and been recounted on nine
+   separate days between 6 and 24 November 2026 — twice within a day of
+   being written, and once 36 KB adrift after three nights of edits went
+   by unrecounted — because nothing in the build checks a number that
+   lives in a comment, and because editing this file to correct it
+   changes the size of the file it is counting. The nine-entry diary of
+   which night broke which figure used to be written out here in full;
+   it is in the git history, where this page's own maintenance belongs.
+   Recounted on 24 November, after The Handover was cut back:
+   css/handover.css and js/handover.js lost 9,491 bytes between them.
+   Recounted again today, 25 November, with #edit: the grand total read
+   440,107 yesterday, and css/edit.css and js/edit.js are 12,575 bytes
+   of the 13,219 difference. The arrival cost moved by 491 bytes
+   and not by 12,575, which is the whole point of the loader — both new
+   files hang off the last section on the page, so nobody who came for
+   the bio pays for either; the rest is this file getting longer,
+   including by this sentence.
+   Every figure above is the settled one, and will not stay that way.)
 
    Three limitations, stated rather than hidden. Text a section's script
    draws — the charts, the readouts, the generated captions — is not in
@@ -155,7 +134,7 @@
    beforeprint, which for a script is merely late but for a stylesheet
    is a race the dialog can win — a first print from a cold load may set
    some sections in the browser's own default. A second print gets
-   everything. That is the honest cost of the sixteen, and it is worth
+   everything. That is the honest cost of the seventeen, and it is worth
    it. */
 (function () {
   'use strict';
