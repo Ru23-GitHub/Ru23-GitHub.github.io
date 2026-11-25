@@ -89,17 +89,17 @@
        no-JavaScript version, and that version was designed rather than
        left over. Its prose is dressed by style.css either way.
      - With JavaScript off, nothing here runs and the browser applies
-       all seventeen out of the <noscript> itself. The page is then
+       all eighteen out of the <noscript> itself. The page is then
        exactly what it was before 2026-11-06: every byte, up front.
 
    What it does NOT do is make the page smaller. Read to the bottom and
    you have fetched every byte you used to fetch. What it does is
    decline to spend them on somebody who came for the bio. Of the
-   452,324 bytes of stylesheet and script this page can ask for, an
+   465,456 bytes of stylesheet and script this page can ask for, an
    arrival that reads his name, his photo, his paragraph and his contact
-   links and then leaves now takes 121,033 — 42,859 of blocking
+   links and then leaves now takes 121,556 — 42,859 of blocking
    stylesheet, 11,873 more because #known sits inside the 1200px lead,
-   42,357 of script in the <head>, and ask.js at 23,944 because it
+   42,880 of script in the <head>, and ask.js at 23,944 because it
    belongs to #known and comes in behind it. Before 6 November the same
    arrival took the lot. (Every figure in this comment is a byte count typed into a
    comment, which is exactly the kind of claim the rest of this page
@@ -136,6 +136,13 @@
    yesterday; css/night.css and js/night.js are most of the difference,
    and the arrival cost moved too, because editing this file and
    js/ask.js changed the size of both.
+   Recounted on 25 November with #edit, a ninth night of movement: the
+   grand total read 452,324 on the 23rd, and css/edit.css and js/edit.js
+   are 12,575 bytes of the 13,132 difference. The arrival cost moved by
+   523 bytes and not by 12,575, which is the whole point of the loader —
+   both new files hang off a section at the very bottom of the page, so
+   nobody who came for the bio pays for either; the 46 is this file
+   getting longer, including by this sentence.
    Every figure in it is the settled one, and will not stay that way.)
 
    Three limitations, stated rather than hidden. Text a section's script
@@ -173,7 +180,8 @@
     chime: { css: 'chime.css', js: 'chime.js' },
     sieve: { css: 'sieve.css', js: 'sieve.js' },
     heart: { css: 'heart.css', js: 'heart.js' },
-    night: { css: 'night.css', js: 'night.js' }
+    night: { css: 'night.css', js: 'night.js' },
+    edit: { css: 'edit.css', js: 'edit.js' }
   };
 
   /* Resolved against this file's own URL rather than the document's, so

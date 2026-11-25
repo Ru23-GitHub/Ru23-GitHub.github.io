@@ -1,0 +1,256 @@
+/* 26 / The Edit — where this page quoted him and tidied him
+   ----------------------------------------------------------------------
+   Added 2026-11-25.
+
+   Finding 01 counts his punctuation: fifty-three words, eleven
+   pictographs, one full stop. Four sections rest on that count. Then two
+   provenance notes quoted his two emails back with a full stop he never
+   typed, and in one of them the added stop had replaced three words that
+   changed what the sentence claimed.
+
+   The look is deliberately not a .panel and not the letter-paper of
+   #post. It is a diff: two stacked rows per divergence, his line and the
+   printed line, with the changed run marked. Red/green would be the
+   obvious choice and is avoided — the point is not that one is an error
+   state, it is that one is his and one is not, which is the same
+   authorship distinction data-from already carries everywhere else on
+   this page. So the marking reuses that vocabulary rather than inventing
+   a severity colour.
+
+   The check table underneath is live: js/edit.js compares every element
+   marked data-verbatim against the transcript in #post and the bio in
+   #about, on every load. It needs no colour to be read either — the
+   verdict is a word, and the mark beside it is a shape. */
+
+#edit{ background:var(--bg-alt); }
+
+#edit .ed-intro{ max-width:62ch; }
+
+#edit .ed-intro strong{ font-weight:600; }
+
+/* ---- the diffs ---------------------------------------------------- */
+
+.ed-cases{
+  list-style:none;
+  margin:2.4rem 0 0;
+  padding:0;
+  display:grid;
+  gap:1.6rem;
+}
+
+.ed-case{
+  border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  background:var(--bg);
+  border-radius:4px;
+  padding:1.1rem 1.15rem 1.15rem;
+}
+
+.ed-where{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:.5rem .7rem;
+  margin:0 0 .85rem;
+}
+
+.ed-where-n{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.74rem;
+  letter-spacing:.04em;
+  color:var(--accent);
+}
+
+.ed-where-t{
+  font-size:.82rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+}
+
+.ed-where-s{
+  font-size:.8rem;
+  color:var(--muted);
+}
+
+/* two stacked quote rows */
+
+.ed-rows{
+  display:grid;
+  gap:.55rem;
+  margin:0 0 .9rem;
+}
+
+.ed-row{
+  display:grid;
+  grid-template-columns:7.5rem 1fr;
+  gap:.35rem .9rem;
+  align-items:start;
+}
+
+.ed-k{
+  font-size:.74rem;
+  line-height:1.5;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  color:var(--muted);
+  padding-top:.18rem;
+}
+
+.ed-v{
+  margin:0;
+  font-size:.95rem;
+  line-height:1.6;
+  overflow-wrap:break-word;
+}
+
+.ed-row-his .ed-v{ color:var(--text); }
+.ed-row-mine .ed-v{ color:var(--muted); }
+
+/* the changed run */
+
+.ed-cut,
+.ed-add{
+  padding:0 .15em;
+  border-radius:2px;
+  text-underline-offset:3px;
+}
+
+.ed-cut{
+  background:color-mix(in srgb, var(--accent) 16%, transparent);
+  text-decoration:underline;
+  text-decoration-style:solid;
+  text-decoration-thickness:1px;
+}
+
+.ed-add{
+  background:color-mix(in srgb, var(--accent) 16%, transparent);
+  text-decoration:underline;
+  text-decoration-style:dotted;
+  text-decoration-thickness:1px;
+  font-weight:600;
+}
+
+.ed-note{
+  margin:0;
+  font-size:.88rem;
+  line-height:1.65;
+  color:var(--text);
+  border-top:1px solid var(--border);
+  padding-top:.75rem;
+}
+
+.ed-note b{ font-weight:600; }
+
+.ed-fixed{
+  display:inline-block;
+  margin-top:.5rem;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.72rem;
+  letter-spacing:.03em;
+  color:var(--muted);
+}
+
+/* ---- the live check ----------------------------------------------- */
+
+.ed-check{ margin-top:2.4rem; }
+
+.ed-check-head{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:.5rem 1rem;
+  margin:0 0 .2rem;
+}
+
+.ed-check-h{
+  font-size:.82rem;
+  font-weight:600;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  margin:0;
+}
+
+.ed-verdict{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.78rem;
+  letter-spacing:.03em;
+  color:var(--muted);
+}
+
+.ed-verdict[data-ok="no"]{ color:var(--accent); font-weight:600; }
+
+.ed-check-sub{
+  margin:0 0 1rem;
+  font-size:.86rem;
+  line-height:1.6;
+  color:var(--muted);
+  max-width:62ch;
+}
+
+.ed-table{
+  list-style:none;
+  margin:0;
+  padding:0;
+  border-top:1px solid var(--border);
+}
+
+.ed-line{
+  display:grid;
+  grid-template-columns:1.4rem 1fr auto;
+  gap:.3rem .8rem;
+  align-items:baseline;
+  padding:.62rem .1rem;
+  border-bottom:1px solid var(--border);
+}
+
+.ed-mark{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.8rem;
+  line-height:1.5;
+  color:var(--muted);
+}
+
+.ed-line[data-ok="no"] .ed-mark{ color:var(--accent); }
+
+.ed-what{
+  font-size:.88rem;
+  line-height:1.55;
+  min-width:0;
+  overflow-wrap:break-word;
+}
+
+.ed-src{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:.72rem;
+  letter-spacing:.03em;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.ed-does-not{
+  margin:1.9rem 0 0;
+  font-size:.92rem;
+  line-height:1.7;
+  max-width:62ch;
+}
+
+.ed-does-not strong{ font-weight:600; }
+
+/* ---- phone --------------------------------------------------------- */
+
+@media (max-width:620px){
+  .ed-row{
+    grid-template-columns:1fr;
+    gap:.15rem;
+  }
+  .ed-k{ padding-top:0; }
+  .ed-line{
+    grid-template-columns:1.4rem 1fr;
+  }
+  .ed-src{
+    grid-column:2;
+    white-space:normal;
+  }
+}
