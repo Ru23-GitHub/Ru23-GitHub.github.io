@@ -1,0 +1,228 @@
+/* The Card — everything known about him, on one screen
+   ----------------------------------------------------------------------
+   Added 2026-11-26.
+
+   This is the first deferred section on the page with a stylesheet and
+   no script. There is no rig here to swap in: the card is nine facts
+   and three blanks in static markup, and the four places it quotes him
+   are marked data-verbatim, so 17 / The Edit checks them on every load
+   without this section owning a line of JavaScript. js/load.js already
+   handled a css-only entry; this is the first one to use it.
+
+   Scoped entirely to #card and the .cd- prefix, which is the condition
+   js/load.js requires of a sheet it is allowed to defer.
+
+   Depth follows the rule css/theme.css keeps in both modes: bands are a
+   step back from the page, cards are a step forward from bands. The
+   section is a band between two white ones; the rows are cards on it.
+
+   No animation of its own. The rows ride the page's shared .reveal-
+   stagger, which is already behind @supports and
+   prefers-reduced-motion: no-preference. */
+
+#card{
+  background:var(--bg-alt);
+  border-block:1px solid var(--border);
+
+  /* The tint marking his words. It is a private custom property on the
+     section rather than on :root, which is the condition js/load.js
+     requires of a deferred sheet. Dark mode needs a great deal more of
+     it: 9% of the accent over #141720 is invisible, which is what the
+     first draft of this file shipped at both ends. */
+  --cd-tint: color-mix(in srgb, var(--accent) 9%, transparent);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) #card{
+    --cd-tint: color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+}
+
+:root[data-theme="dark"] #card{
+  --cd-tint: color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.cd-intro{
+  max-width:68ch;
+  line-height:1.6;
+}
+
+/* ---- the nine ------------------------------------------------------ */
+
+.cd-grid{
+  display:grid;
+  gap:10px;
+  margin:var(--space-m) 0 0;
+}
+
+.cd-row{
+  display:grid;
+  grid-template-columns:minmax(132px, 168px) 1fr;
+  column-gap:var(--space-s);
+  row-gap:8px;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  padding:15px 17px;
+}
+
+.cd-k{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:var(--track-wide);
+  text-transform:uppercase;
+  color:var(--muted);
+  line-height:1.5;
+  padding-top:2px;
+}
+
+.cd-v{ margin:0; }
+
+.cd-fact{
+  margin:0;
+  line-height:1.6;
+}
+
+/* His own words, tinted. Everything untinted in a row is mine. */
+.cd-fact [data-from="site"],
+.cd-fact [data-from="email"]{
+  background:var(--cd-tint);
+  border-radius:4px;
+  padding:0 .18em;
+  box-decoration-break:clone;
+  -webkit-box-decoration-break:clone;
+}
+
+.cd-fact s{ color:var(--muted); }
+
+.cd-skills,
+.cd-links{
+  list-style:none;
+  margin:8px 0 0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.cd-skills li,
+.cd-links a{
+  display:inline-block;
+  font-size:var(--fs-base);
+  line-height:1.4;
+  padding:4px 11px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-pill);
+  background:var(--bg-alt);
+}
+
+.cd-skills li{ color:var(--text); }
+.cd-links a{ color:var(--accent); font-weight:600; }
+.cd-links a:hover{ border-color:var(--accent); }
+
+.cd-meta{
+  grid-column:2;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:6px;
+  margin:0;
+}
+
+.cd-src{
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  padding:2px 8px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--border);
+  background:var(--bg-alt);
+  color:var(--muted);
+}
+
+.cd-src[data-src="email"]{
+  color:var(--accent);
+  border-color:color-mix(in srgb, var(--accent) 40%, var(--border));
+}
+
+.cd-go{
+  margin-inline-start:auto;
+  font-family:var(--mono);
+  font-size:var(--fs-xs);
+  letter-spacing:.04em;
+  color:var(--accent);
+  white-space:nowrap;
+}
+
+/* A row may cite two sections. Without a separator the two run
+   together as one string: "06 · The Line 14 · The Sieve". */
+.cd-go + .cd-go{ margin-inline-start:0; }
+
+.cd-go + .cd-go::before{
+  content:"/";
+  color:var(--muted);
+  margin-inline-end:7px;
+}
+.cd-go:hover{ text-decoration:underline; }
+
+/* ---- the three blanks ---------------------------------------------- */
+
+.cd-gap-head{
+  font-size:clamp(17px, 2.4vw, 21px);
+  margin:var(--space-m) 0 var(--space-s);
+}
+
+.cd-gaps{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:grid;
+  gap:10px;
+}
+
+.cd-gap{
+  border:1px dashed color-mix(in srgb, var(--border) 85%, var(--muted));
+  border-radius:var(--radius-md);
+  padding:15px 17px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.cd-gap b{
+  color:var(--text);
+  font-family:var(--mono);
+  font-size:var(--fs-md);
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  display:block;
+  margin-bottom:4px;
+}
+
+.cd-gap p{
+  margin:0;
+  color:inherit;
+}
+
+.cd-gap .cd-meta{
+  grid-column:auto;
+  margin-top:8px;
+}
+
+.cd-close{
+  max-width:68ch;
+  margin-top:var(--space-m);
+  line-height:1.6;
+}
+
+.cd-go:focus-visible,
+.cd-links a:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+  border-radius:var(--radius-sm);
+}
+
+@media (max-width: 640px){
+  .cd-row{ grid-template-columns:1fr; row-gap:6px; }
+  .cd-meta{ grid-column:1; margin-top:2px; }
+  .cd-go{ margin-inline-start:0; }
+}

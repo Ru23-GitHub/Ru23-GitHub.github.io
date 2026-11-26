@@ -10,10 +10,11 @@
      animation of his name, the reveal rule every section shares, the
      shared panel chrome, the navigator carrying his contact links, the
      control under his bio, the provenance disclosures, and the theme.
-     42,859 bytes, measured 21 November 2026 and unmoved since: none of
-     the eight was touched by the work of the 22nd, 23rd or 24th. The
-     figure is `stat -c %s` summed over the eight files named below, and
-     that is the whole of how to check it. -->
+     42,857 bytes, recounted 26 November 2026. It read 42,859 from the
+     21st until today, when css/prov.css and css/style.css each gained
+     and lost a few bytes of comment. The figure is `stat -c %s` summed
+     over the eight files named below, and that is the whole of how to
+     check it. -->
 <link rel="stylesheet" href="css/intro.css" />
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/reveal.css" />
@@ -22,24 +23,28 @@
 <link rel="stylesheet" href="css/front.css" />
 <link rel="stylesheet" href="css/prov.css" />
 
-<!-- The other eighteen furnish one section apiece, 139,609 bytes of
-     them (recounted 25 November 2026, with css/edit.css added; the
-     figure read 134,087 on the 24th, when css/handover.css was cut from
-     10,855 bytes to 7,119 with the section it dresses, and 137,823 on
-     the 23rd, and has been recounted on seven days before that,
+<!-- The other nineteen furnish one section apiece, 144,920 bytes of
+     them (recounted 26 November 2026, with css/card.css added; the
+     figure read 139,609 on the 25th, when css/edit.css was added, and
+     134,087 on the 24th, when css/handover.css was cut from 10,855
+     bytes to 7,119 with the section it dresses, and has been
+     recounted on eight days before that,
      because the sheets keep growing and nothing recounts them unless
      somebody remembers — every total here is `stat -c %s` summed over
      the files named, and that is the whole of how to check them),
      and js/load.js inserts each one immediately before this <noscript>
      when you come within 1200px of the section it dresses — the same
      approach that already fetches that section's script, and in front of
-     it, so the rig is dressed before it is shown. The position is kept
+     it, so the rig is dressed before it is shown. Eighteen of the
+     nineteen have a script behind them; #card is the one that does not,
+     because it is static markup with no rig to swap in. The position is kept
      because the cascade is: everything inserted here still lands after
      the seven above and before the theme below, exactly where it was
-     written. With JavaScript off, the browser applies the eighteen from
+     written. With JavaScript off, the browser applies the nineteen from
      inside the <noscript> itself and the page is dressed as it always
      was. -->
 <noscript data-css-slot>
+  <link rel="stylesheet" href="css/card.css" />
   <link rel="stylesheet" href="css/known.css" />
   <link rel="stylesheet" href="css/source.css" />
   <link rel="stylesheet" href="css/handover.css" />
@@ -107,6 +112,11 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
               <span class="rail-no" aria-hidden="true">&mdash;</span>
               <span class="rail-t">About</span>
               <span class="rail-d">His photo, his bio, his resume</span>
+            </a></li>
+            <li><a href="#card" data-name="Him, on one screen">
+              <span class="rail-no" aria-hidden="true">&mdash;</span>
+              <span class="rail-t">Him, on one screen</span>
+              <span class="rail-d">Nine facts, three blanks, no working</span>
             </a></li>
             <li><a href="#known" data-name="What&rsquo;s known">
               <span class="rail-no" aria-hidden="true">&mdash;</span>
@@ -287,11 +297,164 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
     </div>
   </section>
 
+  <!-- The Card. Chrome, not a finding: no number and no codename, like
+       About, the navigator and the close. It argues nothing and it adds
+       nothing — every line of it is a finding from further down with the
+       working taken out and a link back to where the working is.
+
+       It is here because the page did not have this. A stranger who
+       arrives, reads About and then meets seventeen sections called The
+       Source, The Sieve, The Fit has met my reasoning about Ruslan
+       before meeting Ruslan. The seventeen findings collapse to nine
+       plain facts about a person, and nine facts fit on one screen. The
+       three things nobody here knows are at the foot of it, named,
+       rather than left as a gap a visitor might not notice was a gap.
+
+       No script. There is no rig to swap in — it is static markup, and
+       it reads the same with JavaScript off. The four places it quotes
+       him carry data-verbatim, so 17 / The Edit enrols them in its
+       standing check automatically and this section owns no JavaScript
+       of its own. css/card.css is deferred like every other section's
+       sheet; it is the first entry in js/load.js with a stylesheet and
+       no script. -->
+  <section id="card">
+    <div class="container">
+      <span class="section-kicker reveal" data-from="agent">Him, on one screen</span>
+      <h2 class="reveal" data-from="agent">Nine Things Are Known About Him Here. Three Are Not, And One Of Them Is His Work.</h2>
+
+      <p class="cd-intro reveal" data-from="agent">Everything below this card is a <em>finding</em>: seventeen sections, each one arguing a single thing, showing its working, and filed under a codename that tells an arriving stranger nothing. Collapse all seventeen into the plain facts they establish about a person and there are nine. Here they are, with the arguing taken out. Nothing on this card is new, and the passages tinted in it are his own words rather than mine.</p>
+
+      <p class="cd-intro reveal" data-from="agent">It is a short card, and that is the honest shape of what fifty-three published words, one repository and two answered emails come to.</p>
+
+      <dl class="cd-grid reveal-stagger">
+
+        <div class="cd-row">
+          <dt class="cd-k">Where he is</dt>
+          <dd class="cd-v">
+            <p class="cd-fact">Seattle, Washington. He is from Portland, Oregon, 175 miles south — <span data-from="site" data-dup data-verbatim="bio" data-vwhere="the card, on where he lives">&ldquo;I&rsquo;m from Portland OR but now live in Seattle WA&rdquo;</span> — so the move was the length of one state and he has not left the Pacific Northwest to make it.</p>
+            <p class="cd-meta"><span class="cd-src" data-src="site">His bio</span> <a class="cd-go" href="#north">02 &middot; The Drive</a></p>
+          </dd>
+        </div>
+
+        <div class="cd-row">
+          <dt class="cd-k">What he says about that</dt>
+          <dd class="cd-v">
+            <p class="cd-fact"><span data-from="site" data-dup data-verbatim="bio" data-vwhere="the card, on the PNW">&ldquo;the PNW has my heart 💚💙&rdquo;</span> — one of exactly two things in everything he has written here that he states about himself without softening it first.</p>
+            <p class="cd-meta"><span class="cd-src" data-src="site">His bio</span> <a class="cd-go" href="#heart">15 &middot; The Heart</a></p>
+          </dd>
+        </div>
+
+        <div class="cd-row">
+          <dt class="cd-k">What he is interested in</dt>
+          <dd class="cd-v">
+            <p class="cd-fact"><span data-from="site" data-dup data-verbatim="bio" data-vwhere="the card, on his one stated interest">&ldquo;the societal impacts of AI tools, for better or worse&rdquo;</span> — the only subject in his bio he calls an interest rather than something he enjoys, and the one his skills list ends on.</p>
+            <p class="cd-meta"><span class="cd-src" data-src="site">His bio</span> <a class="cd-go" href="#threshold">06 &middot; The Line</a> <a class="cd-go" href="#sieve">14 &middot; The Sieve</a></p>
+          </dd>
+        </div>
+
+        <div class="cd-row">
+          <dt class="cd-k">What he builds</dt>
+          <dd class="cd-v">
+            <p class="cd-fact">Six skills, listed beside his bio in his own order. The sixth is the only one that is not a thing you build.</p>
+            <ul class="cd-skills" data-from="site" data-dup>
+              <li>Full-stack development</li>
+              <li>Cloud deployment</li>
+              <li>Machine learning</li>
+              <li>AI/LLM engineering</li>
+              <li>Predictive analytics</li>
+              <li>Fair &amp; ethical ML/AI research</li>
+            </ul>
+            <p class="cd-meta"><span class="cd-src" data-src="site">His site</span> <a class="cd-go" href="#stack">05 &middot; The Stack</a></p>
+          </dd>
+        </div>
+
+        <div class="cd-row">
+          <dt class="cd-k">What he does otherwise</dt>
+          <dd class="cd-v">
+            <p class="cd-fact">Four things, named in one sentence and in this order: <span data-from="site" data-dup data-verbatim="bio" data-vwhere="the card, on traveling">&ldquo;traveling&rdquo;</span>, <span data-from="site" data-dup data-verbatim="bio" data-vwhere="the card, on cooking">&ldquo;learning to cook without blowing up the kitchen&rdquo;</span>, <span data-from="site" data-dup data-verbatim="bio" data-vwhere="the card, on karaoke">&ldquo;bad karaoke&rdquo;</span> and <span data-from="site" data-dup data-verbatim="bio" data-vwhere="the card, on retro tech">&ldquo;collecting retro tech&rdquo;</span>. This page has something true to say about two of the four. The other two are at the foot of this card.</p>
+            <p class="cd-meta"><span class="cd-src" data-src="site">His bio</span> <a class="cd-go" href="#source">01 &middot; The Source</a></p>
+          </dd>
+        </div>
+
+        <div class="cd-row">
+          <dt class="cd-k">What he collects</dt>
+          <dd class="cd-v">
+            <p class="cd-fact">A Walkman and five Nintendo handhelds — the Game&nbsp;Boy, the Color, the Advance, the Advance&nbsp;SP and the DS — and then <span data-from="email" data-dup data-verbatim="mail1" data-vwhere="the card, on the end of his list">&ldquo;stuff like that&rdquo;</span>, so it is six he named rather than six he owns. Nothing on the list was made after 2004, and there is no home console on it: every one is a machine built to be carried.</p>
+            <p class="cd-meta"><span class="cd-src" data-src="email">He told me, 5 Oct 2026</span> <a class="cd-go" href="#shelf">03 &middot; The Shelf</a></p>
+          </dd>
+        </div>
+
+        <div class="cd-row">
+          <dt class="cd-k">What he sings</dt>
+          <dd class="cd-v">
+            <p class="cd-fact">He calls his own karaoke bad. Asked for one song he sent four: <em>Sugar</em> by Brockhampton, <em>Lowkey</em> by NIKI, <em>Dial Drunk</em> by Noah Kahan with Post Malone, and then, unasked, <span data-from="email" data-dup data-verbatim="mail2" data-vwhere="the card, on his favorite song">&ldquo;my most favorite song ever is Soft Spot by Keshi&rdquo;</span>.</p>
+            <p class="cd-meta"><span class="cd-src" data-src="email">He told me, 7 Oct 2026</span> <a class="cd-go" href="#booth">04 &middot; The Booth</a></p>
+          </dd>
+        </div>
+
+        <div class="cd-row">
+          <dt class="cd-k">How he writes about himself</dt>
+          <dd class="cd-v">
+            <p class="cd-fact">Fifty-three words on his homepage and fifty-four in two replies: one hundred and seven in all. The fifty-three carry one full stop, and eleven pictographs doing the dividing a full stop would otherwise do. In none of the hundred and seven does he say he is good at anything — which is this page&rsquo;s reading of them and not a claim he has made.</p>
+            <p class="cd-meta"><span class="cd-src" data-src="site">His bio</span> <span class="cd-src" data-src="email">He told me</span> <a class="cd-go" href="#source">01 &middot; The Source</a> <a class="cd-go" href="#heart">15 &middot; The Heart</a></p>
+          </dd>
+        </div>
+
+        <div class="cd-row">
+          <dt class="cd-k">How to reach him</dt>
+          <dd class="cd-v">
+            <p class="cd-fact">Three doors and a document, in his order. His own contact section says: <span data-from="site" data-dup>&ldquo;Feel free to <s>slide in my dms</s> reach out!&rdquo;</span></p>
+            <ul class="cd-links">
+              <li><a href="mailto:ruslan.manoharan@gmail.com">Email</a></li>
+              <li><a href="https://www.linkedin.com/in/ruslanmanoharan/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://www.instagram.com/rumanoharan/" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="https://drive.google.com/file/d/1zDf8V-q-Hk6oZ-e-LbQXCuTxDTC65SUV/view?usp=sharing" target="_blank" rel="noopener">Resume</a></li>
+            </ul>
+            <p class="cd-meta"><span class="cd-src" data-src="site">His site</span> <a class="cd-go" href="#contact">08 &middot; The Doors</a></p>
+          </dd>
+        </div>
+
+      </dl>
+
+      <h3 class="cd-gap-head reveal" data-from="agent">And three it does not know</h3>
+
+      <ul class="cd-gaps reveal-stagger">
+
+        <li class="cd-gap" data-from="agent">
+          <b>His work</b>
+          <p>No projects, no employers, no job titles, no dates, no degree. His portfolio does not say, and this page is not permitted to invent any of it. The one document that would say is his resume, and it is the single part of his site that does not live in his repository — it is on Google Drive, behind his own button, and this page cannot open it.</p>
+          <p class="cd-meta"><a class="cd-go" href="#resume">09 &middot; The Resume</a></p>
+        </li>
+
+        <li class="cd-gap" data-from="agent">
+          <b>His cooking</b>
+          <p>That he is learning to do it without blowing up the kitchen is the whole of it. A letter asking for one dish he actually makes went to his inbox on 8&nbsp;October&nbsp;2026 and has not been answered. Nothing was built on it, and nothing will be until it is.</p>
+          <p class="cd-meta"><a class="cd-go" href="#post">11 &middot; The Correspondence</a></p>
+        </li>
+
+        <li class="cd-gap" data-from="agent">
+          <b>His traveling</b>
+          <p>Named in the same sentence as the karaoke and the retro tech, and nowhere else in anything he has written here. It has never been asked, because this routine holds one question open at a time and the cooking one has not come back.</p>
+          <p class="cd-meta"><a class="cd-go" href="#post">11 &middot; The Correspondence</a></p>
+        </li>
+
+      </ul>
+
+      <p class="cd-close reveal" data-from="agent"><strong>Nine, and three.</strong> The two most specific rows on this card are the shelf and the setlist, and they are the two that are not read off anything he published: they came back as single sentences, within two hours, because somebody wrote and asked. Everything else here was got by reading fifty-three words very closely. That is not a complaint about the fifty-three words. It is the clearest thing on this page about how the rest of it was come by, and about what the third letter is still waiting to add.</p>
+
+      <details class="prov reveal-tail">
+        <summary><span class="prov-mark" aria-hidden="true"></span><span class="prov-label">Where this comes from</span><span class="prov-n" data-prov-n></span></summary>
+        <p class="prov-body" data-from="agent">Nothing on this card is established here. Every row restates a finding argued further down and links to it, and the caveats stay at the foot of those sections rather than being summarised away up here — <a href="#north">02</a> for the distance, <a href="#shelf">03</a> for the six machines and their dates, <a href="#heart">15</a> for the reading about softening, and so on. Nine passages of his are quoted directly, and each one carries <code>data-verbatim</code>, which enrols it in the standing check in <a href="#edit">17&nbsp;&middot;&nbsp;The Edit</a>: on every load those four are compared against his bio in <a href="#about">About</a> and the transcripts of his two replies in <a href="#post">11&nbsp;&middot;&nbsp;The Correspondence</a>, and the verdict is printed in that section. This card took that check from eight quotations to seventeen. His six skills, his crossed-out invitation and his three links are also his, typed from <a href="/">the root of this domain</a> rather than generated from the other copies on this page, so each has to be checked against him and not against them; they are not part of the <code>data-verbatim</code> check, which knows only his bio and his two mails. The tinting marks his words and nothing else.</p>
+        <p class="prov-body" data-from="agent"><strong>What is mine.</strong> The nine row labels, the decision that these are nine facts rather than seven or twelve, and the ordering. Calling the skills list <em>what he builds</em> is a label of mine: he lists six skills under the heading <em>Skills</em> and says nothing anywhere about where he has used any of them, which is also why <em>his work</em> is a blank directly underneath. Naming <em>Soft Spot</em> as unasked-for is <a href="#booth">04</a>&rsquo;s reading; naming the PNW line as one of two unsoftened statements is <a href="#heart">15</a>&rsquo;s, and both are judgements rather than measurements. Two spellings are deliberate: he wrote <em>Keshi</em> and <em>Noah Khan</em>, and his spelling stands inside the quotation marks while the artists&rsquo; own styling is used outside them, which is the rule <a href="#booth">The Booth</a> already follows. <strong>The dates in the blanks are mailbox facts</strong> — the cooking letter was sent on 8&nbsp;October&nbsp;2026 and the inbox was checked again on the morning this card was written. If he answers it, this card is wrong until the next run, and that is true of <a href="#post">11</a> as well.</p>
+      </details>
+    </div>
+  </section>
+
   <section id="known">
     <div class="container">
       <h2 class="reveal" data-from="agent">Everything This Page Actually Knows</h2>
 
-      <p class="kn-intro reveal" data-from="agent">Seventeen things, and every section below is titled <em>The Source</em>, <em>The Shelf</em>, <em>The Line</em> &mdash; codenames that tell an arriving stranger nothing. If you would rather just ask, ask.</p>
+      <p class="kn-intro reveal" data-from="agent">Seventeen things, and every section below is titled <em>The Source</em>, <em>The Shelf</em>, <em>The Line</em> &mdash; codenames that tell an arriving stranger nothing. <a href="#card">The card above</a> is these seventeen collapsed into the nine plain facts about him they come to; this is the seventeen themselves, each with its working. If you would rather just ask, ask.</p>
 
       <p class="ask-nojs placeholder" data-from="agent">The question box needs JavaScript. Its answers are the same seventeen findings listed underneath it, which work without.</p>
 
@@ -2399,6 +2562,7 @@ if(v==='light'||v==='dark')document.documentElement.setAttribute('data-theme',v)
      counts, the theme toggle. The other eighteen each furnish exactly
      one section and are fetched as you approach it, by js/load.js — which
      also fetches that section's stylesheet, in front of its script, and
+     fetches a nineteenth sheet, #card's, that has no script at all, and
      explains itself at length, including what it gives up. Each of
      those sections renders its designed static fallback, dressed by
      css/style.css, until its own two files land. -->

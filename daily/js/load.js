@@ -1,4 +1,4 @@
-/* The loader — eighteen sections' stylesheets and eighteen sections'
+/* The loader — nineteen sections' stylesheets and eighteen sections'
    scripts, fetched when you get near them
    ----------------------------------------------------------------------
    Added 2026-11-06 for the scripts. Extended 2026-11-10 to own the
@@ -9,7 +9,10 @@
    #sieve made it fifteen on 2026-11-14 and #heart sixteen on the 19th.
    #type was a seventeenth on the 21st and was deleted again on the 22nd,
    which put this back to sixteen; #night is a seventeenth as of the 23rd
-   and #edit an eighteenth as of the 25th.
+   and #edit an eighteenth as of the 25th. #card, added on the 26th,
+   is the nineteenth stylesheet and has no script of its own — the
+   first entry here to use the css-only path, which this file has
+   always supported and nothing had exercised.
    The deleted #type stayed registered in this file for a night after its
    two files were gone — harmless, because the block below drops any
    entry whose section is not in the document, but it was dead config and
@@ -41,11 +44,12 @@
    those bytes — just under 70% of the page's stylesheet weight, held in
    front of a visitor who came for his name, his face, his bio and his
    three contact links, none of which any of the eighteen touches.
-   Those eighteen now arrive the same way their scripts do. (Thirteen on
+   Those nineteen now arrive the same way their scripts do. (Thirteen on
    the day this was written; #chime made it fourteen on 11 November,
    #sieve fifteen on the 14th and #heart sixteen on the 19th. #type was a
    seventeenth on the 21st and went again on the 22nd, #night is the
-   seventeenth as of the 23rd and #edit the eighteenth as of the 25th.)
+   seventeenth as of the 23rd, #edit the eighteenth as of the 25th and
+   #card the nineteenth as of the 26th.)
 
    What stays in the <head>, and why: style, intro, reveal, panel, rail,
    front, prov, theme. 42,859 bytes. Those are the page, the animation
@@ -55,8 +59,8 @@
    to say, everything a visitor sees before scrolling, plus the three
    small shared files a deferred section would otherwise have to wait
    for twice. (panel.css is 3,651 bytes and is used by fourteen of the
-   eighteen — the four that want none of it are #source, #post, #heart
-   and #edit, each of which is a passage of prose rather than an
+   nineteen — the five that want none of it are #source, #post, #heart,
+   #edit and #card, each of which is a passage of prose rather than an
    instrument; it is still cheaper to hold the file than to work out who
    needs it. Recounted in the browser on 26 November 2026: this read
    "eleven" and named #heart as the only one, and both halves of that
@@ -68,16 +72,16 @@
        section up by id and returns if it is absent. None of them reads
        another's globals — every window.__x in js/ is a self-reference —
        so they can arrive in any order, late, or never.
-     - Every one of the eighteen stylesheets is scoped to its own
+     - Every one of the nineteen stylesheets is scoped to its own
        section: an id selector, or a class prefix no other file uses.
        The only rules any of them puts on :root are three private custom
        properties read nowhere outside the section that declares them.
-       So none of the eighteen can change the look of anything that is
+       So none of the nineteen can change the look of anything that is
        already on screen, which is the property that makes deferring
        them safe at all. If that ever stops being true of a new file,
        this is the paragraph it breaks.
      - Each link is inserted immediately before the <noscript> in the
-       <head> that lists all eighteen, not appended to the body. The
+       <head> that lists all nineteen, not appended to the body. The
        cascade therefore holds exactly: after the seven that block, and
        before theme.css, which is where they were written.
      - A section's stylesheet is requested first and its script follows
@@ -93,19 +97,27 @@
        no-JavaScript version, and that version was designed rather than
        left over. Its prose is dressed by style.css either way.
      - With JavaScript off, nothing here runs and the browser applies
-       all eighteen out of the <noscript> itself. The page is then
+       all nineteen out of the <noscript> itself. The page is then
        exactly what it was before 2026-11-06: every byte, up front.
 
    What it does NOT do is make the page smaller. Read to the bottom and
    you have fetched every byte you used to fetch. What it does is
    decline to spend them on somebody who came for the bio. Of the
-   453,326 bytes of stylesheet and script this page can ask for, an
+   459,872 bytes of stylesheet and script this page can ask for, an
    arrival that reads his name, his photo, his paragraph and his contact
-   links and then leaves now takes 119,937 — 42,859 of blocking
-   stylesheet, 11,873 more because #known sits inside the 1200px lead,
-   41,261 of script in the <head>, and ask.js at 23,944 because it
-   belongs to #known and comes in behind it. Before 6 November the same
+   links and then leaves now takes 90,660 — 42,857 of blocking
+   stylesheet, 42,492 of script in the <head>, and card.css at 5,311
+   because #card sits inside the 1200px lead. Before 6 November the same
    arrival took the lot.
+
+   That middle figure fell by a quarter on 26 November, for a reason
+   that has nothing to do with this file: #card went in between #about
+   and #known, so the deferred sheet an About-and-leave arrival comes
+   within 1200px of is now card.css rather than known.css, and ask.js
+   at 23,944 bytes no longer comes in behind it. The two it displaced
+   are 35,817 between them. It is measured rather than computed from a
+   list in here: a headless browser is scrolled to the foot of #about
+   and the files it actually requests are summed.
 
    (Every figure in this comment is a byte count typed into a comment,
    which is exactly the kind of claim the rest of this page refuses to
@@ -126,6 +138,10 @@
    files hang off the last section on the page, so nobody who came for
    the bio pays for either; the rest is this file getting longer,
    including by this sentence.
+   Recounted once more on 26 November, with #card: the grand total
+   read 453,326 the day before, and css/card.css is 5,311 bytes of the
+   difference — the rest is the three comment edits of this morning and
+   this file getting longer again.
    Every figure above is the settled one, and will not stay that way.)
 
    Three limitations, stated rather than hidden. Text a section's script
@@ -138,7 +154,7 @@
    beforeprint, which for a script is merely late but for a stylesheet
    is a race the dialog can win — a first print from a cold load may set
    some sections in the browser's own default. A second print gets
-   everything. That is the honest cost of the eighteen, and it is worth
+   everything. That is the honest cost of the nineteen, and it is worth
    it. */
 (function () {
   'use strict';
@@ -147,6 +163,7 @@
      have a stylesheet and no script; none currently has a script and no
      stylesheet, but the loader does not mind either way. */
   var SECTIONS = {
+    card: { css: 'card.css' },
     known: { css: 'known.css', js: 'ask.js' },
     source: { css: 'source.css', js: 'source.js' },
     north: { css: 'north.css', js: 'north.js' },
@@ -175,7 +192,7 @@
   var cssBase = jsBase.replace(/js\/$/, 'css/');
 
   /* Where a stylesheet goes: immediately before the <noscript> that
-     lists all eighteen, which is the position they were written in. If
+     lists all nineteen, which is the position they were written in. If
      that element is ever removed, fall back to the end of <head>, which
      puts them after theme.css — a cascade this page does not currently
      depend on either way, and the <noscript> is there to keep it that
