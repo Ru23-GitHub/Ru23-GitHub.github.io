@@ -1,4 +1,4 @@
-/* The loader — seventeen sections' stylesheets and seventeen sections'
+/* The loader — eighteen sections' stylesheets and eighteen sections'
    scripts, fetched when you get near them
    ----------------------------------------------------------------------
    Added 2026-11-06 for the scripts. Extended 2026-11-10 to own the
@@ -8,7 +8,8 @@
    whose stylesheet was already being fetched for the prose around it.
    #sieve made it fifteen on 2026-11-14 and #heart sixteen on the 19th.
    #type was a seventeenth on the 21st and was deleted again on the 22nd,
-   which put this back to sixteen; #night is a seventeenth as of the 23rd.
+   which put this back to sixteen; #night is a seventeenth as of the 23rd
+   and #edit an eighteenth as of the 25th.
    The deleted #type stayed registered in this file for a night after its
    two files were gone — harmless, because the block below drops any
    entry whose section is not in the document, but it was dead config and
@@ -39,12 +40,12 @@
    twenty-one dressed exactly one section apiece and came to 90,700 of
    those bytes — just under 70% of the page's stylesheet weight, held in
    front of a visitor who came for his name, his face, his bio and his
-   three contact links, none of which any of the sixteen touches.
-   Those seventeen now arrive the same way their scripts do. (Thirteen on
+   three contact links, none of which any of the eighteen touches.
+   Those eighteen now arrive the same way their scripts do. (Thirteen on
    the day this was written; #chime made it fourteen on 11 November,
    #sieve fifteen on the 14th and #heart sixteen on the 19th. #type was a
-   seventeenth on the 21st and went again on the 22nd, and #night is the
-   seventeenth as of the 23rd.)
+   seventeenth on the 21st and went again on the 22nd, #night is the
+   seventeenth as of the 23rd and #edit the eighteenth as of the 25th.)
 
    What stays in the <head>, and why: style, intro, reveal, panel, rail,
    front, prov, theme. 42,859 bytes. Those are the page, the animation
@@ -53,27 +54,30 @@
    under his bio, the provenance disclosures, and the theme — which is
    to say, everything a visitor sees before scrolling, plus the three
    small shared files a deferred section would otherwise have to wait
-   for twice. (panel.css is 3,651 bytes and is used by eleven of the
-   seventeen — #heart is the only deferred section that wants none of it,
-   because it is a passage of his writing rather than an instrument; it
-   is still cheaper to hold the file than to work out who needs it.)
+   for twice. (panel.css is 3,651 bytes and is used by fourteen of the
+   eighteen — the four that want none of it are #source, #post, #heart
+   and #edit, each of which is a passage of prose rather than an
+   instrument; it is still cheaper to hold the file than to work out who
+   needs it. Recounted in the browser on 26 November 2026: this read
+   "eleven" and named #heart as the only one, and both halves of that
+   had been wrong.)
 
    Why this is safe, rather than clever:
 
-     - Every one of the seventeen scripts is an IIFE that looks its own
+     - Every one of the eighteen scripts is an IIFE that looks its own
        section up by id and returns if it is absent. None of them reads
        another's globals — every window.__x in js/ is a self-reference —
        so they can arrive in any order, late, or never.
-     - Every one of the seventeen stylesheets is scoped to its own
+     - Every one of the eighteen stylesheets is scoped to its own
        section: an id selector, or a class prefix no other file uses.
        The only rules any of them puts on :root are three private custom
        properties read nowhere outside the section that declares them.
-       So none of the seventeen can change the look of anything that is
+       So none of the eighteen can change the look of anything that is
        already on screen, which is the property that makes deferring
        them safe at all. If that ever stops being true of a new file,
        this is the paragraph it breaks.
      - Each link is inserted immediately before the <noscript> in the
-       <head> that lists all seventeen, not appended to the body. The
+       <head> that lists all eighteen, not appended to the body. The
        cascade therefore holds exactly: after the seven that block, and
        before theme.css, which is where they were written.
      - A section's stylesheet is requested first and its script follows
@@ -134,7 +138,7 @@
    beforeprint, which for a script is merely late but for a stylesheet
    is a race the dialog can win — a first print from a cold load may set
    some sections in the browser's own default. A second print gets
-   everything. That is the honest cost of the seventeen, and it is worth
+   everything. That is the honest cost of the eighteen, and it is worth
    it. */
 (function () {
   'use strict';
@@ -171,7 +175,7 @@
   var cssBase = jsBase.replace(/js\/$/, 'css/');
 
   /* Where a stylesheet goes: immediately before the <noscript> that
-     lists all seventeen, which is the position they were written in. If
+     lists all eighteen, which is the position they were written in. If
      that element is ever removed, fall back to the end of <head>, which
      puts them after theme.css — a cascade this page does not currently
      depend on either way, and the <noscript> is there to keep it that
